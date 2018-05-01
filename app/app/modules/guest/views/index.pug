@@ -1,0 +1,119 @@
+extends ../../../templates/masterguests
+mixin carousel(image,alt)
+	.col-md-4.p-1
+		a(href=image data-toggle="lightbox" data-gallery="img-gallery")
+			img.img-fluid(src=image, alt=alt)
+block main
+	main
+		.page-header.header-filter(data-parallax="true" style=" background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-12.main-header__textbox
+						h1.text-white.text-uppercase Welcome
+						h4
+							a.text-white.text-uppercase(href="#") View Mass Schedules
+							|  | 
+							a.text-white.text-uppercase(href="#") View Office Schedules
+		//- .main.main-raised
+		//- 	.container
+		//- 		.section
+		//- 			.row.text-center.mb-5
+		//- 				.col-md-8.ml-auto.mr-auto
+		//- 					h1 Let&apos;s talk product
+		//- 					h4.description This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.
+		//- 			.row
+		//- 				.col.ml-auto.mr-auto
+		//- 					//- Carousel
+		//- 					#firstCarousel.carousel.slide(data-ride="carousel")
+		//- 						//- Indicators
+		//- 						ol.carousel-indicators
+		//- 							li.active(data-target="#firstCarousel" data-slide-to="0")
+		//- 							li(data-target="#firstCarousel" data-slide-to="1")
+		//- 							li(data-target="#firstCarousel" data-slide-to="2")
+		//- 						//- Slides
+		//- 						.carousel-inner
+		//- 							.carousel-item.active
+		//- 								img.d-block.w-100(src="/img/thumb3.jpg" alt="First Slide")
+		//- 							.carousel-item
+		//- 								img.d-block.w-100(src="/img/thumb2.jpg" alt="Secondary Slide")
+		//- 							.carousel-item 
+		//- 								img.d-block.w-100(src="/img/thumb1.jpg" alt="Third Slide")
+		//- 						//- Controls
+		//- 						a.carousel-control-prev(href="#firstCarousel" role="button" data-slide="prev")
+		//- 							span.carousel-control-prev-icon(aria-hidden="true")
+		//- 							span.sr-only Previous
+		//- 						a.carousel-control-next(href="#firstCarousel" role="button" data-slide="next")
+		//- 							span.carousel-control-next-icon(aria-hidden="true")
+		//- 							span.sr-only Next
+		//- 			//- Home Icon
+		//- 			.row.d-flex.justify-content-center.text-center.py-5
+		//- 				.col.m-4
+		//- 					i.fa.fa-cog
+		//- 					h3 Inquire
+		//- 					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate optio
+		//- 				.col.m-4
+		//- 					i.fa.fa-cloud
+		//- 					h3 Submit
+		//- 					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate optio
+		//- 				.col.m-4
+		//- 					i.fa.fa-bar-chart
+		//- 					h3 Repeat
+		//- 					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate optio
+		//- 	//-  Home Heading Section
+		//- 	#home-heading.header-filter.d-none.d-sm-block.m-0(style=" background-image: url('/img/churchbg.jpg');")
+		//- 		.row.p-5.text-white.text-center
+		//- 			.col-md-12
+		//- 				.container
+		//- 					h1 Are You Ready To Get Started? #[i.fa.fa-check]
+		//- 					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quo quasi error atque. Molestiae recusandae consequuntur consequatur labore itaque eveniet quis? Dolorem, voluptatibus unde illum hic quibusdam inventore ad! Odio?
+		//- 					button.btn.btn-primary Get Started
+		//- 			//-  Info Section
+		//- 	.container
+		//- 		.section
+		//- 			.row
+		//- 				#info.py-3
+		//- 					.row
+		//- 						.col-sm-6
+		//- 							h3 Lorem Ipsum
+		//- 							p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ducimus debitis earum accusamus eaque dolores asperiores laudantium, sint cupiditate neque maxime quis provident possimus libero nobis deleniti repellat vel corporis?
+		//- 							a.btn.btn-outline-danger.btn-lg Learn More
+		//- 						.col-sm-6
+		//- 							img.img-fluid(src="img/churchtime.jpg", alt="Laptop")
+		//- 				//- Photo Gallery
+		//- 				#gallery.py-5
+		//- 					.container
+		//- 						h1.text-center Photo Gallery
+		//- 						p.text-center Check out our photos
+		//- 						.row.pb-1 #{image}
+		//- 							+carousel("/img/IMG20171004175304.jpg","First Pic")
+		//- 							+carousel("/img/IMG20170408203149.jpg","Second Pic")
+		//- 							+carousel("/img/IMG20171203182334.jpg","Third Pic")
+		//- 						.row
+		//- 							+carousel("/img/IMG20170212182340.jpg","Fourth Pic")
+		//- 							+carousel("/img/IMG20171203182334.jpg","Fifth Pic")
+		//- 							+carousel("/img/IMG20171123173227.jpg","Sixth Pic")
+		//- 				//- Contacts
+		//- 				#contacts
+		//- 				.row
+		//- 					.col-md-8.ml-auto.mr-auto
+		//- 						h2.text-center Work with us
+		//- 						h4.text-center.description
+		//- 							| Divide details about your product or agency work into parts. 
+		//- 							| Write a few lines about each one and contact us about any further collaboration. 
+		//- 							| We will responde get back to you in a couple of hours.
+		//- 						form.contact-form
+		//- 							.row
+		//- 								.col-md-6
+		//- 									.form-group
+		//- 										label.bmd-label-floating Your Name
+		//- 										input.form-control(type="text")
+		//- 								.col-md-6
+		//- 									.form-group
+		//- 										label.bmd-label-floating Your Email
+		//- 										input.form-control(type="email")
+		//- 							.form-group
+		//- 								label.bmd-label-floating(for="message") Your Message
+		//- 								textarea#message.form-control(type="text", rows="3")
+		//- 							.row
+		//- 								.col-md-4.ml-auto.mr-auto.text-center
+		//- 									button.btn.btn-primary.btn-raised Send Message

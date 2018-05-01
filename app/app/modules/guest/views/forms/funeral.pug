@@ -1,0 +1,76 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Funeral Mass
+						p.text-uppercase.card-desc
+							| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Event Application Form
+				.row
+					.col-md-6.my-3
+						form(action="#")
+							.form-group
+								label.label-control Name of Deceased
+								input.form-control(type='text')
+							.form-group
+								label.label-control Birthdate of Deceased
+								input.form-control(type='text')
+							.form-group
+								label.label-control Date of Mass
+								input.form-control.datetimepicker(type='text')
+							.form-group
+								label.label-control Relation
+								.dropdown
+									a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+										| Relation
+									.dropdown-menu(aria-labelledby='dropdownMenuLink')
+										a.dropdown-item(href='#') Action
+										a.dropdown-item(href='#') Another action
+										a.dropdown-item(href='#') Something else here
+							.form-group
+								label.label-control Desired Date of Funeral Mass
+								input.form-control.datetimepicker(type='text')
+							.form-group
+								label.label-control Second Alternate Date
+								input.form-control.datetimepicker(type='text')
+							.form-group
+								label.label-control Third Alternate Date
+								input.form-control.datetimepicker(type='text')
+					.col-md-6.my-3
+						.form-group
+							label(for='exampleFormControlTextarea1') Address:
+							textarea#exampleFormControlTextarea1.form-control(rows='3')
+						.form-group.form-file-upload.form-file-multiple
+							input.inputFileHidden(type='file', multiple='')
+							.input-group
+								input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate of Deceased')
+								span.input-group-btn
+									button.btn.btn-fab.btn-round.btn-primary(type='button')
+										i.fa.fa-file(aria-hidden='true')
+						.form-group.mt-5.pt-5
+								label.label-control Others:
+								input.form-control(type='text')
+						.form-group
+							label.label-control Desired Time of Funeral Mass
+							input.form-control.datetimepicker1(type='text')
+						.form-group
+							label.label-control Second Alternate Time
+							input.form-control.datetimepicker1(type='text')
+						.form-group
+							label.label-control Third Alternate Time
+							input.form-control.datetimepicker1(type='text')
+				.row
+					.col-md-12.my-5.text-right
+						a.btn-design.mx-2(href="#") Submit
+						a.btn-design.btn-valid(href="#") Cancel

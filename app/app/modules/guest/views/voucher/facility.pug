@@ -1,0 +1,236 @@
+doctype
+html
+	head
+	body
+		style.
+			@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,900,700,500,300,100);
+			*{
+				margin: 0;
+				box-sizing: border-box;
+
+			}
+			body{
+				background: #E0E0E0;
+				font-family: 'Roboto', sans-serif;
+				background-image: url('');
+				background-repeat: repeat-y;
+				background-size: 100%;
+			}
+			::selection {background: #f31544; color: #FFF;}
+			::moz-selection {background: #f31544; color: #FFF;}
+			h1{
+				font-size: 1.5em;
+				color: #222;
+			}
+			h2{font-size: .9em;}
+			h3{
+				font-size: 1.2em;
+				font-weight: 300;
+				line-height: 2em;
+			}
+			p{
+				font-size: .7em;
+				color: #666;
+				line-height: 1.2em;
+			}
+
+			#invoiceholder{
+				width:100%;
+				height: 100%;
+				padding-top: 50px;
+			}
+			#headerimage{
+				z-index:-1;
+				position:relative;
+				top: -50px;
+				height: 350px;
+			}
+			#invoice{
+				position: relative;
+				top: -290px;
+				margin: 0 auto;
+				width: 700px;
+				background: #FFF;
+			}
+
+			[id*='invoice-']{ /* Targets all id with 'col-' */
+				border-bottom: 1px solid #EEE;
+				padding: 30px;
+			}
+
+			#invoice-top{min-height: 120px;}
+			#invoice-mid{min-height: 120px;}
+			#invoice-bot{ min-height: 250px;}
+
+			.logo{
+				float: left;
+				height: 60px;
+				width: 60px;
+				border-radius: 10%;
+				background: url("/img/churchiconblack.png") no-repeat;
+				background-size: 60px 60px;
+			}
+			.clientlogo{
+				float: left;
+				height: 60px;
+				width: 60px;
+				background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
+				background-size: 60px 60px;
+				border-radius: 50px;
+			}
+			.info{
+				display: block;
+				float:left;
+				margin-left: 20px;
+			}
+			.title{
+				float: right;
+			}
+			.title p{text-align: right;}
+			#project{margin-left: 52%;}
+			table{
+				width: 100%;
+				border-collapse: collapse;
+			}
+			td{
+				padding: 5px 0 5px 15px;
+				border: 1px solid #EEE
+			}
+			.tabletitle{
+				padding: 5px;
+				background: #EEE;
+			}
+			.service{border: 1px solid #EEE;}
+			.item{width: 50%;}
+			.itemtext{font-size: .9em;}
+
+			#legalcopy{
+				margin-top: 30px;
+			}
+			form{
+				float:right;
+				margin-top: 30px;
+				text-align: right;
+			}
+
+
+			.effect2
+			{
+				position: relative;
+			}
+			.effect2:before, .effect2:after
+			{
+				z-index: -1;
+				position: absolute;
+				content: "";
+				bottom: 15px;
+				left: 10px;
+				width: 50%;
+				top: 80%;
+				max-width:300px;
+				background: #777;
+				-webkit-box-shadow: 0 15px 10px #777;
+				-moz-box-shadow: 0 15px 10px #777;
+				box-shadow: 0 15px 10px #777;
+				-webkit-transform: rotate(-3deg);
+				-moz-transform: rotate(-3deg);
+				-o-transform: rotate(-3deg);
+				-ms-transform: rotate(-3deg);
+				transform: rotate(-3deg);
+			}
+			.effect2:after
+			{
+				-webkit-transform: rotate(3deg);
+				-moz-transform: rotate(3deg);
+				-o-transform: rotate(3deg);
+				-ms-transform: rotate(3deg);
+				transform: rotate(3deg);
+				right: 10px;
+				left: auto;
+			}
+			.legal{
+				width:70%;
+			}
+		#invoiceholder
+			#headerimage
+			#invoice.effect2
+				#invoice-top
+					.logo
+					.info
+						h2 INA NG LUPANG PANGAKO PARISH
+						p
+							| sample@yahoo.com
+							br
+							| 289-335-6503
+					// End Info
+					.title
+						h1 Voucher #1069
+						p
+							| Issued: March 21, 2018
+							br
+							| Payment Due: March 24, 2018
+					// End Title
+				// End InvoiceTop
+				#invoice-mid
+					.clientlogo
+					.info
+						h2 Jonalyn Fe Ebrada
+						p
+							| jonalynfe@gmail.com
+							br
+							| 555-555-5555
+							br
+					#project
+						h2 Reservation Description
+						p
+							| You've reserved 2nd Floor on April 2, 2018 8am - 12pm
+				// End Invoice Mid
+				#invoice-bot
+					#table
+						table
+							tr.tabletitle
+								td.item
+									h2 Item Description
+								td.Hours
+									h2 Hours
+								td.Rate
+									h2 Rate
+								td.subtotal
+									h2 Sub-total
+							tr.service
+								td.tableitem
+									p.itemtext 2nd Floor
+								td.tableitem
+									p.itemtext 4
+								td.tableitem
+									p.itemtext ₱1200
+								td.tableitem
+									p.itemtext ₱1200.00
+							tr.service
+								td.tableitem
+									p.itemtext Extension of Time/hr
+								td.tableitem
+									p.itemtext 2
+								td.tableitem
+									p.itemtext ₱300
+								td.tableitem
+									p.itemtext ₱600.00
+							tr.tabletitle
+								td
+								td
+								td.Rate
+									h2 Total
+								td.payment
+									h2 ₱1800.00
+					// End Table
+					//- form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+					//- 	input(type='hidden', name='cmd', value='_s-xclick')
+					//- 	input(type='hidden', name='hosted_button_id', value='QRZ7QTM9XRPJ6')
+					//- 	input(type='image', src='http://michaeltruong.ca/images/paypal.png', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+					#legalcopy
+						p.legal
+							strong Thank you for your business!
+							|   Payment is expected within 3 days; please process this voucher within that time.
+				// End InvoiceBot
+			// End Invoice
+		// End Invoice Holder

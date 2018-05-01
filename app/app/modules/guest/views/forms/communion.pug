@@ -1,0 +1,72 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Communion
+						p.text-uppercase.card-desc
+							| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-left.text-uppercase.guidelines--text Eucharist
+				.row
+					.col-md-12.my-3
+						table.table
+							thead
+								tr
+									th.text-center #
+									th Student Name
+									th Section
+									th Batch
+									th.text-right Actions
+							tbody
+								tr
+									td.text-center 1
+									td Macaya, Joshua Rae
+									td 3-3
+									td 2017-2018
+									td.td-actions.text-right
+										button.btn.btn-sm.btn-info(type='button', rel='tooltip')
+											i.fa.fa-user-o(aria-hidden='true')
+										button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+											i.fa.fa-pencil-square-o(aria-hidden='true')
+										button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
+											i.fa.fa-window-close-o(aria-hidden='true')
+								tr
+									td.text-center 2
+									td John Doe
+									td 3-2
+									td 2012
+									td.td-actions.text-right
+										button.btn.btn-sm.btn-info(type='button', rel='tooltip')
+											i.fa.fa-user-o(aria-hidden='true')
+										button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+											i.fa.fa-pencil-square-o(aria-hidden='true')
+										button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
+											i.fa.fa-window-close-o(aria-hidden='true')
+								tr
+									td.text-center 3
+									td Alex Mike
+									td 3-5
+									td 2010
+									td.td-actions.text-right
+										button.btn.btn-sm.btn-info(type='button', rel='tooltip')
+											i.fa.fa-user-o(aria-hidden='true')
+										button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+											i.fa.fa-pencil-square-o(aria-hidden='true')
+										button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
+											i.fa.fa-window-close-o(aria-hidden='true')
+				.row
+					.col-md-6.my-5.text-left
+						p.text-design Teacher: Mrs. Josefina Reyes
+					.col-md-6.my-5.text-right
+						a.btn-design.mx-2(href="#") Add Student
+						a.btn-design.btn-valid(href="#") Submit

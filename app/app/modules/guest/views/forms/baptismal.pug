@@ -1,0 +1,76 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Baptismal
+						p.text-uppercase.card-desc
+							| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Event Application Form
+				.row
+					.col-md-12.my-3
+						form(action="#")
+							.row
+								.col-md-6.my-3
+									.form-group
+										label.label-control Name of child:
+										input.form-control(type='text')
+									.form-group
+										label(for='exampleFormControlTextarea1') Address:
+										textarea#exampleFormControlTextarea1.form-control(rows='3')
+									.form-group
+										label.label-control Birthdate:
+										input.form-control.datetimepicker(type='text')
+									.form-group
+										label(for='exampleFormControlTextarea1') Parent's Marriage address:
+										textarea#exampleFormControlTextarea1.form-control(rows='3')
+								.col-md-6.my-3
+									.form-group
+										label.label-control Father's Birthplace:
+										input.form-control(type='text')
+									.form-group
+										label.label-control Mother's Birthplace:
+										input.form-control(type='text')
+									.form-group
+										label.label-control Contact no.
+										input.form-control(type='number' placeholder="XXXX-XXX-XXXX")
+							.row
+								.col-md-6.my-3
+									.form-group
+										label.label-control Principal Sponsor
+										input.form-control(type='text')
+								.col-md-6.my-3
+									.form-group
+										input.form-control(type='text')
+							.row
+								.col-md-6.my-3
+									.form-group
+										label.label-control Additional
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+								.col-md-6.my-3
+									.form-group
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+
+							
+				.row
+					.col-md-12.my-5.text-right
+						a.btn-design.mx-2(href="#") Add Sponsor
+						a.btn-design.btn-valid(href="#") Submit

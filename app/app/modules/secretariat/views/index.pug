@@ -1,0 +1,12 @@
+extends ../../../templates/mastersecretary
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	#calendar
+	div(style='clear:both')
+block addjs
+	script(src='js/forIndex.js')
+	//- script(src='js/loader.js')

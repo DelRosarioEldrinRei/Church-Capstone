@@ -1,0 +1,127 @@
+.row.d-flex.justify-content-center.text-center .fa {
+  font-size: 55px; }
+
+.row.d-flex.justify-content-center.text-center i.fa.fa-cog {
+  color: green; }
+
+.row.d-flex.justify-content-center.text-center i.fa.fa-cloud {
+  color: red; }
+
+.row.d-flex.justify-content-center.text-center i.fa.fa-bar-chart {
+  color: blue; }
+
+#home-heading {
+  background-attachment: fixed;
+  background-repeat: no-repeat; }
+  #home-heading i.fa.fa-check {
+    color: #38f138; }
+
+#raised-section img {
+  margin-top: -50px; }
+
+#icon-boxes .fa {
+  font-size: 55px; }
+
+i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
+  color: white; }
+
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.main-header__textbox {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-header__textbox h1 {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 12px;
+  color: #d6b872;
+  font-size: 36px;
+}
+
+.main-header__textbox h4 {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 6px;
+  font-size: 14px;
+}
+
+.bg-lightblue {
+  background-color: rgb(174, 188, 188);
+}
+
+.bg-lightgrey {
+  background-color: rgb(153, 164, 148);
+}
+
+.bg-lightbrown {
+  background-color: rgb(203, 179, 153);
+}
+
+.card h3 {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 4px;
+  font-size: 24px;
+}
+
+.card p {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 4px;
+  font-size: 14px;
+}
+
+.card p:last-child {
+  outline: 1px solid #fff;
+  display: inline;
+  outline-offset: 5px;
+}
+
+p.text-uppercase.card-desc {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 4px;
+
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background: #333;
+  background-image: linear-gradient(to right, rgb(203, 179, 153), #d6b872, rgb(203, 179, 153));
+}
+
+.guidelines--text {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 6px;
+  font-size: 26px;
+  color: #9aa494;
+}
+
+.guidelines--desc {
+  font-family: 'PT Sans', serif;
+  font-size: 16px;
+}
+
+strong {
+  color: #836323;
+  font-weight: 700;
+}
+
+.btn-design:link, .btn-design:visited {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 6px;
+  font-size: 16px;
+  border: 1px solid black;
+  padding: 15px;
+  text-transform: uppercase;
+  color: #000;
+  transition: all .4s;
+}
+
+.btn-design:hover {
+  letter-spacing: 6px;
+  font-size: 16px;
+  background: #836323;
+  color: white;
+  border: 1px solid #836323;
+  padding: 10px;
+}

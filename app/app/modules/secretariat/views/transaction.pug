@@ -1,0 +1,50 @@
+extends ../../../templates/mastersecretary
+
+block prepend main
+	.content
+		.container-fluid
+			.row
+				.col-md-12
+					.card
+						.card-header
+							h4.card-title Propose Event Form
+						.card-body
+							form
+								.row
+									.col-md-4.pl-1
+										.form-group
+											label(for='exampleInputEmail1') Event Name
+											input.form-control(type='email', placeholder='Event Name')
+									.col-md-5.pr-1
+										.form-group
+											label Date Schedule
+											input.form-control(type='date', placeholder='Date', value="2018-08-19")
+									.col-md-3.px-1
+										.form-group
+											label Birthdate
+											input.form-control(type='date', placeholder='Birthday', value='2018-02-25')
+								.row
+									.col-md-12
+										.form-group
+											label Address
+											input.form-control(type='text', placeholder='Home Address', value='Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09')
+								.row
+									.col-md-4.pr-1
+										.form-group
+											label First Name
+											input.form-control(type='text', placeholder='First Name', value='Mike')
+									.col-md-4.px-1
+										.form-group
+											label Middle Name
+											input.form-control(type='text', placeholder='Middle Name', value='Pablo')
+									.col-md-4.pl-1
+										.form-group
+											label Last Name
+											input.form-control(type='text', placeholder='Last Name' value='Cruz')
+								.row
+									.col-md-12
+										.form-group
+											label Event Description
+											textarea.form-control(rows='4', cols='80', placeholder='A little description about the event') Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quod eligendi at aliquid 	
+								button.btn.btn-info.btn-fill.pull-right(type='submit') Continue
+								.clearfix

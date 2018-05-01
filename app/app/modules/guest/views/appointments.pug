@@ -1,0 +1,39 @@
+extends ../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Appointment
+						p.text-uppercase.card-desc
+							| Appoint
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text CALENDAR SCHEDULE
+				.row
+					.col-md-8.my-3
+						#form-facility
+							#calendar
+					.col-md-2.my-3
+						a.btn-design.mx-2.d-block(href="#") Appoint
+					.col-md-2.my-3
+						a.btn-design.btn-valid.d-block(href="#") Cancel
+				.row
+					.col-md-12.text-center.my-5
+						a.btn-design.btn-valid(href="#") Submit
+
+	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+		.modal-dialog(role='document')
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') ×
+				.modal-body
+					#calendar1

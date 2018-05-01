@@ -1,0 +1,44 @@
+extends ../../../../templates/masterguests
+mixin card(eventType,bgcolor,margin,icon,title,text)
+	.col-md-4.px-1
+		a(href=`/guest/event/${eventType}`)
+			.card.text-center.p-2.shadow(class=`bg-${bgcolor} ${margin}`)
+				.card-body.px-2
+					i(class=`fa fa-${icon}`)
+					h3.mb-2.card-title.text-uppercase= title
+					p.card-text.text-uppercase
+						| Guidelines & Requirements
+					p.card-text.text-uppercase
+						| Inquire
+mixin testimony(quote,credits,from)
+	div
+		blockquote.blockquote.mx-5.px-5
+			p.mb-0= quote
+			footer.blockquote-footer.text-left=credits
+				cite(title="company")= from
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-7.main-header__textbox
+						h1.font-italic Event Application
+		#raised-section.main.main-raised
+			//- Icon Boxes
+			#icon-boxes
+				.container
+					.row.cards
+						+card("wedding","lightblue","my-3","snowflake-o","Wedding")
+						+card("anointing","lightgrey","my-3","snowflake-o","Anointing")
+						+card("communion","lightbrown","my-3","snowflake-o","Communion")
+					.row.cards
+						+card("baptismal","lightbrown","mt-0","snowflake-o","Baptismal")
+						+card("confirmation","lightblue","mt-0","snowflake-o","Confirmation")
+						+card("rcia","lightgrey","mt-0","snowflake-o","RCIA")
+					.row.cards
+						+card("blessings","lightgrey","mt-0","snowflake-o","Blessings")
+						+card("mass","lightbrown","mt-0","snowflake-o","Funeral Blessing")
+						+card("service","lightblue","mt-0","snowflake-o","Funeral Blessing")
+
+

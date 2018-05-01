@@ -1,0 +1,77 @@
+extends ../../../../templates/mastersecretary
+
+block prepend main
+	.content
+		.container-fluid
+			.row
+				.col-md-12
+					.card.strpied-tabled-with-hover
+						.card-header
+							h4.card-title
+								i.nc-icon.nc-grid-45
+								|  Appoint Coordinator/Priest
+						.card-body.table-full-width.table-responsive
+							table.table.table-hover.table-striped
+								thead
+									th Guest Name
+									th Date
+									th Time
+									th Event Type
+									th Status
+									th Action
+								tbody
+									tr
+										td Joshua Rae Macaya
+										td Jan 1, 2018
+										td 10:00am - 12:00pm
+										td Baptism		
+										td Pending
+										td: a(href="#" data-toggle="modal" data-target="#appointment")
+											i.fa.fa-pencil-square-o(aria-hidden='true')
+		#appointment.modal.fade
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header
+						h5#loginModalLabel.modal-title.font-weight-bold.d-inline Available Coordinators and Priest
+						button.close(data-dismiss='modal') ×
+					.modal-body
+						.row
+							.col-3
+								label.text-muted Appoint Coordinators/Priest
+							.col-9
+								table.table.table-hover.table-striped
+									thead
+										th Full name
+										th Status
+										th 
+									tbody
+										tr
+											td Jonalyn Fe Ebrada
+											td BEC
+											td Pending
+											td
+												.form-check.pl-0.mr-4.text-right
+													label.form-check-label.p-0
+														| &nbsp;
+														input.form-check-input(type='checkbox' value='')
+														span.form-check-sign
+						.row
+							.col-3
+								label.text-muted PRIESTS
+							.col-9
+								table.table.table-hover.table-striped
+									thead
+										th Full name
+										th 
+									tbody
+										tr
+											td Juan Dela Cruz
+											td
+												.form-check.pl-0.mr-4.text-right
+													label.form-check-label.p-0
+														| &nbsp;
+														input.form-check-input(type='checkbox' value='')
+														span.form-check-sign
+						.container.d-flex.justify-content-end.m-3
+							button.m-1.btn.btn-primary.btn-fill Send Request
+							button.m-1.btn.btn-danger.btn-fill Cancel

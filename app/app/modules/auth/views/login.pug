@@ -1,0 +1,37 @@
+extends ../../../../app/templates/masterhome.pug
+block main
+	.page-header.header-filter(filter-color='black', style="background-image: url('./img/Nave.jpeg'); background-size: cover; background-position: top center;")
+		.container
+			.row
+				.col-md-10.ml-auto.mr-auto.mt-5
+					.card.card-nav-tabs.text-center.ml-auto.mr-auto(style="width: 23rem;")
+						.card-header.card-header-info.text-center
+							h3.title Log in
+							.social-line
+								a.btn.btn-just-icon.btn-link(href='#')
+									i.fa.fa-facebook-square
+								a.btn.btn-just-icon.btn-link(href='#')
+									i.fa.fa-twitter
+								a.btn.btn-just-icon.btn-link(href='#')
+									i.fa.fa-google-plus
+						.card-body
+							form.form(method='POST', action='/login')
+								//- .form-group
+								//- 	.input-group
+								//- 		span.input-group-addon
+								//- 			i.fa.fa-smile-o(aria-hidden='true')
+								//- 		input.form-control(type='text', placeholder='First Name...')
+								.form-group
+									.input-group
+										span.input-group-addon
+											i.fa.fa-envelope-o(aria-hidden='true')
+										input.form-control(type='string', name='user_username' placeholder='Username...')
+								.form-group
+									.input-group
+										span.input-group-addon
+											i.fa.fa-lock(aria-hidden='true')
+										input.form-control(type='password', name='user_password' placeholder='Password...')
+								.text-center
+									button.btn.btn-info.btn-round Login
+						.card-footer.text-muted
+							| Church

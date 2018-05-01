@@ -1,0 +1,86 @@
+extends ../../../../templates/masterguests
+mixin card(facility,bgcolor,icon,title,text)
+	.col-md-4.px-1
+		a(href=`/guests/facilities/${facility}`)
+			.card.text-center.my-3.p-2.shadow.h-100(class=`bg-${bgcolor}`)
+				.card-body.px-2
+					i(class=`fa fa-${icon}`)
+					h3.mb-2.card-title.text-uppercase= title
+					p.card-text.text-uppercase
+						| Choose
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Wedding
+						p.text-uppercase.card-desc
+							| Guidelines | Requirements
+		#raised-section.main.main-raised
+			#guide
+				.container
+					.row
+						.col-md-12
+							hr.mt-5.mx-5
+					.row
+						.col-md-12.my-3
+							h3.text-center.text-uppercase.guidelines--text Wedding organizing module
+					form(action="#")
+						.row
+							.col-md-6.my-3
+								.form-group
+									.guidelines--text.d-inline MOTIF COLOR &nbsp;
+									input(type="color" value="#add8e6")
+									//- span.bmd-help We'll never share your email with anyone else.
+									//- span.bmd-help We'll never share your email with anyone else.
+						.row
+							.guidelines--text BOUQUET PICKING
+							.col-md-12.my-3
+								#icon-boxes
+									.container
+										.row.cards.mb-3
+											+card("secondfloor","lightblue","pagelines","CASCADE")
+											+card("thirdfloor","lightgrey","snowflake-o","POSY")
+											+card("lorem","lightbrown","yelp","HAND-TIED")
+					.row
+						.guidelines--text SONG REQUEST
+						.col-md-12.my-3
+							form(action="#")
+								.form-group
+									label.label-control Song Title:
+									input.form-control(type='text')
+								.form-group
+									label.label-control Artist/Version:
+									input.form-control(type='text')
+					.row
+						.guidelines--text ENTOURAGE
+						.col-md-12.my-3
+							form(action="#")
+								.form-group
+									label.label-control Best Man:
+									input.form-control(type='text')
+							.row
+								.col-md-6.my-3
+									.form-group
+										label.label-control Maid of Honor
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+								.col-md-6.my-3
+									.form-group
+										input.form-control(type='text')
+									.form-group
+										input.form-control(type='text')
+							.form-group
+								label.label-control Flower Girl:
+								input.form-control(type='text')
+							.form-group
+								label.label-control Ring Bearer:
+								input.form-control(type='text')
+					.row
+						.col-md-12.text-center.mb-5
+							a.btn-design.btn-valid(href="#") SUBMIT
