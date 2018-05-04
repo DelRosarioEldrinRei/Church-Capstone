@@ -105,6 +105,13 @@ hr {
   color: #9aa494;
 }
 
+.guidelines--header {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 3px;
+  font-size: 20px;
+  color: #9aa494;
+}
+
 .guidelines--desc {
   font-family: 'PT Sans', serif;
   font-size: 16px;

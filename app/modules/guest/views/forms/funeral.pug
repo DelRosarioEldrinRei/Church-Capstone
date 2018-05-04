@@ -17,62 +17,86 @@ block main
 				.row
 					.col-md-12.my-3
 						h3.text-center.text-uppercase.guidelines--text Event Application Form
-				.row
-					.col-md-6.my-3
-						h3.text-center.text-uppercase.guidelines--text [Common Info (Sick-Deceased)]
+				//- .row
+				//- 	.col-md-12.ml-5
+				//- 		h5.text-uppercase.guidelines--header [Common Info (Sick-Deceased)]
 				.row
 					.col-md-6.my-3
 						form(action="#")
 							.form-group
-								label.label-control Name of Deceased
+								label.label-control Name of the Deceased:
+								.row
+									.col-md-4
+										input.form-control(type='text' placeholder="Last Name")
+									.col-md-4
+										input.form-control(type='text' placeholder="First Name")
+									.col-md-4
+										input.form-control(type='text' placeholder="Middle Name")
+							.form-group.m-0
+								label.label-control Gender:
+									.form-check.ml-3
+										label.form-check-label
+											input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+											| Male
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+											| Female
+											span.circle
+												span.check
+							.form-group
+								label.label-control Birthday:
+								input.form-control.datetimepicker(type='text')
+							.form-group
+								label.label-control Birthplace:
 								input.form-control(type='text')
 							.form-group
-								label.label-control Birthdate of Deceased
-								input.form-control(type='text')
-							.form-group
-								label.label-control Date of Mass
-								input.form-control.datetimepicker(type='text')
-							.form-group
-								label.label-control Relation
-								.dropdown
-									a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-										| Relation
-									.dropdown-menu(aria-labelledby='dropdownMenuLink')
-										a.dropdown-item(href='#') Action
-										a.dropdown-item(href='#') Another action
-										a.dropdown-item(href='#') Something else here
-							.form-group
-								label.label-control Desired Date of Funeral Mass
-								input.form-control.datetimepicker(type='text')
-							.form-group
-								label.label-control Second Alternate Date
-								input.form-control.datetimepicker(type='text')
-							.form-group
-								label.label-control Third Alternate Date
-								input.form-control.datetimepicker(type='text')
+								label(for='exampleFormControlTextarea1') Address:
+								textarea#exampleFormControlTextarea1.form-control(rows='3')
 					.col-md-6.my-3
 						.form-group
-							label(for='exampleFormControlTextarea1') Address:
-							textarea#exampleFormControlTextarea1.form-control(rows='3')
-						.form-group.form-file-upload.form-file-multiple
+							label.label-control Cause of Death:
+							input.form-control(type='text')
+						.form-group
+							label.label-control Place Where the Blessing Will Happen:
+							.ml-4
+								.form-check
+									label.form-check-label
+										input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked)
+										| Same As His/Her Address
+										span.circle
+											span.check
+								.form-check
+									label.form-check-label
+										input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+										| INLPP
+										span.circle
+											span.check
+								.form-check
+									label.form-check-label
+										input.form-check-input(type="radio" name="exampleRadios" id="exampleRadio32" value="option3")
+										.dropdown-toggle.mr-3 Other
+										//- | Other
+										span.circle
+											span.check
+								//- .form-group
+								textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3")
+						label.label-control FILE UPLOAD
+						.form-group.form-file-upload.form-file-multiple.p-0
 							input.inputFileHidden(type='file', multiple='')
 							.input-group
-								input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate of Deceased')
+								input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
 								span.input-group-btn
 									button.btn.btn-fab.btn-round.btn-primary(type='button')
 										i.fa.fa-file(aria-hidden='true')
-						.form-group.mt-5.pt-5
-								label.label-control Others:
-								input.form-control(type='text')
-						.form-group
-							label.label-control Desired Time of Funeral Mass
-							input.form-control.datetimepicker1(type='text')
-						.form-group
-							label.label-control Second Alternate Time
-							input.form-control.datetimepicker1(type='text')
-						.form-group
-							label.label-control Third Alternate Time
-							input.form-control.datetimepicker1(type='text')
+						.form-group.form-file-upload.form-file-multiple.p-0
+							input.inputFileHidden(type='file', multiple='')
+							.input-group
+								input.form-control.inputFileVisible(type='text', placeholder='Death Certificate')
+								span.input-group-btn
+									button.btn.btn-fab.btn-round.btn-primary(type='button')
+										i.fa.fa-file(aria-hidden='true')
 				.row
 					.col-md-12.my-5.text-right
 						a.btn-design.mx-2(href="#") Submit
