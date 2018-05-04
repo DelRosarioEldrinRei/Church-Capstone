@@ -1,7 +1,7 @@
 extends ../../../../templates/masterguests
 mixin card(eventType,bgcolor,margin,icon,title,text)
 	.col-md-4.px-1
-		a(href=`/guest/event/${eventType}`)
+		a(href=`/guest/${eventType}`)
 			.card.text-center.p-2.shadow(class=`bg-${bgcolor} ${margin}`)
 				.card-body.px-2
 					i(class=`fa fa-${icon}`)
@@ -29,16 +29,16 @@ block main
 			#icon-boxes
 				.container
 					.row.cards
-						+card("wedding","lightblue","my-3","snowflake-o","Wedding")
+						+card("marriage","lightblue","my-3","snowflake-o","Marriage")
 						+card("anointing","lightgrey","my-3","snowflake-o","Anointing")
 						+card("communion","lightbrown","my-3","snowflake-o","Communion")
 					.row.cards
-						+card("baptismal","lightbrown","mt-0","snowflake-o","Baptismal")
+						+card("baptism","lightbrown","mt-0","snowflake-o","Baptism")
 						+card("confirmation","lightblue","mt-0","snowflake-o","Confirmation")
 						+card("rcia","lightgrey","mt-0","snowflake-o","RCIA")
 					.row.cards
 						+card("blessings","lightgrey","mt-0","snowflake-o","Blessings")
-						+card("mass","lightbrown","mt-0","snowflake-o","Funeral Blessing")
+						+card("funeral/form","lightbrown","mt-0","snowflake-o","Funeral Blessing")
 						+card("service","lightblue","mt-0","snowflake-o","Funeral Blessing")
 
 

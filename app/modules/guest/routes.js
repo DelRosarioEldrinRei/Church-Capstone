@@ -27,7 +27,7 @@ guestRouter.get('/reservation', (req, res)=>{
 //===============================================================================================//
 // D O C U M E N T  //
 //===============================================================================================//
-guestRouter.get('document', (req, res)=>{
+guestRouter.get('/document', (req, res)=>{
     res.render('guest/views/document')
 });
 
