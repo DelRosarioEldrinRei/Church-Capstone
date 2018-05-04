@@ -1,4 +1,5 @@
 var express = require('express');
+var indexRouter = express.Router();
 var loginRouter = express.Router();
 var logoutRouter = express.Router();
 var loginGuestRouter = express.Router();//dontgetconfused,this is the signup router :)
@@ -9,6 +10,13 @@ loginRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
         res.render('auth/views/login', req.query);
     })
+
+
+indexRouter.route('/')
+.get(authMiddleware.noAuthed, (req, res) => {
+    res.render('auth/views/index', req.query);
+})
+
 
 loginRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
@@ -72,7 +80,7 @@ loginRouter.route('/')
 
     loginGuestRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
-        res.render('home/views/signup.pug', req.query);
+        res.render('auth/views/signup.pug', req.query);
     })
     .post((req, res) => {
         
@@ -119,7 +127,7 @@ logoutRouter.get('/', (req, res) => {
         res.redirect('/login');
     });
 });
-
+exports.index = indexRouter;
 exports.login = loginRouter;
 exports.logout = logoutRouter;
 exports.signup = loginGuestRouter;
