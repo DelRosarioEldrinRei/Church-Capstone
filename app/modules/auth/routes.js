@@ -72,7 +72,7 @@ loginRouter.route('/')
 
     loginGuestRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
-        res.render('auth/login/views/loginguest', req.query);
+        res.render('home/views/signup.pug', req.query);
     })
     .post((req, res) => {
         
