@@ -1,0 +1,64 @@
+extends ../../../partials/masterhome
+mixin card(icon,title,text)
+	.col-md-4
+		.card.bg-info.text-center.my-3.p-2
+			.card-body
+				i(class="fa fa-" +icon)
+				h3.card-title= title
+				p.card-text= text
+mixin testimony(quote,credits,from)
+	div
+		blockquote.blockquote.mx-5.px-5
+			p.mb-0= quote
+			footer.blockquote-footer.text-left=credits
+				cite(title="company")= from
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/thecross.jpg');")
+			.container
+				.row
+					.col-md-7
+						h1.text-white About Us
+						p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam maxime rerum expedita ea sequi nesciun
+		#raised-section.main.main-raised
+			.profile-content
+				.container
+					.row
+						.col-md-6.mt-3
+							h1 What We Do
+							p 
+								| Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, error vitae corrupti 
+								| nostrum magni doloribus eius aliquam adipisci natus quos voluptas et distinctio dicta
+								| modi dolore suscipit quaerat fuga cumque!
+								br
+								br
+								| Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, id veniam aliquam 
+								| similique facilis error voluptatibus iste pariatur ullam? Provident quod pariatur vero hic. 
+								| Nemo ab accusamus tenetur ipsam excepturi!
+						.col-md-6.d-flex.justify-content-center
+							img.img-raised.rounded-circle.img-fluid.d-md-block.d-none.d-md-block(src='/img/whatwedo.jpg', alt='Circle Image' style="height: 400px; width: 400px")
+			//- Icon Boxes
+			#icon-boxes
+				.container
+					.row
+						+card("building","Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit amet consectetur.")
+						+card("bullhorn","Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit amet consectetur.")
+						+card("comments","Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit amet consectetur.")
+					.row
+						+card("clock-o","Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit amet consectetur.")
+						+card("cc","Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit amet consectetur.")
+						+card("coffee","Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit amet consectetur.")
+					//- Testimonials
+			#testimonial-section.bg-dark.text-white.d-none.d-sm-block
+				.container
+					h3.text-center.pt-3.m-0 Testimonials
+					.row
+						.col-md-12
+							.slider.bg-dark.text-white
+								+testimony("Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, provident consectetur adipisicing elit.","John Doe From","Company 1")
+								+testimony("Life is struggle, accept it. Charrrlalu","Norme Ann Joyce Peñaverde","Infanta, Quezon")
+								+testimony("La ako maisip. Pero yun. Do your best to pass yun lang XD","Joshua Rae Macaya","BSIT 3-3")
+								+testimony("Alam ko, wala akong specific na motto sa buhay.","Kristine Mae Gamayo","Penge Pasalubong")
+			.container.invisible Invisible Content
+

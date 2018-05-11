@@ -1,0 +1,67 @@
+extends ../../../partials/masterhome
+block main
+	.header-filter(filter-color='black', style="background-image: url('./img/bg1.png'); background-size: cover; background-position: top center;")
+		.container
+			.row
+				.col-md-10.ml-auto.mr-auto.mt-5
+					.card.card-signup.mt-5
+						h2.text-center.mt-3 Register
+						.card-body
+							.row.mb-3
+								.col-md-5.ml-auto
+									.info.info-horizontal.py-0
+										.icon.icon-rose
+											i.fa.fa-shopping-cart(aria-hidden='true')
+										.description
+											h4.info-title Reserve
+											p.description
+												| We've created the marketing campaign of the website. It was a very interesting collaboration.
+									.info.info-horizontal.py-0
+										.icon.icon-primary
+											i.fa.fa-bar-chart(aria-hidden='true')
+										.description
+											h4.info-title Manage
+											p.description
+												| We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
+									.info.info-horizontal.py-0
+										.icon.icon-info
+											i.fa.fa-users(aria-hidden='true')
+										.description
+											h4.info-title Audience
+											p.description
+												| We've made this for the church to easily manage the reservation of events, services, and many other more!.
+								.col-md-5.mr-5
+									.social.text-center
+										button.btn.btn-just-icon.btn-round.btn-twitter
+											i.fa.fa-twitter
+										button.btn.btn-just-icon.btn-round.btn-dribbble
+											i.fa.fa-dribbble
+										button.btn.btn-just-icon.btn-round.btn-facebook
+											i.fa.fa-facebook  
+										h4  or be classical 
+									form.form(method='', action='')
+										.form-group
+											.input-group
+												span.input-group-addon
+													i.fa.fa-smile-o(aria-hidden='true')
+												input.form-control(type='text', placeholder='First Name...')
+										.form-group
+											.input-group
+												span.input-group-addon
+													i.fa.fa-envelope-o(aria-hidden='true')
+												input.form-control(type='text', placeholder='Email...')
+										.form-group
+											.input-group
+												span.input-group-addon
+													i.fa.fa-lock(aria-hidden='true')
+												input.form-control(type='password', placeholder='Password...')
+										.form-check
+											label.form-check-label
+												input.form-check-input(type='checkbox', value='', checked='')
+												span.form-check-sign
+													span.check
+												| 												I agree to the 
+												a(href='#something') terms and conditions
+												| .
+										.text-center
+											a.btn.btn-primary.btn-round(href='#pablo') Get Started
