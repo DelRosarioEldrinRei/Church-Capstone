@@ -31,6 +31,10 @@ guestRouter.get('/document', (req, res)=>{
     res.render('guest/views/document')
 });
 
+guestRouter.get('/document/form', (req, res)=>{
+    res.render('guest/views/forms/document')
+});
+
 
 //===============================================================================================//
 // E V E N T S //
