@@ -50,6 +50,10 @@ guestRouter.get('/anointing', (req, res)=>{
     res.render('guest/views/events/anointing')
 });
 
+guestRouter.get('/blessings', (req, res)=>{
+    res.render('guest/views/events/blessings')
+});
+
 
 guestRouter.get('/baptism', (req, res)=>{
     res.render('guest/views/events/baptism')
@@ -91,6 +95,9 @@ guestRouter.get('/anointing/form', (req, res)=>{
     res.render('guest/views/forms/anointing')
 });
 
+guestRouter.get('/blessings/form', (req, res)=>{
+    res.render('guest/views/forms/blessings')
+});
 
 guestRouter.get('/baptism/form', (req, res)=>{
     res.render('guest/views/forms/baptism')

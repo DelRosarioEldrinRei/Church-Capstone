@@ -17,21 +17,21 @@ block main
 				.row
 					.col-md-12.my-3
 						h3.text-center.text-uppercase.guidelines--text Event Application Form
-				//- .row
-				//- 	.col-md-12.ml-5
-				//- 		h5.text-uppercase.guidelines--header [Common Info (Sick-Deceased)]
-				.row
-					.col-md-6.my-3
-						form(action="#")
+				form(action="#")
+					.row
+						.col-md-6.my-3
 							.form-group
 								label.label-control Name of the deceased:
 								.row
 									.col-md-4
-										input.form-control(type='text' placeholder="Last Name" name='blessinglastname')
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='blessinglastname')
 									.col-md-4
-										input.form-control(type='text' placeholder="First Name" name='blessingfirstname')
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='blessingfirstname')
 									.col-md-4
-										input.form-control(type='text' placeholder="Middle Name" name='blessingmiddlename')
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='blessingmiddlename')
 							.form-group.m-0
 								label.label-control Gender:
 									.form-check.ml-3
@@ -54,49 +54,55 @@ block main
 							.form-group
 								label(for='exampleFormControlTextarea1') Address:
 								textarea#exampleFormControlTextarea1.form-control(rows='3' name='blessingaddress')
-					.col-md-6.my-3
-						.form-group
-							label.label-control Cause of Death:
-							input.form-control(type='text' name='blessingreason')
-						.form-group
-							label.label-control Place where the blessing will happen:
-							.ml-4
-								.form-check
-									label.form-check-label
-										input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios1" value="option1" checked)
-										| Same as his/her address
-										span.circle
-											span.check
-								.form-check
-									label.form-check-label
-										input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios2" value="option2")
-										| INLPP
-										span.circle
-											span.check
-								.form-check
-									label.form-check-label
-										input.form-check-input(type="radio" name="blessingvenue" id="exampleRadio32" value="option3")
-										.dropdown-toggle.mr-3 Other
-										//- | Other
-										span.circle
-											span.check
-								//- .form-group
-								textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3")
-						label.label-control FILE UPLOAD
-						.form-group.form-file-upload.form-file-multiple.p-0
-							input.inputFileHidden(type='file', multiple='')
-							.input-group
-								input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
-								span.input-group-btn
-									button.btn.btn-fab.btn-round.btn-primary(type='button')
-										i.fa.fa-file(aria-hidden='true')
-						.form-group.form-file-upload.form-file-multiple.p-0
-							input.inputFileHidden(type='file', multiple='')
-							.input-group
-								input.form-control.inputFileVisible(type='text', placeholder='Death Certificate')
-								span.input-group-btn
-									button.btn.btn-fab.btn-round.btn-primary(type='button')
-										i.fa.fa-file(aria-hidden='true')
+							.form-group
+								label.label-control Desired Date
+								input.form-control.datetimepicker(type='text')
+						.col-md-6.my-3
+							.form-group
+								label.label-control Cause of Death:
+								input.form-control(type='text' name='blessingreason')
+							.form-group
+								label.label-control Place where the blessing will happen:
+								.ml-4
+									.form-check
+										label.form-check-label
+											input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios1" value="option1" checked)
+											| Same as his/her address
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios2" value="option2")
+											| INLPP
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios3" value="option3")
+											.dropdown-toggle.mr-3 Other
+											//- | Other
+											span.circle
+												span.check
+									//- .form-group
+									textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3")
+							label.label-control FILE UPLOAD
+							.form-group.form-file-upload.form-file-multiple.p-0
+								input.inputFileHidden(type='file', multiple='')
+								.input-group
+									input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
+									span.input-group-btn
+										button.btn.btn-fab.btn-round.btn-primary(type='button')
+											i.fa.fa-file(aria-hidden='true')
+							.form-group.form-file-upload.form-file-multiple.p-0
+								input.inputFileHidden(type='file', multiple='')
+								.input-group
+									input.form-control.inputFileVisible(type='text', placeholder='Death Certificate')
+									span.input-group-btn
+										button.btn.btn-fab.btn-round.btn-primary(type='button')
+											i.fa.fa-file(aria-hidden='true')
+							.form-group
+								label.label-control Desired Time
+								input.form-control.datetimepicker1(type='text')
 				.row
 					.col-md-12.my-5.text-right
 						a.btn-design.mx-2(href="#") Submit
