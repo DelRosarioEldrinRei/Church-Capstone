@@ -24,58 +24,58 @@ block main
 					.col-md-6.my-3
 						form(action="#")
 							.form-group
-								label.label-control Name of the Deceased:
+								label.label-control Name of the deceased:
 								.row
 									.col-md-4
-										input.form-control(type='text' placeholder="Last Name")
+										input.form-control(type='text' placeholder="Last Name" name='blessinglastname')
 									.col-md-4
-										input.form-control(type='text' placeholder="First Name")
+										input.form-control(type='text' placeholder="First Name" name='blessingfirstname')
 									.col-md-4
-										input.form-control(type='text' placeholder="Middle Name")
+										input.form-control(type='text' placeholder="Middle Name" name='blessingmiddlename')
 							.form-group.m-0
 								label.label-control Gender:
 									.form-check.ml-3
 										label.form-check-label
-											input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+											input.form-check-input(type="radio" name="blessinggender" id="exampleRadios2" value="option2")
 											| Male
 											span.circle
 												span.check
 										label.form-check-label.ml-3
-											input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+											input.form-check-input(type="radio" name="blessinggender" id="exampleRadios2" value="option2")
 											| Female
 											span.circle
 												span.check
 							.form-group
 								label.label-control Birthday:
-								input.form-control.datetimepicker(type='text')
+								input.form-control.datetimepicker(type='text' name='blessingbirthday')
 							.form-group
 								label.label-control Birthplace:
-								input.form-control(type='text')
+								input.form-control(type='text' name='blessingbirthplace')
 							.form-group
 								label(for='exampleFormControlTextarea1') Address:
-								textarea#exampleFormControlTextarea1.form-control(rows='3')
+								textarea#exampleFormControlTextarea1.form-control(rows='3' name='blessingaddress')
 					.col-md-6.my-3
 						.form-group
 							label.label-control Cause of Death:
-							input.form-control(type='text')
+							input.form-control(type='text' name='blessingreason')
 						.form-group
-							label.label-control Place Where the Blessing Will Happen:
+							label.label-control Place where the blessing will happen:
 							.ml-4
 								.form-check
 									label.form-check-label
-										input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked)
-										| Same As His/Her Address
+										input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios1" value="option1" checked)
+										| Same as his/her address
 										span.circle
 											span.check
 								.form-check
 									label.form-check-label
-										input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+										input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios2" value="option2")
 										| INLPP
 										span.circle
 											span.check
 								.form-check
 									label.form-check-label
-										input.form-check-input(type="radio" name="exampleRadios" id="exampleRadio32" value="option3")
+										input.form-check-input(type="radio" name="blessingvenue" id="exampleRadio32" value="option3")
 										.dropdown-toggle.mr-3 Other
 										//- | Other
 										span.circle

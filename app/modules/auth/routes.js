@@ -25,44 +25,44 @@ loginRouter.route('/')
     .post((req, res) => {
         console.log('POST LOGIN');
         var db = require('../../lib/database')();
-        db.query(`SELECT * FROM tbl_user WHERE varchar_username="${req.body.user_username}"`, (err, results, fields) => {
+        db.query(`SELECT * FROM tbl_user WHERE var_username="${req.body.user_username}"`, (err, results, fields) => {
             if (err) throw err;
             if (results.length === 0) return res.redirect('/login?incorrect');
 
             var user = results[0];
             
-            if (user.varchar_password !== req.body.user_password) return res.redirect('/login?incorrect');
+            if (user.var_password !== req.body.user_password) return res.redirect('/login?incorrect');
             
             if(user.char_usertype == "Admin"){
-                delete user.varchar_password;
+                delete user.var_password;
                 req.session.admin = user;
                 console.log(req.session);
                 return res.redirect('/admin');
                 
             }
             if(user.char_usertype == "Secretariat"){
-                delete user.varchar_password;
+                delete user.var_password;
                 req.session.secretariat = user;
                 console.log(req.session);
                 return res.redirect('/secretariat');
                 
             }
             if(user.char_usertype == "Coordinator"){
-                delete user.varchar_password;
+                delete user.var_password;
                 req.session.coordinator = user;
                 console.log(req.session);
                 return res.redirect('/coordinator');
                 
             }
             if(user.char_usertype == "Catechist"){
-                delete user.varchar_password;
+                delete user.var_password;
                 req.session.catechist = user;
                 console.log(req.session);
                 return res.redirect('/catechist');
                 
             }
             if(user.char_usertype == "Priest"){
-                delete user.varchar_password;
+                delete user.var_password;
                 req.session.priest = user;
                 console.log(req.session);
                 return res.redirect('/priest');
@@ -70,7 +70,7 @@ loginRouter.route('/')
             }
 
             else{                
-                delete user.varchar_password;
+                delete user.var_password;
                 req.session.user = user;
                 return res.redirect('/guest');
             }
@@ -85,17 +85,17 @@ loginRouter.route('/')
     .post((req, res) => {
         
         var queryString = `INSERT INTO \`tbl_user\` 
-        (\`varchar_lastname\`, 
-        \`varchar_firstname\`, 
-        \`varchar_middlename\`, 
-        \`varchar_username\`, 
-        \`varchar_password\`, 
+        (\`var_lastname\`, 
+        \`var_firstname\`, 
+        \`var_middlename\`, 
+        \`var_username\`, 
+        \`var_password\`, 
         \`char_usertype\`, 
-        \`varchar_guestemail\`, 
+        \`var_guestemail\`, 
         \`char_gender\`, 
         \`date_guestbirthday\`, 
-        \`varchar_guestaddress\`, 
-        \`varchar_guestcontactnumber\`)
+        \`var_guestaddress\`, 
+        \`var_guestcontactnumber\`)
         VALUES(
             "${req.body.userlastname}",
             "${req.body.userfirstname}",
