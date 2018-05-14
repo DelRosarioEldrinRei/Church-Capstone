@@ -55,8 +55,8 @@ guestRouter.get('/blessings', (req, res)=>{
 });
 
 
-guestRouter.get('/baptism', (req, res)=>{
-    res.render('guest/views/events/baptism')
+guestRouter.get('/baptismal', (req, res)=>{
+    res.render('guest/views/events/baptismal')
 });
 
 
@@ -99,8 +99,8 @@ guestRouter.get('/blessings/form', (req, res)=>{
     res.render('guest/views/forms/blessings')
 });
 
-guestRouter.get('/baptism/form', (req, res)=>{
-    res.render('guest/views/forms/baptism')
+guestRouter.get('/baptismal/form', (req, res)=>{
+    res.render('guest/views/forms/baptismal')
 });
 
 
