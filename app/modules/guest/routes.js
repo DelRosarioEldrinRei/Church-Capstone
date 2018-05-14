@@ -50,85 +50,98 @@ guestRouter.get('/anointing', (req, res)=>{
     res.render('guest/views/events/anointing')
 });
 
-guestRouter.get('/blessings', (req, res)=>{
-    res.render('guest/views/events/blessings')
+guestRouter.get('/baptism', (req, res)=>{
+    res.render('guest/views/events/baptism')
 });
-
-
-guestRouter.get('/baptismal', (req, res)=>{
-    res.render('guest/views/events/baptismal')
-});
-
 
 guestRouter.get('/communion', (req, res)=>{
     res.render('guest/views/events/communion')
 });
 
-
 guestRouter.get('/confirmation', (req, res)=>{
     res.render('guest/views/events/confirmation')
 });
-
 
 guestRouter.get('/establishment', (req, res)=>{
     res.render('guest/views/events/establishment')
 });
 
-
 guestRouter.get('/funeral', (req, res)=>{
     res.render('guest/views/events/funeral')
 });
-
 
 guestRouter.get('/rcia', (req, res)=>{
     res.render('guest/views/events/rcia')
 });
 
-
 guestRouter.get('/marriage', (req, res)=>{
     res.render('guest/views/events/marriage')
 });
 
-//events forms
 
+
+//events forms
+//annointing
 guestRouter.get('/anointing/form', (req, res)=>{
     res.render('guest/views/forms/anointing')
 });
 
-guestRouter.get('/blessings/form', (req, res)=>{
-    res.render('guest/views/forms/blessings')
+//baptism
+guestRouter.get('/baptism/form', (req, res)=>{
+    res.render('guest/views/forms/baptism')
 });
 
-guestRouter.get('/baptismal/form', (req, res)=>{
-    res.render('guest/views/forms/baptismal')
-});
-
-
+//communion
 guestRouter.get('/communion/form', (req, res)=>{
     res.render('guest/views/forms/communion')
 });
 
-
+//confirmation
 guestRouter.get('/confirmation/form', (req, res)=>{
     res.render('guest/views/forms/confirmation')
 });
 
-
+//establishment blessing
 guestRouter.get('/establishment/form', (req, res)=>{
     res.render('guest/views/forms/establishment')
 });
 
-
+//funeral blessing
 guestRouter.get('/funeral/form', (req, res)=>{
     res.render('guest/views/forms/funeral')
 });
 
 
+guestRouter.post('/funeral/form', (req, res) => {
+        
+var queryString = `INSERT INTO tbl_eventinfo(int_userID, int_eventID, date_schedule) VALUES(?,?,?)`;
+          
+        db.query(queryString, [req.body.userID, "4", req.body.desireddate], (err, results, fields) => {
+            if (err) throw err;
+            var eventid= results;
+            console.log(eventid)
+            
+            var queryString2 = `INSERT INTO tbl_eventapplication(int_eventinfoID, char_approvalstatus, char_feestatus, char_reqstatus) VALUES(?,?,?,?)`;
+        
+            db.query(queryString2,[eventid.insertId, "Pending", "Unpaid", "Incomplete"], (err, results, fields) => {
+                if (err) throw err;
+
+                var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation,var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
+
+                db.query(queryString3, [eventid.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
+                    if (err) throw err;
+                    
+                    return res.redirect(`/guest/index`);
+                }); 
+            }); 
+        }); 
+
+//rcia
 guestRouter.get('/rcia/form', (req, res)=>{
     res.render('guest/views/forms/rcia')
 });
 
-
+//marriage
 guestRouter.get('/marriage/form', (req, res)=>{
     res.render('guest/views/forms/marriage')
 });
