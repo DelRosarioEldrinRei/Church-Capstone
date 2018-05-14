@@ -17,59 +17,128 @@ block main
 				.row
 					.col-md-12.my-3
 						h3.text-center.text-uppercase.guidelines--text Event Application Form
-				.row
-					.col-md-6.my-3
-						form(action="#")
+				form(action="#")
+					.row
+						.col-md-6.my-3
 							.form-group
-								label.label-control Last Name
-								input.form-control(type='text')
+								label.label-control Name of the Sick:
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='blessinglastname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='blessingfirstname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='blessingmiddlename')
+							.form-group.m-0
+								label.label-control Gender:
+									.form-check.ml-3
+										label.form-check-label
+											input.form-check-input(type="radio" name="blessinggender" id="exampleRadios2" value="option2")
+											| Male
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input.form-check-input(type="radio" name="blessinggender" id="exampleRadios2" value="option2")
+											| Female
+											span.circle
+												span.check
 							.form-group
-								label.label-control First Name
-								input.form-control(type='text')
+								label.label-control Birthday:
+								input.form-control.datetimepicker(type='text' name='blessingbirthday')
 							.form-group
-								label.label-control Middle Name
-								input.form-control(type='text')
+								label.label-control Birthplace:
+								input.form-control(type='text' name='blessingbirthplace')
 							.form-group
-								label.label-control Relation
-								.dropdown
-									a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-										| Relation
-									.dropdown-menu(aria-labelledby='dropdownMenuLink')
-										a.dropdown-item(href='#') Action
-										a.dropdown-item(href='#') Another action
-										a.dropdown-item(href='#') Something else here
+								label(for='exampleFormControlTextarea1') Address:
+								textarea#exampleFormControlTextarea1.form-control(rows='3' name='blessingaddress')
+						.col-md-6.my-3
 							.form-group
-								label.label-control Desired Date of Anointing
-								input.form-control.datetimepicker(type='text')
+								label.label-control Place where the blessing will happen:
+								.ml-4
+									.form-check
+										label.form-check-label
+											input#radioup.form-check-input(type="radio" name="blessingvenue" value="option1" checked)
+											| Same as His/Her Address
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input#exampleRadios1.form-check-input(type="radio" name="blessingvenue" value="option1")
+											.dropdown-toggle.mr-3 Hospital/Center
+											span.circle
+												span.check
+										#textarea1.form-group
+											textarea.form-control(placeholder="Please Enter The Room Number & The Hospital Name & Address" rows="3")
+									.form-check
+										label.form-check-label
+											input#exampleRadios3.form-check-input(type="radio" name="blessingvenue" value="option3")
+											.dropdown-toggle.mr-3 Other
+											span.circle
+												span.check
+										#textarea2.form-group
+											textarea.form-control(placeholder="Please Enter Complete Address" rows="3")
 							.form-group
-								label.label-control Second Alternate Date
-								input.form-control.datetimepicker(type='text')
-							.form-group
-								label.label-control Third Alternate Date
-								input.form-control.datetimepicker(type='text')
-					.col-md-6.my-3
-						.form-group
-							label(for='exampleFormControlTextarea1') Address:
-							textarea#exampleFormControlTextarea1.form-control(rows='3')
-						.form-group.form-file-upload.form-file-multiple
-							input.inputFileHidden(type='file', multiple='')
-							.input-group
-								input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
-								span.input-group-btn
-									button.btn.btn-fab.btn-round.btn-primary(type='button')
-										i.fa.fa-file(aria-hidden='true')
-						.form-group.mt-5.pt-5
-								label.label-control Others:
-								input.form-control(type='text')
-						.form-group
-							label.label-control Desired Time of Anointing
-							input.form-control.datetimepicker1(type='text')
-						.form-group
-							label.label-control Second Alternate Time
-							input.form-control.datetimepicker1(type='text')
-						.form-group
-							label.label-control Third Alternate Time
-							input.form-control.datetimepicker1(type='text')
+								label(for='exampleFormControlTextarea1') Details:
+								textarea#exampleFormControlTextarea1.form-control(rows='3' name='blessingaddress' placeholder="Please Enter His/Her Illness or the Reason of the Anointing. (Ex. Operation/Surgery)")
+						//- 	.form-group
+						//- 		label.label-control Relation
+						//- 		.dropdown
+						//- 			a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+						//- 				| Relation
+						//- 			.dropdown-menu(aria-labelledby='dropdownMenuLink')
+						//- 				a.dropdown-item(href='#') Action
+						//- 				a.dropdown-item(href='#') Another action
+						//- 				a.dropdown-item(href='#') Something else here
+						//- 	.form-group
+						//- 		label.label-control Desired Date of Anointing
+						//- 		input.form-control.datetimepicker(type='text')
+						//- 	.form-group
+						//- 		label.label-control Second Alternate Date
+						//- 		input.form-control.datetimepicker(type='text')
+						//- 	.form-group
+						//- 		label.label-control Third Alternate Date
+						//- 		input.form-control.datetimepicker(type='text')
+						//- 	.form-group
+						//- 		label(for='exampleFormControlTextarea1') Address:
+						//- 		textarea#exampleFormControlTextarea1.form-control(rows='3')
+						//- 	.form-group.form-file-upload.form-file-multiple
+						//- 		input.inputFileHidden(type='file', multiple='')
+						//- 		.input-group
+						//- 			input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
+						//- 			span.input-group-btn
+						//- 				button.btn.btn-fab.btn-round.btn-primary(type='button')
+						//- 					i.fa.fa-file(aria-hidden='true')
+						//- 	.form-group.mt-5.pt-5
+						//- 			label.label-control Others:
+						//- 			input.form-control(type='text')
+						//- 	.form-group
+						//- 		label.label-control Desired Time of Anointing
+						//- 		input.form-control.datetimepicker1(type='text')
+						//- 	.form-group
+						//- 		label.label-control Second Alternate Time
+						//- 		input.form-control.datetimepicker1(type='text')
+						//- 	.form-group
+						//- 		label.label-control Third Alternate Time
+						//- 		input.form-control.datetimepicker1(type='text')
 				.row
 					.col-md-12.my-5.text-center
 						a.btn-design.btn-valid(href="#") Apply Event
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
