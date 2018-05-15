@@ -108,13 +108,13 @@ guestRouter.get('/establishment/form', (req, res)=>{
 
 //funeral blessing
 guestRouter.get('/funeral/form', (req, res)=>{
-    res.render('guest/views/forms/funeral')
+    res.render('guest/views/forms/funeral',{user: req.session.user})
 });
 
 
 guestRouter.post('/funeral/form', (req, res) => {
         
-var queryString = `INSERT INTO tbl_eventinfo(int_userID, int_eventID, date_schedule) VALUES(?,?,?)`;
+var queryString = `INSERT INTO tbl_eventinfo(int_userID, int_eventID, date_eventdate1) VALUES(?,?,?)`;
           
         db.query(queryString, [req.body.userID, "4", req.body.desireddate], (err, results, fields) => {
             if (err) throw err;
@@ -128,12 +128,13 @@ var queryString = `INSERT INTO tbl_eventinfo(int_userID, int_eventID, date_sched
 
                 var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation,var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
 
-                db.query(queryString3, [eventid.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
+                db.query(queryString3, [eventid.insertId,"ewan", req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
                     if (err) throw err;
                     
-                    return res.redirect(`/guest/index`);
+                    return res.redirect(`/guest`);
                 }); 
             }); 
+        }); 
         }); 
 
 //rcia
