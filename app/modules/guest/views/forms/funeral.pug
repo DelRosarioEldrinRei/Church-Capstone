@@ -55,15 +55,18 @@ block main
 							.form-group
 								label(for='exampleFormControlTextarea1') Address:
 								textarea#exampleFormControlTextarea1.form-control(rows='3' name='address')
+							//- .form-group
+							//- 	label.label-control Desired Date
+							//- 	input.form-control.datetimepicker(type='text' name="desireddate")
 							.form-group
 								label.label-control Desired Date
-								input.form-control.datetimepicker(type='text' name="desireddate")
+								input#datepicker(type='text')
 						.col-md-6.my-3
 							.form-group
 								label.label-control Cause of Death:
 								input.form-control(type='text' name='reason')
 							.form-group
-								label.label-control Place where the  will happen:
+								label.label-control Place where the will happen:
 								.ml-4
 									.form-check
 										label.form-check-label
