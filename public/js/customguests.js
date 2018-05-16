@@ -163,6 +163,32 @@ $(".slider").slick({
 });
 
 //javascript for init
+$('#datepicker').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+$('#datepicker2').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+$('#datepicker3').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+
+// $('#timepicker').bootstrapMaterialDatePicker({ date: false });
+$('#time').bootstrapMaterialDatePicker
+	({
+		date: false,
+		shortTime: true,
+		format: 'hh:mm A'
+	});
+
+$('#time2').bootstrapMaterialDatePicker
+	({
+		date: false,
+		shortTime: true,
+		format: 'hh:mm A'
+	});
+
+$('#time3').bootstrapMaterialDatePicker
+	({
+		date: false,
+		shortTime: true,
+		format: 'hh:mm A'
+	});
+
 // $('.datetimepicker').datetimepicker({
 // 		format: 'DD/MM/YYYY',
 //     icons: {
@@ -178,26 +204,26 @@ $(".slider").slick({
 //     }
 // });
 
-$( function() {
-	$( "#datepicker").datepicker();
-} );
+// $( function() {
+// 	$( "#datepicker").datepicker();
+// } );
 
-$(function () {
-	$('.datetimepicker1').datetimepicker({
-			format: 'LT',
-			icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-chevron-up",
-        down: "fa fa-chevron-down",
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-screenshot',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-    }
-	});
-});
+// $(function () {
+// 	$('.datetimepicker1').datetimepicker({
+// 			format: 'LT',
+// 			icons: {
+//         time: "fa fa-clock-o",
+//         date: "fa fa-calendar",
+//         up: "fa fa-chevron-up",
+//         down: "fa fa-chevron-down",
+//         previous: 'fa fa-chevron-left',
+//         next: 'fa fa-chevron-right',
+//         today: 'fa fa-screenshot',
+//         clear: 'fa fa-trash',
+//         close: 'fa fa-remove'
+//     }
+// 	});
+// });
 
 // $(function () {
 // 	$('.datetimepicker').datetimepicker({
