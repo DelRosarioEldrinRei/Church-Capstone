@@ -72,6 +72,7 @@ loginRouter.route('/')
             else{                
                 delete user.var_password;
                 req.session.user = user;
+                console.log(req.session);
                 return res.redirect('/guest');
             }
         });

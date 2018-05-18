@@ -92,19 +92,19 @@ block main
 												span.check
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="venue" id="exampleRadios2" value="Ina ng Lupang Pangako Parish")
+											input#radioup.form-check-input(type="radio" name="venue" value="INLPP")
 											| INLPP
 											span.circle
 												span.check
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="venue" id="exampleRadios3" value="other")
+											input#exampleRadios3.form-check-input(type="radio" name="venue" value="other")
 											.dropdown-toggle.mr-3 Other
-											//- | Other
 											span.circle
 												span.check
-									//- .form-group
-									textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
+										#textarea2.form-group
+											textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
+									
 							label.label-control FILE UPLOAD
 							.form-group.form-file-upload.form-file-multiple.p-0
 								input.inputFileHidden(type='file', multiple='')
@@ -142,7 +142,24 @@ block main
 							//- 	label.label-control  Third Desired Time
 							//- 	input#timepicker.form-control(type='number')
 					.row
-						.col-md-12.my-5.text-right
+						.col-md-12.my-5.text-center
 							//- a.btn-design.mx-2(href="#") Submit
 							button.btn.btn-primary(type='submit') Submit
-							a.btn-design.btn-valid(href="#") Cancel
+							a.btn-design.btn-valid(href="/guest/events") Cancel
+
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
