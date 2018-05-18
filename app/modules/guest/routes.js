@@ -16,6 +16,15 @@ guestRouter.get('/', (req, res)=>{
 
 
 
+<<<<<<< HEAD
+=======
+guestRouter.get('/schedule', (req, res)=>{
+    res.render('guest/views/schedule2')
+});
+
+
+>>>>>>> d732ecbed46510a5d7c30949149e6e91cead1d71
+
 
 
 
