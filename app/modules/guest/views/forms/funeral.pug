@@ -47,54 +47,64 @@ block main
 											span.circle
 												span.check
 							.form-group
-								label.label-control Birthday:
-								input.form-control.datetimepicker(type='text' name='birthday')
+								label.label-control Birthday
+								input#datepicker.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Birthplace:
 								input.form-control(type='text' name='birthplace')
 							.form-group
 								label(for='exampleFormControlTextarea1') Address:
-								textarea#exampleFormControlTextarea1.form-control(rows='3' name='address')
-							//- .form-group
-							//- 	label.label-control Desired Date
-							//- 	input.form-control.datetimepicker(type='text' name="desireddate")
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+							.form-group
+								label.label-control Relationship with the deceased
+								.dropdown
+									select(aria-labelledby='dropdownMenuLink' name='relation')
+										option Spouse
+										option Parent
+										option Child
+										option Grandparent
+										option Grandchild
+										option Aunt/Uncle
+										option Nephew/Niece
+										option BF/GF
+										option Friend
 							.form-group
 								label.label-control Desired Date
-								input#datepicker.form-control(type='date')
+								input#datepicker.form-control(type='date' name='desireddate1')
 							.form-group
 								label.label-control Second Desired Date
-								input#datepicker2.form-control(type='date')
+								input#datepicker2.form-control(type='date' name='desireddate2')
 							.form-group
 								label.label-control Third Desired Date
-								input#datepicker3.form-control(type='date')
+								input#datepicker3.form-control(type='date' name='desireddate3')
 						.col-md-6.my-3
 							.form-group
 								label.label-control Cause of Death:
-								input.form-control(type='text' name='reason')
+								input.form-control(type='text' name='details')
 							.form-group
 								label.label-control Place where the will happen:
 								.ml-4
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="venue" id="exampleRadios1" value="option1" checked)
+											input.form-check-input(type="radio" name="venue" id="exampleRadios1" value="sameaddress" checked)
 											| Same as his/her address
 											span.circle
 												span.check
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="venue" id="exampleRadios2" value="option2")
+											input.form-check-input(type="radio" name="venue" id="exampleRadios2" value="Ina ng Lupang Pangako Parish")
 											| INLPP
 											span.circle
 												span.check
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="venue" id="exampleRadios3" value="option3")
+											input.form-check-input(type="radio" name="venue" id="exampleRadios3" value="other")
 											.dropdown-toggle.mr-3 Other
 											//- | Other
 											span.circle
 												span.check
 									//- .form-group
-									textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3")
+									textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
 							label.label-control FILE UPLOAD
 							.form-group.form-file-upload.form-file-multiple.p-0
 								input.inputFileHidden(type='file', multiple='')
@@ -112,13 +122,13 @@ block main
 											i.fa.fa-file(aria-hidden='true')
 							.form-group
 								label.label-control Desired Time
-								input#time.form-control(type='text')
+								input#time.form-control(type='text' name='desiredtime1')
 							.form-group
 								label.label-control Second Desired Time
-								input#time2.form-control(type='text')
+								input#time2.form-control(type='text' name='desiredtime2')
 							.form-group
 								label.label-control Third Desired Time
-								input#time3.form-control(type='text')
+								input#time3.form-control(type='text' name='desiredtime3')
 							//- .form-group
 							//- 	label.label-control Desired Time
 							//- 	input#time2.form-control(type='text')
@@ -134,5 +144,5 @@ block main
 					.row
 						.col-md-12.my-5.text-right
 							//- a.btn-design.mx-2(href="#") Submit
-							button.btn.btn-primary(type='submit') Sign up
+							button.btn.btn-primary(type='submit') Submit
 							a.btn-design.btn-valid(href="#") Cancel
