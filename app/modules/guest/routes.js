@@ -13,24 +13,9 @@ guestRouter.get('/', (req, res)=>{
     res.render('guest/views/index')
 });
 
-
-
-
-<<<<<<< HEAD
-=======
 guestRouter.get('/schedule', (req, res)=>{
     res.render('guest/views/schedule2')
 });
-
-
->>>>>>> d732ecbed46510a5d7c30949149e6e91cead1d71
-
-
-
-
-
-
-
 
 
 //===============================================================================================//
@@ -314,9 +299,9 @@ guestRouter.get('/marriage/form', (req, res)=>{
     res.render('guest/views/forms/marriage',{user: req.session.user})
 
 });
-guestRouter.post('/rcia/form', (req, res) => {
+guestRouter.post('/marriage/form', (req, res) => {
 
-    var queryString= `select int_eventID from tbl_event where var_eventname="RCIA";`  
+    var queryString= `select int_eventID from tbl_event where var_eventname="Marriage";`  
         db.query(queryString, (err, results, fields) => {
             if (err) throw err;
             console.log(results);
@@ -331,17 +316,110 @@ guestRouter.post('/rcia/form', (req, res) => {
                 db.query(queryString2,[eventinfoID.insertId, "Pending", "Unpaid", "Incomplete"], (err, results, fields) => {
                     if (err) throw err;
                     var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation, var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
-                    db.query(queryString3, [eventinfoID.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
+                    db.query(queryString3, [eventinfoID.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, "Male", req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
                         if (err) throw err;
-                        var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum) VALUES(?,?,?,?,?,?,?);`
-                        db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber], (err, results, fields) => {
+                        var queryString4 = `INSERT INTO tbl_wedgroom(
+                            int_eventinforID,
+                            var_gnationality,
+                            var_gcivilstatus,
+                            var_greligion,
+                            var_goccupation,
+                            var_gfathername,
+                            var_gfatherreligion,
+                            var_gfatherbplace,
+                            var_gmothername,
+                            var_gmotherreligion,
+                            var_gmotherbplace,
+                            var_gcurrparish,
+                            bool_gbaptized,
+                            date_gbapdate,
+                            var_gbapplace,
+                            bool_gconfirmed,
+                            date_gcondate,
+                            var_gconplace
+                        ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`
+                        db.query(queryString4 , [eventinfoID.insertId, 
+                            req.body.gnationality,
+                            req.body.gcivilstatus,
+                            req.body.greligion,
+                            req.body.goccupation,
+                            req.body.gfathername,
+                            req.body.gfatherreligion,
+                            req.body.gfatherbplace,
+                            req.body.gmothername,
+                            req.body.gmotherreligion,
+                            req.body.gmotherbplace,
+                            req.body.gcurrentparish,
+                            req.body.gbaptized,
+                            req.body.gbapdate,
+                            req.body.gbapplace,
+                            req.body.gconfirmed,
+                            req.body.gcondate,
+                            req.body.gconplace],(err, results, fields) => {
                             if (err) throw err;
-                            return res.redirect(`/guest`);
+
+
+                                var queryString5 = `INSERT INTO tbl_wedbride(
+                                int_eventinforID,
+                                var_blname,
+                                var_bfname,
+                                var_bmname,
+                                char_bgender,
+                                var_baddress,
+                                date_bbirthday,
+                                var_bbirthplace,
+                                var_bnationality,
+                                var_bcivilstatus,
+                                var_breligion,
+                                var_boccupation,
+                                var_bfathername,
+                                var_bfatherbplace,
+                                var_bfatherreligion,
+                                var_bmothername,
+                                var_bmotherbplace,
+                                var_bmotherreligion,
+                                var_bcurrparish,
+                                bool_bbaptized,
+                                date_bbapdate,
+                                var_bbapplace,
+                                bool_bconfirmed,
+                                date_bcondate,
+                                var_bconplace
+                            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`
+                            db.query(queryString5 , [eventinfoID.insertId, 
+                                req.body.blastname,
+                                req.body.bfirstname,
+                                req.body.bmiddlename,
+                                "Female",
+                                req.body.baddress,
+                                req.body.bbirthday,
+                                req.body.bbirthplace,
+                                req.body.bnationality,
+                                req.body.bcivilstatus,
+                                req.body.breligion,
+                                req.body.boccupation,
+                                req.body.bfathername,
+                                req.body.bfatherreligion,
+                                req.body.bfatherbplace,
+                                req.body.bmothername,
+                                req.body.bmotherreligion,
+                                req.body.bmotherbplace,
+                                req.body.bcurrentparish,
+                                req.body.bbaptized,
+                                req.body.bbapdate,
+                                req.body.bbapplace,
+                                req.body.bconfirmed,
+                                req.body.bcondate,
+                                req.body.bconplace],(err, results, fields) => {
+                                if (err) throw err;
+                                return res.redirect(`/guest`);
                         });
+
                     });
                 });
             });    
-        });            
+        });  
+    });          
 });
 
 
