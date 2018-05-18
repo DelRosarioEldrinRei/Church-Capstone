@@ -13,6 +13,17 @@ guestRouter.get('/', (req, res)=>{
     res.render('guest/views/index')
 });
 
+
+
+
+
+
+
+
+
+
+
+
 //===============================================================================================//
 // R E S E R V A T I O N //
 //===============================================================================================//
@@ -293,114 +304,35 @@ guestRouter.post('/rcia/form', (req, res) => {
 guestRouter.get('/marriage/form', (req, res)=>{
     res.render('guest/views/forms/marriage',{user: req.session.user})
 
-    // var queryString4 = `INSERT INTO tbl_wedgroom(
-    //                 \`int_eventinfoID\`,
-    //                 \`varchar_gnationality\`,
-    //                 \`varchar_gcivilstatus\`,
-    //                 \`varchar_greligion\`,
-    //                 \`varchar_goccupation\`,
-    //                 \`varchar_gfathername\`,
-    //                 \`varchar_gfatherreligion\`,
-    //                 \`varchar_gfatherbplace\`,
-    //                 \`varchar_gmothername\`,
-    //                 \`varchar_gmotherreligion\`,
-    //                 \`varchar_gmotherbplace\`,
-    //                 \`char_gbaptized\`,
-    //                 \`char_gconfirmed\`,
-                    
-    //                 \`varchar_gcurrparish\`) 
-                
-    //                 VALUES(
-    //                 "${eventid.insertId}",
-    //                 "${req.body.groomnationality}",                 
-    //                 "${req.body.groomcivilstatus}",                 
-    //                 "${req.body.groomreligion}",                
-    //                 "${req.body.groomoccupation}",                
-    //                 "${req.body.groomfathername}",                
-    //                 "${req.body.groomfatherreligion}",                
-    //                 "${req.body.groomfatherbirthplace}",
-    //                 "${req.body.groommothername}",                
-    //                 "${req.body.groommotherreligion}",                
-    //                 "${req.body.groommotherbirthplace}",
-    //                 "${req.body.groombaptized}",
-    //                 "${req.body.groomconfirmed}",
-                    
-    //                 "${req.body.groomcurrparish}")`;
+});
+guestRouter.post('/rcia/form', (req, res) => {
 
-    //                 db.query(queryString4, (err, results, fields) => {
-    //                     if (err) throw err;
-
-    //                     var queryString5 = `INSERT INTO tbl_wedbride(
-    //                     \`int_eventinfoID\`,
-    //                     \`varchar_blname\`,
-    //                     \`varchar_bfname\`,
-    //                     \`varchar_bmname\`,
-    //                     \`char_bgender\`,
-    //                     \`varchar_baddress\`,
-    //                     \`date_bbirthday\`,
-    //                     \`varchar_bbirthplace\`,
-    //                     \`varchar_bnationality\`,
-    //                     \`varchar_bcivilstatus\`,
-    //                     \`varchar_breligion\`,
-    //                     \`varchar_boccupation\`,
-    //                     \`char_bpregnant\`,
-    //                     \`varchar_bfathername\`,
-    //                     \`varchar_bfatherreligion\`,
-    //                     \`varchar_bfatherbplace\`,
-    //                     \`varchar_bmothername\`,
-    //                     \`varchar_bmotherreligion\`,
-    //                     \`varchar_bmotherbplace\`,
-    //                     \`char_bbaptized\`,
-    //                     \`char_bconfirmed\`,
-                        
-    //                     \`varchar_bcurrparish\`) 
-                    
-    //                     VALUES(
-    //                     "${eventid.insertId}",
-    //                     "${req.body.bridelastname}",                 
-    //                     "${req.body.bridefirstname}",                 
-    //                     "${req.body.bridemiddlename}",                
-    //                     "Female",                
-    //                     "${req.body.brideaddress}",                
-    //                     "${req.body.bridebirthday}", 
-    //                     "${req.body.bridebirthplace}",
-    //                     "${req.body.bridenationality}",                 
-    //                     "${req.body.bridecivilstatus}",                 
-    //                     "${req.body.bridereligion}",                
-    //                     "${req.body.brideoccupation}", 
-    //                     "${req.body.bridepregnant}",
-    //                     "${req.body.bridefathername}",                
-    //                     "${req.body.bridefatherreligion}",                
-    //                     "${req.body.bridefatherbirthplace}",
-    //                     "${req.body.bridemothername}",                
-    //                     "${req.body.bridemotherreligion}",                
-    //                     "${req.body.bridemotherbirthplace}",
-    //                     "${req.body.bridebaptized}",
-    //                     "${req.body.brideconfirmed}",
-                        
-    //                     "${req.body.bridecurrparish}")`;
-                    
-
-                            
-    //                     db.query(queryString5, (err, results, fields) => {
-    //                         if (err) throw err;
-                            
-    //                         var queryString6 = `INSERT INTO tbl_wedcouple (
-    //                         \`int_eventinfoID\`,
-    //                         \`char_livingin\`,
-                            
-    //                         \`char_married\`) 
-                        
-    //                         VALUES(
-    //                         "${eventid.insertId}",
-    //                         "${req.body.couplelivingin}",
-
-    //                         "${req.body.couplemarried}")`;
-                            
-                            
-
-    //                         db.query(queryString6, (err, results, fields) => {
-    //                             if (err) throw err;
+    var queryString= `select int_eventID from tbl_event where var_eventname="RCIA";`  
+        db.query(queryString, (err, results, fields) => {
+            if (err) throw err;
+            console.log(results);
+            req.session.user.eventID =results[0];
+            console.log(req.session.user);
+            
+        var queryString1 = `INSERT INTO tbl_eventinfo(int_userID, int_eventID) VALUES(?,?)`;
+            db.query(queryString1, [req.body.userID, req.session.user.eventID.int_eventID], (err, results, fields) => {
+                if (err) throw err;
+                var eventinfoID= results;
+                var queryString2 = `INSERT INTO tbl_eventapplication(int_eventinfoID, char_approvalstatus, char_feestatus, char_reqstatus) VALUES(?,?,?,?)`;        
+                db.query(queryString2,[eventinfoID.insertId, "Pending", "Unpaid", "Incomplete"], (err, results, fields) => {
+                    if (err) throw err;
+                    var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation, var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
+                    db.query(queryString3, [eventinfoID.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
+                        if (err) throw err;
+                        var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum) VALUES(?,?,?,?,?,?,?);`
+                        db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber], (err, results, fields) => {
+                            if (err) throw err;
+                            return res.redirect(`/guest`);
+                        });
+                    });
+                });
+            });    
+        });            
 });
 
 

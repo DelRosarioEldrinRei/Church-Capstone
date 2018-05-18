@@ -17,6 +17,11 @@ indexRouter.route('/')
     res.render('auth/views/index', req.query);
 })
 
+indexRouter.route('/schedule')
+.get(authMiddleware.noAuthed, (req, res) => {
+    res.render('auth/views/schedule', req.query);
+})
+
 
 loginRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
