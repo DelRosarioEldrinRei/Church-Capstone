@@ -2,7 +2,7 @@ var express = require('express');
 var indexRouter = express.Router();
 var loginRouter = express.Router();
 var logoutRouter = express.Router();
-var loginGuestRouter = express.Router();//dontgetconfused,this is the signup router :)
+var signupRouter = express.Router();//dontgetconfused,this is the signup router :)
 var authMiddleware = require('./middlewares/auth');
 var db = require('../../lib/database')();
 
@@ -84,39 +84,14 @@ loginRouter.route('/')
     })
 
 
-    loginGuestRouter.route('/')
+    signupRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
         res.render('auth/views/signup.pug', req.query);
     })
     .post((req, res) => {
         
-        var queryString = `INSERT INTO \`tbl_user\` 
-        (\`var_lastname\`, 
-        \`var_firstname\`, 
-        \`var_middlename\`, 
-        \`var_username\`, 
-        \`var_password\`, 
-        \`char_usertype\`, 
-        \`var_guestemail\`, 
-        \`char_gender\`, 
-        \`date_guestbirthday\`, 
-        \`var_guestaddress\`, 
-        \`var_guestcontactnumber\`)
-        VALUES(
-            "${req.body.userlastname}",
-            "${req.body.userfirstname}",
-            "${req.body.usermiddlename}",
-            "${req.body.username}", 
-            "${req.body.password}", 
-            "User", 
-            "${req.body.useremail}",
-            "${req.body.usergender}", 
-            "${req.body.userbirthday}", 
-            "${req.body.useraddress}", 
-            "${req.body.usercontactnumber}" 
-        );`;
-        
-        db.query(queryString, (err, results, fields) => {
+        var queryString = `INSERT INTO tbl_user(var_userlname, var_userfname, var_usermname, char_usergender, date_userbirthday, var_useraddress, var_usercontactnum, var_username, var_useremail, var_password, char_usertype) VALUES(?,?,?,?,?,?,?,?,?,?,?)`;
+        db.query(queryString, [req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.birthday, req.body.address, req.body.contactnumber, req.body.username, req.body.email, req.body.password, "Guest"], (err, results, fields) => {
             if (err) throw err;
             
             res.redirect('/login?signUpSuccess');
@@ -136,4 +111,4 @@ logoutRouter.get('/', (req, res) => {
 exports.index = indexRouter;
 exports.login = loginRouter;
 exports.logout = logoutRouter;
-exports.signup = loginGuestRouter;
+exports.signup = signupRouter;

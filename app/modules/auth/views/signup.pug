@@ -5,7 +5,7 @@ block main
 			.row
 				.col-md-10.ml-auto.mr-auto.mt-5
 					.card.card-signup.mt-5
-						h2.text-center.mt-3 Register
+						h2.text-center.mt-3 Sign-up
 						.card-body
 							.row.mb-3
 								.col-md-5.ml-auto
@@ -30,7 +30,6 @@ block main
 											h4.info-title Audience
 											p.description
 												| We've made this for the church to easily manage the reservation of events, services, and many other more!.
-								.col-md-5.mr-5
 									.social.text-center
 										button.btn.btn-just-icon.btn-round.btn-twitter
 											i.fa.fa-twitter
@@ -39,29 +38,62 @@ block main
 										button.btn.btn-just-icon.btn-round.btn-facebook
 											i.fa.fa-facebook  
 										h4  or be classical 
-									form.form(method='', action='')
+								.col-md-5.mr-5
+									form.form(action="/signup" method="post")
 										.form-group
-											.input-group
-												span.input-group-addon
-													i.fa.fa-smile-o(aria-hidden='true')
-												input.form-control(type='text', placeholder='First Name...')
+											label.label-control Name:										
+											.row
+												.col-md-4
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="Last Name" name='lastname')
+												.col-md-4
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="First Name" name='firstname')
+												.col-md-4
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="Middle Name" name='middlename')
+										.form-group.m-0
+											label.label-control Gender:
+												.form-check.ml-3
+													label.form-check-label
+														input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Male")
+														| Male
+														span.circle
+															span.check
+													label.form-check-label.ml-3
+														input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
+														| Female
+														span.circle
+															span.check
 										.form-group
-											.input-group
-												span.input-group-addon
-													i.fa.fa-envelope-o(aria-hidden='true')
-												input.form-control(type='text', placeholder='Email...')
+											label.label-control Birthday
+											input#datepicker.form-control(type='date' name='birthday')
 										.form-group
-											.input-group
-												span.input-group-addon
-													i.fa.fa-lock(aria-hidden='true')
-												input.form-control(type='password', placeholder='Password...')
+											label(for='exampleFormControlTextarea1') Address:
+											textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+										.form-group
+											label.label-control Contact Number:
+											input.form-control(type='text' name='contactnumber')
+										.form-group
+											label.label-control Email Address:
+											input.form-control(type='text' name='email')
+										.form-group
+											label.label-control Username:
+											input.form-control(type='text' name='username')
+										.form-group
+											label.label-control Password:
+											input.form-control(type='password' name='password')
+										.form-group
+											label.label-control Confirm password:
+											input.form-control(type='password' name='confirmpassword')
+										
 										.form-check
 											label.form-check-label
-												input.form-check-input(type='checkbox', value='', checked='')
-												span.form-check-sign
-													span.check
-												| 												I agree to the 
+											input.form-check-input(type='checkbox', value='', checked='')
+											span.form-check-sign
+												span.check
+												| ..I agree to the 
 												a(href='#something') terms and conditions
 												| .
-										.text-center
-											a.btn.btn-primary.btn-round(href='#pablo') Get Started
+											.text-center
+												button.btn.btn-primary(type='submit') Submit
