@@ -1,0 +1,85 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Establishment Blessing
+						p.text-uppercase.card-desc
+							| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Event Application Form
+				form(action="/guest/funeral/form" method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Place where the will happen:
+								.ml-4
+									.form-check
+										label.form-check-label
+											input.form-check-input(type="radio" name="venue" id="exampleRadios1" value="sameaddress" checked)
+											| Our Home
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input#exampleRadios3.form-check-input(type="radio" name="venue" value="other")
+											.dropdown-toggle.mr-3 Other
+											span.circle
+												span.check
+										#textarea2.form-group
+											.form-group.mt-2
+												label.label-control Owner:
+												input.form-control(type='text' placeholder="Enter Name of Owner" name='birthplace')
+											.form-group
+												label.label-control House/Establishment Location:
+												textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
+											.form-group
+												label.label-control Contact Number:
+												input.form-control(type='number' name='birthplace')
+											.form-group
+												label.label-control Email:
+												input.form-control(type='Email' name='birthplace')
+							//- .form-group
+							//- 	label.label-control Desired Time
+							//- 	input#time2.form-control(type='text')
+							//- .form-group
+							//- 	label.label-control Desired Time
+							//- 	input#time3.form-control(type='text')
+							//- .form-group
+							//- 	label.label-control Second Desired Time
+							//- 	input#timepicker.form-control(type='number')
+							//- .form-group
+							//- 	label.label-control  Third Desired Time
+							//- 	input#timepicker.form-control(type='number')
+					.row
+						.col-md-12.my-5.text-center
+							//- a.btn-design.mx-2(href="#") Submit
+							button.btn.btn-primary(type='submit') Submit
+							a.btn-design.btn-valid(href="/guest/events") Cancel
+
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
