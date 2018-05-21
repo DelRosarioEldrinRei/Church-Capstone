@@ -68,8 +68,7 @@ block main
 						.col-md-6.my-3
 							.form-group
 								label.label-control Relationship with the deceased
-								.dropdown
-									select(aria-labelledby='dropdownMenuLink' name='relation')
+									select.selectpicker.form-control(type="text" name='relation')
 										option Spouse
 										option Parent
 										option Child
@@ -136,4 +135,9 @@ block addjs
 		$('#exampleRadios3').click(function() {
 			$('#textarea1').slideUp();
 			$('#textarea2').slideDown();
+		});
+		
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
 		});
