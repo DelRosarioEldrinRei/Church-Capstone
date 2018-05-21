@@ -232,6 +232,36 @@ strong {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #d6b872;
+  border: none; 
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #d6b872;
+}
+
+.form-control {
+  border: 1px solid rgba(141,85,36,0.6) !important;
+}
 
 /* #sectionsNav > div > div.collapse.navbar-collapse > ul > li > a {
   font-family: "Poppins", sans-serif;
