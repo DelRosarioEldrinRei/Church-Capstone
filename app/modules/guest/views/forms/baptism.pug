@@ -17,8 +17,6 @@ block main
 				.row
 					.col-md-12.my-3
 						h3.text-center.text-uppercase.guidelines--text Event Application Form
-				.row
-					.col-md-12.my-3
 				form(action="/guest/baptism/form" method="post")
 					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 					.row
@@ -50,7 +48,7 @@ block main
 												span.check
 							.form-group
 								label.label-control Birthday
-								input#datepicker.form-control(type='date' name='birthday')
+								input.datepicker.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Birthplace:
 								input.form-control(type='text' name='birthplace')
@@ -66,13 +64,13 @@ block main
 										option Aunt/Uncle
 							.form-group
 								label.label-control Desired Date
-								input#datepicker.form-control(type='date' name='desireddate1')
+								input.datepicker1.form-control(type='date' name='desireddate1')
 							.form-group
 								label.label-control Second Desired Date
-								input#datepicker2.form-control(type='date' name='desireddate2')
+								input.datepicker2.form-control(type='date' name='desireddate2')
 							.form-group
 								label.label-control Third Desired Date
-								input#datepicker3.form-control(type='date' name='desireddate3')
+								input.datepicker3.form-control(type='date' name='desireddate3')
 						.col-md-6.my-3
 							.form-group
 								label.label-control Mother's full name:
