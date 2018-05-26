@@ -7,8 +7,9 @@ block main
 				.row
 					.col-md-9.main-header__textbox
 						h1.font-italic Funeral Mass
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						a(href="/guest/funeral")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -16,7 +17,7 @@ block main
 						hr.mt-5.mx-5
 				.row
 					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Event Application Form
+						h3.text-center.text-uppercase.guidelines--text Request Form
 				form(action="/guest/funeral/form" method="post")
 					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 					.row
@@ -27,7 +28,7 @@ block main
 									.col-md-4
 										.form-group.pt-0
 											input.form-control(type='text' placeholder="Last Name" name='lastname')
-									.col-md-4
+									.col-md-4.p-0
 										.form-group.pt-0
 											input.form-control(type='text' placeholder="First Name" name='firstname')
 									.col-md-4
@@ -48,7 +49,7 @@ block main
 												span.check
 							.form-group
 								label.label-control Birthday
-								input#datepicker.form-control(type='date' name='birthday')
+								input.datepicker.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Birthplace:
 								input.form-control(type='text' name='birthplace')
@@ -56,9 +57,8 @@ block main
 								label(for='exampleFormControlTextarea1') Address:
 								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
 							.form-group
-								label.label-control Relationship with the deceased
-								.dropdown
-									select(aria-labelledby='dropdownMenuLink' name='relation')
+								label.label-control Relationship with the Deceased
+									select.selectpicker.form-control(type="text" name='relation')
 										option Spouse
 										option Parent
 										option Child
@@ -68,15 +68,24 @@ block main
 										option Nephew/Niece
 										option BF/GF
 										option Friend
-							.form-group
-								label.label-control Desired Date
-								input#datepicker.form-control(type='date' name='desireddate1')
-							.form-group
-								label.label-control Second Desired Date
-								input#datepicker2.form-control(type='date' name='desireddate2')
-							.form-group
-								label.label-control Third Desired Date
-								input#datepicker3.form-control(type='date' name='desireddate3')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Desired Date
+										input.datepicker2.form-control(type='date' name='desireddate1')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Desired Time
+										input.timepicker.form-control(type='text' name='desireddate1')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Alternative Date
+										input.datepicker3.form-control(type='date' name='desireddate2')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Alternative Time
+										input.timepicker.form-control(type='text' name='desireddate1')
 						.col-md-6.my-3
 							.form-group
 								label.label-control Cause of Death:
@@ -120,32 +129,9 @@ block main
 									span.input-group-btn
 										button.btn.btn-fab.btn-round.btn-primary(type='button')
 											i.fa.fa-file(aria-hidden='true')
-							.form-group
-								label.label-control Desired Time
-								input#time.form-control(type='text' name='desiredtime1')
-							.form-group
-								label.label-control Second Desired Time
-								input#time2.form-control(type='text' name='desiredtime2')
-							.form-group
-								label.label-control Third Desired Time
-								input#time3.form-control(type='text' name='desiredtime3')
-							//- .form-group
-							//- 	label.label-control Desired Time
-							//- 	input#time2.form-control(type='text')
-							//- .form-group
-							//- 	label.label-control Desired Time
-							//- 	input#time3.form-control(type='text')
-							//- .form-group
-							//- 	label.label-control Second Desired Time
-							//- 	input#timepicker.form-control(type='number')
-							//- .form-group
-							//- 	label.label-control  Third Desired Time
-							//- 	input#timepicker.form-control(type='number')
 					.row
 						.col-md-12.my-5.text-center
-							//- a.btn-design.mx-2(href="#") Submit
 							button.btn.btn-primary(type='submit') Submit
-							a.btn-design.btn-valid(href="/guest/events") Cancel
 
 block addjs
 	script.
