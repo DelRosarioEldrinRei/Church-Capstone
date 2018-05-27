@@ -7,8 +7,9 @@ block main
 				.row
 					.col-md-9.main-header__textbox
 						h1.font-italic Second Floor
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						a(href="/guest/facilities/secondfloor")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -30,25 +31,30 @@ block main
 								label.label-control Event Description
 								input.form-control(type='text')
 							.form-group
-								label.label-control Date
-								input.form-control.datetimepicker(type='text')
+								label.label-control Desired Date
+								input#datepicker.form-control(type='date' name='birthday')
+							.form-group
+								label.label-control Second Desired Date
+								input#datepicker.form-control(type='date' name='birthday')
+							.form-group
+								label.label-control Third Desired Date
+								input#datepicker.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Start Time
 								input.form-control.datetimepicker1(type='text')
 							.form-group
 								label.label-control End Time
 								input.form-control.datetimepicker1(type='text')
-							.form-group.form-file-upload.form-file-multiple
+							.form-group.form-file-upload.form-file-multiple.p-0
 								input.inputFileHidden(type='file', multiple='')
 								.input-group
 									input.form-control.inputFileVisible(type='text', placeholder='Valid ID')
 									span.input-group-btn
 										button.btn.btn-fab.btn-round.btn-primary(type='button')
 											i.fa.fa-file(aria-hidden='true')
-
 				.row
-					.col-md-12.text-center.my-5
-						a.btn-design.btn-valid(href="#") Submit
+					.col-md-12.text-center.mb-5
+						button.btn.btn-primary.btn-valid Submit
 
 	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
 		.modal-dialog(role='document')

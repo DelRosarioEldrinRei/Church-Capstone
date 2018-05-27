@@ -5,7 +5,6 @@ block body
 			.container
 				.navbar-translate
 					a.navbar-brand(href="/guest")
-						i.fa.fa-institution(aria-hidden="true") 
 						| &nbsp; Church
 					button.navbar-toggler(type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation")
 						span.navbar-toggler-icon
@@ -13,10 +12,10 @@ block body
 						span.navbar-toggler-icon
 				.collapse.navbar-collapse
 					ul.navbar-nav.ml-auto
-						li.nav-item.active: a.nav-link(href="/guest" rel="tooltip" title="" data-original-title="Back to Home")
-							| Home
-						li.nav-item: a.nav-link(href="/guest/reservation")
-							| Reservations
+						//- li.nav-item: a.nav-link(href="/guest/reservation")
+						//- 	| Reservations
+						//- li.nav-item: a.nav-link(href="/guest/schedule" rel="tooltip" title="")
+						//- 	| Schedule
 						//- li.nav-item: a.nav-link(href="/services" rel="tooltip" title="" data-original-title="See our services here")
 						//- 	| Services
 						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Read our articles")
@@ -25,25 +24,91 @@ block body
 						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Email Us Now!")
 						//- 	i.fa.fa-envelope-o(aria-hidden="true") 
 						//- 	| Contact
+						//- li.dropdown.nav-item
+						//- 	a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Sacrament
+						//- 	.dropdown-menu.dropdown-with-icons
+						//- 		a.dropdown-item(href="/guest/baptism")
+						//- 			i.fa.fa-twitter(aria-hidden="true")
+						//- 			| &nbsp; Baptism
+						//- 		a.dropdown-item(href="/guest/confirmation")
+						//- 			i.fa.fa-facebook-square(aria-hidden="true")
+						//- 			| &nbsp; Confirmation
+						//- 		a.dropdown-item(href="#")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Eucharist
+						//- 		a.dropdown-item(href="/guest/marriage")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Marriage
+						//- 		a.dropdown-item(href="/guest/anointing")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Anointing
+						//- 		a.dropdown-item(href="/guest/funeral")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Funeral Blessing
+						//- 		a.dropdown-item(href="#")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Confession
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="")
+							| Events
+						li.nav-item.active: a.nav-link(href="/guest")
+							| Home
+						li.nav-item: a.nav-link(href="/guest/schedule")
+							| Schedule
 						li.dropdown.nav-item
 							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
-								| Services	
+								| Parish Services	
 							.dropdown-menu.dropdown-with-icons
-								a.dropdown-item(href="/guest/facilities")
-									i.fa.fa-twitter(aria-hidden="true")
-									| &nbsp; Facility Reservation
-								a.dropdown-item(href="/guest/events")
-									i.fa.fa-facebook-square(aria-hidden="true")
-									| &nbsp; Event Application
+								a.dropdown-item(href="/guest/anointing")
+									| &nbsp; Anointing of the Sick
+								a.dropdown-item(href="/guest/baptism")
+									| &nbsp; Baptism
+								a.dropdown-item(href="/guest/confirmation")
+									| &nbsp; Confirmation
+								a.dropdown-item(href="/guest/funeral")
+									| &nbsp; Funeral Blessing
+								a.dropdown-item(href="/guest/marriage")
+									| &nbsp; Marriage
+								.container
+									hr
 								a.dropdown-item(href="/guest/document")
-									i.fa.fa-instagram(aria-hidden="true")
 									| &nbsp; Document Request
+								a.dropdown-item(href="/guest/facilities")
+									| &nbsp; Facility Reservation
+								a.dropdown-item(href="/guest/establishment")
+									| &nbsp; Establishment Blessing
+						li.nav-item: a.nav-link(href="/guest/parishevents")
+							| Events
 						li.dropdown.nav-item
-							a.nav-link(href="#" data-toggle="dropdown")
-								| Notifications	
-						li.nav-item
-							a.nav-link(href='/logout')
-								span.no-icon Log out
+							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+								| About Us
+							.dropdown-menu.dropdown-with-icons
+								a.dropdown-item(href="#")
+									| &nbsp; Contact
+								a.dropdown-item(href="#")
+									| &nbsp; Parish Information
+						li.dropdown.nav-item
+							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+								| My Account
+							.dropdown-menu.dropdown-with-icons
+								a.dropdown-item(href="#")
+									| &nbsp; My Profile
+								a.dropdown-item(href="#")
+									| &nbsp; Messages
+								a.dropdown-item(href="#")
+									| &nbsp; Notification
+								a.dropdown-item(href="/guest/reservation")
+									| &nbsp; Reservations
+								.container
+									hr
+								a.dropdown-item(href="/logout")
+									| &nbsp; Sign-out
+						//- li.dropdown.nav-item
+						//- 	a.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Notifications	
+						//- li.nav-item
+						//- 	a.nav-link(href='/logout')
+						//- 		span.no-icon Log out
 						//- li.nav-item: a.nav-link(href="/login" rel="tooltip" title="" data-original-title="Login Now")
 						//- 	| Login
 						//- li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="" data-original-title="Signup Now")

@@ -1,13 +1,4 @@
 extends ../../../../templates/masterguests
-mixin card(facility,bgcolor,icon,title,text)
-	.col-md-4.px-1
-		a(href=`/guests/facilities/${facility}`)
-			.card.text-center.my-3.p-2.shadow.h-100(class=`bg-${bgcolor}`)
-				.card-body.px-2
-					i(class=`fa fa-${icon}`)
-					h3.mb-2.card-title.text-uppercase= title
-					p.card-text.text-uppercase
-						| Choose
 block main
 	.profile-page
 		//- Heading Page
@@ -15,73 +6,363 @@ block main
 			.container
 				.row
 					.col-md-9.main-header__textbox
-						h1.font-italic Wedding
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						h1.font-italic Marriage
+						a(href="/guest/marriage")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
-				#guide
-					.container
-						.row
-							.col-md-12
-								hr.mt-5.mx-5
-						.row
-							.col-md-12.my-3
-								h3.text-center.text-uppercase.guidelines--text Wedding organizing module
-						form(action="#")
-							.row
-								.col-md-6.my-3
-									.form-group
-										.guidelines--text.d-inline MOTIF COLOR &nbsp;
-										//- input(type="color" value="#add8e6")
-										//- span.bmd-help We'll never share your email with anyone else.
-										//- span.bmd-help We'll never share your email with anyone else.
-							.row
-								.guidelines--text BOUQUET PICKING
-								.col-md-12.my-3
-									#icon-boxes
-										.container
-											.row.cards.mb-3
-												+card("secondfloor","lightblue","pagelines","CASCADE")
-												+card("thirdfloor","lightgrey","snowflake-o","POSY")
-												+card("lorem","lightbrown","yelp","HAND-TIED")
-						.row
-							.guidelines--text SONG REQUEST
-							.col-md-12.my-3
-								form(action="#")
-									.form-group
-										label.label-control Song Title:
-										input.form-control(type='text')
-									.form-group
-										label.label-control Artist/Version:
-										input.form-control(type='text')
-						.row
-							.guidelines--text ENTOURAGE
-							.col-md-12.my-3
-								form(action="#")
-									.form-group
-										label.label-control Best Man:
-										input.form-control(type='text')
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				//- .row#show
+				//- 	.col-md-12.my-3
+				//- 		h3.text-center.text-uppercase.guidelines--text Application Form
+				.row
+					.col-md-12.my-3
+						form#form(action="/guest/marriage/form" method="post")
+							input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+							.row.tab
+								.col-md-12
+									h2.main--header.font-italic.text-center Reservation
+									.row
+										.col-md-6.mx-auto.my-auto
+											.form-group
+												label.label-control.text-center Desired Date
+												input.datepicker2.form-control(type='date' name='desireddate1')
+											.row
+												.col-md-3.mx-auto.my-auto
+													.form-group
+														label.label-control.text-center Desired Time
+															select.selectpicker.form-control(type="text" name='relation')
+																option 10:00AM
+																option 11:00AM
+																option 1:00PM
+																option 2:00PM
+							.row.tab
+								.col-md-12
+									h2.main--header.font-italic.text-center Groom
+									.row
+										.col-md-6.my-3
+											.form-group
+												label.label-control Name:
+												.row
+													.col-md-4
+														.form-group.pt-0
+															input.form-control(type='text' placeholder="Last Name" name='lastname')
+													.col-md-4
+														.form-group.pt-0
+															input.form-control(type='text' placeholder="First Name" name='firstname')
+													.col-md-4
+														.form-group.pt-0
+															input.form-control(type='text' placeholder="Middle Name" name='middlename')
+											.form-group
+												label.label-control Birthday
+												input#datepicker.form-control(type='date' name='birthday')
+											.form-group
+												label.label-control Birthplace:
+												input.form-control(type='text' name='birthplace')
+											.form-group
+												label(for='exampleFormControlTextarea1') Address:
+												textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+											.form-group
+												label.label-control Nationality:
+												input.form-control(type='text' name='gnationality')
+											.form-group
+												label.label-control Civil status:
+												input.form-control(type='text' name='gcivilstatus')
+											.form-group
+												label.label-control Religion:
+												input.form-control(type='text' name='greligion')
+											.form-group
+												label.label-control Current parish:
+												input.form-control(type='text' name='gcurrentparish')
+											.form-group
+												label.label-control Occupation:
+												input.form-control(type='text' name='goccupation')
+										.col-md-6.my-3
+											.form-group
+												label.label-control Father's name:
+												input.form-control(type='text' name='gfathername')
+											.form-group
+												label.label-control Father's birthplace:
+												input.form-control(type='text' name='gfatherbplace')
+											.form-group
+												label.label-control Father's religion:
+												input.form-control(type='text' name='gfatherreligion')
+											.form-group
+												label.label-control Mother's name:
+												input.form-control(type='text' name='gmothername')
+											.form-group
+												label.label-control Mother's birthplace:
+												input.form-control(type='text' name='gmotherbplace')
+											.form-group
+												label.label-control Mother's religion:
+												input.form-control(type='text' name='gmotherreligion')
+											.form-group
+												label.label-control Baptized?
+												.ml-4
+													.form-check
+														label.form-check-label
+															input.exampleRadios1.form-check-input(type="radio" name="gbaptized" value="1")
+															.dropdown-toggle.mr-3 Yes
+															span.circle
+																span.check
+														.textarea1.form-group
+															.form-group
+																label.label-control Parish where you were baptized:
+																input.form-control(type='text' name='gbapplace')
+															.form-group
+																label.label-control Date when you were baptized:
+																input#datepicker.form-control(type='date' name='gbapdate')
+															
+													.form-check
+														label.form-check-label
+															input.radioup.form-check-input(type="radio" name="gbaptized" value="0" )
+															| No
+															span.circle
+																span.check
+											
+											.form-group
+												label.label-control Confirmed?
+												.ml-4
+													.form-check
+														label.form-check-label
+															input.exampleRadios2.form-check-input(type="radio" name="gconfirmed" value="1")
+															.dropdown-toggle.mr-3 Yes
+															span.circle
+																span.check
+														.textarea2.form-group
+															.form-group
+																label.label-control Parish where you were confirmed:
+																input.form-control(type='text' name='gconplace')
+															.form-group
+																label.label-control Date when you were confirmed:
+																input#datepicker.form-control(type='date' name='gcondate')
+															
+													.form-check
+														label.form-check-label
+															input.radioup2.form-check-input(type="radio" name="gconfirmed" value="0" )
+															| No
+															span.circle
+																span.check
+											
+							.row.tab
+								.col-md-12
+									h2.main--header.font-italic.text-center Bride
 								.row
 									.col-md-6.my-3
 										.form-group
-											label.label-control Maid of Honor
-											input.form-control(type='text')
+											label.label-control Name:
+											.row
+												.col-md-4
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="Last Name" name='blastname')
+												.col-md-4
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="First Name" name='bfirstname')
+												.col-md-4
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="Middle Name" name='bmiddlename')
 										.form-group
-											input.form-control(type='text')
+											label.label-control Birthday
+											input#datepicker.form-control(type='date' name='bbirthday')
 										.form-group
-											input.form-control(type='text')
+											label.label-control Birthplace:
+											input.form-control(type='text' name='bbirthplace')
+										.form-group
+											label(for='exampleFormControlTextarea1') Address:
+											textarea#exampleFormControlTextarea1.form-control(rows='2' name='baddress')
+										.form-group
+											label.label-control Nationality:
+											input.form-control(type='text' name='bnationality')
+										.form-group
+											label.label-control Civil status:
+											input.form-control(type='text' name='bcivilstatus')
+										.form-group
+											label.label-control Religion:
+											input.form-control(type='text' name='breligion')
+										.form-group
+											label.label-control Current parish:
+											input.form-control(type='text' name='bcurrentparish')
+										.form-group
+											label.label-control Occupation:
+											input.form-control(type='text' name='boccupation')
 									.col-md-6.my-3
 										.form-group
-											input.form-control(type='text')
+											label.label-control Father's name:
+											input.form-control(type='text' name='bfathername')
 										.form-group
-											input.form-control(type='text')
-								.form-group
-									label.label-control Flower Girl:
-									input.form-control(type='text')
-								.form-group
-									label.label-control Ring Bearer:
-									input.form-control(type='text')
+											label.label-control Father's birthplace:
+											input.form-control(type='text' name='bfatherbplace')
+										.form-group
+											label.label-control Father's religion:
+											input.form-control(type='text' name='bfatherreligion')
+										.form-group
+											label.label-control Mother's name:
+											input.form-control(type='text' name='bmothername')
+										.form-group
+											label.label-control Mother's birthplace:
+											input.form-control(type='text' name='bmotherbplace')
+										.form-group
+											label.label-control Mother's religion:
+											input.form-control(type='text' name='bmotherreligion')
+										.form-group
+											label.label-control Baptized?
+											.ml-4
+												.form-check
+													label.form-check-label
+														input.exampleRadios1.form-check-input(type="radio" name="gbaptized" value="1")
+														.dropdown-toggle.mr-3 Yes
+														span.circle
+															span.check
+													.textarea1.form-group
+														.form-group
+															label.label-control Parish where you were baptized:
+															input.form-control(type='text' name='bbapplace')
+														.form-group
+															label.label-control Date when you were baptized:
+															input#datepicker.form-control(type='date' name='bbapdate')
+														
+												.form-check
+													label.form-check-label
+														input.radioup.form-check-input(type="radio" name="gbaptized" value="0" )
+														| No
+														span.circle
+															span.check
+										
+										.form-group
+											label.label-control Confirmed?
+											.ml-4
+												.form-check
+													label.form-check-label
+														input.exampleRadios2.form-check-input(type="radio" name="bconfirmed" value="1")
+														.dropdown-toggle.mr-3 Yes
+														span.circle
+															span.check
+													.textarea2.form-group
+														.form-group
+															label.label-control Parish where you were confirmed:
+															input.form-control(type='text' name='bconplace')
+														.form-group
+															label.label-control Date when you were confirmed:
+															input#datepicker.form-control(type='date' name='bcondate')
+														
+												.form-check
+													label.form-check-label
+														input.radioup2.form-check-input(type="radio" name="bconfirmed" value="0" )
+														| No
+														span.circle
+															span.check
+							.row.tab
+								.col-md-12
+									h2.main--header.font-italic.text-center Sponsors
+									.row
+										.col-md-6.my-3
+											.form-group
+												label.label-control Principal Sponsor
+												input.form-control(type='text')
+										.col-md-6.my-3
+											.form-group
+												input.form-control(type='text')
+									.row
+										#leftcol.col-md-6.my-3
+											.form-group
+												label.label-control Seconday Sponsors
+												input.form-control(type='text')
+											.form-group
+												input.form-control(type='text')
+											.form-group
+												input.form-control(type='text')
+										#rightcol.col-md-6.my-3
+											.form-group
+												input.form-control(type='text')
+											.form-group
+												input.form-control(type='text')
+											.form-group
+												input.form-control(type='text')
 						.row
-							.col-md-12.text-center.mb-5
-								a.btn-design.btn-valid(href="#") SUBMIT
+							.col-md-12.my-2.text-center
+								div(style='text-align:center;margin-top:40px;')
+									span.step
+									span.step
+									span.step
+									span.step
+
+						.row
+							.col-md-12.my-5.text-center
+								button#prevBtn.btn.btn-default(type='button' onclick='nextPrev(-1)') Previous
+								button#nextBtn.btn.btn-primary(type='button' onclick='nextPrev(1)') Next
+							//- 	a#prevBtn.btn-design.m-3(href="#show" onclick='nextPrev(-1)') Previous
+							//- .col-md-6.my-5.text-left.p-0
+							//- 	a#nextBtn.btn-design.m-3(href="#show" onclick='nextPrev(1)') Next
+
+
+block addjs
+	script.
+		$('.textarea1').hide();
+		$('.radioup').click(function() {
+			$('.textarea1').slideUp();
+		});
+		$('.exampleRadios1').click(function() {
+			$('.textarea1').slideDown();
+		});
+
+		$('.textarea2').hide();
+		$('.radioup2').click(function() {
+			$('.textarea2').slideUp();
+		});
+		$('.exampleRadios2').click(function() {
+			$('.textarea2').slideDown();
+		});
+
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+
+		function showTab(n) {
+			// This function will display the specified tab of the form ...
+			var x = document.getElementsByClassName("tab");
+			x[n].style.display = "block";
+			// ... and fix the Previous/Next buttons:
+			if (n == 0) {
+				document.getElementById("prevBtn").style.display = "none";
+			} else {
+				document.getElementById("prevBtn").style.display = "inline";
+			}
+			if (n == (x.length - 1)) {
+				document.getElementById("nextBtn").innerHTML = "Submit";
+			} else {
+				document.getElementById("nextBtn").innerHTML = "Next";
+			}
+			// ... and run a function that displays the correct step indicator:
+			fixStepIndicator(n)
+		}
+
+		function nextPrev(n) {
+			// This function will figure out which tab to display
+			var x = document.getElementsByClassName("tab");
+			// Exit the function if any field in the current tab is invalid:
+			//- if (n == 1 && !validateForm()) return false;
+			// Hide the current tab:
+			x[currentTab].style.display = "none";
+			// Increase or decrease the current tab by 1:
+			currentTab = currentTab + n;
+			// if you have reached the end of the form... :
+			if (currentTab >= x.length) {
+				//...the form gets submitted:
+				document.getElementById("form").submit();
+				return false;
+			}
+			// Otherwise, display the correct tab:
+			showTab(currentTab);
+		}
+
+		function fixStepIndicator(n) {
+			// This function removes the "active" class of all steps...
+			var i, x = document.getElementsByClassName("step");
+			for (i = 0; i < x.length; i++) {
+				x[i].className = x[i].className.replace(" active", "");
+			}
+			//... and adds the "active" class to the current step:
+			x[n].className += " active";
+		}

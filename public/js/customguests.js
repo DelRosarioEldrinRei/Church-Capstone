@@ -146,7 +146,8 @@ materialKitDemo = {
           '-ms-transform':'translate3d(0,' + oVal +'px,0)',
           '-o-transform':'translate3d(0,' + oVal +'px,0)'
       });
-  },
+	},
+
 }
 
 // ekko lightbox
@@ -162,24 +163,68 @@ $(".slider").slick({
     slideToScroll: 1
 });
 
-//javascript for init
-$('.datetimepicker').datetimepicker({
-		format: 'DD/MM/YYYY',
-    icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-chevron-up",
-        down: "fa fa-chevron-down",
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-screenshot',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-    }
-});
 
-$(function () {
-	$('.datetimepicker1').datetimepicker({
+$('.datepicker').datetimepicker({
+		format: 'YYYY-MM-DD',
+		icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-chevron-up",
+				down: "fa fa-chevron-down",
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-screenshot',
+				clear: 'fa fa-trash',
+				close: 'fa fa-remove',
+		},
+ });
+
+$('.datepicker1').datetimepicker({
+		format: 'YYYY-MM-DD',
+		icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-chevron-up",
+				down: "fa fa-chevron-down",
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-screenshot',
+				clear: 'fa fa-trash',
+				close: 'fa fa-remove',
+		},
+ });
+
+$('.datepicker2').datetimepicker({
+		format: 'YYYY-MM-DD',
+		icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-chevron-up",
+				down: "fa fa-chevron-down",
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-screenshot',
+				clear: 'fa fa-trash',
+				close: 'fa fa-remove',
+		},
+ });
+$('.datepicker3').datetimepicker({
+		format: 'YYYY-MM-DD',
+		icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-chevron-up",
+				down: "fa fa-chevron-down",
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-screenshot',
+				clear: 'fa fa-trash',
+				close: 'fa fa-remove',
+		},
+ });
+
+ $(function () {
+	$('.timepicker').datetimepicker({
 			format: 'LT',
 			icons: {
         time: "fa fa-clock-o",
@@ -191,6 +236,51 @@ $(function () {
         today: 'fa fa-screenshot',
         clear: 'fa fa-trash',
         close: 'fa fa-remove'
-    }
+		}
+	});
+	$('.timepicker1').datetimepicker({
+			format: 'LT',
+			icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+		}
 	});
 });
+
+$('.selectpicker').selectpicker({
+	style: 'btn-primary',
+	size: 4
+});
+
+$(".btn-valid").click(()=> {
+	swal({
+		title: 'Are you sure?',
+		text: "You won't be able to revert this!",
+		type: 'info',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!'
+	}).then((result) => {
+		if (result.value) {
+			swal(
+				'Success!',
+				'Please wait 1-3 working days for your request to be processed',
+				'success'
+			)
+		}
+	})
+});
+
+
+// $('.datepicker').datepicker({ format: 'yyyy-dd-mm' });
+// $('.datepicker1').datepicker({ format: 'yyyy-dd-mm' });
+// $('.datepicker2').datepicker({ format: 'yyyy-dd-mm' });
+// $('.datepicker3').datepicker({ format: 'yyyy-dd-mm' });

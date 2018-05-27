@@ -6,9 +6,7 @@ block main
 			.container
 				.row
 					.col-md-9.main-header__textbox
-						h1.font-italic Document Request
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						h1.font-italic Document
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -16,37 +14,34 @@ block main
 						hr.mt-5.mx-5
 				.row
 					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Document Request Form
+						h3.text-center.text-uppercase.guidelines--text Request Form
 				.row
-					.col-md-12.my-3
+					.col-md-8.my-auto.mx-auto
 						form(action="#")
 							.form-group
-								label.label-control Document Type
-								.dropdown
-									a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-										| Document
-									.dropdown-menu(aria-labelledby='dropdownMenuLink')
-										a.dropdown-item(href='#') Action
-										a.dropdown-item(href='#') Another action
-										a.dropdown-item(href='#') Something else here
-				.row
-					.col-md-12.my-3
-						label.label-control Name of the person in certificate:
-				.row
-					.col-md-4.my-3
-						label.label-control Last Name
-						input.form-control(type='text')
-					.col-md-4.my-3
-						label.label-control First Name
-						input.form-control(type='text')
-					.col-md-4.my-3
-						label.label-control Middle Name
-						input.form-control(type='text')
-				.row
-					.col-md-12.my-3
-						.form-group
-							label(for='exampleFormControlTextarea1') Purpose:
-							textarea#exampleFormControlTextarea1.form-control(rows='3')
-				.row
-					.col-md-12.my-5.text-center
-						a.btn-design.btn-valid(href="#") Request Document
+								label.label-control Document
+									select.selectpicker.form-control(type="text" name='relation')
+										option Baptismal Certificate
+										option Confirmation Certificate
+										option First Communion Certificate
+							.row
+								.col-md-12.my-3
+									label.label-control Person in the Certificate:
+							.row
+								.col-md-4.my-3
+									label(for='lastName') Last Name
+									input#lastName.form-control(type='text')
+								.col-md-4.my-3
+									label(for='firstName') First Name
+									input#firstName.form-control(type='text')
+								.col-md-4.my-3
+									label(for='middleName') Middle Name
+									input#middleName.form-control(type='text')
+							.row
+								.col-md-12.my-3
+									.form-group
+										label(for='exampleFormControlTextarea1') Purpose:
+										textarea#exampleFormControlTextarea1.form-control(rows='3')
+							.row
+								.col-md-12.my-5.text-center
+									button.btn.btn-primary(type="submit") Submit

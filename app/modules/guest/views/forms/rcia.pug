@@ -6,7 +6,7 @@ block main
 			.container
 				.row
 					.col-md-9.main-header__textbox
-						h1.font-italic Right of Christian Initiation of Adults
+						h1.font-italic Baptism
 						p.text-uppercase.card-desc
 							| Guidelines | Requirements
 		#raised-section.main.main-raised
@@ -19,58 +19,127 @@ block main
 						h3.text-center.text-uppercase.guidelines--text Event Application Form
 				.row
 					.col-md-12.my-3
-						form(action="#")
-							.row
-								.col-md-6.my-3
-									.form-group
-										label.label-control Name of child:
-										input.form-control(type='text')
-									.form-group
-										label(for='exampleFormControlTextarea1') Address:
-										textarea#exampleFormControlTextarea1.form-control(rows='3')
-									.form-group
-										label.label-control Birthdate:
-										input.form-control.datetimepicker(type='text')
-									.form-group
-										label(for='exampleFormControlTextarea1') Parent's Marriage address:
-										textarea#exampleFormControlTextarea1.form-control(rows='3')
-								.col-md-6.my-3
-									.form-group
-										label.label-control Father's Birthplace:
-										input.form-control(type='text')
-									.form-group
-										label.label-control Mother's Birthplace:
-										input.form-control(type='text')
-									.form-group
-										label.label-control Contact no.
-										input.form-control(type='number' placeholder="XXXX-XXX-XXXX")
-							.row
-								.col-md-6.my-3
-									.form-group
-										label.label-control Principal Sponsor
-										input.form-control(type='text')
-								.col-md-6.my-3
-									.form-group
-										input.form-control(type='text')
-							.row
-								.col-md-6.my-3
-									.form-group
-										label.label-control Additional
-										input.form-control(type='text')
-									.form-group
-										input.form-control(type='text')
-									.form-group
-										input.form-control(type='text')
-								.col-md-6.my-3
-									.form-group
-										input.form-control(type='text')
-									.form-group
-										input.form-control(type='text')
-									.form-group
-										input.form-control(type='text')
-
+				form(action="/guest/rcia/form" method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Name of the child:
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='lastname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='firstname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='middlename')
+							.form-group.m-0
+								label.label-control Gender:
+									.form-check.ml-3
+										label.form-check-label
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Male")
+											| Male
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
+											| Female
+											span.circle
+												span.check
+							.form-group
+								label.label-control Birthday
+								input#datepicker.form-control(type='date' name='birthday')
+							.form-group
+								label.label-control Birthplace:
+								input.form-control(type='text' name='birthplace')
+							.form-group
+								label(for='exampleFormControlTextarea1') Family address:
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+							.form-group
+								label.label-control Relationship with the child
+								.dropdown
+									select(aria-labelledby='dropdownMenuLink' name='relation')
+										option Parent
+										option Grandparent
+										option Aunt/Uncle
 							
-				.row
-					.col-md-12.my-5.text-right
-						a.btn-design.mx-2(href="#") Add Sponsor
-						a.btn-design.btn-valid(href="#") Submit
+						.col-md-6.my-3
+							.form-group
+								label.label-control Mother's full name:
+								input.form-control(type='text' name='mothername')
+							.form-group
+								label.label-control Mother's birthplace:
+								input.form-control(type='text' name='motherbirthplace')
+							.form-group
+								label.label-control Father's full name:
+								input.form-control(type='text' name='fathername')
+							.form-group
+								label.label-control Father's birthplace:
+								input.form-control(type='text' name='fatherbirthplace')
+							.form-group
+								label(for='exampleFormControlTextarea1') Parent's marriage address:
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='marriageaddress')
+							.form-group
+								label.label-control Contact number
+								input#datepicker.form-control(type='text' name='contactnumber')
+
+
+							label.label-control FILE UPLOAD
+							.form-group.form-file-upload.form-file-multiple.p-0
+								input.inputFileHidden(type='file', multiple='')
+								.input-group
+									input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
+									span.input-group-btn
+										button.btn.btn-fab.btn-round.btn-primary(type='button')
+											i.fa.fa-file(aria-hidden='true')
+							
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Principal Sponsor
+								input.form-control(type='text')
+						.col-md-6.my-3
+							.form-group
+								input.form-control(type='text')
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Additional
+								input.form-control(type='text')
+							.form-group
+								input.form-control(type='text')
+							.form-group
+								input.form-control(type='text')
+						.col-md-6.my-3
+							.form-group
+								input.form-control(type='text')
+							.form-group
+								input.form-control(type='text')
+							.form-group
+								input.form-control(type='text')
+
+					.row
+						.col-md-12.my-5.text-center
+							//- a.btn-design.mx-2(href="#") Submit
+							button.btn.btn-primary(type='submit') Submit
+							a.btn-design.btn-valid(href="/guest/events") Cancel
+
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
+							

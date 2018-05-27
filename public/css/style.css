@@ -5,14 +5,14 @@
 .row.d-flex.justify-content-center.text-center .fa {
   font-size: 55px; }
 
-.row.d-flex.justify-content-center.text-center i.fa.fa-cog {
-  color: green; }
+.row.d-flex.justify-content-center.text-center i.fa.fa-envelope-o{
+  color: #836323; }
 
-.row.d-flex.justify-content-center.text-center i.fa.fa-cloud {
-  color: red; }
+.row.d-flex.justify-content-center.text-center i.fa.fa-paper-plane {
+  color: #836323; }
 
-.row.d-flex.justify-content-center.text-center i.fa.fa-bar-chart {
-  color: blue; }
+.row.d-flex.justify-content-center.text-center i.fa.fa-home {
+  color: #836323; }
 
 #home-heading {
   background-attachment: fixed;
@@ -45,10 +45,23 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
   font-size: 36px;
 }
 
-.main-header__textbox h4 {
-  font-family: 'PT Sans', serif;
+.sub-header__textbox {
+  font-family: 'EB Garamond', serif;
   letter-spacing: 6px;
+  color: #d6b872;
+  font-size: 20px;
+}
+
+.main-header__textbox h4 a {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 3px;
   font-size: 14px;
+  color: #fff
+}
+
+.main-header__textbox h4 a:hover{
+  transition: all, .3s;
+  color: rgb(202, 166, 127)
 }
 
 .bg-lightblue {
@@ -67,10 +80,36 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
   background-color: #836323;
 }
 
+.main--header {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 12px;
+  color: #836323;
+}
+
+.main--desc__size {
+  font-size: 16px;
+}
+
+.main--desc__size:hover {
+  transition: all, 1s;
+  color: #212529;
+}
+
+#heading-page > div > div > div > a > p {
+  color: white;
+}
+
+#heading-page > div > div > div > a > p:hover {
+  color: rgb(202, 166, 127);
+  transition: .3s all
+}
+
 .card h3 {
   font-family: 'PT Sans', serif;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   font-size: 24px;
+  font-weight: 300;
+  
 }
 
 .card p {
@@ -142,6 +181,26 @@ strong {
   padding: 7px;
 }
 
+.btn-design2:link, .btn-design2:visited {
+  font-family: 'PT Sans', serif;
+  letter-spacing: 6px;
+  font-size: 16px;
+  border: 1px solid whitesmoke;
+  padding: 12px;
+  text-transform: uppercase;
+  color: whitesmoke;
+  transition: all .4s;
+}
+
+.btn-design2:hover {
+  letter-spacing: 6px;
+  font-size: 16px;
+  background: #836323;
+  color: #000;
+  border: 1px solid #836323;
+  padding: 7px;
+}
+
 .text-design {
   font-family: 'PT Sans', serif;
   letter-spacing: 6px;
@@ -164,6 +223,54 @@ strong {
 #icon-boxes > div > div > div > a > div {
   border-radius: 0%;
 }
+
+/* #card--guides {
+  height: 25rem;
+  width: 25rem;
+} */
+
+#card--guides > div > a > div {
+  height: 25rem;
+  width: 23.5rem;
+  border-radius: 0%;
+}
+
+#card--guides > div > a > div:hover {
+  transition: all .3s;
+  transform: translateY(-5%);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #d6b872;
+  border: none; 
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #d6b872;
+}
+
+/* .form-control {
+  border: 1px solid rgba(141,85,36,0.6) !important;
+} */
 
 /* #sectionsNav > div > div.collapse.navbar-collapse > ul > li > a {
   font-family: "Poppins", sans-serif;

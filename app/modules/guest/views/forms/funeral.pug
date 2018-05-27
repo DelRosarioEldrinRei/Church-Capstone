@@ -7,8 +7,9 @@ block main
 				.row
 					.col-md-9.main-header__textbox
 						h1.font-italic Funeral Mass
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						a(href="/guest/funeral")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -16,8 +17,9 @@ block main
 						hr.mt-5.mx-5
 				.row
 					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Event Application Form
-				form(action="#")
+						h3.text-center.text-uppercase.guidelines--text Request Form
+				form(action="/guest/funeral/form" method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 					.row
 						.col-md-6.my-3
 							.form-group
@@ -25,66 +27,93 @@ block main
 								.row
 									.col-md-4
 										.form-group.pt-0
-											input.form-control(type='text' placeholder="Last Name" name='blessinglastname')
+											input.form-control(type='text' placeholder="Last Name" name='lastname')
+									.col-md-4.p-0
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='firstname')
 									.col-md-4
 										.form-group.pt-0
-											input.form-control(type='text' placeholder="First Name" name='blessingfirstname')
-									.col-md-4
-										.form-group.pt-0
-											input.form-control(type='text' placeholder="Middle Name" name='blessingmiddlename')
+											input.form-control(type='text' placeholder="Middle Name" name='middlename')
 							.form-group.m-0
 								label.label-control Gender:
 									.form-check.ml-3
 										label.form-check-label
-											input.form-check-input(type="radio" name="blessinggender" id="exampleRadios2" value="option2")
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Male")
 											| Male
 											span.circle
 												span.check
 										label.form-check-label.ml-3
-											input.form-check-input(type="radio" name="blessinggender" id="exampleRadios2" value="option2")
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
 											| Female
 											span.circle
 												span.check
 							.form-group
-								label.label-control Birthday:
-								input.form-control.datetimepicker(type='text' name='blessingbirthday')
+								label.label-control Birthday
+								input.datepicker.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Birthplace:
-								input.form-control(type='text' name='blessingbirthplace')
+								input.form-control(type='text' name='birthplace')
 							.form-group
 								label(for='exampleFormControlTextarea1') Address:
-								textarea#exampleFormControlTextarea1.form-control(rows='3' name='blessingaddress')
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
 							.form-group
-								label.label-control Desired Date
-								input.form-control.datetimepicker(type='text')
+								label.label-control Relationship with the Deceased
+									select.selectpicker.form-control(type="text" name='relation')
+										option Spouse
+										option Parent
+										option Child
+										option Grandparent
+										option Grandchild
+										option Aunt/Uncle
+										option Nephew/Niece
+										option BF/GF
+										option Friend
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Desired Date
+										input.datepicker2.form-control(type='date' name='desireddate1')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Desired Time
+										input.timepicker.form-control(type='text' name='desireddate1')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Alternative Date
+										input.datepicker3.form-control(type='date' name='desireddate2')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Alternative Time
+										input.timepicker.form-control(type='text' name='desireddate1')
 						.col-md-6.my-3
 							.form-group
 								label.label-control Cause of Death:
-								input.form-control(type='text' name='blessingreason')
+								input.form-control(type='text' name='details')
 							.form-group
-								label.label-control Place where the blessing will happen:
+								label.label-control Place where the will happen:
 								.ml-4
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios1" value="option1" checked)
+											input.form-check-input(type="radio" name="venue" id="exampleRadios1" value="sameaddress" checked)
 											| Same as his/her address
 											span.circle
 												span.check
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios2" value="option2")
+											input#radioup.form-check-input(type="radio" name="venue" value="INLPP")
 											| INLPP
 											span.circle
 												span.check
 									.form-check
 										label.form-check-label
-											input.form-check-input(type="radio" name="blessingvenue" id="exampleRadios3" value="option3")
+											input#exampleRadios3.form-check-input(type="radio" name="venue" value="other")
 											.dropdown-toggle.mr-3 Other
-											//- | Other
 											span.circle
 												span.check
-									//- .form-group
-									textarea#exampleFormControlTextarea1.form-control(placeholder="Please Enter Complete Address" rows="3")
+										#textarea2.form-group
+											textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
+									
 							label.label-control FILE UPLOAD
 							.form-group.form-file-upload.form-file-multiple.p-0
 								input.inputFileHidden(type='file', multiple='')
@@ -100,10 +129,23 @@ block main
 									span.input-group-btn
 										button.btn.btn-fab.btn-round.btn-primary(type='button')
 											i.fa.fa-file(aria-hidden='true')
-							.form-group
-								label.label-control Desired Time
-								input.form-control.datetimepicker1(type='text')
-				.row
-					.col-md-12.my-5.text-right
-						a.btn-design.mx-2(href="#") Submit
-						a.btn-design.btn-valid(href="#") Cancel
+					.row
+						.col-md-12.my-5.text-center
+							button.btn.btn-primary(type='submit') Submit
+
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});

@@ -15,8 +15,8 @@ block body
 					ul.navbar-nav.ml-auto
 						li.nav-item.active: a.nav-link(href="/" rel="tooltip" title="" data-original-title="Back to Home")
 							| Home
-						li.nav-item: a.nav-link(href="/about" rel="tooltip" title="" data-original-title="A little Info about Us")
-							| About Us
+						//- li.nav-item: a.nav-link(href="/about" rel="tooltip" title="" data-original-title="A little Info about Us")
+						//- 	| About Us
 						//- li.nav-item: a.nav-link(href="/services" rel="tooltip" title="" data-original-title="See our services here")
 						//- 	| Services
 						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Read our articles")
@@ -38,9 +38,11 @@ block body
 						//- 		a.dropdown-item(href="#")
 						//- 			i.fa.fa-instagram(aria-hidden="true")
 						//- 			| &nbsp; Document Request
-						li.nav-item: a.nav-link(href="/login" rel="tooltip" title="" data-original-title="Login Now")
+						li.nav-item: a.nav-link(href="/schedule" rel="tooltip" title="")
+							| Schedule
+						li.nav-item: a.nav-link(href="/login" rel="tooltip" title="")
 							| Login
-						li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="" data-original-title="Signup Now")
+						li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="")
 							| Sign Up
 
 	block main
