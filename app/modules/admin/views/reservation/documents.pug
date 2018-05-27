@@ -1,4 +1,4 @@
-extends ../../../../templates/mastersecretary
+extends ../../../../templates/masteradmin
 
 block prepend main
 	.content
@@ -15,19 +15,25 @@ block prepend main
 								thead
 									th Guest Name
 									th Date Requested
+									th Time
 									th Document Type
+									th Status
 									th Action
 								tbody
 									tr
 										td Joshua Rae Macaya
 										td Jan 1, 2018
+										td 10:00am - 12:00pm
 										td Birth Certificate
+										td Pending Requirements
 										td: a(href="#" data-toggle="modal" data-target="#facilities")
 											i.fa.fa-pencil-square-o(aria-hidden='true')
 									tr
 										td Jonalyn Fe Ebrada
 										td March 17, 2018
+										td 8:00am - 9:00am
 										td Marriage Certificate
+										td Pending Requirements
 										td: a(href="#" data-toggle="modal" data-target="#facilities")
 											i.fa.fa-pencil-square-o(aria-hidden='true')
 		#facilities.modal.fade
@@ -110,24 +116,4 @@ block prepend main
 											td Jan 1, 2018
 											td 7:00am - 9:00am
 											td Baptism
-		script.
-			$(".btn-valid").click(()=> {
-				swal({
-					title: 'Are you sure?',
-					text: "You won't be able to revert this!",
-					type: 'info',
-					showCancelButton: true,
-					confirmButtonColor: '#3085d6',
-					cancelButtonColor: '#d33',
-					confirmButtonText: 'Yes, delete it!'
-				}).then((result) => {
-					if (result.value) {
-						swal(
-							'Success!',
-							'Please wait 1-3 working days for your request to be processed',
-							'success'
-						)
-					}
-				})
-			});
 

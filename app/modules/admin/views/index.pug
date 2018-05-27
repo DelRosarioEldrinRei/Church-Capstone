@@ -1,16 +1,12 @@
-extends ../../../templates/masterguests
-mixin carousel(image,alt)
-	.col-md-4.p-1
-		a(href=image data-toggle="lightbox" data-gallery="img-gallery")
-			img.img-fluid(src=image, alt=alt)
-block main
-	main
-		.page-header.header-filter(data-parallax="true" style=" background-image: url('/img/Nave.jpeg');")
-			.container
-				.row
-					.col-md-12.main-header__textbox
-						h1.text-white.text-uppercase Welcome
-						h4
-							a.text-white.text-uppercase(href="#") View Mass Schedules
-							|  | 
-							a.text-white.text-uppercase(href="#") View Office Schedules
+extends ../../../templates/mastersecretary
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	#calendar
+	div(style='clear:both')
+block addjs
+	script(src='js/forIndex.js')
+	//- script(src='js/loader.js')

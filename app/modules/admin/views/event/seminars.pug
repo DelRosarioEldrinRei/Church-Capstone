@@ -1,4 +1,4 @@
-extends ../../../../templates/mastersecretary
+extends ../../../../templates/masteradmin
 
 block prepend main
 	.content
@@ -9,12 +9,12 @@ block prepend main
 						.card-header
 							h4.card-title
 								i.nc-icon.nc-notes
-								|  Sacraments
+								|  Seminars
 							p.card-category Here is a subtitle for this table
 						.card-body.table-full-width.table-responsive
 		.container.d-flex.flex-row.justify-content-end
-			button.btn.btn-primary.btn-fill.m-2(data-toggle="modal" data-target="#sacraments") Add New Sacrament
-			#sacraments.modal.fade
+			button.btn.btn-primary.btn-fill.m-2(data-toggle="modal" data-target="#seminars") Add New Seminar
+			#seminars.modal.fade
 				.modal-dialog
 					.modal-content
 						.modal-header
