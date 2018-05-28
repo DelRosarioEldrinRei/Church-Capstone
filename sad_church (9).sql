@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2018 at 07:34 AM
+-- Generation Time: May 29, 2018 at 01:12 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -44,7 +44,10 @@ CREATE TABLE `tbl_baptism` (
   `var_motherbplace` varchar(100) NOT NULL,
   `var_fathername` varchar(100) NOT NULL,
   `var_mothername` varchar(100) NOT NULL,
-  `var_contactnum` varchar(13) NOT NULL
+  `var_contactnum` varchar(13) NOT NULL,
+  `date_desireddate` date DEFAULT NULL,
+  `time_desiredtime` time DEFAULT NULL,
+  `char_baptismtype` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,7 +59,11 @@ CREATE TABLE `tbl_baptism` (
 CREATE TABLE `tbl_blessing` (
   `int_eventinfoID` int(11) NOT NULL,
   `var_blessingvenue` varchar(100) NOT NULL,
-  `var_blessingdetails` varchar(100) NOT NULL
+  `var_blessingdetails` varchar(100) NOT NULL,
+  `date_desireddate1` date NOT NULL,
+  `date_desireddate2` date NOT NULL,
+  `time_desiredtime1` time NOT NULL,
+  `time_desiredtime2` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -70,6 +77,17 @@ CREATE TABLE `tbl_document` (
   `var_documenttype` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_document`
+--
+
+INSERT INTO `tbl_document` (`int_documentID`, `var_documenttype`) VALUES
+(1, 'Baptismal Certificate'),
+(2, 'Confirmation Certificate'),
+(3, 'First Communion Certificate'),
+(4, 'Facility Permit'),
+(5, 'Voucher');
+
 -- --------------------------------------------------------
 
 --
@@ -78,12 +96,15 @@ CREATE TABLE `tbl_document` (
 
 CREATE TABLE `tbl_documentrequest` (
   `int_requestID` int(11) NOT NULL,
+  `int_userID` int(11) NOT NULL,
   `int_documentID` int(11) NOT NULL,
-  `int_eventinfoID` int(11) NOT NULL,
-  `date_docureleased` date NOT NULL,
+  `int_eventinfoID` int(11) DEFAULT NULL,
+  `var_doclastname` varchar(50) NOT NULL,
+  `var_docfirstname` varchar(50) NOT NULL,
+  `text_purpose` text NOT NULL,
   `date_docurequested` date NOT NULL,
-  `date_docureceived` int(11) NOT NULL,
-  `text_purpose` text NOT NULL
+  `date_docureleased` date DEFAULT NULL,
+  `date_docureceived` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -95,23 +116,24 @@ CREATE TABLE `tbl_documentrequest` (
 CREATE TABLE `tbl_event` (
   `int_eventID` int(10) NOT NULL,
   `var_eventname` varchar(50) NOT NULL,
-  `var_eventdesc` text NOT NULL,
-  `date_eventdate` date DEFAULT NULL,
-  `time_eventstart` time DEFAULT NULL,
-  `time_eventend` time DEFAULT NULL
+  `var_eventdesc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_event`
 --
 
-INSERT INTO `tbl_event` (`int_eventID`, `var_eventname`, `var_eventdesc`, `date_eventdate`, `time_eventstart`, `time_eventend`) VALUES
-(1, 'Anointing of the sick', 'The anointing of the sick is administered to bring spiritual and even physical strength during an illness, especially near the time of death. It is most likely one of the last sacraments one will receive. A sacrament is an outward sign established by Jesus Christ to confer inward grace. In more basic terms, it is a rite that is performed to convey God’s grace to the recipient, through the power of the Holy Spirit.', NULL, NULL, NULL),
-(2, 'Confirmation', 'The sacrament of confirmation completes the sacrament of baptism. If baptism is the sacrament of re-birth to a new and supernatural life, confir- mation is the sacrament of maturity and coming of age. The real confession of Christ consist in this ''that the whole man submits himself to Truth, in the judgment of his understanding, in the submission of his will and in the consecration of his whole power of love . . . To do this, poor-spirited man is only able when he has been confirmed by God''s grace''\r\n\r\nThis confirmation in the power of the Holy Spirit leading to a firm profession of faith has always been the particular effect which Catholic tradition has ascribed to the sacrament. It is effect which complements and completes that of baptism.\r\n\r\nTHE CHURCH TEACHES\r\nConfirmation is a true sacrament instituted by Christ and different from baptism. It is administered by laying-on of hands and anointing with chrism accompanied by prayer. The chrism is blessed by the bishop and the bishop administers the sacrament. All baptized persons can and should be confirmed. The effect of the sacrament of confirmation is to give strength in faith and for the confession of faith and to impress an indelible character.', NULL, NULL, NULL),
-(3, 'Baptism', 'The sacrament of Baptism is the beginning of life—supernatural life. Because of original sin, we come into the world with a soul which is supernaturally dead. We come into the world with only the natural endowments of human nature. The supernatural life which is the result of God’s personal and intimate indwelling, is absent from the soul.\r\n\r\nOriginal sin is not, in the strict sense, a “blot” upon the soul. Indeed, original sin is not a “something” at all. It is the absence of something that should be there. It is a darkness where there ought to be light.\r\n\r\nJesus instituted the sacrament of Baptism to apply to each individual soul the atonement which He made on the Cross for original sin.\r\n\r\nJesus will not force His gift upon us, the gift of supernatural life for which He paid. He holds the gift out to us hopefully, but each of us must freely accept it. We make that acceptance by receiving the sacrament of Baptism.\r\n\r\nWhen the sacrament of Baptism is administered, the spiritual vacuum which we call original sin disappears as God becomes present in the soul, and the soul is caught up into that sharing of God’s own life which we call sanctifying grace.\r\n\r\n(c) http://www.beginningcatholic.com/baptism', NULL, NULL, NULL),
-(4, 'Funeral Blessing', 'The rite of committal, the conclusion of the funeral rites, is the final act of the community of faith in caring for the body of its deceased member. It may be celebrated at the grave, tomb, or crematorium and may be used for burial at sea. Whenever possible, the rite of committal is to be celebrated at the site of committal, that is, beside the open grave or place of internment, rather than at a cemetery chapel.\r\n\r\n(c) http://www.ibreviary.com/m/preghiere.php?tipo=Rito&id=417', NULL, NULL, NULL),
-(5, 'Marriage', 'When the Catholic Church teaches that marriage between two baptized persons is a sacrament, it is saying that the couple’s relationship expresses in a unique way the unbreakable bond of love between Christ and his people. Like the other six sacraments of the Church, marriage is a sign or symbol which reveals the Lord Jesus and through which his divine life and love are communicated. All seven sacraments were instituted by Christ and were entrusted to the Church to be celebrated in faith within and for the community of believers. The rituals and prayers by which a sacrament is celebrated serve to express visibly what God is doing invisibly.\r\n\r\nIn a sacramental marriage, God’s love becomes present to the spouses in their total union and also flows through them to their family and community. By their permanent, faithful and exclusive giving to each other, symbolized in sexual intercourse, the couple reveals something of God’s unconditional love. The sacrament of Christian marriage involves their entire life as they journey together through the ups and downs of marriage and become more able to give to and receive from each other. Their life becomes sacramental to the extent that the couple cooperates with God’s action in their life and sees themselves as living “in Christ” and Christ living and acting in their relationship, attitudes and actions.\r\n\r\nCatholic teaching holds that sacraments bring grace to those who receive them with the proper disposition. Grace is a way of describing how God shares the divine life with us and gives us the help we need to live as followers of Christ. In marriage, the grace of this sacrament brings to the spouses the particular help they need to be faithful and to be good parents. It also helps a couple to serve others beyond their immediate family and to show the community that a loving and lasting marriage is both desirable and possible.\r\n\r\n(C) http://www.foryourmarriage.org/marriage-as-sacrament/', NULL, NULL, NULL),
-(6, 'Eucharist', 'first communion', NULL, NULL, NULL);
+INSERT INTO `tbl_event` (`int_eventID`, `var_eventname`, `var_eventdesc`) VALUES
+(1, 'Anointing of the sick', 'The anointing of the sick is administered to bring spiritual and even physical strength during an illness, especially near the time of death. It is most likely one of the last sacraments one will receive. A sacrament is an outward sign established by Jesus Christ to confer inward grace. In more basic terms, it is a rite that is performed to convey God’s grace to the recipient, through the power of the Holy Spirit.'),
+(2, 'Confirmation', 'The sacrament of confirmation completes the sacrament of baptism. If baptism is the sacrament of re-birth to a new and supernatural life, confir- mation is the sacrament of maturity and coming of age. The real confession of Christ consist in this ''that the whole man submits himself to Truth, in the judgment of his understanding, in the submission of his will and in the consecration of his whole power of love . . . To do this, poor-spirited man is only able when he has been confirmed by God''s grace''\r\n\r\nThis confirmation in the power of the Holy Spirit leading to a firm profession of faith has always been the particular effect which Catholic tradition has ascribed to the sacrament. It is effect which complements and completes that of baptism.\r\n\r\nTHE CHURCH TEACHES\r\nConfirmation is a true sacrament instituted by Christ and different from baptism. It is administered by laying-on of hands and anointing with chrism accompanied by prayer. The chrism is blessed by the bishop and the bishop administers the sacrament. All baptized persons can and should be confirmed. The effect of the sacrament of confirmation is to give strength in faith and for the confession of faith and to impress an indelible character.'),
+(3, 'Baptism', 'The sacrament of Baptism is the beginning of life—supernatural life. Because of original sin, we come into the world with a soul which is supernaturally dead. We come into the world with only the natural endowments of human nature. The supernatural life which is the result of God’s personal and intimate indwelling, is absent from the soul.\r\n\r\nOriginal sin is not, in the strict sense, a “blot” upon the soul. Indeed, original sin is not a “something” at all. It is the absence of something that should be there. It is a darkness where there ought to be light.\r\n\r\nJesus instituted the sacrament of Baptism to apply to each individual soul the atonement which He made on the Cross for original sin.\r\n\r\nJesus will not force His gift upon us, the gift of supernatural life for which He paid. He holds the gift out to us hopefully, but each of us must freely accept it. We make that acceptance by receiving the sacrament of Baptism.\r\n\r\nWhen the sacrament of Baptism is administered, the spiritual vacuum which we call original sin disappears as God becomes present in the soul, and the soul is caught up into that sharing of God’s own life which we call sanctifying grace.\r\n\r\n(c) http://www.beginningcatholic.com/baptism'),
+(4, 'Funeral Service', 'The rite of committal, the conclusion of the funeral rites, is the final act of the community of faith in caring for the body of its deceased member. It may be celebrated at the grave, tomb, or crematorium and may be used for burial at sea. Whenever possible, the rite of committal is to be celebrated at the site of committal, that is, beside the open grave or place of internment, rather than at a cemetery chapel.\r\n\r\n(c) http://www.ibreviary.com/m/preghiere.php?tipo=Rito&id=417'),
+(5, 'Marriage', 'When the Catholic Church teaches that marriage between two baptized persons is a sacrament, it is saying that the couple’s relationship expresses in a unique way the unbreakable bond of love between Christ and his people. Like the other six sacraments of the Church, marriage is a sign or symbol which reveals the Lord Jesus and through which his divine life and love are communicated. All seven sacraments were instituted by Christ and were entrusted to the Church to be celebrated in faith within and for the community of believers. The rituals and prayers by which a sacrament is celebrated serve to express visibly what God is doing invisibly.\r\n\r\nIn a sacramental marriage, God’s love becomes present to the spouses in their total union and also flows through them to their family and community. By their permanent, faithful and exclusive giving to each other, symbolized in sexual intercourse, the couple reveals something of God’s unconditional love. The sacrament of Christian marriage involves their entire life as they journey together through the ups and downs of marriage and become more able to give to and receive from each other. Their life becomes sacramental to the extent that the couple cooperates with God’s action in their life and sees themselves as living “in Christ” and Christ living and acting in their relationship, attitudes and actions.\r\n\r\nCatholic teaching holds that sacraments bring grace to those who receive them with the proper disposition. Grace is a way of describing how God shares the divine life with us and gives us the help we need to live as followers of Christ. In marriage, the grace of this sacrament brings to the spouses the particular help they need to be faithful and to be good parents. It also helps a couple to serve others beyond their immediate family and to show the community that a loving and lasting marriage is both desirable and possible.\r\n\r\n(C) http://www.foryourmarriage.org/marriage-as-sacrament/'),
+(6, 'Eucharist', 'first communion'),
+(7, 'Funeral Mass', 'wala malagay si jonaaa'),
+(8, 'RCIA', 'Rite of Christian Initiation for Adults'),
+(9, 'Special Baptism', 'It includes adult baptism and special baptism.\r\ntuesday-sat'),
+(10, 'House Blessing', 'House blessing belongs to the special services that our parish offers. ');
 
 -- --------------------------------------------------------
 
@@ -139,18 +161,9 @@ CREATE TABLE `tbl_eventinfo` (
   `int_eventinfoID` int(10) NOT NULL,
   `int_userID` int(10) NOT NULL,
   `int_eventID` int(10) NOT NULL,
-  `date_eventddate1` date NOT NULL,
-  `date_eventdate2` date NOT NULL,
-  `date_eventdate3` date NOT NULL,
-  `time_eventdstart1` time DEFAULT NULL,
-  `time_eventdstart2` time NOT NULL,
-  `time_eventdstart3` time NOT NULL,
-  `time_eventdend1` time DEFAULT NULL,
-  `time_eventdend2` time NOT NULL,
-  `time_eventdend3` time NOT NULL,
-  `date_approveddate` date NOT NULL,
-  `time_approvedstart` time NOT NULL,
-  `time-approvedend` time NOT NULL
+  `date_approveddate` date DEFAULT NULL,
+  `time_approvedstart` time DEFAULT NULL,
+  `time_approvedend` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -165,6 +178,14 @@ CREATE TABLE `tbl_facility` (
   `flt_rentfee` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_facility`
+--
+
+INSERT INTO `tbl_facility` (`int_facilityID`, `var_facilityname`, `flt_rentfee`) VALUES
+(1, 'Bro. Roqueto 2nd floor', 1200),
+(2, 'Bro. Roqueto 3rd floor', 1200);
+
 -- --------------------------------------------------------
 
 --
@@ -175,12 +196,13 @@ CREATE TABLE `tbl_facilityreservation` (
   `int_reservationID` int(11) NOT NULL,
   `int_userID` int(11) NOT NULL,
   `int_facilityID` int(11) NOT NULL,
+  `var_event` varchar(100) NOT NULL,
   `date_reservedate` date NOT NULL,
   `time_reservestart` time NOT NULL,
   `time_reserveend` time NOT NULL,
-  `int_paymentID` int(11) NOT NULL,
   `char_reservestatus` char(50) NOT NULL,
-  `var_requirementID` varchar(50) NOT NULL
+  `int_paymentID` int(11) DEFAULT NULL,
+  `var_requirementID` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -195,6 +217,24 @@ CREATE TABLE `tbl_grd3students` (
   `var_school` varchar(100) NOT NULL,
   `var_batch` varchar(20) NOT NULL,
   `var_section` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_houseblessing`
+--
+
+CREATE TABLE `tbl_houseblessing` (
+  `int_eventinfoID` int(11) NOT NULL,
+  `var_owner` varchar(100) NOT NULL,
+  `var_estloc` varchar(100) NOT NULL,
+  `var_ownercontactnum` varchar(13) NOT NULL,
+  `var_owneremailadd` varchar(50) NOT NULL,
+  `date_desireddate1` date NOT NULL,
+  `date_desireddate2` date NOT NULL,
+  `time_desiredtime1` time NOT NULL,
+  `time_desiredtime2` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -256,10 +296,10 @@ CREATE TABLE `tbl_payment` (
 CREATE TABLE `tbl_relation` (
   `int_relationID` int(10) NOT NULL,
   `int_eventinfoID` int(10) NOT NULL,
-  `var_relation` varchar(20) NOT NULL,
+  `var_relation` varchar(20) DEFAULT NULL,
   `var_lname` varchar(50) NOT NULL,
   `var_fname` varchar(50) NOT NULL,
-  `var_mname` varchar(50) NOT NULL,
+  `var_mname` varchar(50) DEFAULT NULL,
   `char_gender` varchar(10) NOT NULL,
   `var_address` varchar(100) NOT NULL,
   `date_birthday` date NOT NULL,
@@ -275,7 +315,7 @@ CREATE TABLE `tbl_relation` (
 CREATE TABLE `tbl_requirements` (
   `int_requirementID` int(10) NOT NULL,
   `int_eventinfoID` int(10) NOT NULL,
-  `varc_reqpath` varchar(300) DEFAULT NULL,
+  `var_reqpath` varchar(300) DEFAULT NULL,
   `var_reqloc` varchar(100) DEFAULT NULL,
   `var_reqtype` text NOT NULL,
   `date_reqreceived` date NOT NULL
@@ -295,6 +335,23 @@ CREATE TABLE `tbl_schedule` (
   `var_venue` varchar(100) NOT NULL,
   `time_schedstart` time NOT NULL,
   `time_schedend` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_specialevent`
+--
+
+CREATE TABLE `tbl_specialevent` (
+  `int_specialeventID` int(11) NOT NULL,
+  `int_userID` int(11) NOT NULL,
+  `text_eventdesc` text NOT NULL,
+  `date_eventdate` date NOT NULL,
+  `time_eventstart` time NOT NULL,
+  `time_eventend` time NOT NULL,
+  `var_eventvenue` varchar(200) NOT NULL,
+  `char_eventtype` char(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -340,7 +397,10 @@ INSERT INTO `tbl_user` (`int_userID`, `var_userlname`, `var_userfname`, `var_use
 (7, 'Coordinator', 'Coordinator', 'Coordinator', 'Male', '1990-04-02', 'Anywhere', '09999999999', 'coordinator', 'coordinator@gmail.com', 'coordinator', 'Coordinator'),
 (8, 'Catechist', 'Catechist', 'Catechist', 'Female', '1970-04-03', 'Anywhere', '0999999999', 'catechist', 'catechist', 'catechist', 'Catechist'),
 (10, 'Priest', 'Priest', 'Priest', 'Male', '1970-04-04', 'Anyhwere', '09123456789', 'priest', 'priest@gmail.com', 'priest', 'Priest'),
-(11, 'Ebrad', 'Jonalyn Fe', 'Desalisa', 'Female', '1998-11-11', 'Payatas B Quezon City', '09277475753', 'jonalynfe11', 'jonalynfeebrada11@gmail.com', '123jona', 'Guest');
+(11, 'Ebrada', 'Jonalyn Fe', 'Desalisa', 'Female', '1998-11-11', 'Payatas B Quezon City', '09277475753', 'jonalynfe11', 'jonalynfeebrada11@gmail.com', '123jona', 'Guest'),
+(12, 'Macaya', 'Joshua Rae', '', 'Male', '1998-12-22', 'Caloocan CIty', '09277475711', 'joshuarae', 'joshuarae@gmail.com', '123rae', 'Guest'),
+(13, 'Del Rosario', 'Eldrin Rei', 'Dikolam', 'Male', '1998-01-01', 'Valenzuela City', '09277475742', 'eldrinrei', 'asdfwe', '123eldrin', 'Guest'),
+(14, 'Peñaverde', 'Norme Ann Joyce', 'dunno', 'Female', '1999-07-06', 'Infanta Quezon', '09277475733', 'normeann', 'normeann', '123norme', 'Guest');
 
 -- --------------------------------------------------------
 
@@ -350,9 +410,9 @@ INSERT INTO `tbl_user` (`int_userID`, `var_userlname`, `var_userfname`, `var_use
 
 CREATE TABLE `tbl_wedbride` (
   `int_eventinfoID` int(10) NOT NULL,
-  `varc_blname` varchar(30) NOT NULL,
+  `var_blname` varchar(30) NOT NULL,
   `var_bfname` varchar(30) NOT NULL,
-  `var_bmname` varchar(30) NOT NULL,
+  `var_bmname` varchar(30) DEFAULT NULL,
   `char_bgender` char(10) NOT NULL,
   `var_baddress` varchar(100) NOT NULL,
   `date_bbirthday` date NOT NULL,
@@ -368,7 +428,13 @@ CREATE TABLE `tbl_wedbride` (
   `var_bmothername` varchar(100) NOT NULL,
   `var_bmotherbplace` varchar(100) NOT NULL,
   `var_bmotherreligion` varchar(20) NOT NULL,
-  `var_bcurrparish` varchar(100) NOT NULL
+  `var_bcurrparish` varchar(100) NOT NULL,
+  `bool_bbaptized` tinyint(1) NOT NULL,
+  `date_bbapdate` date DEFAULT NULL,
+  `var_bbapplace` varchar(100) DEFAULT NULL,
+  `bool_bconfirmed` tinyint(1) NOT NULL,
+  `date_bcondate` date DEFAULT NULL,
+  `var_bconplace` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -380,7 +446,11 @@ CREATE TABLE `tbl_wedbride` (
 CREATE TABLE `tbl_wedcouple` (
   `int_eventinfoID` int(20) NOT NULL,
   `bool_livingin` tinyint(1) NOT NULL,
-  `bool_married` tinyint(1) NOT NULL
+  `bool_married` tinyint(1) NOT NULL,
+  `date_cprevweddate` date DEFAULT NULL,
+  `var_cprevwedplace` varchar(100) DEFAULT NULL,
+  `date_desireddate` date NOT NULL,
+  `time_desiredtime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -401,7 +471,13 @@ CREATE TABLE `tbl_wedgroom` (
   `var_gmothername` varchar(100) NOT NULL,
   `var_gmotherreligion` varchar(20) NOT NULL,
   `var_gmotherbplace` varchar(100) NOT NULL,
-  `var_gcurrparish` varchar(100) NOT NULL
+  `var_gcurrparish` varchar(100) NOT NULL,
+  `bool_gbaptized` tinyint(1) NOT NULL,
+  `date_gbapdate` date DEFAULT NULL,
+  `var_gbapplace` varchar(100) DEFAULT NULL,
+  `bool_gconfirmed` tinyint(1) NOT NULL,
+  `date_gcondate` date DEFAULT NULL,
+  `var_gconplace` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -418,7 +494,7 @@ ALTER TABLE `tbl_appointment`
 -- Indexes for table `tbl_baptism`
 --
 ALTER TABLE `tbl_baptism`
-  ADD KEY `int_eventinfoID` (`int_eventinfoID`);
+  ADD UNIQUE KEY `int_eventinfoID` (`int_eventinfoID`) USING BTREE;
 
 --
 -- Indexes for table `tbl_blessing`
@@ -438,7 +514,8 @@ ALTER TABLE `tbl_document`
 ALTER TABLE `tbl_documentrequest`
   ADD PRIMARY KEY (`int_requestID`),
   ADD KEY `int_documentID` (`int_documentID`),
-  ADD KEY `int_eventinfoID` (`int_eventinfoID`);
+  ADD KEY `int_eventinfoID` (`int_eventinfoID`),
+  ADD KEY `int_userID` (`int_userID`);
 
 --
 -- Indexes for table `tbl_event`
@@ -482,6 +559,12 @@ ALTER TABLE `tbl_facilityreservation`
 ALTER TABLE `tbl_grd3students`
   ADD PRIMARY KEY (`int_studentID`),
   ADD KEY `int_relationID` (`int_relationID`);
+
+--
+-- Indexes for table `tbl_houseblessing`
+--
+ALTER TABLE `tbl_houseblessing`
+  ADD UNIQUE KEY `int_eventinfoID` (`int_eventinfoID`);
 
 --
 -- Indexes for table `tbl_message`
@@ -534,6 +617,13 @@ ALTER TABLE `tbl_schedule`
   ADD KEY `int_eventID` (`int_eventinfoID`);
 
 --
+-- Indexes for table `tbl_specialevent`
+--
+ALTER TABLE `tbl_specialevent`
+  ADD PRIMARY KEY (`int_specialeventID`),
+  ADD KEY `int_userID` (`int_userID`);
+
+--
 -- Indexes for table `tbl_sponsors`
 --
 ALTER TABLE `tbl_sponsors`
@@ -550,18 +640,19 @@ ALTER TABLE `tbl_user`
 -- Indexes for table `tbl_wedbride`
 --
 ALTER TABLE `tbl_wedbride`
-  ADD KEY `int_eventinfoID` (`int_eventinfoID`);
+  ADD UNIQUE KEY `int_eventinfoID` (`int_eventinfoID`) USING BTREE;
 
 --
 -- Indexes for table `tbl_wedcouple`
 --
 ALTER TABLE `tbl_wedcouple`
-  ADD KEY `int_eventinfoID` (`int_eventinfoID`);
+  ADD UNIQUE KEY `int_eventinfoID` (`int_eventinfoID`) USING BTREE;
 
 --
 -- Indexes for table `tbl_wedgroom`
 --
 ALTER TABLE `tbl_wedgroom`
+  ADD UNIQUE KEY `int_eventinfoID_2` (`int_eventinfoID`),
   ADD KEY `int_eventinfoID` (`int_eventinfoID`);
 
 --
@@ -572,37 +663,37 @@ ALTER TABLE `tbl_wedgroom`
 -- AUTO_INCREMENT for table `tbl_document`
 --
 ALTER TABLE `tbl_document`
-  MODIFY `int_documentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_documentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_documentrequest`
 --
 ALTER TABLE `tbl_documentrequest`
-  MODIFY `int_requestID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `int_eventID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `int_eventID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_eventapplication`
 --
 ALTER TABLE `tbl_eventapplication`
-  MODIFY `int_eventapplicationID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_eventapplicationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `tbl_eventinfo`
 --
 ALTER TABLE `tbl_eventinfo`
-  MODIFY `int_eventinfoID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_eventinfoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 --
 -- AUTO_INCREMENT for table `tbl_facility`
 --
 ALTER TABLE `tbl_facility`
-  MODIFY `int_facilityID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_facilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_facilityreservation`
 --
 ALTER TABLE `tbl_facilityreservation`
-  MODIFY `int_reservationID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_reservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_grd3students`
 --
@@ -627,7 +718,7 @@ ALTER TABLE `tbl_notification`
 -- AUTO_INCREMENT for table `tbl_relation`
 --
 ALTER TABLE `tbl_relation`
-  MODIFY `int_relationID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_relationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `tbl_requirements`
 --
@@ -639,15 +730,20 @@ ALTER TABLE `tbl_requirements`
 ALTER TABLE `tbl_schedule`
   MODIFY `int_scheduleID` int(10) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tbl_specialevent`
+--
+ALTER TABLE `tbl_specialevent`
+  MODIFY `int_specialeventID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tbl_sponsors`
 --
 ALTER TABLE `tbl_sponsors`
-  MODIFY `int_sponsorID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `int_sponsorID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `int_userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `int_userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --
@@ -675,7 +771,8 @@ ALTER TABLE `tbl_blessing`
 --
 ALTER TABLE `tbl_documentrequest`
   ADD CONSTRAINT `tbl_documentrequest_ibfk_1` FOREIGN KEY (`int_documentID`) REFERENCES `tbl_document` (`int_documentID`),
-  ADD CONSTRAINT `tbl_documentrequest_ibfk_2` FOREIGN KEY (`int_eventinfoID`) REFERENCES `tbl_eventinfo` (`int_eventinfoID`);
+  ADD CONSTRAINT `tbl_documentrequest_ibfk_2` FOREIGN KEY (`int_eventinfoID`) REFERENCES `tbl_eventinfo` (`int_eventinfoID`),
+  ADD CONSTRAINT `tbl_documentrequest_ibfk_3` FOREIGN KEY (`int_userID`) REFERENCES `tbl_user` (`int_userID`);
 
 --
 -- Constraints for table `tbl_eventapplication`
@@ -689,7 +786,7 @@ ALTER TABLE `tbl_eventapplication`
 --
 ALTER TABLE `tbl_eventinfo`
   ADD CONSTRAINT `tbl_eventinfo_ibfk_1` FOREIGN KEY (`int_userID`) REFERENCES `tbl_user` (`int_userID`),
-  ADD CONSTRAINT `tbl_eventinfo_ibfk_2` FOREIGN KEY (`int_eventID`) REFERENCES `tbl_event` (`int_eventID`);
+  ADD CONSTRAINT `tbl_eventinfo_ibfk_2` FOREIGN KEY (`int_eventID`) REFERENCES `tbl_event` (`int_eventID`) ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tbl_facilityreservation`
@@ -703,6 +800,12 @@ ALTER TABLE `tbl_facilityreservation`
 --
 ALTER TABLE `tbl_grd3students`
   ADD CONSTRAINT `tbl_grd3students_ibfk_1` FOREIGN KEY (`int_relationID`) REFERENCES `tbl_relation` (`int_relationID`);
+
+--
+-- Constraints for table `tbl_houseblessing`
+--
+ALTER TABLE `tbl_houseblessing`
+  ADD CONSTRAINT `tbl_houseblessing_ibfk_1` FOREIGN KEY (`int_eventinfoID`) REFERENCES `tbl_eventinfo` (`int_eventinfoID`);
 
 --
 -- Constraints for table `tbl_message`
@@ -741,6 +844,12 @@ ALTER TABLE `tbl_requirements`
 ALTER TABLE `tbl_schedule`
   ADD CONSTRAINT `tbl_schedule_ibfk_1` FOREIGN KEY (`int_userID`) REFERENCES `tbl_user` (`int_userID`),
   ADD CONSTRAINT `tbl_schedule_ibfk_2` FOREIGN KEY (`int_eventinfoID`) REFERENCES `tbl_eventinfo` (`int_eventinfoID`);
+
+--
+-- Constraints for table `tbl_specialevent`
+--
+ALTER TABLE `tbl_specialevent`
+  ADD CONSTRAINT `tbl_specialevent_ibfk_1` FOREIGN KEY (`int_userID`) REFERENCES `tbl_user` (`int_userID`);
 
 --
 -- Constraints for table `tbl_sponsors`

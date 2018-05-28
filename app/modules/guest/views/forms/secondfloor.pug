@@ -23,28 +23,20 @@ block main
 						#form-facility
 							#calendar
 					.col-md-5.my-3.text-center
-						form(action="#")
+						form(action="/guest/facilities/secondfloor/form" method='post')
+							input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 							.form-group
-								label.label-control Event Name
-								input.form-control(type='text')
-							.form-group
-								label.label-control Event Description
-								input.form-control(type='text')
+								label.label-control Event
+								input.form-control(type='text' name= 'event')
 							.form-group
 								label.label-control Desired Date
-								input#datepicker.form-control(type='date' name='birthday')
-							.form-group
-								label.label-control Second Desired Date
-								input#datepicker.form-control(type='date' name='birthday')
-							.form-group
-								label.label-control Third Desired Date
-								input#datepicker.form-control(type='date' name='birthday')
+								input.datepicker2.form-control(type='date' name='desireddate')
 							.form-group
 								label.label-control Start Time
-								input.form-control.datetimepicker1(type='text')
+								input.timepicker.form-control(type='text' name='starttime')
 							.form-group
 								label.label-control End Time
-								input.form-control.datetimepicker1(type='text')
+								input.timepicker.form-control(type='text' name='endtime')
 							.form-group.form-file-upload.form-file-multiple.p-0
 								input.inputFileHidden(type='file', multiple='')
 								.input-group
@@ -52,9 +44,10 @@ block main
 									span.input-group-btn
 										button.btn.btn-fab.btn-round.btn-primary(type='button')
 											i.fa.fa-file(aria-hidden='true')
-				.row
-					.col-md-12.text-center.mb-5
-						button.btn.btn-primary.btn-valid Submit
+							.row
+								.col-md-12.text-center.mb-5
+									//- button.btn.btn-primary.btn-valid Submit
+									button.btn.btn-primary(type='submit') Submit
 
 	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
 		.modal-dialog(role='document')

@@ -66,31 +66,31 @@ block main
 								label.label-control Baptism Type & Date:
 									.form-check.ml-3.mt-3
 										label.form-check-label
-											input#radio1.form-check-input(type="radio" name="gender" value="Male")
+											input#radio1.form-check-input(type="radio" name="baptismtype" value="Regular")
 											| Regular
 											span.circle
 												span.check
 										label.form-check-label.ml-3
-											input#radio2.form-check-input(type="radio" name="gender" value="Female")
+											input#radio2.form-check-input(type="radio" name="baptismtype" value="Special")
 											| Special
 											span.circle
 												span.check
 								#regular.form-group
 									label.label-control Regular Baptism Date
-									input.datepicker1.form-control(type='date' name='desireddate1')
+									input.datepicker1.form-control(type='date' name='regdesireddate')
 								#special
 									.row
 										.col-md-6
 											.form-group
 												label.label-control Special Baptism Date
-												input.datepicker1.form-control(type='date' name='desireddate1')
+												input.datepicker1.form-control(type='date' name='spcdesireddate')
 										.col-md-6
 											//- .form-group
 											//- 	label.label-control Special Baptism Time
 											//- 	input.timepicker.form-control(type='text' name='desireddate1')
 											.form-group
 												label.label-control Special Baptism Time
-													select.selectpicker.form-control(type="text" name='relation')
+													select.selectpicker.form-control(type="text" name='desiredtime')
 														option 10:00AM
 														option 11:00AM
 														option 1:00PM
@@ -127,26 +127,26 @@ block main
 						.col-md-6.my-3
 							.form-group
 								label.label-control Principal Sponsor
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 						.col-md-6.my-3
 							.form-group
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 					.row
 						.col-md-6.my-3
 							.form-group
 								label.label-control Additional
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 							.form-group
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 							.form-group
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 						.col-md-6.my-2
 							.form-group
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 							.form-group
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 							.form-group
-								input.form-control(type='text')
+								input.form-control(type='text' name='sponsorname')
 
 					.row
 						.col-md-12.my-5.text-center

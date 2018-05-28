@@ -56,6 +56,25 @@ block main
 							.form-group
 								label(for='exampleFormControlTextarea1') Address:
 								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Desired Date
+										input.datepicker2.form-control(type='date' name='desireddate1')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Desired Time
+										input.timepicker.form-control(type='text' name='desiredtime1')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Alternative Date
+										input.datepicker3.form-control(type='date' name='desireddate2')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Alternative Time
+										input.timepicker.form-control(type='text' name='desiredtime2')
+						.col-md-6.my-3
 							.form-group
 								label.label-control Relationship with the Deceased
 									select.selectpicker.form-control(type="text" name='relation')
@@ -68,25 +87,6 @@ block main
 										option Nephew/Niece
 										option BF/GF
 										option Friend
-							.row
-								.col-md-6
-									.form-group
-										label.label-control Desired Date
-										input.datepicker2.form-control(type='date' name='desireddate1')
-								.col-md-6
-									.form-group.mt-1
-										label.label-control Desired Time
-										input.timepicker.form-control(type='text' name='desireddate1')
-							.row
-								.col-md-6
-									.form-group
-										label.label-control Alternative Date
-										input.datepicker3.form-control(type='date' name='desireddate2')
-								.col-md-6
-									.form-group.mt-1
-										label.label-control Alternative Time
-										input.timepicker.form-control(type='text' name='desireddate1')
-						.col-md-6.my-3
 							.form-group
 								label.label-control Cause of Death:
 								input.form-control(type='text' name='details')
