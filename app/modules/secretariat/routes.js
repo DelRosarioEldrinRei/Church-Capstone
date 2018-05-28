@@ -44,17 +44,37 @@ secretariatRouter.get('/appoint/priest', (req, res)=>{
 // E V E N T S //
 //===============================================================================================//
 
-secretariatRouter.get('/events', (req, res)=>{
-    res.render('secretariat/views/event/sacraments')
+secretariatRouter.get('/events/churchevents', (req, res)=>{
+    const query = ` select * from tbl_event`
+    db.query(query,(err,out) =>{
+        res.render('secretariat/views/event/churchevents',{
+            events: out
+		})
+        console.log(out)
+	})
+ 
+
 });
-secretariatRouter.get('/events/sacraments', (req, res)=>{
-    res.render('secretariat/views/event/sacraments')
+ secretariatRouter.get('/events/specialevents', (req, res)=>{
+     res.render('secretariat/views/event/specialevents')
+ });
+ 
+ secretariatRouter.post('/events/specialevents/add', (req, res)=>{
+    const query = `
+    insert into tbl_specialevent(var_specialeventname,date_specialevent,var_location,text_purpose,time_start,char_eventtype)
+    values ("${req.body.eventname}","${req.body.eventdate}","${req.body.location}","${req.body.purpose}","${req.body.time}","${req.body.eventtype}")
+    `
+    console.log(req.body)
+db.query(query, (err, out) => {
+    if(err) console.log(err)
+    console.log(query)
+})     
 });
 
 
-secretariatRouter.get('/events/seminars', (req, res)=>{
-    res.render('secretariat/views/event/seminars')
-});
+// secretariatRouter.get('/events/specialevents', (req, res)=>{
+//     res.render('secretariat/views/event/specialevents')
+// });
 
 
 //===============================================================================================//
@@ -62,10 +82,10 @@ secretariatRouter.get('/events/seminars', (req, res)=>{
 //===============================================================================================//
 
 secretariatRouter.get('/reservation/', (req, res)=>{
-    res.render('secretariat/views/reservation/document')
+    res.render('secretariat/views/reservation/documents')
 });
 secretariatRouter.get('/reservation/document', (req, res)=>{
-    res.render('secretariat/views/reservation/document')
+    res.render('secretariat/views/reservation/documents')
 });
 
 
@@ -76,6 +96,9 @@ secretariatRouter.get('/reservation/events', (req, res)=>{
 
 secretariatRouter.get('/reservation/facilities', (req, res)=>{
     res.render('secretariat/views/reservation/facilities')
+});
+secretariatRouter.get('/reservation/walkin', (req, res)=>{
+    res.render('secretariat/views/reservation/walkin')
 });
 
 //===============================================================================================//

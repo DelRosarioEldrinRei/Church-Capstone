@@ -1,0 +1,67 @@
+extends ../../../../templates/mastersecretary
+
+block prepend main
+	.content
+		.container-fluid
+			.row
+				.col-md-12.my-3
+					table.table.table-hover.table-striped
+							thead
+								tr.text-center
+									th ID
+									th Event Applicant
+									th Event Name
+									th Payment Status
+									th Update
+							tbody
+								tr
+									td 1
+									td Gramar D. Lacsina
+									td SUNTUKAN SA KANTO
+									td Paid
+									td: a(href="#" data-toggle="modal" data-target="#facilities")
+										i.fa.fa-pencil-square-o(aria-hidden='true')
+	script(src="/js/jquery.min.js")
+	script(src="/js/jquery-ui.min.js")
+	script(src="/js/popper.min.js")
+	script(src="/js/moment.min.js")
+	script(src="/js/fullcalendar.min.js")
+	script(src="/js/bootstrap.min.js")
+	script(src="/js/bootstrap-switch.js")
+	script(src="/js/sweetalert2.all.min.js")
+	script(src="/js/bootstrap-notify.js")
+	script(src="/js/light-bootstrap-dashboard.js?v=2.0.1")
+	script(src="/js/perfect-scrollbar.jquery.min.js")
+	script(src="/js/custom.js")
+	script(src="/js/demo.js")
+	script.
+		$(document).ready(function(){
+			$('#view').click(function(){
+				$('#eventApplication').modal('show');
+					$('#confirmButton').css('display', 'block');
+					$('#cancelButton').css('display', 'block');
+					$('#confirmButton').click(function(){
+					$.post('/secretariat/events/specialevents/add',{
+						eventname:$('#eventname').val(),
+						eventdate:$('#eventdate').val(),
+						location:$('#location').val(),
+						time:$('#time').val(),
+						eventtype:$('#eventtype').val(),
+						purpose:$('#purpose').val()})
+							.done(data=>{
+								if(data){
+								swal({
+									title:'Success', 
+									text:`Customer deleted`, 
+									icon:"success"
+									}).then(function(){
+									$('#seminars').modal('hide');
+									location.reload();
+									})
+								}
+							});                        
+					});
+				
+			});
+
+		})

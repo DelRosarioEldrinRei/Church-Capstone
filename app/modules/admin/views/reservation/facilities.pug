@@ -1,5 +1,4 @@
-extends ../../../../templates/mastersecretary
-
+extends ../../../../templates/masteradmin
 block prepend main
 	.content
 		.container-fluid
@@ -17,7 +16,7 @@ block prepend main
 									th Date
 									th Time
 									th Facility
-									th Payment Status
+									th Status
 									th Action
 								tbody
 									tr
@@ -25,7 +24,7 @@ block prepend main
 										td Jan 1, 2018
 										td 10:00am - 12:00pm
 										td 2nd Floor
-										td Paid
+										td Pending Requirements
 										td: a(href="#" data-toggle="modal" data-target="#facilities")
 											i.fa.fa-pencil-square-o(aria-hidden='true')
 		#facilities.modal.fade

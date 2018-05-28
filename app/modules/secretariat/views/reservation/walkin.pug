@@ -1,0 +1,42 @@
+extends ../../../../templates/mastersecretary
+
+block prepend main
+	.content
+		.container-fluid
+			.row
+				.col-md-12
+					.card.strpied-tabled-with-hover
+						.card-header
+							h4.card-title
+								i.nc-icon.nc-grid-45
+								|  Walk-in Transaction
+						.container
+							.row
+								.col-md-12
+									br
+									label.label-control Reservation Code: 
+									input.form-control(type="text" placeholder="Enter Here")
+									br
+				.col-md-12
+					.container 
+						.row
+							.col-md-6
+								label.label-control Full Name: Joshua Rae Macaya
+								.form-group 
+									label.form-check-label Date: January 22,2019
+									br
+									label.form-check-label Time: 9:00 AM - 10:00 AM
+								.form-group
+									label.label-control Payment Status: Paid
+									br
+									label.form-check-label Requirement Status: Not Complete
+							.col-md-6
+								label.label-control List of Requirements:
+								.form-group
+									label.form-check-label Birth Certificate
+									br
+									label.form-check-label Death Certificate
+							
+
+
+

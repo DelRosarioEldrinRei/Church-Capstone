@@ -6,21 +6,39 @@ block main
 			.container
 				.row
 					.col-md-9.main-header__textbox
-						h1.font-italic Wedding
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						h1.font-italic Marriage
+						a(href="/guest/marriage")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
 				.row
 					.col-md-12
 						hr.mt-5.mx-5
-				.row#show
-					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Event Application Form
+				//- .row#show
+				//- 	.col-md-12.my-3
+				//- 		h3.text-center.text-uppercase.guidelines--text Application Form
 				.row
 					.col-md-12.my-3
 						form#form(action="/guest/marriage/form" method="post")
 							input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+							.row.tab
+								.col-md-12
+									h2.main--header.font-italic.text-center Reservation
+									.row
+										.col-md-6.mx-auto.my-auto
+											.form-group
+												label.label-control.text-center Desired Date
+												input.datepicker2.form-control(type='date' name='desireddate1')
+											.row
+												.col-md-3.mx-auto.my-auto
+													.form-group
+														label.label-control.text-center Desired Time
+															select.selectpicker.form-control(type="text" name='relation')
+																option 10:00AM
+																option 11:00AM
+																option 1:00PM
+																option 2:00PM
 							.row.tab
 								.col-md-12
 									h2.main--header.font-italic.text-center Groom
@@ -269,12 +287,15 @@ block main
 									span.step
 									span.step
 									span.step
+									span.step
 
 						.row
-							.col-md-6.my-5.text-right.p-0
-								a#prevBtn.btn-design.m-3(href="#show" onclick='nextPrev(-1)') Previous
-							.col-md-6.my-5.text-left.p-0
-								a#nextBtn.btn-design.m-3(href="#show" onclick='nextPrev(1)') Next
+							.col-md-12.my-5.text-center
+								button#prevBtn.btn.btn-default(type='button' onclick='nextPrev(-1)') Previous
+								button#nextBtn.btn.btn-primary(type='button' onclick='nextPrev(1)') Next
+							//- 	a#prevBtn.btn-design.m-3(href="#show" onclick='nextPrev(-1)') Previous
+							//- .col-md-6.my-5.text-left.p-0
+							//- 	a#nextBtn.btn-design.m-3(href="#show" onclick='nextPrev(1)') Next
 
 
 block addjs

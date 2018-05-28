@@ -95,6 +95,15 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
   color: #212529;
 }
 
+#heading-page > div > div > div > a > p {
+  color: white;
+}
+
+#heading-page > div > div > div > a > p:hover {
+  color: rgb(202, 166, 127);
+  transition: .3s all
+}
+
 .card h3 {
   font-family: 'PT Sans', serif;
   letter-spacing: 6px;
@@ -259,9 +268,9 @@ strong {
   background-color: #d6b872;
 }
 
-.form-control {
+/* .form-control {
   border: 1px solid rgba(141,85,36,0.6) !important;
-}
+} */
 
 /* #sectionsNav > div > div.collapse.navbar-collapse > ul > li > a {
   font-family: "Poppins", sans-serif;

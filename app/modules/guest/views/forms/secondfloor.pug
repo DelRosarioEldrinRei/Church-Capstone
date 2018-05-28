@@ -7,8 +7,9 @@ block main
 				.row
 					.col-md-9.main-header__textbox
 						h1.font-italic Second Floor
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						a(href="/guest/facilities/secondfloor")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -53,7 +54,7 @@ block main
 											i.fa.fa-file(aria-hidden='true')
 				.row
 					.col-md-12.text-center.mb-5
-						a.btn-design.btn-valid(href="#") Submit
+						button.btn.btn-primary.btn-valid Submit
 
 	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
 		.modal-dialog(role='document')

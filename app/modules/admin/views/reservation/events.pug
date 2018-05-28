@@ -1,4 +1,4 @@
-extends ../../../../templates/mastersecretary
+extends ../../../../templates/masteradmin
 
 block prepend main
 	.content
@@ -9,23 +9,23 @@ block prepend main
 						.card-header
 							h4.card-title
 								i.nc-icon.nc-grid-45
-								|  Facility
+								|  Events
 						.card-body.table-full-width.table-responsive
 							table.table.table-hover.table-striped
 								thead
 									th Guest Name
-									th Date
-									th Time
-									th Facility
-									th Payment Status
+									th Event Date
+									th Event Time
+									th Event Type
+									th Status
 									th Action
 								tbody
 									tr
 										td Joshua Rae Macaya
 										td Jan 1, 2018
-										td 10:00am - 12:00pm
-										td 2nd Floor
-										td Paid
+										td 7:00am - 9:00am
+										td Baptism
+										td Pending Requirements
 										td: a(href="#" data-toggle="modal" data-target="#facilities")
 											i.fa.fa-pencil-square-o(aria-hidden='true')
 		#facilities.modal.fade
@@ -39,8 +39,6 @@ block prepend main
 						.row
 							.col-3
 								label.text-muted REQUIREMENTS
-								label.text-muted PURPOSE:
-								textarea(rows='3')
 							.col-9
 								table.table.table-hover.table-striped
 									thead
@@ -57,9 +55,8 @@ block prepend main
 											td Pending
 						.row
 							.col-12
-								br
-								label.text-muted.font-weight-bold FACILITY:
-								| &nbsp; 2nd Floor
+								label.text-muted.font-weight-bold EVENT TYPE:
+								| &nbsp; Baptism
 						.row
 							.col-4
 								label.text-muted.font-weight-bold PAYMENT VALUE:
