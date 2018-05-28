@@ -79,6 +79,10 @@ secretariatRouter.get('/reservation/facilities', (req, res)=>{
 });
 
 //===============================================================================================//
+secretariatRouter.get('/reservation/pending', (req, res)=>{
+    res.render('secretariat/views/pending')
+});
+//===============================================================================================//
 exports.secretariat = secretariatRouter;
 // exports.index = indexRouter;
 // exports.appoint = appointRouter;

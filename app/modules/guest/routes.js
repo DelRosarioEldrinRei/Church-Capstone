@@ -22,7 +22,18 @@ guestRouter.get('/schedule', (req, res)=>{
 // R E S E R V A T I O N //
 //===============================================================================================//
 guestRouter.get('/reservation', (req, res)=>{
-    res.render('guest/views/reservations')
+    var queryString1 =`SELECT * FROM tbl_eventinfo 
+    JOIN tbl_eventapplication ON tbl_eventinfo.int_eventinfoID = tbl_eventapplication.int_eventinfoID 
+    JOIN tbl_event ON tbl_event.int_eventID = tbl_eventinfo.int_eventID 
+    WHERE tbl_eventinfo.int_userID = ?`
+    db.query(queryString1, [req.session.user.int_userID], (err, results, fields) => {
+        if (err) console.log(err);
+        console.log('----------')
+        console.log(results[0]);
+        console.log('----------')
+        return res.render('guest/views/reservations',{ reservations : results });
+    });
+
 });
 
 //===============================================================================================//

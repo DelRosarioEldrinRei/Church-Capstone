@@ -20,39 +20,77 @@ block main
 						table.table
 							thead
 								tr.text-center
-									th.text-center ID
+									th.text-center Reservation ID
 									th Name
 									th Status
 									th Actions
 							tbody
-								tr.text-center
-									td.text-center 1
-									td 2nd Floor
-									td Pending
-									td.td-actions
-										button.btn.btn-sm.btn-success(type='button', rel='tooltip')
-											i.fa.fa-pencil-square-o(aria-hidden='true')
-										button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
-											i.fa.fa-window-close-o(aria-hidden='true')
-								tr.text-center
-									td.text-center 2
-									td 3rd Floor
-									td Pending
-									td.td-actions
-										button.btn.btn-sm.btn-success(type='button', rel='tooltip')
-											i.fa.fa-pencil-square-o(aria-hidden='true')
-										button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
-											i.fa.fa-window-close-o(aria-hidden='true')
-								tr.text-center
-									td.text-center 3
-									td Baptism
-									td Pending
-									td.td-actions
-										button.btn.btn-sm.btn-success(type='button', rel='tooltip')
-											i.fa.fa-pencil-square-o(aria-hidden='true')
-										button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
-											i.fa.fa-window-close-o(aria-hidden='true')
-				//- .row
-				//- 	.col-md-12.my-5.text-right
-				//- 		a.btn-design.mx-2(href="#") Add Student
-				//- 		a.btn-design.btn-valid(href="#") Submit
+								each reservation in reservations
+									tr.text-center
+										td.text-center=reservation.int_eventinfoID
+										td=reservation.var_eventname
+										td=reservation.char_approvalstatus
+										td.td-actions
+											//- button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+											a(href="#" data-toggle="modal" data-target="#appointment")
+												i.fa.fa-pencil-square-o(aria-hidden='true')
+											button.btn.btn-sm.btn-danger(type='button', rel='tooltip')
+												i.fa.fa-window-close-o(aria-hidden='true')
+		#appointment.modal.fade
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header
+						h5#loginModalLabel.modal-title.font-weight-bold.d-inline Available Coordinators and Priest
+						button.close(data-dismiss='modal') ×
+					.modal-body
+						.row
+							.col-3
+								label.text-muted COORDINATORS
+							.col-9
+								table.table.table-hover.table-striped
+									thead
+										th Full name
+										th Status
+										th 
+									tbody
+										tr
+											td Jonalyn Fe Ebrada
+											td
+												select.custom-select
+													option(selected='') Pending
+													option(value='1') One
+													option(value='2') Two
+													option(value='3') Three											
+											td
+												.form-check.pl-0.mr-4.text-right
+													label.form-check-label.p-0
+														| &nbsp;
+														input.form-check-input(type='checkbox' value='')
+														span.form-check-sign
+						.row
+							.col-3
+								label.text-muted PRIESTS
+							.col-9
+								table.table.table-hover.table-striped
+									thead
+										th Full name
+										th Status
+										th 
+									tbody
+										tr
+											td Juan Dela Cruz
+											td
+												select.custom-select
+													option(selected='') Pending
+													option(value='1') One
+													option(value='2') Two
+													option(value='3') Three	
+											td
+												.form-check.pl-0.mr-4.text-right
+													label.form-check-label.p-0
+														| &nbsp;
+														input.form-check-input(type='checkbox' value='')
+														span.form-check-sign
+						.container.d-flex.justify-content-end.m-3
+							button.m-1.btn.btn-primary.btn-fill Update
+							button.m-1.btn.btn-danger.btn-fill Cancel												
