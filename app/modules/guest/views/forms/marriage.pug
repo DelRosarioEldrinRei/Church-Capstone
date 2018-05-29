@@ -24,7 +24,7 @@ block main
 							input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Reservation
+									h1.main--header.font-italic.text-center Reservation
 									.row
 										.col-md-6.mx-auto.my-auto
 											.form-group
@@ -41,7 +41,7 @@ block main
 																option 2:00PM
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Groom
+									h1.main--header.font-italic.text-center Groom
 									.row
 										.col-md-6.my-3
 											.form-group
@@ -168,7 +168,7 @@ block main
 											
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Bride
+									h1.main--header.font-italic.text-center Bride
 								.row
 									.col-md-6.my-3
 										.form-group
@@ -305,7 +305,7 @@ block main
 														| No
 														span.circle
 															span.check
-										h3 For the couple
+										h2.main--header.font-italic For the couple
 										.form-group.m-0
 											label.label-control Living in?
 												.form-check.ml-3
@@ -320,15 +320,15 @@ block main
 														span.circle
 															span.check
 										.form-group
-											label.label-control Were the couple married before? (fix this?)
+											label.label-control Were the couple married before?
 											.ml-4
 												.form-check
 													label.form-check-label
-														input.exampleRadios1.form-check-input(type="radio" name="boolmarried" value="1")
+														input.exampleRadios3.form-check-input(type="radio" name="boolmarried" value="1")
 														.dropdown-toggle.mr-3 Yes
 														span.circle
 															span.check
-													.textarea1.form-group
+													.textarea3.form-group
 														.form-group
 															label.label-control Previous wedding date
 															input.form-control(type='text' name='cprevweddingdate')
@@ -337,14 +337,14 @@ block main
 															input.datepicker2.form-control(type='date' name='cprevweddingplace')
 												.form-check
 													label.form-check-label
-														input.radioup.form-check-input(type="radio" name="boolmarried" value="0" )
+														input.radioup3.form-check-input(type="radio" name="boolmarried" value="0" )
 														| No
 														span.circle
 															span.check
 
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Sponsors
+									h1.main--header.font-italic.text-center Sponsors
 									.row
 										.col-md-6.my-3
 											.form-group
@@ -402,6 +402,14 @@ block addjs
 		});
 		$('.exampleRadios2').click(function() {
 			$('.textarea2').slideDown();
+		});
+
+		$('.textarea3').hide();
+		$('.radioup3').click(function() {
+			$('.textarea3').slideUp();
+		});
+		$('.exampleRadios3').click(function() {
+			$('.textarea3').slideDown();
 		});
 
 		var currentTab = 0; // Current tab is set to be the first tab (0)

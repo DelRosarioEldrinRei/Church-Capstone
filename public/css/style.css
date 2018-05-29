@@ -268,10 +268,12 @@ strong {
   background-color: #d6b872;
 }
 
-/* .form-control {
-  border: 1px solid rgba(141,85,36,0.6) !important;
-} */
+.modal-backdrop {
+  z-index: -1 !important;
+}
 
-/* #sectionsNav > div > div.collapse.navbar-collapse > ul > li > a {
-  font-family: "Poppins", sans-serif;
-} */
+.main-header__modal {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 10px;
+  padding-left: 2.8rem;
+}
