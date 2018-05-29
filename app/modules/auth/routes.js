@@ -105,7 +105,7 @@ loginRouter.route('/')
 logoutRouter.get('/', (req, res) => {
     req.session.destroy(err => {
         if (err) throw err;
-        res.redirect('/login');
+        res.redirect('/index');
     });
 });
 exports.index = indexRouter;
