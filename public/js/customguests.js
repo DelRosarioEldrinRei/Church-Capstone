@@ -163,6 +163,61 @@ $(".slider").slick({
     slideToScroll: 1
 });
 
+// for Birthday
+$('.datepickerBirthday').datetimepicker({
+	format: 'YYYY-MM-DD',
+	maxDate: moment(),
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+// for Regular Baptism Date
+let startDate = moment().add(14, 'days').calendar();
+
+$('.datepickerRegularDesiredDate').datetimepicker({
+	format: 'YYYY-MM-DD',
+	minDate: startDate,
+	daysOfWeekDisabled: [2,3,4,5,6],
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+// for Special Baptism Date
+$('.datepickerSpecialDesiredDate').datetimepicker({
+	format: 'YYYY-MM-DD',
+	minDate: startDate,
+	daysOfWeekDisabled: [0,1],
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
 
 $('.datepicker').datetimepicker({
 		format: 'YYYY-MM-DD',

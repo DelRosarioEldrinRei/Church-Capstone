@@ -49,7 +49,7 @@ block main
 												span.check
 							.form-group
 								label.label-control Birthday
-								input.datepicker.form-control(type='date' name='birthday')
+								input.datepickerBirthday.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Birthplace:
 								input.form-control(type='text' name='birthplace')
@@ -77,13 +77,13 @@ block main
 												span.check
 								#regular.form-group
 									label.label-control Regular Baptism Date
-									input.datepicker1.form-control(type='date' name='regdesireddate')
+									input.datepickerRegularDesiredDate.form-control(type='date' name='regdesireddate')
 								#special
 									.row
 										.col-md-6
 											.form-group
 												label.label-control Special Baptism Date
-												input.datepicker1.form-control(type='date' name='spcdesireddate')
+												input.datepickerSpecialDesiredDate.form-control(type='date' name='spcdesireddate')
 										.col-md-6
 											//- .form-group
 											//- 	label.label-control Special Baptism Time
@@ -155,6 +155,11 @@ block main
 
 block addjs
 	script.
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
+		});
+	
 		$('#textarea1').hide();
 		$('#textarea2').hide();
 		$('#radioup').click(function() {
@@ -181,4 +186,3 @@ block addjs
 			$('#special').slideDown();
 			$('#regular').slideUp();
 		});
-
