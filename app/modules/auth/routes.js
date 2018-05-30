@@ -32,11 +32,11 @@ loginRouter.route('/')
         var db = require('../../lib/database')();
         db.query(`SELECT * FROM tbl_user WHERE var_username="${req.body.user_username}"`, (err, results, fields) => {
             if (err) throw err;
-            if (results.length === 0) return res.redirect('/login?incorrect');
+            if (results.length === 0) return res.redirect('/index?incorrect');
 
             var user = results[0];
             
-            if (user.var_password !== req.body.user_password) return res.redirect('/login?incorrect');
+            if (user.var_password !== req.body.user_password) return res.redirect('/index?incorrect');
             
             if(user.char_usertype == "Admin"){
                 delete user.var_password;

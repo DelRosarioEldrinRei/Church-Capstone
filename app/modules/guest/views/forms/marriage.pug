@@ -305,42 +305,47 @@ block main
 														| No
 														span.circle
 															span.check
-										h2.main--header.font-italic For the couple
-										.form-group.m-0
-											label.label-control Living in?
-												.form-check.ml-3
-													label.form-check-label
-														input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="1")
-														| Yes
-														span.circle
-															span.check
-													label.form-check-label.ml-3
-														input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="0")
-														| No
-														span.circle
-															span.check
-										.form-group
-											label.label-control Were the couple married before?
-											.ml-4
-												.form-check
-													label.form-check-label
-														input.exampleRadios3.form-check-input(type="radio" name="boolmarried" value="1")
-														.dropdown-toggle.mr-3 Yes
-														span.circle
-															span.check
-													.textarea3.form-group
-														.form-group
-															label.label-control Previous wedding date
-															input.form-control(type='text' name='cprevweddingdate')
-														.form-group
-															label.label-control Previous wedding place/parish
-															input.datepicker2.form-control(type='date' name='cprevweddingplace')
-												.form-check
-													label.form-check-label
-														input.radioup3.form-check-input(type="radio" name="boolmarried" value="0" )
-														| No
-														span.circle
-															span.check
+								.col-md-12
+									hr
+									h2.main--header.font-italic.text-center For the couple
+									.row
+										.col-md-3.mx-auto.my-auto
+											//- h2.main--header.font-italic For the couple
+											.form-group.m-0
+												label.label-control Living in?
+													.form-check.ml-3
+														label.form-check-label
+															input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="1")
+															| Yes
+															span.circle
+																span.check
+														label.form-check-label.ml-3
+															input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="0")
+															| No
+															span.circle
+																span.check
+											.form-group
+												label.label-control Were the couple married before?
+												.ml-4
+													.form-check
+														label.form-check-label
+															input.exampleRadios3.form-check-input(type="radio" name="boolmarried" value="1")
+															.dropdown-toggle.mr-3 Yes
+															span.circle
+																span.check
+														.textarea3.form-group
+															.form-group
+																label.label-control Previous wedding date
+																input.form-control(type='text' name='cprevweddingdate')
+															.form-group
+																label.label-control Previous wedding place/parish
+																input.datepicker2.form-control(type='date' name='cprevweddingplace')
+													.form-check
+														label.form-check-label
+															input.radioup3.form-check-input(type="radio" name="boolmarried" value="0" )
+															| No
+															span.circle
+																span.check
 
 							.row.tab
 								.col-md-12
