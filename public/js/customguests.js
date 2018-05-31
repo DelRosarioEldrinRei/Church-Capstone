@@ -164,9 +164,10 @@ $(".slider").slick({
 });
 
 // for Birthday
+let birthdayDate = moment();
 $('.datepickerBirthday').datetimepicker({
 	format: 'YYYY-MM-DD',
-	maxDate: moment(),
+	maxDate: birthdayDate,
 	icons: {
 			time: "fa fa-clock-o",
 			date: "fa fa-calendar",
@@ -182,11 +183,13 @@ $('.datepickerBirthday').datetimepicker({
 
 // for Regular Baptism Date
 let startDate = moment().add(14, 'days').calendar();
+let endDate = moment().add(3, 'months').calendar();
 
 $('.datepickerRegularDesiredDate').datetimepicker({
 	format: 'YYYY-MM-DD',
 	minDate: startDate,
-	daysOfWeekDisabled: [2,3,4,5,6],
+	maxDate: endDate,
+	daysOfWeekDisabled: [1,2,3,4,5,6],
 	icons: {
 			time: "fa fa-clock-o",
 			date: "fa fa-calendar",
@@ -204,6 +207,7 @@ $('.datepickerRegularDesiredDate').datetimepicker({
 $('.datepickerSpecialDesiredDate').datetimepicker({
 	format: 'YYYY-MM-DD',
 	minDate: startDate,
+	maxDate: endDate,
 	daysOfWeekDisabled: [0,1],
 	icons: {
 			time: "fa fa-clock-o",
@@ -217,6 +221,92 @@ $('.datepickerSpecialDesiredDate').datetimepicker({
 			close: 'fa fa-remove',
 	},
 });
+
+
+//for funeral blessing
+let startDatee = moment().add(2, 'days').calendar();
+let endDatee = moment().add(1, 'w').calendar();
+
+$('.datepickerFBlessingDesiredDate').datetimepicker({
+	format: 'YYYY-MM-DD',
+	minDate: startDatee,
+	maxDate: endDatee,
+	daysOfWeekDisabled: [1,2,3,4,5,6],
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+// //for anointing of the sick
+// let blessStartDate = moment().add(2, 'days').calendar();
+// let blessEndDate = moment().add(1, 'w').calendar();
+
+// $('.datepickerAnointDesiredDate').datetimepicker({
+// 	format: 'YYYY-MM-DD',
+// 	minDate: blessStartDate,
+// 	maxDate: blessEndDate,
+// 	// daysOfWeekDisabled: [0,1],
+// 	icons: {
+// 			time: "fa fa-clock-o",
+// 			date: "fa fa-calendar",
+// 			up: "fa fa-chevron-up",
+// 			down: "fa fa-chevron-down",
+// 			previous: 'fa fa-chevron-left',
+// 			next: 'fa fa-chevron-right',
+// 			today: 'fa fa-screenshot',
+// 			clear: 'fa fa-trash',
+// 			close: 'fa fa-remove',
+// 	},
+// });
+
+// $('.datepickerAnointDesiredDate1').datetimepicker({
+// 	format: 'YYYY-MM-DD',
+// 	minDate: blessStartDate,
+// 	maxDate: blessEndDate,
+// 	// daysOfWeekDisabled: [0,1],
+// 	icons: {
+// 			time: "fa fa-clock-o",
+// 			date: "fa fa-calendar",
+// 			up: "fa fa-chevron-up",
+// 			down: "fa fa-chevron-down",
+// 			previous: 'fa fa-chevron-left',
+// 			next: 'fa fa-chevron-right',
+// 			today: 'fa fa-screenshot',
+// 			clear: 'fa fa-trash',
+// 			close: 'fa fa-remove',
+// 	},
+// });
+
+// //for establishment blessing desired date
+// let estBlessStartDate = moment().add(1, 'w').calendar();
+// let estBlessEndDate = moment().add(1, 'm').calendar();
+
+// $('.datepickerEstBlessingDesiredDate').datetimepicker({
+// 	format: 'YYYY-MM-DD',
+// 	minDate: estBlessStartDate,
+// 	maxDate: estBlessEndDate,
+// 	daysOfWeekDisabled: [0,1],
+// 	icons: {
+// 			time: "fa fa-clock-o",
+// 			date: "fa fa-calendar",
+// 			up: "fa fa-chevron-up",
+// 			down: "fa fa-chevron-down",
+// 			previous: 'fa fa-chevron-left',
+// 			next: 'fa fa-chevron-right',
+// 			today: 'fa fa-screenshot',
+// 			clear: 'fa fa-trash',
+// 			close: 'fa fa-remove',
+// 	},
+// });
+
 
 
 $('.datepicker').datetimepicker({
