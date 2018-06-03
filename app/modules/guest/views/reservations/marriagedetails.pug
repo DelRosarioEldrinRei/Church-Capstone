@@ -1,0 +1,411 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Marriage
+						a(href="/guest/reservation")
+							p.text-uppercase.card-desc
+								| Reservation
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				//- .row#show
+				//- 	.col-md-12.my-3
+				//- 		h3.text-center.text-uppercase.guidelines--text Application Form
+				.row
+					.col-md-12.my-3
+								//- each detail in details
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					.col-md-12
+						h1.main--header.font-italic.text-center Reservation 
+						.row
+							.col-md-6.mx-auto.my-auto
+								.form-group
+									label.label-control Desired date:
+									input.form-control(type='text' name='desireddate' value= `${moredetails.date_desireddate}`)
+								.row
+									.col-md-3.mx-auto.my-auto
+										.form-group
+											label.label-control Desired time:
+											input.form-control(type='text' name='desireddate' value= `${moredetails.time_desiredtime}`)
+
+					.col-md-12
+						hr
+						h1.main--header.font-italic.text-center Groom
+						.row
+							.col-md-6.my-3
+								.form-group
+									label.label-control Full name:
+									input.form-control(type='text' name='gfullname' value=`${moredetails.var_lname}`+', '+`${moredetails.var_fname}`+ ' '+`${moredetails.var_mname}`)
+								.form-group
+									label.label-control Birthday
+									input.datepicker2.form-control(type='text' name='birthday' value = `${moredetails.date_birthday}`)
+								.form-group
+									label.label-control Birthplace:
+									input.form-control(type='text' name='birthplace'  value = `${moredetails.var_birthplace}`)
+								.form-group
+									label.label-control Address:
+									input.form-control(type='text' name='birthplace'  value = `${moredetails.var_address}`)
+								.form-group
+									label.label-control Nationality:
+									input.form-control(type='text' name='nationality' value = `${moredetails.var_gnationality}`)
+								.row
+									.col-md-6
+										.form-group
+											label.label-control Civil Status:
+											input.form-control(type='text' name='gcivilstatus' value = `${moredetails.var_gcivilstatus}`)
+									.col-md-6
+										.form-group
+											label.label-control Religion:
+											input.form-control(type='text' name='Religion' value = `${moredetails.var_greligion}`)
+								.form-group
+									label.label-control Current parish:
+									input.form-control(type='text' name='gcurrentparish' value = `${moredetails.var_gcurrparish}`)
+								.form-group
+									label.label-control Occupation:
+									input.form-control(type='text' name='goccupation' value = `${moredetails.var_goccupation}`)
+							.col-md-6.my-3
+								.form-group
+									label.label-control Father's name:
+									input.form-control(type='text' name='gfathername' value = `${moredetails.var_gfathername}`)
+								.form-group
+									label.label-control Father's birthplace:
+									input.form-control(type='text' name='gfatherbplace' value = `${moredetails.var_gfatherbplace}`)
+								.form-group
+									label.label-control Father religion:
+									input.form-control(type='text' name='fatherreligion' value = `${moredetails.var_gfatherreligion}`)
+								.form-group
+									label.label-control Mother's name:
+									input.form-control(type='text' name='gmothername' value = `${moredetails.var_gmothername}`)
+								.form-group
+									label.label-control Mother's birthplace:
+									input.form-control(type='text' name='gmotherbplace' value = `${moredetails.var_gmotherbplace}`)
+								.form-group
+									label.label-control Mother Religion:
+									input.form-control(type='text' name='motherreligion' value = `${moredetails.var_gmotherreligion}`)
+							- if (`${moredetails.bool_gbaptized}` =='1'){
+								.form-check
+									label.form-check-label
+									input#groombaptized.form-check-input(type="radio" name="gbaptized" value="gbaptized" checked)
+									.dropdown-toggle.mr-3 The groom is baptized
+									span.circle
+										span.check
+
+									#groombaptized.form-group
+										.form-group
+											label.label-control Parish where you were baptized:
+											input.form-control(type='text' name='gbapplace' value =`${moredetails.var_gbapplace}`)
+										.form-group
+											label.label-control Date when you were baptized:
+											input.datepicker2.form-control(type='text' name='gbapdate' value =`${moredetails.date_gbapdate}`)
+											- } 
+							- if(`${moredetails.bool_gbaptized}` =='0')	{	
+								.form-check
+									label.form-check-label
+										input.radioup.form-check-input(type="radio" name="gbaptized" value="0" )
+										| The groom isn't baptized
+										span.circle
+											span.check
+							- 	}
+
+							- if (`${moredetails.bool_gconfirmed}` =='1'){
+								.form-check
+									label.form-check-label
+									input#groombaptized.form-check-input(type="radio" name="gconfirmed" value="gbaptized" checked)
+									.dropdown-toggle.mr-3 The groom is confirmed
+									span.circle
+										span.check
+
+									#groomconfirmed.form-group
+										.form-group
+											label.label-control Parish where you were confirmed:
+											input.form-control(type='text' name='gconplace' value =`${moredetails.var_gconplace}`)
+										.form-group
+											label.label-control Date when you were confirmed:
+											input.datepicker2.form-control(type='text' name='gcondate' value =`${moredetails.date_gcondate}`)
+											- } 
+							- if(`${moredetails.bool_gconfired}` =='0')	{	
+								.form-check
+									label.form-check-label
+										input.radioup.form-check-input(type="radio" name="gconfirmed" value="0" )
+										| The groom isn't confirmed
+										span.circle
+											span.check
+							- 	}
+
+								
+
+					.col-md-12
+						hr
+						h1.main--header.font-italic.text-center Bride
+						.row
+							.col-md-6.my-3
+								.form-group
+									label.label-control Full name:
+									input.form-control(type='text' name='gfullname' value=`${moredetails.var_blname}`+', '+`${moredetails.var_bfname}`+ ' '+`${moredetails.var_bmname}`)
+								.form-group
+									label.label-control Birthday
+									input.datepicker2.form-control(type='text' name='birthday' value = `${moredetails.date_bbirthday}`)
+								.form-group
+									label.label-control Birthplace:
+									input.form-control(type='text' name='birthplace'  value = `${moredetails.var_bbirthplace}`)
+								.form-group
+									label.label-control Address:
+									input.form-control(type='text' name='birthplace'  value = `${moredetails.var_baddress}`)
+								.form-group
+									label.label-control Nationality:
+									input.form-control(type='text' name='nationality' value = `${moredetails.var_bnationality}`)
+								.row
+									.col-md-6
+										.form-group
+											label.label-control Civil Status:
+											input.form-control(type='text' name='gcivilstatus' value = `${moredetails.var_bcivilstatus}`)
+									.col-md-6
+										.form-group
+											label.label-control Religion:
+											input.form-control(type='text' name='Religion' value = `${moredetails.var_breligion}`)
+								.form-group
+									label.label-control Current parish:
+									input.form-control(type='text' name='gcurrentparish' value = `${moredetails.var_bcurrparish}`)
+								.form-group
+									label.label-control Occupation:
+									input.form-control(type='text' name='goccupation' value = `${moredetails.var_boccupation}`)
+							.col-md-6.my-3
+								.form-group
+									label.label-control Father's name:
+									input.form-control(type='text' name='gfathername' value = `${moredetails.var_bfathername}`)
+								.form-group
+									label.label-control Father's birthplace:
+									input.form-control(type='text' name='gfatherbplace' value = `${moredetails.var_bfatherbplace}`)
+								.form-group
+									label.label-control Father religion:
+									input.form-control(type='text' name='fatherreligion' value = `${moredetails.var_bfatherreligion}`)
+								.form-group
+									label.label-control Mother's name:
+									input.form-control(type='text' name='gmothername' value = `${moredetails.var_bmothername}`)
+								.form-group
+									label.label-control Mother's birthplace:
+									input.form-control(type='text' name='gmotherbplace' value = `${moredetails.var_bmotherbplace}`)
+								.form-group
+									label.label-control Mother Religion:
+									input.form-control(type='text' name='motherreligion' value = `${moredetails.var_bmotherreligion}`)
+							- if (`${moredetails.bool_bbaptized}` =='1'){
+								.form-check
+									label.form-check-label
+									input#groombaptized.form-check-input(type="radio" name="bbaptized" value="gbaptized" checked)
+									.dropdown-toggle.mr-3 The groom is baptized
+									span.circle
+										span.check
+
+									#groombaptized.form-group
+										.form-group
+											label.label-control Parish where you were baptized:
+											input.form-control(type='text' name='gbapplace' value =`${moredetails.var_bbapplace}`)
+										.form-group
+											label.label-control Date when you were baptized:
+											input.datepicker2.form-control(type='text' name='gbapdate' value =`${moredetails.date_bbapdate}`)
+											- } 
+							- if(`${moredetails.bool_bbaptized}` =='0')	{	
+								.form-check
+									label.form-check-label
+										input.radioup.form-check-input(type="radio" name="gbaptized" value="0" )
+										| The groom isn't baptized
+										span.circle
+											span.check
+							- 	}
+
+							- if (`${moredetails.bool_bconfirmed}` =='1'){
+								.form-check
+									label.form-check-label
+									input#groombaptized.form-check-input(type="radio" name="bconfirmed" value="gbaptized" checked)
+									.dropdown-toggle.mr-3 The groom is confirmed
+									span.circle
+										span.check
+
+									#groomconfirmed.form-group
+										.form-group
+											label.label-control Parish where you were confirmed:
+											input.form-control(type='text' name='bconplace' value =`${moredetails.var_bconplace}`)
+										.form-group
+											label.label-control Date when you were confirmed:
+											input.datepicker2.form-control(type='text' name='bcondate' value =`${moredetails.date_bcondate}`)
+											- } 
+							- if(`${moredetails.bool_gconfired}` =='0')	{	
+								.form-check
+									label.form-check-label
+										input.radioup.form-check-input(type="radio" name="bconfirmed" value="0" )
+										| The groom isn't confirmed
+										span.circle
+											span.check
+							- 	}
+
+								
+
+					.col-md-12
+						hr
+						h2.main--header.font-italic.text-center For the couple
+						.row
+							.col-md-3.mx-auto.my-auto
+								//- h2.main--header.font-italic For the couple
+								.form-group.m-0
+									label.label-control Living in?
+										.form-check.ml-3
+											label.form-check-label
+												input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="1")
+												| Yes
+												span.circle
+													span.check
+											label.form-check-label.ml-3
+												input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="0")
+												| No
+												span.circle
+													span.check
+								.form-group
+									label.label-control Were the couple married before?
+									.ml-4
+										.form-check
+											label.form-check-label
+												input.exampleRadios3.form-check-input(type="radio" name="boolmarried" value="1")
+												.dropdown-toggle.mr-3 Yes
+												span.circle
+													span.check
+											.textarea3.form-group
+												.form-group
+													label.label-control Previous wedding date
+													input.form-control(type='text' name='cprevweddingdate')
+												.form-group
+													label.label-control Previous wedding place/parish
+													input.datepicker2.form-control(type='text' name='cprevweddingplace')
+										.form-check
+											label.form-check-label
+												input.radioup3.form-check-input(type="radio" name="boolmarried" value="0" )
+												| No
+												span.circle
+													span.check
+
+
+					.col-md-12
+						h1.main--header.font-italic.text-center Sponsors
+						.row
+							.col-md-6.my-3
+								.form-group
+									label.label-control Principal Sponsor
+									input.form-control(type='text' name='sponsorname')
+							.col-md-6.my-3
+								.form-group
+									input.form-control(type='text' name='sponsorname')
+						.row
+							.col-md-6.my-3
+								.form-group
+									label.label-control Additional
+									input.form-control(type='text' name='sponsorname')
+								.form-group
+									input.form-control(type='text' name='sponsorname')
+								.form-group
+									input.form-control(type='text' name='sponsorname')
+							.col-md-6.my-2
+								.form-group
+									input.form-control(type='text' name='sponsorname')
+								.form-group
+									input.form-control(type='text' name='sponsorname')
+								.form-group
+									input.form-control(type='text' name='sponsorname')
+						.row
+							.col-md-12.my-2.text-center
+								div(style='text-align:center;margin-top:40px;')
+									span.step
+									span.step
+									span.step
+									span.step
+
+						.row
+							.col-md-12.my-5.text-center
+								button#prevBtn.btn.btn-default(type='button' onclick='nextPrev(-1)') Previous
+								button#nextBtn.btn.btn-primary(type='button' onclick='nextPrev(1)') Next
+							//- 	a#prevBtn.btn-design.m-3(href="#show" onclick='nextPrev(-1)') Previous
+							//- .col-md-6.my-5.text-left.p-0
+							//- 	a#nextBtn.btn-design.m-3(href="#show" onclick='nextPrev(1)') Next
+
+
+block addjs
+	script.
+		$('.textarea1').hide();
+		$('.radioup').click(function() {
+			$('.textarea1').slideUp();
+		});
+		$('.exampleRadios1').click(function() {
+			$('.textarea1').slideDown();
+		});
+
+		$('.textarea2').hide();
+		$('.radioup2').click(function() {
+			$('.textarea2').slideUp();
+		});
+		$('.exampleRadios2').click(function() {
+			$('.textarea2').slideDown();
+		});
+
+		$('.textarea3').hide();
+		$('.radioup3').click(function() {
+			$('.textarea3').slideUp();
+		});
+		$('.exampleRadios3').click(function() {
+			$('.textarea3').slideDown();
+		});
+
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+
+		function showTab(n) {
+			// This function will display the specified tab of the form ...
+			var x = document.getElementsByClassName("tab");
+			x[n].style.display = "block";
+			// ... and fix the Previous/Next buttons:
+			if (n == 0) {
+				document.getElementById("prevBtn").style.display = "none";
+			} else {
+				document.getElementById("prevBtn").style.display = "inline";
+			}
+			if (n == (x.length - 1)) {
+				document.getElementById("nextBtn").innerHTML = "Submit";
+			} else {
+				document.getElementById("nextBtn").innerHTML = "Next";
+			}
+			// ... and run a function that displays the correct step indicator:
+			fixStepIndicator(n)
+		}
+
+		function nextPrev(n) {
+			// This function will figure out which tab to display
+			var x = document.getElementsByClassName("tab");
+			// Exit the function if any field in the current tab is invalid:
+			//- if (n == 1 && !validateForm()) return false;
+			// Hide the current tab:
+			x[currentTab].style.display = "none";
+			// Increase or decrease the current tab by 1:
+			currentTab = currentTab + n;
+			// if you have reached the end of the form... :
+			if (currentTab >= x.length) {
+				//...the form gets submitted:
+				document.getElementById("form").submit();
+				return false;
+			}
+			// Otherwise, display the correct tab:
+			showTab(currentTab);
+		}
+
+		function fixStepIndicator(n) {
+			// This function removes the "active" class of all steps...
+			var i, x = document.getElementsByClassName("step");
+			for (i = 0; i < x.length; i++) {
+				x[i].className = x[i].className.replace(" active", "");
+			}
+			//... and adds the "active" class to the current step:
+			x[n].className += " active";
+		}

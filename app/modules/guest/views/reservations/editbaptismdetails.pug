@@ -1,0 +1,188 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Baptism
+						a(href="/guest/baptism")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Application Form
+				form(action="/guest/baptism/form" method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Name of the child:
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='lastname')
+									.col-md-4.p-0
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='firstname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='middlename')
+							.form-group.m-0
+								label.label-control Gender:
+									.form-check.ml-3
+										label.form-check-label
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Male")
+											| Male
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
+											| Female
+											span.circle
+												span.check
+							.form-group
+								label.label-control Birthday
+								input.datepickerBirthday.form-control(type='date' name='birthday')
+							.form-group
+								label.label-control Birthplace:
+								input.form-control(type='text' name='birthplace')
+							.form-group
+								label(for='exampleFormControlTextarea1') Family address:
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+							.form-group
+								label.label-control Relationship with the child
+									select.selectpicker.form-control(type="text" name='relation')
+										option Parent
+										option Grandparent
+										option Aunt/Uncle
+							.form-group.m-0
+								label.label-control Baptism Type & Date:
+									.form-check.ml-3.mt-3
+										label.form-check-label
+											input#radio1.form-check-input(type="radio" name="baptismtype" value="Regular")
+											| Regular
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input#radio2.form-check-input(type="radio" name="baptismtype" value="Special")
+											| Special
+											span.circle
+												span.check
+								#regular.form-group
+									label.label-control Regular Baptism Date
+									input.datepickerRegularDesiredDate.form-control(type='date' name='regdesireddate')
+								#special
+									.row
+										.col-md-6
+											.form-group
+												label.label-control Special Baptism Date
+												input.datepickerSpecialDesiredDate.form-control(type='date' name='spcdesireddate')
+										.col-md-6
+											//- .form-group
+											//- 	label.label-control Special Baptism Time
+											//- 	input.timepicker.form-control(type='text' name='desireddate1')
+											.form-group
+												label.label-control Special Baptism Time
+													select.selectpicker.form-control(type="text" name='desiredtime')
+														option 10:00AM
+														option 11:00AM
+														option 1:00PM
+														option 2:00PM
+						.col-md-6.my-3
+							.form-group
+								label.label-control Mother's full name:
+								input.form-control(type='text' name='mothername')
+							.form-group
+								label.label-control Mother's birthplace:
+								input.form-control(type='text' name='motherbirthplace')
+							.form-group
+								label.label-control Father's full name:
+								input.form-control(type='text' name='fathername')
+							.form-group
+								label.label-control Father's birthplace:
+								input.form-control(type='text' name='fatherbirthplace')
+							.form-group
+								label(for='exampleFormControlTextarea1') Parent's marriage address:
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='marriageaddress')
+							.form-group
+								label.label-control Contact number
+								input#datepicker.form-control(type='text' name='contactnumber')
+							.form-group.form-file-upload.form-file-multiple
+								input.inputFileHidden(type='file', multiple='')
+								.input-group
+									input.form-control.inputFileVisible(type='text', placeholder='Multiple Files', multiple='')
+									span.input-group-btn
+										button.btn.btn-fab.btn-round.btn-info(type='button')
+											i.material-icons layers
+
+							
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Principal Sponsor
+								input.form-control(type='text' name='sponsorname')
+						.col-md-6.my-3
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Additional
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+						.col-md-6.my-2
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+
+					.row
+						.col-md-12.my-5.text-center
+							//- a.btn-design.mx-2(href="#") Submit
+							button.btn.btn-primary(type='submit') Submit
+
+block addjs
+	script.
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
+		});
+	
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
+		
+		$('#regular').hide();
+		$('#special').hide();
+
+		$('#radio1').click(function() {
+			$('#regular').slideDown();
+			$('#special').slideUp();
+		});
+		$('#radio2').click(function() {
+			$('#special').slideDown();
+			$('#regular').slideUp();
+		});

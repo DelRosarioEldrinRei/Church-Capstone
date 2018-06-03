@@ -1,0 +1,151 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Funeral Mass
+						a(href="/guest/funeral")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Request Form
+				form(action="/guest/funeral/form" method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Name of the deceased:
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='lastname')
+									.col-md-4.p-0
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='firstname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='middlename')
+							.form-group.m-0
+								label.label-control Gender:
+									.form-check.ml-3
+										label.form-check-label
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Male")
+											| Male
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
+											| Female
+											span.circle
+												span.check
+							.form-group
+								label.label-control Birthday
+								input.datepicker.form-control(type='date' name='birthday')
+							.form-group
+								label.label-control Birthplace:
+								input.form-control(type='text' name='birthplace')
+							.form-group
+								label(for='exampleFormControlTextarea1') Address:
+								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Desired Date
+										input.datepickerFBlessingDesiredDate.form-control(type='date' name='desireddate1')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Desired Time
+										input.timepicker.form-control(type='text' name='desiredtime1')
+							.row
+								.col-md-6
+									.form-group
+										label.label-control Alternative Date
+										input.datepicker3.form-control(type='date' name='desireddate2')
+								.col-md-6
+									.form-group.mt-1
+										label.label-control Alternative Time
+										input.timepicker.form-control(type='text' name='desiredtime2')
+						.col-md-6.my-3
+							.form-group
+								label.label-control Relationship with the Deceased
+									select.selectpicker.form-control(type="text" name='relation')
+										option Spouse
+										option Parent
+										option Child
+										option Grandparent
+										option Grandchild
+										option Aunt/Uncle
+										option Nephew/Niece
+										option BF/GF
+										option Friend
+							.form-group
+								label.label-control Cause of Death:
+								input.form-control(type='text' name='details')
+							.form-group
+								label.label-control Place where the will happen:
+								.ml-4
+									.form-check
+										label.form-check-label
+											input.form-check-input(type="radio" name="venue" id="exampleRadios1" value="sameaddress" checked)
+											| Same as his/her address
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input#radioup.form-check-input(type="radio" name="venue" value="INLPP")
+											| INLPP
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input#exampleRadios3.form-check-input(type="radio" name="venue" value="other")
+											.dropdown-toggle.mr-3 Other
+											span.circle
+												span.check
+										#textarea2.form-group
+											textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
+									
+							label.label-control FILE UPLOAD
+							.form-group.form-file-upload.form-file-multiple.p-0
+								input.inputFileHidden(type='file', multiple='')
+								.input-group
+									input.form-control.inputFileVisible(type='text', placeholder='Birth Certificate')
+									span.input-group-btn
+										button.btn.btn-fab.btn-round.btn-primary(type='button')
+											i.fa.fa-file(aria-hidden='true')
+							.form-group.form-file-upload.form-file-multiple.p-0
+								input.inputFileHidden(type='file', multiple='')
+								.input-group
+									input.form-control.inputFileVisible(type='text', placeholder='Death Certificate')
+									span.input-group-btn
+										button.btn.btn-fab.btn-round.btn-primary(type='button')
+											i.fa.fa-file(aria-hidden='true')
+					.row
+						.col-md-12.my-5.text-center
+							button.btn.btn-primary(type='submit') Submit
+
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});

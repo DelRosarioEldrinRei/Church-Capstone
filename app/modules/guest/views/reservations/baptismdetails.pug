@@ -1,0 +1,131 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Baptism
+						a(href="/guest/reservation")
+							p.text-uppercase.card-desc
+								| Reservations
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Application Form
+				form(action="/guest/baptism/form" method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Fullname:
+								input.form-control(type='text' name='fullname' value=`${moredetails.var_lname}`+', '+`${moredetails.var_fname}`+ ' '+`${moredetails.var_mname}`)
+							.form-group
+								label.label-control Gender:
+								input.form-control(type='text' name='gender' value= `${moredetails.char_gender}`)
+							.form-group
+								label.label-control Birthday
+								input.form-control(type='text' name='birthday' value= `${moredetails.date_birthday}`)
+							.form-group
+								label.label-control Birthplace:
+								input.form-control(type='text' name='birthplace' value= `${moredetails.var_birthplace}`)
+							.form-group
+								label.label-control Familiy Address:
+								input.form-control(type='text' name='Family Address' value= `${moredetails.var_address}`)
+							.form-group
+								label.label-control Relationship with the child:
+								input.form-control(type='text' name='relation' value= `${moredetails.var_relation}`)
+							.form-group
+								label.label-control Baptism type:
+								input.form-control(type='text' name='baptismtype' value= `${moredetails.char_baptismtype}`)
+							.form-group
+								label.label-control Desired schedule:
+								input.form-control(type='text' name='schedule' value= `${moredetails.date_desireddate}`)
+						.col-md-6.my-3
+							.form-group
+								label.label-control Mother's full name:
+								input.form-control(type='text' name='mothername' value= `${moredetails.var_mothername}`)
+							.form-group
+								label.label-control Mother's birthplace:
+								input.form-control(type='text' name='motherbirthplace' value= `${moredetails.var_motherbplace}`)
+							.form-group
+								label.label-control Father's full name:
+								input.form-control(type='text' name='fathername' value= `${moredetails.var_fathername}`)
+							.form-group
+								label.label-control Father's birthplace:
+								input.form-control(type='text' name='fatherbirthplace' value= `${moredetails.var_fatherbplace}`)
+							.form-group
+								label.label-control Parents' Marriage Address:
+								input.form-control(type='text' name='birthplace' value= `${moredetails.var_parentmarriageadd}`)
+							.form-group
+								label.label-control Contact number
+								input#datepicker.form-control(type='text' name='contactnumber' value= `${moredetails.var_contactnum}`)
+	
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Principal Sponsor
+								input.form-control(type='text' name='sponsorname')
+						.col-md-6.my-3
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Additional
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+						.col-md-6.my-2
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+							.form-group
+								input.form-control(type='text' name='sponsorname')
+
+					.row
+						.col-md-12.my-5.text-center
+							//- a.btn-design.mx-2(href="#") Submit
+							button.btn.btn-primary(type='submit') Submit
+
+block addjs
+	script.
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
+		});
+	
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
+		
+		$('#regular').hide();
+		$('#special').hide();
+
+		$('#radio1').click(function() {
+			$('#regular').slideDown();
+			$('#special').slideUp();
+		});
+		$('#radio2').click(function() {
+			$('#special').slideDown();
+			$('#regular').slideUp();
+		});

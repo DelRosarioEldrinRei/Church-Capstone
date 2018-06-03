@@ -1,0 +1,127 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Anointing of the sick
+						a(href="/guest/anointing")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Request Form
+				form(action=`/guest/reservation/${details.int_eventinfoID}/edit` method="post")
+					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+					input.form-control(type='hidden' name='eventname' value=`${details.var_eventname }`)
+					.row
+						.col-md-6.my-3
+							.form-group
+								label.label-control Name of the sick:
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text'  name='lastname' value= `${moredetails.var_lname}`)
+									.col-md-4.p-0
+										.form-group.p-0
+											input.form-control(type='text' name='firstname' value= `${moredetails.var_fname}`)
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' name='middlename' value= `${moredetails.var_mname}`)
+							.form-group.m-0
+								label.label-control Gender:
+									.form-check.ml-3
+										label.form-check-label
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Male")
+											| Male
+											span.circle
+												span.check
+										label.form-check-label.ml-3
+											input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
+											| Female
+											span.circle
+												span.check
+							.form-group
+								label.label-control Birthday
+								input.datepicker.form-control(type='date' name='birthday' value= `${moredetails.date_birthday}`)
+							.form-group
+								label.label-control Birthplace:
+								input.form-control(type='text' name='birthplace' value= `${moredetails.var_birthplace}`)
+							.form-group
+								label.label-control Address:
+								input.form-control(type='text' name='address' value= `${moredetails.var_address}`)
+							
+						.col-md-6.my-3
+							.form-group
+								label.label-control Relationship with the Sick
+									select.selectpicker.form-control(type="text" name='relation' value= `${moredetails.var_relation}`)
+										option Spouse
+										option Parent
+										option Child
+										option Grandparent
+										option Grandchild
+										option Aunt/Uncle
+										option Nephew/Niece
+										option BF/GF
+										option Friend
+							.form-group
+								label.label-control Place where the blessing will happen:
+								.ml-4
+									.form-check
+										label.form-check-label
+											input#radioup.form-check-input(type="radio" name="venue" value="sameaddress" checked)
+											| Same as his/her address
+											span.circle
+												span.check
+									.form-check
+										label.form-check-label
+											input#exampleRadios1.form-check-input(type="radio" name="venue" value="hospital")
+											.dropdown-toggle.mr-3 Hospital/Center
+											span.circle
+												span.check
+										#textarea1.form-group
+											textarea.form-control(placeholder="Please enter the room number, the hospital name & address" rows="3" name='hospitalname')
+									.form-check
+										label.form-check-label
+											input#exampleRadios3.form-check-input(type="radio" name="venue" value="other")
+											.dropdown-toggle.mr-3 Other
+											span.circle
+												span.check
+										#textarea2.form-group
+											textarea.form-control(placeholder="Please enter complete address" rows="2" name='othervenue')
+							.form-group
+								label.label-control Address:
+								input.form-control(type='text' name='details' value= `${moredetails.var_blessingdetails}`)
+							
+					.row
+						.col-md-12.my-5.text-center
+							button.btn.btn-primary(type='submit') Submit
+							//- a.btn-design.btn-valid(href="/guest/events") Cancel
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
+		
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
+		});

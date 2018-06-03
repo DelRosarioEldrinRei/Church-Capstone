@@ -1,5 +1,6 @@
 var express = require('express');
 var guestRouter = express.Router();
+var moment = require('moment');
 var authMiddleware = require('../auth/middlewares/auth');
 var db = require('../../lib/database')();
 
@@ -32,12 +33,291 @@ guestRouter.get('/reservation', (req, res)=>{
     WHERE tbl_eventinfo.int_userID = ?`
     db.query(queryString1, [req.session.user.int_userID], (err, results, fields) => {
         if (err) console.log(err);
-        console.log('----------')
-        console.log(results[0]);
-        console.log('----------')
-        return res.render('guest/views/reservations',{ reservations : results });
+       
+        return res.render('guest/views/reservations/reservations',{ reservations : results });
     });
 
+});
+
+guestRouter.get('/reservation/:int_eventinfoID', (req, res)=>{
+    var queryString1 =`SELECT * FROM tbl_eventinfo 
+    JOIN tbl_eventapplication ON tbl_eventinfo.int_eventinfoID = tbl_eventapplication.int_eventinfoID 
+    JOIN tbl_event ON tbl_event.int_eventID = tbl_eventinfo.int_eventID  
+    WHERE tbl_eventinfo.int_eventinfoID = ${req.params.int_eventinfoID}`
+    db.query(queryString1, (err, results, fields) => {
+        if (err) console.log(err);
+        var details = results[0];
+        
+
+        if(details.var_eventname == 'Anointing of the sick' || details.var_eventname == 'Funeral Service' || details.var_eventname =='Funeral Mass'){
+            var queryString2 =`SELECT * from tbl_relation 
+            join tbl_blessing on tbl_relation.int_eventinfoID = tbl_blessing.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString2, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];
+                console.log(details, moredetails)
+                var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var desireddate1= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
+                var desireddate2= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                var desiredtime1= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
+                var desiredtime2= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=bday;
+                moredetails.date_desireddate1=desireddate1;
+                moredetails.date_desireddate2=desireddate2;
+                moredetails.time_desiredtime1=desiredtime1;
+                moredetails.time_desiredtime2=desiredtime2;
+                res.render('guest/views/reservations/anointingdetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });
+        }
+        
+        if(details.var_eventname == 'Establishment Blessing'){
+            var queryString4 =`select * from tbl_houseblessing where int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString4, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];
+                console.log(details, moredetails)
+                var desireddate3= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
+                var desireddate4= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                var desiredtime3= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
+                var desiredtime4= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_desireddate1=desireddate3;
+                moredetails.date_desireddate2=desireddate4;
+                moredetails.time_desiredtime1=desiredtime3;
+                moredetails.time_desiredtime2=desiredtime4;
+                res.render('guest/views/reservations/establishmentdetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });
+        }
+		// ey fix this
+        if(details.var_eventname == 'Baptism' || details.var_eventname =='Confirmation' || details.var_eventname == 'RCIA'){
+            var queryString3 =`SELECT * from tbl_relation 
+            join tbl_baptism on tbl_relation.int_eventinfoID = tbl_baptism.int_eventinfoID
+            join tbl_sponsors on tbl_relation.int_eventinfoID = tbl_sponsors.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+
+            db.query(queryString3, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];                
+                var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var desireddate= moment(moredetails.date_desireddate).format('YYYY-MM-DD');   
+                var desiredtime= moment(moredetails.time_desiredtime, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=bday;
+                moredetails.date_desireddate=desireddate;
+                moredetails.time_desiredtime=desiredtime;
+                console.log(details, moredetails)
+                res.render('guest/views/reservations/baptismdetails',{ details : details, moredetails:moredetails, user: req.session.user});                
+            });
+
+				}
+				
+        if(details.var_eventname == 'Marriage'){
+            var queryString3 =`SELECT * from tbl_relation 
+            join tbl_wedgroom on tbl_relation.int_eventinfoID = tbl_wedgroom.int_eventinfoID
+            join tbl_wedbride on tbl_relation.int_eventinfoID = tbl_wedbride.int_eventinfoID
+            join tbl_wedcouple on tbl_relation.int_eventinfoID = tbl_wedcouple.int_eventinfoID
+            join tbl_sponsors on tbl_relation.int_eventinfoID = tbl_sponsors.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString3, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];                
+                var groombday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var bridebday = moment(moredetails.date_bbirthday).format('YYYY-MM-DD');
+                var groombapdate = moment(moredetails.date_gbapdate).format('YYYY-MM-DD');
+                var groomcondate = moment(moredetails.date_gcondate).format('YYYY-MM-DD');
+                var bridebapdate = moment(moredetails.date_bbapdate).format('YYYY-MM-DD');
+                var bridecondate = moment(moredetails.date_bcondate).format('YYYY-MM-DD');
+                var desireddate= moment(moredetails.date_desireddate).format('YYYY-MM-DD');   
+                var desiredtime= moment(moredetails.time_desiredtime, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=groombday;
+                moredetails.date_bbirthday=bridebday;
+                moredetails.date_gbapdate=groombapdate;
+                moredetails.date_gcondate=groomcondate;
+                moredetails.date_bbapdate=bridebapdate;
+                moredetails.date_bcondate=bridecondate;
+                moredetails.date_desireddate=desireddate;
+                moredetails.time_desiredtime=desiredtime;
+                console.log(details, moredetails)
+                res.render('guest/views/reservations/marriagedetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });       
+        }
+        
+
+
+    });
+
+});
+// ---------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+// E  D  I  T    D  E  T  A  I  L  S 
+// ---------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+guestRouter.get('/reservation/:int_eventinfoID/edit', (req, res)=>{
+    var queryString1 =`SELECT * FROM tbl_eventinfo 
+    JOIN tbl_eventapplication ON tbl_eventinfo.int_eventinfoID = tbl_eventapplication.int_eventinfoID 
+    JOIN tbl_event ON tbl_event.int_eventID = tbl_eventinfo.int_eventID  
+    WHERE tbl_eventinfo.int_eventinfoID = ${req.params.int_eventinfoID}`
+    db.query(queryString1, (err, results, fields) => {
+        if (err) console.log(err);
+        var details = results[0];        
+
+        if(details.var_eventname == 'Anointing of the sick'){
+            var queryString2 =`SELECT * from tbl_relation 
+            join tbl_blessing on tbl_relation.int_eventinfoID = tbl_blessing.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString2, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];
+                console.log(details, moredetails)
+                var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var desireddate1= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
+                var desireddate2= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                var desiredtime1= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
+                var desiredtime2= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=bday;
+                moredetails.date_desireddate1=desireddate1;
+                moredetails.date_desireddate2=desireddate2;
+                moredetails.time_desiredtime1=desiredtime1;
+                moredetails.time_desiredtime2=desiredtime2;
+                res.render('guest/views/reservations/editanointingdetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });
+        }
+
+        if(details.var_eventname == 'Funeral Mass' ||details.var_eventname == 'Funeral Service' ){
+            var queryString2 =`SELECT * from tbl_relation 
+            join tbl_blessing on tbl_relation.int_eventinfoID = tbl_blessing.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString2, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];
+                console.log(details, moredetails)
+                var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var desireddate1= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
+                var desireddate2= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                var desiredtime1= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
+                var desiredtime2= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=bday;
+                moredetails.date_desireddate1=desireddate1;
+                moredetails.date_desireddate2=desireddate2;
+                moredetails.time_desiredtime1=desiredtime1;
+                moredetails.time_desiredtime2=desiredtime2;
+                res.render('guest/views/reservations/editfuneraldetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });
+        }
+
+        
+        if(details.var_eventname == 'Baptism' || details.var_eventname == 'Confirmation' ||details.var_eventname == 'RCIA' ){
+            var queryString2 =`SELECT * from tbl_relation 
+            join tbl_blessing on tbl_relation.int_eventinfoID = tbl_blessing.int_eventinfoID 
+            join tbl_baptism on tbl_relation.int_eventinfoID = tbl_baptism.int_eventinfoID
+            join tbl_sponsors on tbl_relation.int_eventinfoID = tbl_sponsors.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString2, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];
+                console.log(details, moredetails)
+                var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var desireddate1= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
+                var desireddate2= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                var desiredtime1= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
+                var desiredtime2= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=bday;
+                moredetails.date_desireddate1=desireddate1;
+                moredetails.date_desireddate2=desireddate2;
+                moredetails.time_desiredtime1=desiredtime1;
+                moredetails.time_desiredtime2=desiredtime2;
+                res.render('guest/views/reservations/editbaptismdetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });
+        }
+        
+        if(details.var_eventname == 'Marriage'){
+            var queryString3 =`SELECT * from tbl_relation 
+            join tbl_wedgroom on tbl_relation.int_eventinfoID = tbl_wedgroom.int_eventinfoID
+            join tbl_wedbride on tbl_relation.int_eventinfoID = tbl_wedbride.int_eventinfoID
+            join tbl_wedcouple on tbl_relation.int_eventinfoID = tbl_wedcouple.int_eventinfoID
+            join tbl_sponsors on tbl_relation.int_eventinfoID = tbl_sponsors.int_eventinfoID 
+            where tbl_relation.int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString3, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];                
+                var groombday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
+                var bridebday = moment(moredetails.date_bbirthday).format('YYYY-MM-DD');
+                var groombapdate = moment(moredetails.date_gbapdate).format('YYYY-MM-DD');
+                var groomcondate = moment(moredetails.date_gcondate).format('YYYY-MM-DD');
+                var bridebapdate = moment(moredetails.date_bbapdate).format('YYYY-MM-DD');
+                var bridecondate = moment(moredetails.date_bcondate).format('YYYY-MM-DD');
+                var desireddate= moment(moredetails.date_desireddate).format('YYYY-MM-DD');   
+                var desiredtime= moment(moredetails.time_desiredtime, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_birthday=groombday;
+                moredetails.date_bbirthday=bridebday;
+                moredetails.date_gbapdate=groombapdate;
+                moredetails.date_gcondate=groomcondate;
+                moredetails.date_bbapdate=bridebapdate;
+                moredetails.date_bcondate=bridecondate;
+                moredetails.date_desireddate=desireddate;
+                moredetails.time_desiredtime=desiredtime;
+                console.log(details, moredetails)
+                res.render('guest/views/reservations/editmarriagedetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });       
+        }
+        
+        if(details.var_eventname == 'Establishment Blessing'){
+            var queryString4 =`select * from tbl_houseblessing where int_eventinfoID = ${req.params.int_eventinfoID}`
+            db.query(queryString4, (err, results, fields) => {
+                if (err) console.log(err);
+                var moredetails = results[0];
+                console.log(details, moredetails)
+                var desireddate3= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
+                var desireddate4= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                var desiredtime3= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
+                var desiredtime4= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
+                moredetails.date_desireddate1=desireddate3;
+                moredetails.date_desireddate2=desireddate4;
+                moredetails.time_desiredtime1=desiredtime3;
+                moredetails.time_desiredtime2=desiredtime4;
+                res.render('guest/views/reservations/establishmentdetails',{ details : details, moredetails:moredetails, user: req.session.user});
+            });
+        }
+    });
+});
+
+guestRouter.post('/reservation/:int_eventinfoID/edit', (req, res) => {
+
+    if(req.body.eventname == 'Anointing of the sick'){
+        console.log('SIMULAN NA ANG PAG EDIT')
+    
+    // DAMI PANG AAYUSIN SA EDIT, YUNG MAY SCRIPT NA KASAMA AAAAAAAAAAA
+        if(req.body.venue == 'sameaddress') var venue= req.body.address;
+        if(req.body.venue == 'hospital') var venue= req.body.hospitalname;
+        if(req.body.venue == 'other') var venue= req.body.othervenue;
+        
+        const queryString = `UPDATE tbl_relation SET        
+        var_relation = "${req.body.relation}",
+        var_lname = "${req.body.lastname}",
+        var_fname = "${req.body.firstname}",
+        var_mname = "${req.body.middlename}",
+        char_gender = "${req.body.gender}",
+        var_address = "${req.body.address}",
+        date_birthday = "${req.body.birthday}",
+        var_birthplace = "${req.body.birthplace}"
+        where int_eventinfoID= ${req.params.int_eventinfoID});`;
+        
+        const queryString1 = `UPDATE tbl_blessing SET        
+            var_blessingvenue = ${venue},
+            var_blessingdetails = "${req.body.details}",
+            date_desireddate1 = "${req.body.desireddate1}",
+            date_desireddate2 = "${req.body.desireddate2}",
+            date_desiredtime1 = "${req.body.desiredtime1}",
+            date_desiredtime2 = "${req.body.desiredtime2}"
+            where int_eventinfoID= ${req.params.int_eventinfoID});`;
+        db.query(queryString,  (err, results, fields) => {
+            if (err) console.log(err);
+            
+            db.query(queryString1, (err, results, fields) => {
+                if (err) console.log(err);
+                return res.redirect(`/guest/reservation/${req.params.int_eventinfoID}`);
+        });
+        });
+    }
 });
 
 //===============================================================================================//
@@ -131,11 +411,13 @@ guestRouter.post('/anointing/form', (req, res) => {
                 var queryString2 = `INSERT INTO tbl_eventapplication(int_eventinfoID, char_approvalstatus, char_feestatus, char_reqstatus) VALUES(?,?,?,?)`;        
                 db.query(queryString2,[eventinfoID.insertId, "Pending", "Unpaid", "Incomplete"], (err, results, fields) => {
                     if (err) throw err;
+                    
+                    var desiredtime1= moment(req.body.desiredtime1, 'hh:mm A').format('HH:mm:ss');
                     var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation, var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
                     db.query(queryString3, [eventinfoID.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
                         if (err) throw err;
                         var queryString4 =`INSERT INTO tbl_blessing(int_eventinfoID, var_blessingvenue, var_blessingdetails, date_desireddate1, date_desireddate2, time_desiredtime1, time_desiredtime2) VALUES (?,?,?,?,?,?,?)`
-                        db.query(queryString4, [eventinfoID.insertId, venue, req.body.details, req.body.desireddate1, req.body.desireddate2, req.body.desiredtime1, req.body.desiredtime2], (err, results, fields) => {
+                        db.query(queryString4, [eventinfoID.insertId, venue, req.body.details, req.body.desireddate1, req.body.desireddate2, desiredtime1, req.body.desiredtime2], (err, results, fields) => {
                             if (err) throw err;
                             return res.redirect(`/guest`);
                         });
@@ -174,8 +456,9 @@ guestRouter.post('/baptism/form', (req, res) => {
                         if (err) throw err;
                         
                         if (req.body.baptismtype == 'Regular'){
-                            var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?);`
-                            db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, req.body.baptismtype], (err, results, fields) => {
+                            //merong hardcoded dito, ayusin sa capstone, utilities/events
+                            var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
+                            db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, "11:00:00", req.body.baptismtype], (err, results, fields) => {
                                 if (err) throw err;
                                 sponsors(eventinfoID.insertId);
                                 return res.redirect(`/guest`);

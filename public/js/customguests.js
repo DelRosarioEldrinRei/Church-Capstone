@@ -385,6 +385,7 @@ $('.datepicker3').datetimepicker({
 	});
 	$('.timepicker1').datetimepicker({
 			format: 'LT',
+			interval: 15, // 15 minutes
 			icons: {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
