@@ -27,9 +27,38 @@ block main
 		#raised-section.main.main-raised
 			//- Icon Boxes
 			#icon-boxes
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Rooms
 				.container
-					.row.cards
-						+card("secondfloor","lightblue","building","Second Floor")
-						+card("thirdfloor","lightgrey","bullhorn","Third Floor")
-						//- +card("lorem","lightbrown","comments","Lorem Ipsum")
+					.row
+						.col-md-6
+							.card.card-blog.mt-5.shadow2
+								.card-header.card-header-image
+									a.shadow.mt-5(href='#pablo')
+										img.img.img-fluid(src='/img/room1.jpg')
+										.card-title
+											h2.main--header.font-italic.text-white.m-0 Second Floor
+								.card-body
+									h6.card-category.text-muted.text-right ₱500/day
+									span
+										| is a one-room suite with queen-size bed and comfortable seating area. It is located downstairs with an outside entrance and is wheelchair assessable...
+								.card-footer
+									a.btn.btn-primary.ml-auto.mx-auto(href="/guest/facilities/secondfloor") Inquire
 
+						.col-md-6
+							.card.card-blog.mt-5.shadow2
+								.card-header.card-header-image
+									a.shadow.mt-5(href='#pablo')
+										img.img.img-fluid(src='/img/room2.jpeg')
+										.card-title
+											h2.main--header.font-italic.text-white.m-0 Third Floor
+								.card-body
+									h6.card-category.text-muted.text-right ₱750/day
+									span
+										| Enjoy your stay at our Urbandale hotel in this 304 square foot room complete with king size bed with luxurious Villa di Lusso crisp white cotton linens... 
+								.card-footer
+									a.btn.btn-primary.ml-auto.mx-auto(href="#") Inquire

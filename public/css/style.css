@@ -32,6 +32,14 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
 .shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
+.shadow2 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+  
+.shadow3 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
 .main-header__textbox {
   margin: 0 auto;
   margin-top: -80px;
