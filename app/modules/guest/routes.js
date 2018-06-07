@@ -20,7 +20,16 @@ guestRouter.get('/schedule', (req, res)=>{
 
 
 guestRouter.get('/parishevents', (req, res)=>{
-    res.render('guest/views/parishevents')
+    res.render('guest/views/parishevents1')
+});
+
+guestRouter.get('/parishservices', (req, res)=>{
+    res.render('guest/views/parishservices')
+});
+
+
+guestRouter.get('/weddingorg', (req, res)=>{
+    res.render('guest/views/forms/weddingorg')
 });
 
 //===============================================================================================//

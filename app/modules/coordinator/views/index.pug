@@ -1,0 +1,103 @@
+extends ../../../templates/mastercoordinators
+mixin card(eventType,bgcolor,margin,icon,title,text)
+	a.mx-1(href=`/guest/${eventType}`)
+		.card.text-center.p-3(class=`bg-${bgcolor} ${margin}`)
+			.card-body.p-2(style="margin-top: 20%")
+				i(class=`fa fa-${icon}`)
+				h3.mb-2.card-title.text-uppercase= title
+				p.card-text.text-uppercase
+					| Guidelines & Requirements
+				p.card-text.text-uppercase
+					| Inquire
+mixin carousel(image,alt)
+	.col-md-4.p-1
+		a(href=image data-toggle="lightbox" data-gallery="img-gallery")
+			img.img-fluid(src=image, alt=alt)
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.png');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Music Ministry
+						a(href="#")
+							p.text-uppercase.card-desc
+								| View Schedule
+		.main.main-raised
+			
+			.container
+				.section
+				
+					#contacts
+						.row
+							.col-md-8.ml-auto.mr-auto
+								h1.main--header.font-italic.text-center Event Proposal
+								h4.text-center.description
+									| Encourage, inspire, and be the change! 
+								form.contact-form
+									.form-group
+										label.label-control Event Name
+										label.bmd-label-floating 
+										input.form-control(type="text")
+										
+									.form-group
+										label.label-control Event Description
+										label.bmd-label-floating(for="message") 
+										textarea#message.form-control(type="text", rows="3")
+									.row
+										.col-md-6
+											.form-group
+												label.label-control Desired Date
+												input.datepickerFBlessingDesiredDate.form-control(type='date' name='desireddate1')
+										.col-md-6
+											.form-group
+												label.label-control Event Venue
+												input.form-control(type='text' name='desireddate1')
+									
+									.row
+										.col-md-4.ml-auto.mr-auto.text-center.mt-3
+											a.btn-design(href="#") Propose
+
+
+			.container
+				.section
+					.rowmb-5
+						.col-md-8.ml-auto.mr-auto
+							h1.main--header.font-italic.text-center Members
+							//- .row
+							//- 	h4 PRESIDENT: Basa, Eigiebon P. 
+							//- .row
+							//- 	h4 VICE PRESIDENT: Contiling, Mary Angel R.
+							.row
+								.col-md-4.my-3
+									h3.text-right.text-uppercase.guidelines--text Officers
+								.col-md-7.my-3
+									p.guidelines--desc
+										strong.mt-4.d-block PRESIDENT
+										| Basa, Eigiebon T.
+										strong.mt-4.d-block VICE PRESIDENT
+										| Cotiling, Mary Angel R.
+										//- strong.mt-4.d-block SECRETARY
+										//- | Fajardo, Grace Loraine S.
+										//- strong.mt-4.d-block TREASURER
+										//- | Dalit, Abert P.
+							.row
+								.col-md-12
+									table.table
+										thead
+											tr.text-center
+												th.text-center MembershipID
+												th Name
+												th Status
+												th Actions
+										tbody
+											tr.text-center
+												td Bass01
+												td Arca, Phillip James T. 										
+												td Active
+												td.td-actions
+														button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+															i.fa.fa-pencil-square-o(aria-hidden='true' )
+														//- button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+														//- 	i.fa.fa-pencil-square-o(aria-hidden='true' )

@@ -1,0 +1,49 @@
+extends ../../../templates/mastercoordinators
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Music Ministry 
+						a(href="#")
+							p.text-uppercase.card-desc
+								| Schedule
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Schedule
+				.row
+					.col-md-12
+						#form-facility
+							#calendar
+					//- .col-md-5.my-3.text-center
+
+					//- 		.form-group
+					//- 			label.label-control Event
+					//- 			input.form-control(type='text' name= 'event')
+					//- 		.form-group
+					//- 			label.label-control Desired Date
+					//- 			input.datepicker2.form-control(type='date' name='desireddate')
+					//- 		.form-group
+					//- 			label.label-control Start Time
+					//- 			input.timepicker.form-control(type='text' name='starttime')
+					//- 		.form-group
+					//- 			label.label-control End Time
+					//- 			input.timepicker.form-control(type='text' name='endtime')
+					//- 		.form-group.form-file-upload.form-file-multiple.p-0
+					//- 			input.inputFileHidden(type='file', multiple='')
+					//- 			.input-group
+					//- 				input.form-control.inputFileVisible(type='text', placeholder='Valid ID')
+					//- 				span.input-group-btn
+					//- 					button.btn.btn-fab.btn-round.btn-primary(type='button')
+					//- 						i.fa.fa-file(aria-hidden='true')
+					//- 		.row
+					//- 			.col-md-12.text-center.mb-5
+					//- 				//- button.btn.btn-primary.btn-valid Submit
+					//- 				button.btn.btn-primary(type='submit') Submit

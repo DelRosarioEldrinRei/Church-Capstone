@@ -1,0 +1,42 @@
+extends ../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Schedule
+						p.text-uppercase.card-desc
+							| Day | Time
+		#raised-section.main.main-raised
+			#guide
+				.container
+					.row
+						.col-md-12
+							//- hr.mt-5.mx-5
+							//- h1.main--header.font-italic.text-center Mass Schedule
+					 
+					.row
+						.col-md-7.my-3
+							.card.mt-5.shadow
+								img.card-img-top(src='/img/marriage-slide.jpg', alt='Card image cap' style="height: 18rem;")
+						.col-md-5.my-3
+							hr.mb-1
+							h3.main--header.font-italic.text-left.m-0 Marriage Seminar
+							.text-left Sam deals with topics such as Biblical Basis of Marriage, Divorce and Remarriage, Being Christ-like in
+							.text-left.text-muted A Seminar Organized By:
+								strong  Dr. Sam Matthews, Associate Pastor
+							button.btn.btn-info.float-left.mb-2(type='button') View More
+					.row
+						.col-md-7.my-3
+							.card.mt-5.shadow
+								img.card-img-top(src='/img/marriage-seminar.jpg', alt='Card image cap' style="height: 18rem;")
+						.col-md-5.my-3
+							hr.mb-1
+							h3.main--header.font-italic.text-left.m-0 Marriage Seminar
+							.text-left Sam deals with topics such as Biblical Basis of Marriage, Divorce and Remarriage, Being Christ-like in
+							.text-left.text-muted A Seminar Organized By:
+								strong  Dr. Sam Matthews, Associate Pastor
+							button.btn.btn-info.float-left.mb-2(type='button') View More
+					

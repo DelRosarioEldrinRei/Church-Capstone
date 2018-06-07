@@ -21,7 +21,7 @@ block main
 					.col-md-9.main-header__textbox
 						h1.text-white.text-uppercase Welcome
 						h4
-							a.text-uppercase(href="#") View Mass Schedules
+							a.text-uppercase(href="/guest/schedule") View Mass Schedules
 							|  |  
 							a.text-uppercase(href="#") View Office Schedules
 		.main.main-raised
@@ -39,27 +39,27 @@ block main
 							//- button.btn.btn-primary View Details
 					#card--guides.row.d-flex.justify-content-center.text-center
 						.col-md-4.p-0
-							+card("marriage","lightblue","my-1","snowflake-o","Baptism")
+							+card("facilities","lightblue","my-1","snowflake-o","Baptism")
 						.col-md-4.p-0
 							+card("marriage","lightgrey","my-1","snowflake-o","Marriage")
 						.col-md-4.p-0
-							+card("marriage","lightbrown","my-1","snowflake-o","Blessing")
+							+card("document","lightbrown","my-1","snowflake-o","Blessing")
 					.row.pb-5.mb-5
 						.col.text-center
-							a.btn-design(href="#") View More
+							a.btn-design(href="/guest/parishservices") View More
 					.row.d-flex.justify-content-center.text-center.py-5
 						.col.m-4
 							i.fa.fa-envelope-o
 							h3 Inquire
-							p See the information, guidelines and requirements on our services of the parish
+							p See the information, guidelines and requirements of the parish services
 						.col.m-4
 							i.fa.fa-paper-plane
 							h3 Submit
-							p Apply on our services and agree and submit all given requirements
+							p Apply and submit requirements
 						.col.m-4
 							i.fa.fa-home
 							h3 Visit
-							p Go and have a visit to our parish and just show us your receipt on your service
+							p Go and visit the parish 
 			//-  Home Heading Section
 			#home-heading.header-filter.d-none.d-sm-block.m-0(style=" background-image: url('/img/churchbg.jpg');")
 				.row.p-5.text-white.text-center
@@ -68,7 +68,7 @@ block main
 							h1.main--header.font-italic.text-white Sunday Mass
 							p.sub-header__textbox.font-italic.text-white Tagalog Mass - 7:30am
 							p.sub-header__textbox.font-italic.text-white.mb-4 English Mass - 9:00am
-							a.btn-design2(href="#") View Schedule
+							a.btn-design2(href="/guest/schedule") View mass Schedule
 			.container
 				.section
 					.row
@@ -101,8 +101,8 @@ block main
 							.col-md-8.ml-auto.mr-auto
 								h1.main--header.font-italic.text-center Contact Us
 								h4.text-center.description
-									|  Want to Join or Had a Question in Mind ?
-									| Feel Free to send us your information below.
+									| Want to join or jave a question in mind?
+									| Feel f ree to send us your information below.
 									| We will respond get back to you in a couple of hours.
 								form.contact-form
 									.row

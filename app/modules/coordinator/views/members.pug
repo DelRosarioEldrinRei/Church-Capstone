@@ -1,0 +1,135 @@
+extends ../../../templates/mastercoordinators
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.png');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Music Ministry
+						h4
+							a.text-uppercase(href="/coordinator/officers") Officers
+								|  |  
+							a.text-uppercase(href="/coordinator/members") Members
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h2.main--header.font-italic.text-center MEMBERS								
+				.row
+					.col-md-12.text-right.my-3
+						a.btn-design(href="#" data-toggle="modal" data-target="#appointment") New member
+						
+				.row
+					.col-md-12
+						table.table
+							thead
+								tr.text-center
+									th
+									th.text-center MemberID
+									th Name
+									th Status
+									th 
+							tbody
+								tr.text-center
+									td 
+										<img src='/img/usericon.png' alt="..." style= 'width:50px; height:50px; margin-top:3px;'>
+									td B102
+									td Arca, Phillip James T. 										
+									td Active
+										//- <button type="button" class="btn btn-success">Active</button>
+									td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+												i.fa.fa-pencil-square-o(aria-hidden='true' )
+											<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+												i.fa.fa-remove(aria-hidden='true' )
+								tr.text-center
+									td 
+										<img src='/img/usericon.png' alt="..." style= 'width:50px; height:50px; margin-top:3px;'>
+									td A102
+									td Peralta, Jamie Mitch K.										
+									td Active
+										//- <button type="button" class="btn btn-success">Active</button>
+									td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+												i.fa.fa-pencil-square-o(aria-hidden='true' )
+											<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+												i.fa.fa-remove(aria-hidden='true' )
+								tr.text-center
+									td 
+										<img src='/img/usericon.png' alt="..." style= 'width:50px; height:50px; margin-top:3px;'>
+									td S102
+									td Cruz, Adelane May L.										
+									td Inactive
+										//- <button type="button" class="btn btn-warning">Inactive</button>
+									td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+												i.fa.fa-pencil-square-o(aria-hidden='true' )
+											<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+												i.fa.fa-remove(aria-hidden='true' )
+								tr.text-center
+									td 
+										<img src='/img/usericon.png' alt="..." style= 'width:50px; height:50px; margin-top:3px;'>
+									td T102
+									td Santos, Andy Mark N. 										
+									td Suspended
+										//- <button type="button" class="btn btn-danger">Suspended</button>
+									td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+												i.fa.fa-pencil-square-o(aria-hidden='true' )
+											<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+												i.fa.fa-remove(aria-hidden='true' )
+											
+		#appointment.modal.fade
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header.text-center
+						h5#loginModalLabel.modal-title.font-weight-bold.text-center New Member
+						button.close(data-dismiss='modal')
+					.modal-body
+						.row
+							.col-md-10.ml-auto.mr-auto.mt-12
+								.card.card-signup.mt-12
+									.card-body
+										.row.mb-4
+											.col-md-12.mr-12
+												form.form(action="/signup" method="post")
+													.form-group
+														label.label-control Name:										
+														.row
+															.col-md-4
+																.form-group.pt-0
+																	input.form-control(type='text' placeholder="Last Name" name='lastname')
+															.col-md-4
+																.form-group.pt-0
+																	input.form-control(type='text' placeholder="First Name" name='firstname')
+															.col-md-4
+																.form-group.pt-0
+																	input.form-control(type='text' placeholder="Middle Name" name='middlename')
+													
+													.form-group
+														label.label-control Email Address:
+														input.form-control(type='text' name='email')
+													.form-group
+														label.label-control Username:
+														input.form-control(type='text' name='username')
+													.form-group
+														label.label-control Password:
+														input.form-control(type='text' name='newmemberpassword')
+													
+													
+													//- .form-check
+													//- 	label.form-check-label
+													//- 	input.form-check-input(type='checkbox', value='', checked='')
+													//- 	span.form-check-sign
+													//- 		span.check
+													//- 		| ..I agree to the 
+													//- 		a(href='#something') terms and conditions
+													//- 		| .
+													//- 	.text-center
+													.row
+														.col-md-12.text-center.my-3
+															button.btn.btn-primary(type='submit') Add
