@@ -55,10 +55,15 @@ secretariatRouter.get('/events/churchevents', (req, res)=>{
  
 
 });
+secretariatRouter.get('/events/churchevents/inner', (req, res)=>{
+    res.render('secretariat/views/event/innerchurchevents')
+});
  secretariatRouter.get('/events/specialevents', (req, res)=>{
      res.render('secretariat/views/event/specialevents')
  });
- 
+
+
+
  secretariatRouter.post('/events/specialevents/add', (req, res)=>{
     const query = `
     insert into tbl_specialevent(var_specialeventname,date_specialevent,var_location,text_purpose,time_start,char_eventtype)

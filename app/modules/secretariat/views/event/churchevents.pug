@@ -27,7 +27,7 @@ block prepend main
 											td=event.var_eventname
 											td Paid
 											td Approved
-											td: a(href="#" data-toggle="modal" data-target="#facilities")
+											td: a(href="#" data-toggle="modal" data-target="#sacraments")
 												i.fa.fa-pencil-square-o(aria-hidden='true')
 						.card-body.table-full-width.table-responsive
 		.container.d-flex.flex-row.justify-content-end
@@ -36,7 +36,7 @@ block prepend main
 			//- 	.modal-dialog
 			//- 		.modal-content
 			//- 			.modal-header
-			//- 				h5#loginModalLabel.modal-title.font-weight-bold Special Event
+			//- 				h5#loginModalLabel.modal-title.font-weight-bold Church Event
 			//- 				button.close(data-dismiss='modal') ×
 			//- 			.modal-body
 			//- 				form
@@ -44,28 +44,28 @@ block prepend main
 			//- 						.col-12
 			//- 							.form-group
 			//- 								label.text-muted Event Name
-			//- 								input.form-control(type='text', placeholder='Event Title', value='')
+			//- 								label.form-control Baptism
 			//- 					.row
 			//- 						.col-md-6
 			//- 							.form-group
-			//- 								label.text-muted When
+			//- 								label.text-muted Date
 			//- 								.input-group
-			//- 									input.form-control(type='date', value='')
-			//- 						.col-md-6
+			//- 									label.form-control May 23, 2018
+			//- 						.col-md-12
 			//- 							.form-group
 			//- 								label.text-muted Where
 			//- 								input.form-control(type='text', placeholder='Metro Manila', value='')
-			//- 					//- .row
-			//- 					//- 	.col-12
-			//- 					//- 		.form-group
-			//- 					//- 			label.text-muted Payment
-			//- 					//- 			.input-group
-			//- 					//- 				span.input-group-text ₱
-			//- 					//- 				input.form-control(type='number', placeholder='₱800', value='')
 			//- 					.row
-			//- 						.col-12
-			//- 							label.text-muted Purpose/Description
-			//- 							textarea.form-control(placeholder='Purpose/Description of the event' rows="3")
+			//- 						.col-md-6
+			//- 							.form-group
+			//- 								label.text-muted Payment Status
+			//- 								.input-group
+			//- 									label.form-control keme
+			//- 						.col-md-6
+			//- 							.form-group
+			//- 								label.text-muted Requirements Status
+			//- 								.input-group
+			//- 									label.form-control keme
 			//- 					.container.d-flex.justify-content-end.m-3
-			//- 						button.m-1.btn.btn-primary.btn-fill Add Facility
+			//- 						button.m-1.btn.btn-primary.btn-fill Update
 			//- 						button.m-1.btn.btn-secondary.btn-fill(data-dismiss='modal') Close
