@@ -9,11 +9,11 @@ block body
 			//- .sidebar(data-color='brown' data-image='/img/bg5.jpg')
 			.sidebar-wrapper
 				.logo.d-flex.justify-content-center
-					a(href="/secretariat")
+					a(href="/admin")
 						img(src='/img/churchicon.png' alt='' style='height: 70px; width: 70px')
 				ul.nav
 					li.nav-item
-							a.nav-link(href='/secretariat')
+							a.nav-link(href='/admin')
 								i.nc-icon.nc-app
 								p Dashboard
 					li
@@ -22,10 +22,6 @@ block body
 							p Maintenance
 								.float-right.dropdown-toggle.d-inline
 					.collapse#maintenance
-						//- li
-						//- 	a.nav-link(href='/secretariat/services')
-						//- 		i.nc-icon.nc-cart-simple
-						//- 		p Services
 						li
 							a.nav-link(data-toggle="collapse" href="#events")
 								i.nc-icon.nc-notes
@@ -34,12 +30,12 @@ block body
 						.collapse#events
 							ul
 								li.nav-item
-									a.nav-link(href='/secretariat/events/sacraments')
+									a.nav-link(href='/admin/events/sacraments')
 										span.h5.mx-2 S
 										p Sacraments
 							ul
 								li.nav-item
-									a.nav-link(href='/secretariat/events/seminars')
+									a.nav-link(href='/admin/events/seminars')
 										span.h5.mx-2 S
 										p Seminars
 						li.nav-item
@@ -50,12 +46,12 @@ block body
 						.collapse#reservation
 								ul
 									li.nav-item
-										a.nav-link(href='/secretariat/reservation/facilities')
+										a.nav-link(href='/admin/reservation/facilities')
 											span.h5.mx-2 F
 											p Facilities
 								ul
 									li.nav-item
-										a.nav-link(href='/secretariat/reservation/document')
+										a.nav-link(href='/admin/reservation/document')
 											span.h5.mx-2 D
 											p Document Request
 						li
@@ -66,12 +62,12 @@ block body
 						.collapse#events
 							ul
 								li.nav-item
-									a.nav-link(href='/secretariat/events/sacraments')
+									a.nav-link(href='/admin/events/sacraments')
 										span.h5.mx-2 S
 										p Sacraments
 							ul
 								li.nav-item
-									a.nav-link(href='/secretariat/events/seminars')
+									a.nav-link(href='/admin/events/seminars')
 										span.h5.mx-2 S
 										p Seminars
 						li.nav-item
@@ -82,22 +78,22 @@ block body
 						.collapse#appoint
 								ul
 									li.nav-item
-										a.nav-link(href='/secretariat/appoint/coordinators')
+										a.nav-link(href='/admin/appoint/coordinators')
 											span.h5.mx-2 C
 											p Appoint Coordinators
 								ul
 									li.nav-item
-										a.nav-link(href='/secretariat/appoint/priest')
+										a.nav-link(href='/admin/appoint/priest')
 											span.h5.mx-2 P
 											p Appoint Priest
 								ul
 									li.nav-item
-										a.nav-link(href='/secretariat/appoint/pending')
+										a.nav-link(href='/admin/appoint/pending')
 											span.h5.mx-2 A
 											p Pending Appointments
 								ul
 									li.nav-item
-										a.nav-link(href='/secretariat/appoint/members')
+										a.nav-link(href='/admin/appoint/members')
 											span.h5.mx-2 P
 											p Appoint Members
 						//- li.nav-item

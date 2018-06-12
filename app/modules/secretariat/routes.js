@@ -86,7 +86,7 @@ db.query(query, (err, out) => {
 // R E S E R V A T I O N //
 //===============================================================================================//
 
-secretariatRouter.get('/reservation/', (req, res)=>{
+secretariatRouter.get('/reservation', (req, res)=>{
     res.render('secretariat/views/reservation/documents')
 });
 secretariatRouter.get('/reservation/document', (req, res)=>{
