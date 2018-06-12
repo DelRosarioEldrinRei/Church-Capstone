@@ -1,0 +1,79 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.png');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Reservations
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-left.text-uppercase.guidelines--text Reservation Lists
+				.row
+					.col-md-12.my-3
+						table.table
+							thead
+								tr.text-center
+									th.text-center Reservation ID
+									th Name
+									th Status
+									th Actions
+							tbody
+								each reservation in reservations
+									tr.text-center
+										td.text-center=reservation.int_eventinfoID
+										td=reservation.var_eventname
+										td=reservation.char_approvalstatus
+										td.td-actions
+											//- button.btn.btn-sm.btn-success(type='button', rel='tooltip')
+											a(href=`/guest/reservation/${reservation.int_eventinfoID}` style= 'margin-left: 3px') VIEW
+												//- i.fa.fa-pencil-square-o(aria-hidden='true' )
+											a(href=`/guest/reservation/${reservation.int_eventinfoID}/cancel` style= 'margin-left: 8px') CANCEL
+												//- i.fa.fa-pencil-square-o(aria-hidden='true' )							
+
+												//-ELDRIN, paki ayos na lang, yung view fafa kame hahah tas cancel yung isa,
+												//- dapat may lumabas pa sa cancel na sweet alert kung idedelete sya or hindi
+												//-  Balak ko sana pag nagview lalabas yung details sa modal, pero di ko pa nagagawa hahaha.
+												//-  Ganto muna for now, para magawan ko lang ng back end
+
+		#appointment.modal.fade
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header
+						h5#loginModalLabel.modal-title.font-weight-bold.d-inline Available Coordinators and Priest
+						button.close(data-dismiss='modal') ×
+					.modal-body
+						.row
+							.col-3
+								label.text-muted COORDINATORS
+							.col-9
+								table.table.table-hover.table-striped
+									thead
+										th Full name
+										th Status
+										th 
+									tbody
+										tr
+											td Jonalyn Fe Ebrada
+											td
+												select.custom-select
+													option(selected='') Pending
+													option(value='1') One
+													option(value='2') Two
+													option(value='3') Three											
+											td
+												.form-check.pl-0.mr-4.text-right
+													label.form-check-label.p-0
+														| &nbsp;
+														input.form-check-input(type='checkbox' value='')
+														span.form-check-sign
+						
+						.container.d-flex.justify-content-end.m-3
+							button.m-1.btn.btn-primary.btn-fill Update
+							button.m-1.btn.btn-danger.btn-fill Cancel												

@@ -1,0 +1,34 @@
+extends ../../../templates/mastercoordinators
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.png');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Music Ministry
+						h4
+							a.text-uppercase(href="/coordinator/members") Officers
+								|  |  
+							a.text-uppercase(href="/coordinator/officers") Members
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h2.main--header.font-italic.text-center MEMBERS								
+				.row
+					.col-md-12.text-right.my-3
+						a.btn-design(href="#" data-toggle="modal" data-target="#appointment") New member
+						
+				.row
+					<div class="card card-nav-tabs">
+                        <h4 class="card-header card-header-info">Featured</h4>
+                        <div class="card-body">
+                            <h4 class="card-title">Special title treatment</h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                        </div>

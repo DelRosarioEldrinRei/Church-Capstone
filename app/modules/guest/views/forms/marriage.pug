@@ -2,7 +2,7 @@ extends ../../../../templates/masterguests
 block main
 	.profile-page
 		//- Heading Page
-		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/events/rings3.jpg');")
 			.container
 				.row
 					.col-md-9.main-header__textbox
@@ -24,28 +24,28 @@ block main
 							input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Reservation
+									h1.main--header.font-italic.text-center Reservation
 									.row
 										.col-md-6.mx-auto.my-auto
 											.form-group
 												label.label-control.text-center Desired Date
-												input.datepicker2.form-control(type='date' name='desireddate1')
+												input.datepicker2.form-control(type='date' name='desireddate')
 											.row
 												.col-md-3.mx-auto.my-auto
 													.form-group
 														label.label-control.text-center Desired Time
-															select.selectpicker.form-control(type="text" name='relation')
+															select.selectpicker.form-control(type="text" name='desiredtime')
 																option 10:00AM
 																option 11:00AM
 																option 1:00PM
 																option 2:00PM
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Groom
+									h1.main--header.font-italic.text-center Groom
 									.row
 										.col-md-6.my-3
 											.form-group
-												label.label-control Name:
+												label.label-control Name
 												.row
 													.col-md-4
 														.form-group.pt-0
@@ -58,7 +58,7 @@ block main
 															input.form-control(type='text' placeholder="Middle Name" name='middlename')
 											.form-group
 												label.label-control Birthday
-												input#datepicker.form-control(type='date' name='birthday')
+												input.datepicker2.form-control(type='date' name='birthday')
 											.form-group
 												label.label-control Birthplace:
 												input.form-control(type='text' name='birthplace')
@@ -68,12 +68,23 @@ block main
 											.form-group
 												label.label-control Nationality:
 												input.form-control(type='text' name='gnationality')
-											.form-group
-												label.label-control Civil status:
-												input.form-control(type='text' name='gcivilstatus')
-											.form-group
-												label.label-control Religion:
-												input.form-control(type='text' name='greligion')
+											.row
+												.col-md-6.my-3
+													.form-group
+														label.label-control Civil Status
+															select.selectpicker.form-control(type="text" name='gcivilstatus')
+																option Single
+																option Married
+																option Divorced
+																option Widower
+												.col-md-6.my-3
+													.form-group.mt-1
+														label.label-control Religion
+															select.selectpicker.form-control(type="text" name='greligion')
+																option Catholic
+																option Non-Catholic
+																option Non-Christion
+																option No religion
 											.form-group
 												label.label-control Current parish:
 												input.form-control(type='text' name='gcurrentparish')
@@ -88,8 +99,12 @@ block main
 												label.label-control Father's birthplace:
 												input.form-control(type='text' name='gfatherbplace')
 											.form-group
-												label.label-control Father's religion:
-												input.form-control(type='text' name='gfatherreligion')
+												label.label-control Father's Religion
+															select.selectpicker.form-control(type="text" name='gfatherreligion')
+																option Catholic
+																option Non-Catholic
+																option Non-Christion
+																option No religion
 											.form-group
 												label.label-control Mother's name:
 												input.form-control(type='text' name='gmothername')
@@ -97,8 +112,12 @@ block main
 												label.label-control Mother's birthplace:
 												input.form-control(type='text' name='gmotherbplace')
 											.form-group
-												label.label-control Mother's religion:
-												input.form-control(type='text' name='gmotherreligion')
+												label.label-control Mother's Religion
+															select.selectpicker.form-control(type="text" name='gmotherreligion')
+																option Catholic
+																option Non-Catholic
+																option Non-Christion
+																option No religion
 											.form-group
 												label.label-control Baptized?
 												.ml-4
@@ -114,7 +133,7 @@ block main
 																input.form-control(type='text' name='gbapplace')
 															.form-group
 																label.label-control Date when you were baptized:
-																input#datepicker.form-control(type='date' name='gbapdate')
+																input.datepicker2.form-control(type='date' name='gbapdate')
 															
 													.form-check
 														label.form-check-label
@@ -138,7 +157,7 @@ block main
 																input.form-control(type='text' name='gconplace')
 															.form-group
 																label.label-control Date when you were confirmed:
-																input#datepicker.form-control(type='date' name='gcondate')
+																input.datepicker2.form-control(type='date' name='gcondate')
 															
 													.form-check
 														label.form-check-label
@@ -149,7 +168,7 @@ block main
 											
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Bride
+									h1.main--header.font-italic.text-center Bride
 								.row
 									.col-md-6.my-3
 										.form-group
@@ -166,7 +185,7 @@ block main
 														input.form-control(type='text' placeholder="Middle Name" name='bmiddlename')
 										.form-group
 											label.label-control Birthday
-											input#datepicker.form-control(type='date' name='bbirthday')
+											input.datepicker2.form-control(type='date' name='bbirthday')
 										.form-group
 											label.label-control Birthplace:
 											input.form-control(type='text' name='bbirthplace')
@@ -176,18 +195,42 @@ block main
 										.form-group
 											label.label-control Nationality:
 											input.form-control(type='text' name='bnationality')
+										.row
+												.col-md-6
+													.form-group
+														label.label-control Civil Status
+															select.selectpicker.form-control(type="text" name='bcivilstatus')
+																option Single
+																option Married
+																option Divorced
+																option Widower
+												.col-md-6
+													.form-group.mt-1
+														label.label-control Religion
+															select.selectpicker.form-control(type="text" name='breligion')
+																option Catholic
+																option Non-Catholic
+																option Non-Christion
+																option No religion
+										.form-group.m-0
+											label.label-control Are you 5months or above pregnant?
+												.form-check.ml-3
+													label.form-check-label
+														input.form-check-input(type="radio" name="boolpregnant" id="exampleRadios2" value="1")
+														| Yes
+														span.circle
+															span.check
+													label.form-check-label.ml-3
+														input.form-check-input(type="radio" name="boolpregnant" id="exampleRadios2" value="0")
+														| No
+														span.circle
+															span.check
 										.form-group
-											label.label-control Civil status:
-											input.form-control(type='text' name='bcivilstatus')
+												label.label-control Current parish:
+												input.form-control(type='text' name='bcurrentparish')
 										.form-group
-											label.label-control Religion:
-											input.form-control(type='text' name='breligion')
-										.form-group
-											label.label-control Current parish:
-											input.form-control(type='text' name='bcurrentparish')
-										.form-group
-											label.label-control Occupation:
-											input.form-control(type='text' name='boccupation')
+												label.label-control Occupation:
+												input.form-control(type='text' name='boccupation')
 									.col-md-6.my-3
 										.form-group
 											label.label-control Father's name:
@@ -196,8 +239,12 @@ block main
 											label.label-control Father's birthplace:
 											input.form-control(type='text' name='bfatherbplace')
 										.form-group
-											label.label-control Father's religion:
-											input.form-control(type='text' name='bfatherreligion')
+											label.label-control Father's Religion
+														select.selectpicker.form-control(type="text" name='bfatherreligion')
+															option Catholic
+															option Non-Catholic
+															option Non-Christion
+															option No religion
 										.form-group
 											label.label-control Mother's name:
 											input.form-control(type='text' name='bmothername')
@@ -205,14 +252,18 @@ block main
 											label.label-control Mother's birthplace:
 											input.form-control(type='text' name='bmotherbplace')
 										.form-group
-											label.label-control Mother's religion:
-											input.form-control(type='text' name='bmotherreligion')
+											label.label-control Mother's Religion
+														select.selectpicker.form-control(type="text" name='bmotherreligion')
+															option Catholic
+															option Non-Catholic
+															option Non-Christion
+															option No religion
 										.form-group
 											label.label-control Baptized?
 											.ml-4
 												.form-check
 													label.form-check-label
-														input.exampleRadios1.form-check-input(type="radio" name="gbaptized" value="1")
+														input.exampleRadios1.form-check-input(type="radio" name="bbaptized" value="1")
 														.dropdown-toggle.mr-3 Yes
 														span.circle
 															span.check
@@ -222,11 +273,11 @@ block main
 															input.form-control(type='text' name='bbapplace')
 														.form-group
 															label.label-control Date when you were baptized:
-															input#datepicker.form-control(type='date' name='bbapdate')
+															input.datepicker2.form-control(type='date' name='bbapdate')
 														
 												.form-check
 													label.form-check-label
-														input.radioup.form-check-input(type="radio" name="gbaptized" value="0" )
+														input.radioup.form-check-input(type="radio" name="bbaptized" value="0" )
 														| No
 														span.circle
 															span.check
@@ -246,7 +297,7 @@ block main
 															input.form-control(type='text' name='bconplace')
 														.form-group
 															label.label-control Date when you were confirmed:
-															input#datepicker.form-control(type='date' name='bcondate')
+															input.datepicker2.form-control(type='date' name='bcondate')
 														
 												.form-check
 													label.form-check-label
@@ -254,33 +305,75 @@ block main
 														| No
 														span.circle
 															span.check
+								.col-md-12
+									hr
+									h2.main--header.font-italic.text-center For the couple
+									.row
+										.col-md-3.mx-auto.my-auto
+											//- h2.main--header.font-italic For the couple
+											.form-group.m-0
+												label.label-control Living in?
+													.form-check.ml-3
+														label.form-check-label
+															input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="1")
+															| Yes
+															span.circle
+																span.check
+														label.form-check-label.ml-3
+															input.form-check-input(type="radio" name="boollivingin" id="exampleRadios2" value="0")
+															| No
+															span.circle
+																span.check
+											.form-group
+												label.label-control Were the couple married before?
+												.ml-4
+													.form-check
+														label.form-check-label
+															input.exampleRadios3.form-check-input(type="radio" name="boolmarried" value="1")
+															.dropdown-toggle.mr-3 Yes
+															span.circle
+																span.check
+														.textarea3.form-group
+															.form-group
+																label.label-control Previous wedding date
+																input.form-control(type='text' name='cprevweddingdate')
+															.form-group
+																label.label-control Previous wedding place/parish
+																input.datepicker2.form-control(type='date' name='cprevweddingplace')
+													.form-check
+														label.form-check-label
+															input.radioup3.form-check-input(type="radio" name="boolmarried" value="0" )
+															| No
+															span.circle
+																span.check
+
 							.row.tab
 								.col-md-12
-									h2.main--header.font-italic.text-center Sponsors
+									h1.main--header.font-italic.text-center Sponsors
 									.row
 										.col-md-6.my-3
 											.form-group
 												label.label-control Principal Sponsor
-												input.form-control(type='text')
+												input.form-control(type='text' name='sponsorname')
 										.col-md-6.my-3
 											.form-group
-												input.form-control(type='text')
+												input.form-control(type='text' name='sponsorname')
 									.row
-										#leftcol.col-md-6.my-3
+										.col-md-6.my-3
 											.form-group
-												label.label-control Seconday Sponsors
-												input.form-control(type='text')
+												label.label-control Additional
+												input.form-control(type='text' name='sponsorname')
 											.form-group
-												input.form-control(type='text')
+												input.form-control(type='text' name='sponsorname')
 											.form-group
-												input.form-control(type='text')
-										#rightcol.col-md-6.my-3
+												input.form-control(type='text' name='sponsorname')
+										.col-md-6.my-2
 											.form-group
-												input.form-control(type='text')
+												input.form-control(type='text' name='sponsorname')
 											.form-group
-												input.form-control(type='text')
+												input.form-control(type='text' name='sponsorname')
 											.form-group
-												input.form-control(type='text')
+												input.form-control(type='text' name='sponsorname')
 						.row
 							.col-md-12.my-2.text-center
 								div(style='text-align:center;margin-top:40px;')
@@ -314,6 +407,14 @@ block addjs
 		});
 		$('.exampleRadios2').click(function() {
 			$('.textarea2').slideDown();
+		});
+
+		$('.textarea3').hide();
+		$('.radioup3').click(function() {
+			$('.textarea3').slideUp();
+		});
+		$('.exampleRadios3').click(function() {
+			$('.textarea3').slideDown();
 		});
 
 		var currentTab = 0; // Current tab is set to be the first tab (0)

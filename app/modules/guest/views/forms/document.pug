@@ -2,7 +2,7 @@ extends ../../../../templates/masterguests
 block main
 	.profile-page
 		//- Heading Page
-		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/document.png');")
 			.container
 				.row
 					.col-md-9.main-header__textbox
@@ -17,10 +17,10 @@ block main
 						h3.text-center.text-uppercase.guidelines--text Request Form
 				.row
 					.col-md-8.my-auto.mx-auto
-						form(action="#")
+						form(action="/guest/document/form" method='post')
 							.form-group
 								label.label-control Document
-									select.selectpicker.form-control(type="text" name='relation')
+									select.selectpicker.form-control(type="text" name='documenttype')
 										option Baptismal Certificate
 										option Confirmation Certificate
 										option First Communion Certificate
@@ -28,20 +28,15 @@ block main
 								.col-md-12.my-3
 									label.label-control Person in the Certificate:
 							.row
-								.col-md-4.my-3
-									label(for='lastName') Last Name
-									input#lastName.form-control(type='text')
-								.col-md-4.my-3
-									label(for='firstName') First Name
-									input#firstName.form-control(type='text')
-								.col-md-4.my-3
-									label(for='middleName') Middle Name
-									input#middleName.form-control(type='text')
+								.col-md-6.my-3
+									input#lastName.form-control(type='text' name='lastname' placeholder='Last name')
+								.col-md-6.my-3
+									input#firstName.form-control(type='text' name='firstname' placeholder='First name')
 							.row
 								.col-md-12.my-3
 									.form-group
 										label(for='exampleFormControlTextarea1') Purpose:
-										textarea#exampleFormControlTextarea1.form-control(rows='3')
+										textarea#exampleFormControlTextarea1.form-control(rows='3' name= 'purpose')
 							.row
 								.col-md-12.my-5.text-center
 									button.btn.btn-primary(type="submit") Submit

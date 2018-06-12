@@ -1,0 +1,35 @@
+extends ../../../../templates/masterguests
+mixin card(facility,bgcolor,icon,title,text)
+	.col-md-4.px-1
+		a(href=`/guest/facilities/${facility}`)
+			.card.text-center.my-3.p-2.shadow(class=`bg-${bgcolor}`)
+				.card-body.px-2
+					i(class=`fa fa-${icon}`)
+					h3.mb-2.card-title.text-uppercase= title
+					p.card-text.text-uppercase
+						| Guidelines & Requirements
+					p.card-text.text-uppercase
+						| Inquire
+mixin testimony(quote,credits,from)
+	div
+		blockquote.blockquote.mx-5.px-5
+			p.mb-0= quote
+			footer.blockquote-footer.text-left=credits
+				cite(title="company")= from
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-7.main-header__textbox
+						h1.font-italic Facilities Reservation
+		#raised-section.main.main-raised
+			//- Icon Boxes
+			#icon-boxes
+				.container
+					.row.cards
+						+card("secondfloor","lightblue","building","Second Floor")
+						+card("thirdfloor","lightgrey","bullhorn","Third Floor")
+						//- +card("lorem","lightbrown","comments","Lorem Ipsum")
+

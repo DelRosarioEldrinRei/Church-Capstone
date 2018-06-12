@@ -32,6 +32,14 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
 .shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
+.shadow2 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+  
+.shadow3 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
 .main-header__textbox {
   margin: 0 auto;
   margin-top: -80px;
@@ -268,10 +276,57 @@ strong {
   background-color: #d6b872;
 }
 
-/* .form-control {
-  border: 1px solid rgba(141,85,36,0.6) !important;
-} */
+.modal-backdrop {
+  z-index: -1 !important;
+}
 
-/* #sectionsNav > div > div.collapse.navbar-collapse > ul > li > a {
-  font-family: "Poppins", sans-serif;
-} */
+.main-header__modal {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 10px;
+  padding-left: 2.8rem;
+}
+
+#calendar {
+  width: 98%;
+  margin: 0 auto;
+  font-size: 10px;
+}
+.fc-toolbar {
+  font-size: .9em;
+}
+.fc-toolbar h2 {
+  font-size: 12px;
+  white-space: normal !important;
+}
+/* click +2 more for popup */
+.fc-more-cell a {
+  display: block;
+  width: 85%;
+  margin: 1px auto 0 auto;
+  border-radius: 3px;
+  background: grey;
+  color: transparent;
+  overflow: hidden;
+  height: 4px;
+}
+.fc-more-popover {
+  width: 100px;
+}
+.fc-view-month .fc-event, .fc-view-agendaWeek .fc-event, .fc-content {
+  font-size: 0;
+  overflow: hidden;
+  height: 2px;
+}
+.fc-view-agendaWeek .fc-event-vert {
+  font-size: 0;
+  overflow: hidden;
+  width: 2px !important;
+}
+.fc-agenda-axis {
+  width: 20px !important;
+  font-size: .7em;
+}
+
+.fc-button-content {
+  padding: 0;
+}

@@ -38,12 +38,136 @@ block body
 						//- 		a.dropdown-item(href="#")
 						//- 			i.fa.fa-instagram(aria-hidden="true")
 						//- 			| &nbsp; Document Request
-						li.nav-item: a.nav-link(href="/schedule" rel="tooltip" title="")
+						li.nav-item: a.nav-link(href="/schedule" rel="tooltip" title="" data-original-title="View Mass Schedule")
 							| Schedule
-						li.nav-item: a.nav-link(href="/login" rel="tooltip" title="")
+						li.nav-item: a.nav-link(href="#" data-toggle='modal', data-target='#loginModal' )
 							| Login
-						li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="")
+						li.nav-item: a.nav-link(href="#" data-toggle='modal', data-target='#signupModal')
 							| Sign Up
+
+	//- Login Modal
+	#loginModal.modal.animated.fadeIn(tabindex='-1', role='')
+		.modal-dialog.modal-login(role='document')
+			.modal-content
+				.card.card-signup.card-plain
+					.modal-header
+						.card-header.card-header-primary.text-center
+							button.close(type='button', data-dismiss='modal', aria-hidden='true')
+								i.material-icons clear
+							h2.main-header__modal.text-white LOGIN
+							.social-line
+								a.btn.btn-just-icon.btn-link(href='#pablo')
+									i.fa.fa-facebook-square
+								a.btn.btn-just-icon.btn-link(href='#pablo')
+									i.fa.fa-twitter
+								a.btn.btn-just-icon.btn-link(href='#pablo')
+									i.fa.fa-google-plus
+									.ripple-container
+					.modal-body
+						form#formLoginSubmit.form(method='POST', action='/login')
+							p.description.text-uppercase.main--desc__size.text-center Where Life Starts
+							.card-body
+								.form-group.bmd-form-group
+									.input-group
+										span.input-group-addon
+											i.material-icons email
+										input.form-control(type='string', name='user_username' placeholder='Username...' required)
+								.form-group.bmd-form-group
+									.input-group
+										span.input-group-addon
+											i.material-icons lock_outline
+										input.form-control(type='password', name='user_password' placeholder='Password...' required)
+					.modal-footer.justify-content-center
+						.row
+							.col-md-12
+								a#anchorLoginSubmit.btn-design(href="#") Submit
+
+	//- Signup Modal
+	#signupModal.modal.animated.fadeIn(tabindex='-1', role='dialog')
+		.modal-dialog.modal-login.modal-lg(role='document')
+			.modal-content
+				.card.card-signup.card-plain
+					.modal-header
+						.card-header.card-header-primary.text-center
+							button.close(type='button', data-dismiss='modal', aria-hidden='true')
+								i.material-icons clear
+							h2.main-header__modal.text-white SIGNUP
+							.social-line
+								a.btn.btn-just-icon.btn-link(href='#pablo')
+									i.fa.fa-facebook-square
+								a.btn.btn-just-icon.btn-link(href='#pablo')
+									i.fa.fa-twitter
+								a.btn.btn-just-icon.btn-link(href='#pablo')
+									i.fa.fa-google-plus
+									.ripple-container
+					.modal-body
+						form#formRegisterSubmit.form(action="/signup" method="post")
+							//- p.description.text-uppercase.main--desc__size.text-center Your Spiritual Home
+							.card-body
+								.row
+									.col-md-6
+										.form-group.m-0
+											label.label-control * Name:	
+											.row
+												.col-md-4.pr-1
+													.form-group.pt-0
+														input.form-control(type='text' placeholder=" * Last Name" name='lastname' required)
+												.col-md-4.p-0
+													.form-group.pt-0
+														input.form-control(type='text' placeholder=" * First Name" name='firstname' required)
+												.col-md-4.pl-1.pr-0
+													.form-group.pt-0
+														input.form-control(type='text' placeholder="Middle Name" name='middlename')
+										.form-group.m-0
+											label.label-control * Gender:
+												.form-check.p-0.m-0
+													label.form-check-label
+														input.form-check-input(type="radio" name="gender" value="Male")
+														| Male
+														span.circle
+															span.check
+													label.form-check-label
+														input.form-check-input(type="radio" name="gender" id="exampleRadios2" value="Female")
+														| Female
+														span.circle
+															span.check
+										.row
+											.col-md-6.pr-1
+												.form-group.m-0
+													label.label-control * Birthday
+													input#datepicker.form-control(type='date' name='birthday' required)
+											.col-md-6.p-0
+												.form-group.m-0
+													label.label-control * Username:
+													input.form-control.mt-1(type='text' name='username' required)
+										.form-group
+											label.m-0(for='exampleFormControlTextarea1') Address:
+											textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
+									.col-md-6
+										.form-group.m-0
+											label.label-control Contact Number:
+											input.form-control(type='text' name='contactnumber')
+										.form-group.m-0
+											label.label-control * Email Address:
+											input.form-control(type='text' name='email' required)
+											.form-group.m-0
+												label.label-control * Password:
+												input.form-control(type='password' name='password' required)
+											.form-group.m-0
+												label.label-control * Confirm password:
+												input.form-control(type='password' name='confirmpassword' required)
+											.form-check.m-0.p-3.mx-auto.my-auto
+												label.form-check-label
+													input.form-check-input(type='checkbox', value='')
+													span.form-check-sign
+														span.check
+													| * I agree to the 
+													strong terms and conditions.
+
+					.modal-footer.justify-content-center
+						.row
+							.col-md-12
+								a#anchorRegisterSubmit.btn-design(href="#") Submit
 
 	block main
 	
@@ -63,3 +187,12 @@ block body
 				|  by 
 				a(href="#") SAD Team
 				| ,	Church Events & Facilities Management System
+	block addjs
+		script.
+			document.getElementById("anchorLoginSubmit").onclick = function() {
+			document.getElementById("formLoginSubmit").submit();
+			}
+
+			document.getElementById("anchorRegisterSubmit").onclick = function() {
+			document.getElementById("formRegisterSubmit").submit();
+			}

@@ -1,0 +1,58 @@
+extends ../../../templates/masterguests
+mixin card(eventType,bgcolor,margin,icon,title,text)
+	.col-md-4.px-1
+		a(href=`/guest/${eventType}`)
+			.card.text-center.p-2.shadow(class=`bg-${bgcolor} ${margin}`)
+				.card-body.px-2
+					i(class=`fa fa-${icon}`)
+					h3.mb-2.card-title.text-uppercase= title
+					p.card-text.text-uppercase
+						| Guidelines & Requirements
+					p.card-text.text-uppercase
+						| Inquire
+mixin testimony(quote,credits,from)
+	div
+		blockquote.blockquote.mx-5.px-5
+			p.mb-0= quote
+			footer.blockquote-footer.text-left=credits
+				cite(title="company")= from
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-7.main-header__textbox
+						h1.font-italic Parish Services
+		#raised-section.main.main-raised
+			//- Icon Boxes
+			#icon-boxes
+				.container
+					.row.cards
+						+card("marriage","lightblue","my-3","snowflake-o","Marriage")
+						+card("anointing","lightgrey","my-3","snowflake-o","Anointing")
+						+card("communion","lightbrown","my-3","snowflake-o","Communion")
+					.row.cards
+						+card("baptism","lightbrown","mt-0","snowflake-o","Baptism")
+						+card("confirmation","lightblue","mt-0","snowflake-o","Confirmation")
+						+card("rcia","lightgrey","mt-0","snowflake-o","RCIA")
+					.row.cards
+						+card("blessings","lightgrey","mt-0","snowflake-o","Blessings")
+						+card("funeral/form","lightbrown","mt-0","snowflake-o","Funeral Blessing")
+						+card("service","lightblue","mt-0","snowflake-o","Funeral Blessing")
+
+			#guide
+				.container
+					.row
+						.col-md-12
+							hr.mt-5.mx-5
+							h1.main--header.font-italic.text-center Mass Schedule
+					.row
+						<div class="card" style="width: 20rem;">
+							<img src='/img/usericon.png' alt="..." style= 'width:200px; height:200px; margin-left:8%; margin-top: 5%'>
+							<div class="card-body">
+								<h4 class="card-title">Card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<a href="#" class="btn btn-primary">Go somewhere</a>
+							</div>
+						</div>

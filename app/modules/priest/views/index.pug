@@ -1,0 +1,60 @@
+extends ../../../templates/mastercoordinators
+mixin card(eventType,bgcolor,margin,icon,title,text)
+	a.mx-1(href=`/guest/${eventType}`)
+		.card.text-center.p-3(class=`bg-${bgcolor} ${margin}`)
+			.card-body.p-2(style="margin-top: 20%")
+				i(class=`fa fa-${icon}`)
+				h3.mb-2.card-title.text-uppercase= title
+				p.card-text.text-uppercase
+					| Guidelines & Requirements
+				p.card-text.text-uppercase
+					| Inquire
+mixin carousel(image,alt)
+	.col-md-4.p-1
+		a(href=image data-toggle="lightbox" data-gallery="img-gallery")
+			img.img-fluid(src=image, alt=alt)
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave1.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Priest
+						a(href="#")
+							p.text-uppercase.card-desc
+								| View Schedule
+		.main.main-raised
+			
+			.container
+				.section
+				
+					#contacts
+						.row
+							.col-md-8.ml-auto.mr-auto
+								h1.main--header.font-italic.text-center Event Proposal
+								h4.text-center.description
+									| Encourage, inspire, and be the change! 
+								form.contact-form
+									.form-group
+										label.label-control Event Name
+										label.bmd-label-floating 
+										input.form-control(type="text")
+										
+									.form-group
+										label.label-control Event Description
+										label.bmd-label-floating(for="message") 
+										textarea#message.form-control(type="text", rows="3")
+									.row
+										.col-md-6
+											.form-group
+												label.label-control Desired Date
+												input.datepickerFBlessingDesiredDate.form-control(type='date' name='desireddate1')
+										.col-md-6
+											.form-group
+												label.label-control Event Venue
+												input.form-control(type='text' name='desireddate1')
+									
+									.row
+										.col-md-4.ml-auto.mr-auto.text-center.mt-3
+											a.btn-design(href="#") Propose

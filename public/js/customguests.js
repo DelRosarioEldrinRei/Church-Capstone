@@ -44,17 +44,27 @@
 				$("#myModal").modal("show");
 			},
 			header: {
-				left: 'title',
-				center: 'agendaDay,agendaWeek,month',
-				right: 'prev,next today'
+				// left: 'title',
+				// center: 'agendaDay,agendaWeek,month',
+				// right: 'prev,next today'
+				right: 'prev,next'
 			},
 			editable: true,
-			firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+			firstDay: 0, //  1(Monday) this can be changed to 0(Sunday) for the USA system
 			selectable: true,
 			defaultView: 'month',
 			
 			allDaySlot: false,
 			selectHelper: true,
+			eventRender: function(event, element){
+				element.popover({
+					title: 'Important!',
+					animation:true,
+					delay: 300,
+					content:  'Meeting with PYM: Youth Camp 01:00PM - 03:00PM',
+					trigger: 'hover'
+				});
+			  },
 			select: function(start, end, allDay) {
 				if (title) {
 					calendar.fullCalendar('renderEvent',
@@ -97,41 +107,302 @@
 			},
 			
 			events: [
+				// UNCOMMENT THIS IF YOU ARE GOING TO CAPTURE FACILITY RESERVATION, FOR NOW, LEMME USE IT FOR COORDINATORS
+				// F  A  C  I  L  T  Y    
+				
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 2, 18),
+				// 	url: 'http://google.com/',
+				// color: '#378006',
+				// },
+				// {
+				// 	title: 'Reserved',
+				// 	start: new Date(y, m, d, 10, 30),
+				// 	allDay: false,
+				// 	className: 'important',
+				// 	url: 'http://google.com/',
+				// },
+				// {
+				// 	title: 'Pending',
+				// 	start: new Date(y, m, d, 12, 0),
+				// 	end: new Date(y, m, d, 14, 0),
+				// 	allDay: false,
+				// 	className: 'important',
+				// 	url: 'http://google.com/',
+				// },
+				// {
+				// 	title: 'Reserved',
+				// 	start: new Date(y, m, d+1, 19, 0),
+				// 	end: new Date(y, m, d+1, 22, 30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Pending',
+				// 	start: new Date(y, m, 28),
+				// 	end: new Date(y, m, 29),
+				// 	url: 'http://google.com/',
+				// 	className: 'success'
+				// },
+
+				//==========================================================
+				// C  O  O  R  D  I  N  A  T  O  R
+				
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 2),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 9, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 16, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 23, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 30, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 1, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 8, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 15, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 22, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 29, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Meeting with PYM',
+				// 	start: new Date(y, m, 10, 13),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// 	color: "#bf1a1a",
+				// },
+
+				// {
+				// 	title: 'Wedding',
+				// 	start: new Date(y, m, 16, 11),
+				// 	url: 'http://google.com/',
+				// 	color: '#580a77',
+				// },
+
+
+				// // P  R  I  E  S  T
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 3, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// 	// rendering: 'background',
+				// 	// color:'#ff9f89',
+				// },
+				
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 3, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 3, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				
+				
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 10, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 10, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 10, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+
+				
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 17, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 17, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 17, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 24, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 24, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 24, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+					
+				// },
+				 
+
+
+				// ==========================================
+				// {
+				// 	title: 'Baptism',
+				// 	start: new Date(y, m, 17, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 5, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 12, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 19, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 26, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 1, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 8, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 15, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 22, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Novena',
+				// 	start: new Date(y, m, 29, 11),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+
 				{
-					title: 'Pending',
-					start: new Date(y, m, 1),
-					url: 'http://google.com/',
+					start: '2018-06-03',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
 				},
+				
 				{
-					title: 'Reserved',
-					start: new Date(y, m, d, 10, 30),
-					allDay: false,
-					className: 'important',
-					url: 'http://google.com/',
+					start: '2018-06-09',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
 				},
+				
 				{
-					title: 'Pending',
-					start: new Date(y, m, d, 12, 0),
-					end: new Date(y, m, d, 14, 0),
-					allDay: false,
-					className: 'important',
-					url: 'http://google.com/',
+					start: '2018-06-23',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
 				},
+				
 				{
-					title: 'Reserved',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					url: 'http://google.com/',
-					allDay: false,
+					start: '2018-06-12',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
 				},
-				{
-					title: 'Pending',
-					start: new Date(y, m, 28),
-					end: new Date(y, m, 29),
-					url: 'http://google.com/',
-					className: 'success'
-				}
-			],			
+			],		
+				
 		});
 	});
 
@@ -150,6 +421,7 @@ materialKitDemo = {
 
 }
 
+
 // ekko lightbox
 $(document).on('click', '[data-toggle="lightbox"]', function(event) {
     event.preventDefault();
@@ -162,6 +434,151 @@ $(".slider").slick({
     slideToShow: 1,
     slideToScroll: 1
 });
+
+// for Birthday
+let birthdayDate = moment();
+$('.datepickerBirthday').datetimepicker({
+	format: 'YYYY-MM-DD',
+	maxDate: birthdayDate,
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+// for Regular Baptism Date
+let startDate = moment().add(14, 'days').calendar();
+let endDate = moment().add(3, 'months').calendar();
+
+$('.datepickerRegularDesiredDate').datetimepicker({
+	format: 'YYYY-MM-DD',
+	minDate: startDate,
+	maxDate: endDate,
+	daysOfWeekDisabled: [1,2,3,4,5,6],
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+// for Special Baptism Date
+$('.datepickerSpecialDesiredDate').datetimepicker({
+	format: 'YYYY-MM-DD',
+	minDate: startDate,
+	maxDate: endDate,
+	daysOfWeekDisabled: [0,1],
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+
+//for funeral blessing
+let startDatee = moment().add(2, 'days').calendar();
+let endDatee = moment().add(1, 'w').calendar();
+
+$('.datepickerFBlessingDesiredDate').datetimepicker({
+	format: 'YYYY-MM-DD',
+	minDate: startDatee,
+	maxDate: endDatee,
+	daysOfWeekDisabled: [1,2,3,4,5,6],
+	icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove',
+	},
+});
+
+// //for anointing of the sick
+// let blessStartDate = moment().add(2, 'days').calendar();
+// let blessEndDate = moment().add(1, 'w').calendar();
+
+// $('.datepickerAnointDesiredDate').datetimepicker({
+// 	format: 'YYYY-MM-DD',
+// 	minDate: blessStartDate,
+// 	maxDate: blessEndDate,
+// 	// daysOfWeekDisabled: [0,1],
+// 	icons: {
+// 			time: "fa fa-clock-o",
+// 			date: "fa fa-calendar",
+// 			up: "fa fa-chevron-up",
+// 			down: "fa fa-chevron-down",
+// 			previous: 'fa fa-chevron-left',
+// 			next: 'fa fa-chevron-right',
+// 			today: 'fa fa-screenshot',
+// 			clear: 'fa fa-trash',
+// 			close: 'fa fa-remove',
+// 	},
+// });
+
+// $('.datepickerAnointDesiredDate1').datetimepicker({
+// 	format: 'YYYY-MM-DD',
+// 	minDate: blessStartDate,
+// 	maxDate: blessEndDate,
+// 	// daysOfWeekDisabled: [0,1],
+// 	icons: {
+// 			time: "fa fa-clock-o",
+// 			date: "fa fa-calendar",
+// 			up: "fa fa-chevron-up",
+// 			down: "fa fa-chevron-down",
+// 			previous: 'fa fa-chevron-left',
+// 			next: 'fa fa-chevron-right',
+// 			today: 'fa fa-screenshot',
+// 			clear: 'fa fa-trash',
+// 			close: 'fa fa-remove',
+// 	},
+// });
+
+// //for establishment blessing desired date
+// let estBlessStartDate = moment().add(1, 'w').calendar();
+// let estBlessEndDate = moment().add(1, 'm').calendar();
+
+// $('.datepickerEstBlessingDesiredDate').datetimepicker({
+// 	format: 'YYYY-MM-DD',
+// 	minDate: estBlessStartDate,
+// 	maxDate: estBlessEndDate,
+// 	daysOfWeekDisabled: [0,1],
+// 	icons: {
+// 			time: "fa fa-clock-o",
+// 			date: "fa fa-calendar",
+// 			up: "fa fa-chevron-up",
+// 			down: "fa fa-chevron-down",
+// 			previous: 'fa fa-chevron-left',
+// 			next: 'fa fa-chevron-right',
+// 			today: 'fa fa-screenshot',
+// 			clear: 'fa fa-trash',
+// 			close: 'fa fa-remove',
+// 	},
+// });
+
 
 
 $('.datepicker').datetimepicker({
@@ -240,6 +657,7 @@ $('.datepicker3').datetimepicker({
 	});
 	$('.timepicker1').datetimepicker({
 			format: 'LT',
+			interval: 15, // 15 minutes
 			icons: {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",

@@ -1,87 +1,173 @@
 extends ../../../../templates/masterguests
-mixin card(facility,bgcolor,icon,title,text)
-	.col-md-4.px-1
-		a(href=`/guests/facilities/${facility}`)
-			.card.text-center.my-3.p-2.shadow.h-100(class=`bg-${bgcolor}`)
-				.card-body.px-2
-					i(class=`fa fa-${icon}`)
-					h3.mb-2.card-title.text-uppercase= title
-					p.card-text.text-uppercase
-						| Choose
 block main
 	.profile-page
 		//- Heading Page
-		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/wedding organizing/package2/flowers.jpg');")
 			.container
 				.row
-					.col-md-9.main-header__textbox
-						h1.font-italic Wedding
+					.col-md-11.main-header__textbox
+						h1.font-italic Wedding Organizing
 						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+							| Mr. and Mrs. Reyes
 		#raised-section.main.main-raised
-			.container
-				#guide
-					.container
-						.row
-							.col-md-12
-								hr.mt-5.mx-5
-						.row
-							.col-md-12.my-3
-								h3.text-center.text-uppercase.guidelines--text Wedding organizing module
-						form(action="#")
-							.row
-								.col-md-6.my-3
-									.form-group
-										.guidelines--text.d-inline MOTIF COLOR &nbsp;
-										//- input(type="color" value="#add8e6")
-										//- span.bmd-help We'll never share your email with anyone else.
-										//- span.bmd-help We'll never share your email with anyone else.
-							.row
-								.guidelines--text BOUQUET PICKING
-								.col-md-12.my-3
-									#icon-boxes
-										.container
-											.row.cards.mb-3
-												+card("secondfloor","lightblue","pagelines","CASCADE")
-												+card("thirdfloor","lightgrey","snowflake-o","POSY")
-												+card("lorem","lightbrown","yelp","HAND-TIED")
-						.row
-							.guidelines--text SONG REQUEST
-							.col-md-12.my-3
-								form(action="#")
-									.form-group
-										label.label-control Song Title:
-										input.form-control(type='text')
-									.form-group
-										label.label-control Artist/Version:
-										input.form-control(type='text')
-						.row
-							.guidelines--text ENTOURAGE
-							.col-md-12.my-3
-								form(action="#")
-									.form-group
-										label.label-control Best Man:
-										input.form-control(type='text')
-								.row
-									.col-md-6.my-3
-										.form-group
-											label.label-control Maid of Honor
-											input.form-control(type='text')
-										.form-group
-											input.form-control(type='text')
-										.form-group
-											input.form-control(type='text')
-									.col-md-6.my-3
-										.form-group
-											input.form-control(type='text')
-										.form-group
-											input.form-control(type='text')
-								.form-group
-									label.label-control Flower Girl:
-									input.form-control(type='text')
-								.form-group
-									label.label-control Ring Bearer:
-									input.form-control(type='text')
-						.row
-							.col-md-12.text-center.mb-5
-								a.btn-design.btn-valid(href="#") SUBMIT
+			#guide
+				.container
+					.row
+						.col-md-12
+							//- hr.mt-5.mx-5
+							//- h1.main--header.font-italic.text-center Mass Schedule
+					 
+					.row
+						.col-md-12
+							hr.mt-5.mx-5
+							h1.main--header.font-italic.text-center Cadbury  Package
+					.row
+						.col-md-12.text-center
+							span
+								<h6>Prepare yourself, while we prepare where you're gonna start your happily ever after!</h6>
+								<h4 class="card-title">PACKAGE PRICE: ₱4000</H4>
+					//- .row
+					//- 	.col-md-12.text-center
+					//- 		span
+					//- 			<h6>Special setting for your special day</h6>
+					//- .row
+					//- 	.col-md-12.text-center
+					//- 		span
+					//- 			<h6>Best Wishes!</h6>
+					.row
+						.col-md-6
+							.card.card-blog.mt-5.shadow2
+								.card-header.card-header-image
+									a.shadow.mt-5(href='#pablo')
+										img.img.img-fluid(src='/img/wedding organizing/package2/group.jpg')
+										//- .card-title
+										//- 	h2.main--header.font-italic.text-white.m-0 Meeting Room
+								//- <img src='/img/wedding organizing/package2/Capture1.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:211rem; height:2110px; margin-left:8%; margin-top: 5%; margin-bottom:25px'>
+							
+							
+							//- .row
+						.col-md-6
+							.card.card-blog.mt-5.shadow2
+								.card-header.card-header-image
+									a.shadow.mt-5(href='#pablo')
+										img.img.img-fluid(src='/img/wedding organizing/package2/aisledecor2.jpg')
+										//- .card-title
+											//- h2.main--header.font-italic.text-white.m-0 Meeting Room
+					.row
+						.col-md-3
+						.col-md-4
+							<div class="card" style="width: 34rem; float: center">
+								//- <img src='/img/wedding organizing/package2/group.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:211rem; height:300px; margin-left:8%; margin-top: 5%'>
+								<div class="card-body" >
+										//- <h4 class="card-title">Motif</h4>
+									
+										.row
+											.col-md-4
+												<div class="rectangle" style="width:157px; height: 30px; background:#480278"></div>
+											.col-md-4
+												<div class="rectangle" style="width:157px; height: 30px; background:#8f07b1"></div>
+											.col-md-4
+												<div class="rectangle" style="width:157px; height: 30px; background:#7456b2; margin-right: 8px"></div>
+								</div>
+							</div>
+					//- .row
+					//- 	.col-md-4
+					//- 		span
+					//- 			<h4 class="card-title">Package Price: </h4>
+							
+					//- 	.col-md-8
+					//- 		.row
+					//- 			<h5>₱4000</h4>
+					
+							//- <a href="#" class="btn btn-primary" style="float:riaght">DETAILS</a>
+								
+						//- .row
+						//- .col-md-12
+						//- 	hr.mt-5.mx-5
+					.row
+					
+						.col-md-2
+							<div class="card" style="width: 11rem;">
+								<img src='/img/wedding organizing/package2/bridalbouquet4.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:11rem; height:170px;margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title"> Bouquet</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						.col-md-2
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/button2.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Boutonnieres</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						
+						.col-md-2
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/coursage2.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Corsage</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div> 
+						.col-md-2
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/candles1.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Unity Candles</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						.col-md-2
+							<div class="card" style="width: 11rem; text-align: center">
+								<img src='/img/wedding organizing/package2/headband.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title" >Headdress</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						.col-md-2
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/aisle4.jpg' alt="/img/wedding organizing/package2/aisle4.jpg" style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Aisle Decor</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						.col-md-3
+						.col-md-2
+						
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/basket1.jpg' alt="..." style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Flowergirl Basket</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						.col-md-2
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/pillow1.jpg' alt="..." style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Ring Bearer Pillow</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+						.col-md-2
+							<div class="card" style="width: 11rem;text-align: center">
+								<img src='/img/wedding organizing/package2/carpet.jpg' alt="..." style= 'width:11rem; height:170px; margin-top: 2px'>
+								<div class="card-body">
+									<h4 class="card-title">Your Purple Carpet</h4>
+									
+									<a href="#" class="btn btn-primary" style="margin-left: 6px">DETAILS</a>
+								</div>
+							</div>
+					

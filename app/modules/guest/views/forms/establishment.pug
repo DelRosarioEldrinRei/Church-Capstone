@@ -18,66 +18,76 @@ block main
 				.row
 					.col-md-12.my-3
 						h3.text-center.text-uppercase.guidelines--text Request Form
-				form(action="/guest/funeral/form" method="post")
-					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
-					.row
-						.col-md-8.mx-auto.my-auto
-							.form-group
-								label.label-control Place where the will happen:
-								.ml-4
-									.form-check
-										label.form-check-label
-											input#ourhomeradio.form-check-input(type="radio" name="venue" value="sameaddress" checked)
-											.dropdown-toggle.mr-3 Our Home
-											span.circle
-												span.check
-										label.form-check-label.ml-3
-											input#otherradio.form-check-input(type="radio" name="venue" value="other")
-											.dropdown-toggle.mr-3 Other
-											span.circle
-												span.check
-										#ourhome.form-group
-											.form-group.mt-2
-												label.label-control Owner:
-												input.form-control(type='text' placeholder="Enter Name of Owner" name='birthplace')
-											.form-group
-												label.label-control House/Establishment Location:
-												textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
-											.form-group
-												label.label-control Contact Number:
-												input.form-control(type='number' name='birthplace')
-											.form-group
-												label.label-control Email:
-												input.form-control(type='Email' name='birthplace')
-										#other.form-group
-											.form-group.mt-2
-												label.label-control Owner:
-												input.form-control(type='text' placeholder="Enter Name of Owner" name='birthplace')
-											.form-group
-												label.label-control House/Establishment Location:
-												textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='othervenue')
-											.form-group
-												label.label-control Contact Number:
-												input.form-control(type='number' name='birthplace')
-											.form-group
-												label.label-control Email:
-												input.form-control(type='Email' name='birthplace')
-							//- .form-group
-							//- 	label.label-control Desired Time
-							//- 	input#time2.form-control(type='text')
-							//- .form-group
-							//- 	label.label-control Desired Time
-							//- 	input#time3.form-control(type='text')
-							//- .form-group
-							//- 	label.label-control Second Desired Time
-							//- 	input#timepicker.form-control(type='number')
-							//- .form-group
-							//- 	label.label-control  Third Desired Time
-							//- 	input#timepicker.form-control(type='number')
-					.row
-						.col-md-12.my-5.text-center
-							//- a.btn-design.mx-2(href="#") Submit
-							button.btn.btn-primary(type='submit') Submit
+				form(action="/guest/establishment/form" method="post")
+					each user in users
+						input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+						.row
+							.col-md-8.mx-auto.my-auto
+								.form-group
+									label.label-control Place where the will happen:
+									.ml-4
+										.form-check
+											label.form-check-label
+												input#ourhomeradio.form-check-input(type="radio" name="establishment" value="ourhome" checked)
+												.dropdown-toggle.mr-3 Our Home
+												span.circle
+													span.check
+											label.form-check-label.ml-3
+												input#otherradio.form-check-input(type="radio" name="establishment" value="other")
+												.dropdown-toggle.mr-3 Other
+												span.circle
+													span.check
+
+											#ourhome.form-group
+												.form-group.mt-2
+													label.label-control Owner:
+													input.form-control(type='text' value=	`${user.var_userlname}`+ ', '+`${user.var_userfname}` name='owner' )
+												.form-group
+													label.label-control House/Establishment Location:
+													input.form-control(value=`${user.var_useraddress}` rows="3" name='location')
+												.form-group
+													label.label-control Contact Number:
+													input.form-control(type='text' value=`${user.var_usercontactnum}` name='contactnumber')
+												.form-group
+													label.label-control Email:
+													input.form-control(type='Email' value=`${user.var_useremail}` name='email')
+
+											#other.form-group
+												.form-group.mt-2
+													label.label-control Owner:
+													input.form-control(type='text' placeholder="Enter Name of Owner" name='owner1')
+												.form-group
+													label.label-control House/Establishment Location:
+													textarea.form-control(placeholder="Please Enter Complete Address" rows="3" name='location1')
+												.form-group
+													label.label-control Contact Number:
+													input.form-control(type='text' name='contactnumber1')
+												.form-group
+													label.label-control Email:
+													input.form-control(type='Email' name='email1')
+						.row
+							.col-md-4
+								.form-group
+									label.label-control Desired Date
+									input.datepicker2.form-control(type='date' name='desireddate1')
+							.col-md-4
+								.form-group.mt-1
+									label.label-control Desired Time
+									input.timepicker.form-control(type='text' name='desiredtime1')
+						.row
+							.col-md-4
+								.form-group
+									label.label-control Alternative Date
+									input.datepicker2.form-control(type='date' name='desireddate2')
+							.col-md-4
+								.form-group.mt-1
+									label.label-control Alternative Time
+									input.timepicker.form-control(type='text' name='desiredtime2')
+								
+						.row
+							.col-md-12.my-5.text-center
+								//- a.btn-design.mx-2(href="#") Submit
+								button.btn.btn-primary(type='submit') Submit
 							//- a.btn-design.btn-valid(href="/guest/events") Cancel
 
 block addjs

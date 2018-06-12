@@ -1,0 +1,93 @@
+extends ../../../../templates/masterguests
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Anointing of the sick
+						a(href="/guest/reservation")
+							p.text-uppercase.card-desc
+								| Reservations
+		#raised-section.main.main-raised
+			.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Request Details
+				//- each detail in details
+				input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
+				.row
+					.col-md-6.my-3
+						.form-group
+							label.label-control Full name of the sick:
+							input.form-control(type='text' name='fullname' value=`${moredetails.var_lname}`+', '+`${moredetails.var_fname}`+ ' '+`${moredetails.var_mname}`)
+						.form-group
+							label.label-control Gender:
+							input.form-control(type='text' name='gender' value=`${moredetails.char_gender}`)
+						.form-group
+							label.label-control Birthday:
+							input.form-control(type='text' name='birthday' value=`${moredetails.date_birthday}`)
+						.form-group
+							label.label-control Birthplace:
+							input.form-control(type='text' name='birthplace' value=`${moredetails.var_birthplace}`)
+						.form-group
+							label.label-control Adddress:
+							input.form-control(type='text' name='relation' value=`${moredetails.var_address}`)
+						.row
+							.col-md-6
+								.form-group
+									label.label-control Desired Date:
+									input.form-control(type='text' name='desireddate1'  value=`${moredetails.date_desireddate1}` )
+							.col-md-6
+								.form-group
+									label.label-control Desired Time:
+									input.form-control(type='text' name='desiredtime1' value=`${moredetails.time_desiredtime1}`)
+						.row
+							.col-md-6
+								.form-group
+									label.label-control Desired Time:
+									input.form-control(type='text' name='desireddate2' value=`${moredetails.date_desireddate2}`)
+							.col-md-6
+								.form-group
+									label.label-control Alternative Time:
+									input.form-control(type='text' name='desiredtime2' value=`${moredetails.time_desiredtime2}`)
+					.col-md-6.my-3
+						.form-group
+							label.label-control Relationship with the sick:
+							input.form-control(type='text' name='relation' value=`${moredetails.var_relation}`)
+						.form-group
+							label.label-control Place where the blessing will happen:
+							input.form-control(type='text' name='relation' value=`${moredetails.var_blessingvenue}`)
+						.form-group
+							label.label-control Details/reason of anointing:
+							input.form-control(type='text' name='relation' value=`${moredetails.var_blessingdetails}`)
+						.row
+							.col-md-12.my-5.text-center
+								a(href=`/guest/reservation/${moredetails.int_eventinfoID}/edit`): button.btn.btn-primary Edit
+								a(href=`/guest/reservation/${moredetails.int_eventinfoID}/cancel`): button.btn.btn-default Cancel
+						//- a.btn-design.btn-valid(href="/guest/events") Cancel
+block addjs
+	script.
+		$('#textarea1').hide();
+		$('#textarea2').hide();
+		$('#radioup').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios1').click(function() {
+			$('#textarea1').slideDown();
+			$('#textarea2').slideUp();
+		});
+		$('#exampleRadios3').click(function() {
+			$('#textarea1').slideUp();
+			$('#textarea2').slideDown();
+		});
+		
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
+		});
