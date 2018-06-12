@@ -2,7 +2,7 @@ extends ../../../templates/mastercoordinators
 block main
 	.profile-page
 		//- Heading Page
-		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.png');")
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/choir11.jpg');")
 			.container
 				.row
 					.col-md-9.main-header__textbox
@@ -21,7 +21,7 @@ block main
 						h2.main--header.font-italic.text-center MEMBERS								
 				.row
 					.col-md-12.text-right.my-3
-						a.btn-design(href="#" data-toggle="modal" data-target="#appointment") New member
+						a.btn-design(href="#" data-toggle="modal" data-target="#conditionModal") New member
 						
 				.row
 					.col-md-12
@@ -82,7 +82,88 @@ block main
 												i.fa.fa-pencil-square-o(aria-hidden='true' )
 											<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
 												i.fa.fa-remove(aria-hidden='true' )
-											
+				
+
+
+				
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h2.main--header.font-italic.text-center MEMBERS								
+				.row
+					.col-md-12.text-right.my-3
+						a.btn-design(href="#" data-toggle="modal" data-target="#appointment") New member
+						
+				.row
+					.col-md-12
+						table.table
+							thead
+								tr
+									th ID
+									th Name
+									th
+									th 
+									th Status
+							tbody
+								tr
+									td B102
+									td
+										img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+										|  Balingit, Phillip James T.
+									td
+									td
+									td
+										<span class="badge badge-success">Active</span>
+									//- td.td-actions
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+									//- 			i.fa.fa-pencil-square-o(aria-hidden='true' )
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+									//- 			i.fa.fa-remove(aria-hidden='true' )
+								tr
+									td A102
+									td
+										img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+										|  Perez, Jamie Mitch K.	
+									td
+									td
+									td 
+										<span class="badge badge-success">Active</span>
+									//- td.td-actions
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+									//- 			i.fa.fa-pencil-square-o(aria-hidden='true' )
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+									//- 			i.fa.fa-remove(aria-hidden='true' )
+								tr
+									td S102
+									td 
+										img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+										|  Cruz, Adelane May L.	
+									td
+									td
+									td 
+										<span class="badge badge-warning">Inactive</span>
+									//- td.td-actions
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+									//- 			i.fa.fa-pencil-square-o(aria-hidden='true' )
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+									//- 			i.fa.fa-remove(aria-hidden='true' )
+								tr
+									td T102
+									td 
+										img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+										|  Santos, Andy Mark N. 
+									td
+									td
+									td
+										<span class="badge badge-danger">Suspended</span>
+									//- td.td-actions
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-info btn-round">
+									//- 			i.fa.fa-pencil-square-o(aria-hidden='true' )
+									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
+									//- 			i.fa.fa-remove(aria-hidden='true' )
+		
 		#appointment.modal.fade
 			.modal-dialog.modal-lg
 				.modal-content
@@ -120,16 +201,56 @@ block main
 														label.label-control Password:
 														input.form-control(type='text' name='newmemberpassword')
 													
-													
-													//- .form-check
-													//- 	label.form-check-label
-													//- 	input.form-check-input(type='checkbox', value='', checked='')
-													//- 	span.form-check-sign
-													//- 		span.check
-													//- 		| ..I agree to the 
-													//- 		a(href='#something') terms and conditions
-													//- 		| .
-													//- 	.text-center
 													.row
 														.col-md-12.text-center.my-3
 															button.btn.btn-primary(type='submit') Add
+		
+
+		#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+			.modal-dialog.modal-notify.modal-success(role='document')
+				// Content
+				.modal-content
+					// Header
+					.modal-header
+						p.heading.lead New Member
+						button.close(type='button' data-dismiss='modal' aria-label='Close')
+							span.white-text(aria-hidden='true') &times;
+					// Body
+					.modal-body
+						form.form(action="/signup" method="post")
+							.form-group
+								label.label-control Name:										
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='lastname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='firstname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='middlename')
+							
+							.form-group
+								label.label-control Email Address:
+								input.form-control(type='text' name='email')
+							.form-group
+								label.label-control Username:
+								input.form-control(type='text' name='username')
+							.form-group
+								label.label-control Password:
+								input.form-control(type='text' name='newmemberpassword')
+							
+							.row
+								.col-md-12.text-center.my-3
+									button.btn.btn-primary(type='submit') Add
+			//- 		// Footer
+			//- 		.modal-footer.justify-content-center
+			//- 			a.btn.btn-primary-modal(type='button')
+			//- 				| Get it now 
+			//- 				i.fa.fa-diamond.ml-1
+			//- 			a.btn.btn-outline-secondary-modal.waves-effect(type='button' data-dismiss='modal') No, thanks
+			//- 	// /.Content
+			//- // Central Modal Success Demo
+
+

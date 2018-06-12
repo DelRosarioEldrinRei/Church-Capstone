@@ -19,33 +19,72 @@ mixin testimony(quote,credits,from)
 block main
 	.profile-page
 		//- Heading Page
-		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.jpeg');")
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/facility/ceiling.jpg');")
 			.container
 				.row
 					.col-md-7.main-header__textbox
-						h1.font-italic Facilities Reservation
+						h1.font-italic Facility Reservation
 		#raised-section.main.main-raised
 			//- Icon Boxes
 			#icon-boxes
 				.row
 					.col-md-12
 						hr.mt-5.mx-5
-				.row
-					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Rooms
+				//- .row
+				//- 	.col-md-12.my-3
+				//- 		h3.text-center.text-uppercase.guidelines--text Rooms
 				.container
 					.row
 						.col-md-6
 							.card.card-blog.mt-5.shadow2
 								.card-header.card-header-image
 									a.shadow.mt-5(href='#pablo')
-										img.img.img-fluid(src='/img/room1.jpg')
+										img.img.img-fluid(src='/img/facility/facility_1.jpg')
 										.card-title
-											h2.main--header.font-italic.text-white.m-0 Second Floor
+											h2.main--header.font-italic.text-white.m-0 Meeting Room
 								.card-body
-									h6.card-category.text-muted.text-right ₱500/day
-									span
-										| is a one-room suite with queen-size bed and comfortable seating area. It is located downstairs with an outside entrance and is wheelchair assessable...
+									//- h6.card-category.text-muted.text-right ₱1200 for the first 4hrs(+₱300/additional hour)
+									//- .row
+									//- 	span
+									//- 		strong Rate: 
+									//- 		|      ₱1200 for the first 4hrs. +₱300/additional hour
+									//- .row
+									//- 	span
+									//- 		strong Ideal for:
+									//- 		|  Meetings, training, seminars, workshops
+									.row
+										.col-md-3
+											span
+												strong Rate: 
+											
+										.col-md-9
+											.row
+												span
+												|      ₱1200 for the first 4hrs.
+											.row
+												span
+												|      +₱300/additional hour
+									.row
+										.col-md-3
+											span
+												strong Ideal For: 
+											
+										.col-md-9
+											.row
+												span
+												|      Meetings, training, seminars, workshops
+									.row
+										.col-md-3
+											span
+												strong Size:
+											
+										.col-md-9
+											.row
+												span
+												|      4.9m x 11.5m (16ft x 37ft)
+									.row
+										.col-md-3
+												
 								.card-footer
 									a.btn.btn-primary.ml-auto.mx-auto(href="/guest/facilities/secondfloor") Inquire
 
@@ -53,12 +92,47 @@ block main
 							.card.card-blog.mt-5.shadow2
 								.card-header.card-header-image
 									a.shadow.mt-5(href='#pablo')
-										img.img.img-fluid(src='/img/room2.jpeg')
+										img.img.img-fluid(src='/img/facility/facility_2.jpg')
 										.card-title
-											h2.main--header.font-italic.text-white.m-0 Third Floor
+											h2.main--header.font-italic.text-white.m-0 Multi-purpose Room
 								.card-body
-									h6.card-category.text-muted.text-right ₱750/day
-									span
-										| Enjoy your stay at our Urbandale hotel in this 304 square foot room complete with king size bed with luxurious Villa di Lusso crisp white cotton linens... 
+									//- .row
+									//- 	span
+									//- 		strong Rate: 
+									//- 		|  ₱1200 for the first 4hrs. +₱300/additional hour
+									//- .row
+									//- 	span
+									//- 		strong Ideal for:
+									//- 		|  Meetings, training, seminars, workshops, holiday parties, banquets, receptions, class reunions, anniversary parties, birthday parties, baby showers
+									.row
+										.col-md-3
+											span
+												strong Rate: 
+											
+										.col-md-9
+											.row
+												span
+												|      ₱1200 for the first 4hrs.
+											.row
+												span
+												|      +₱300/additional hour
+									.row
+										.col-md-3
+											span
+												strong Ideal For: 
+											
+										.col-md-9
+											.row
+												span
+												|      Meetings, training, seminars, workshops, holiday parties, banquets, receptions, class reunions, anniversary parties, birthday parties, baby showers
+									.row
+										.col-md-3
+											span
+												strong Size:
+											
+										.col-md-9
+											.row
+												span
+												|      4.9m x 11.5m (16ft x 37ft)
 								.card-footer
 									a.btn.btn-primary.ml-auto.mx-auto(href="#") Inquire

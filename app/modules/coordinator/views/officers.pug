@@ -2,15 +2,15 @@ extends ../../../templates/mastercoordinators
 block main
 	.profile-page
 		//- Heading Page
-		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/Nave.png');")
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/choir11.jpg');")
 			.container
 				.row
-					.col-md-9.main-header__textbox
-						h1.font-italic Music Ministry
-						h4
-							a.text-uppercase(href="/coordinator/members") Officers
-								|  |  
-							a.text-uppercase(href="/coordinator/officers") Members
+					//- .col-md-9.main-header__textbox
+					//- 	h1.font-italic Music Ministry
+					//- 	h4
+					//- 		a.text-uppercase(href="/coordinator/members") Officers
+					//- 			|  |  
+					//- 		a.text-uppercase(href="/coordinator/officers") Members
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -93,7 +93,80 @@ block main
 													i.fa.fa-pencil-square-o(aria-hidden='true' )
 												<button type="button" rel="tooltip" class="btn btn-fab btn-warning btn-round">
 													i.fa.fa-envelope(aria-hidden='true' )
-													
+				
+				.row
+					.col-md-12.my-3
+						h2.main--header.font-italic.text-center OFFICERS
+				.row
+					.col-md-12
+							table.table
+								thead
+									tr
+										th ID
+										th Name
+										th Position
+										//- th 
+										//- th
+										th Status
+								tbody
+									tr
+										td A102
+										td
+											img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+											|  Basa, Eigiebon T.	
+										td President
+										//- td 
+										//- td
+										td
+											<span class="badge badge-success">Active</span>
+												//- td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-warning btn-round">
+													i.fa.fa-envelope(aria-hidden='true' )
+										
+									tr
+										td S101
+										td
+											img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+											|  Cotling, Mary Angel
+										td Vice President
+										//- td 
+										//- td
+										td
+											<span class="badge badge-success">Active</span>
+												//- td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-warning btn-round">
+													i.fa.fa-envelope(aria-hidden='true' )
+										
+									tr
+										td A101
+										td
+											img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+											|  Fajardo, Grace Loraine D.
+										td Secretary
+										//- td 
+										//- td
+										td
+											<span class="badge badge-success">Active</span>
+												//- td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-warning btn-round">
+													i.fa.fa-envelope(aria-hidden='true' )
+										
+
+									tr
+										td T101
+										td
+											img(src='/img/usericon.png' alt='Contact Person' style= 'width:50px; height:50px; margin-top:3px;')
+											|  Dalit, Albert E.
+										td Treasurer
+										//- td 
+										//- td
+										td
+											<span class="badge badge-success">Active</span>
+												//- td.td-actions
+											<button type="button" rel="tooltip" class="btn btn-fab btn-warning btn-round">
+													i.fa.fa-envelope(aria-hidden='true' )
+										
+																	
 				//- .row
 				//- 	.col-md-12.text-right.my-3
 				//- 		a.btn-design(href="#") Add new officer
@@ -133,3 +206,7 @@ block main
 						.container.d-flex.justify-content-end.m-3
 							button.m-1.btn.btn-primary.btn-fill Update
 							button.m-1.btn.btn-danger.btn-fill Cancel												
+
+
+
+

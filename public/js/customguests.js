@@ -44,9 +44,10 @@
 				$("#myModal").modal("show");
 			},
 			header: {
-				left: 'title',
-				center: 'agendaDay,agendaWeek,month',
-				right: 'prev,next today'
+				// left: 'title',
+				// center: 'agendaDay,agendaWeek,month',
+				// right: 'prev,next today'
+				right: 'prev,next'
 			},
 			editable: true,
 			firstDay: 0, //  1(Monday) this can be changed to 0(Sunday) for the USA system
@@ -55,6 +56,15 @@
 			
 			allDaySlot: false,
 			selectHelper: true,
+			eventRender: function(event, element){
+				element.popover({
+					title: 'Important!',
+					animation:true,
+					delay: 300,
+					content:  'Meeting with PYM: Youth Camp 01:00PM - 03:00PM',
+					trigger: 'hover'
+				});
+			  },
 			select: function(start, end, allDay) {
 				if (title) {
 					calendar.fullCalendar('renderEvent',
@@ -101,9 +111,10 @@
 				// F  A  C  I  L  T  Y    
 				
 				// {
-				// 	title: 'Practice',
+				// 	title: 'Rehearsal',
 				// 	start: new Date(y, m, 2, 18),
 				// 	url: 'http://google.com/',
+				// color: '#378006',
 				// },
 				// {
 				// 	title: 'Reserved',
@@ -135,150 +146,172 @@
 				// 	className: 'success'
 				// },
 
+				//==========================================================
 				// C  O  O  R  D  I  N  A  T  O  R
 				
-				{
-					title: 'Practice',
-					start: new Date(y, m, 2, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 9, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 16, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 23, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 30, 18),
-					url: 'http://google.com/',
-				},
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 2),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 9, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 16, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 23, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 30, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
 
-				{
-					title: 'Practice',
-					start: new Date(y, m, 1, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 8, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 15, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 22, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Practice',
-					start: new Date(y, m, 29, 18),
-					url: 'http://google.com/',
-				},
-				{
-					title: 'Meeting with PYM',
-					start: new Date(y, m, 10, 13),
-					url: 'http://google.com/',
-					allDay: false,
-				},
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 1, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 8, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 15, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 22, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Rehearsal',
+				// 	start: new Date(y, m, 29, 18),
+				// 	url: 'http://google.com/',
+				// 	color: '#378006',
+				// },
+				// {
+				// 	title: 'Meeting with PYM',
+				// 	start: new Date(y, m, 10, 13),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// 	color: "#bf1a1a",
+				// },
+
+				// {
+				// 	title: 'Wedding',
+				// 	start: new Date(y, m, 16, 11),
+				// 	url: 'http://google.com/',
+				// 	color: '#580a77',
+				// },
 
 
-				// P  R  I  E  S  T
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 3, 7,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 3, 9),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Afternoorn Mass',
-					start: new Date(y, m, 3, 17,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
+				// // P  R  I  E  S  T
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 3, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// 	// rendering: 'background',
+				// 	// color:'#ff9f89',
+				// },
+				
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 3, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 3, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
 				
 				
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 10, 7,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 10, 9),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Afternoorn Mass',
-					start: new Date(y, m, 10, 17,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 10, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 10, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 10, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
 
 				
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 17, 7,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 17, 9),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Afternoorn Mass',
-					start: new Date(y, m, 17, 17,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 17, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 17, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 17, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
 				
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 24, 7,30),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Morning Mass',
-					start: new Date(y, m, 24, 9),
-					url: 'http://google.com/',
-					allDay: false,
-				},
-				{
-					title: 'Afternoorn Mass',
-					start: new Date(y, m, 24, 17,30),
-					url: 'http://google.com/',
-					allDay: false,
-					eventColor: '#378006',
-				},
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 24, 7,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Morning Mass',
+				// 	start: new Date(y, m, 24, 9),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+				// },
+				// {
+				// 	title: 'Afternoorn Mass',
+				// 	start: new Date(y, m, 24, 17,30),
+				// 	url: 'http://google.com/',
+				// 	allDay: false,
+					
+				// },
 				 
 
 
-				// ------------
+				// ==========================================
 				// {
 				// 	title: 'Baptism',
 				// 	start: new Date(y, m, 17, 11),
@@ -340,7 +373,34 @@
 				// 	url: 'http://google.com/',
 				// 	allDay: false,
 				// },
+
+				{
+					start: '2018-06-03',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
+				},
 				
+				{
+					start: '2018-06-09',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
+				},
+				
+				{
+					start: '2018-06-23',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
+				},
+				
+				{
+					start: '2018-06-12',
+					overlap: false,
+					rendering: 'background',
+					color: '#2c2d2d'
+				},
 			],		
 				
 		});
@@ -360,6 +420,7 @@ materialKitDemo = {
 	},
 
 }
+
 
 // ekko lightbox
 $(document).on('click', '[data-toggle="lightbox"]', function(event) {
