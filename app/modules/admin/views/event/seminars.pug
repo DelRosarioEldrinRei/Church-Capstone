@@ -9,12 +9,37 @@ block prepend main
 						.card-header
 							h4.card-title
 								i.nc-icon.nc-notes
-								|  Seminars
-							p.card-category Here is a subtitle for this table
+								|  Special Events
+						table.table.table-hover.table-striped
+								thead
+									tr
+										th Event name
+										th Start 
+										th End 
+										th Edit
+										th Delete
+									tbody
+										tr
+											td Libreng Tuli Program
+											td May 28, 2018 , 9:00 AM
+											td May 28,2018 , 11:00 AM
+											td: a(href="#" style="margin-left: 10px" data-toggle="modal" data-target="#sacramentsedit")
+												i.fa.fa-pencil-square-o(aria-hidden='true')
+											td: a(href="#" style="margin-left: 10px" data-toggle="modal" data-target="#sacraments")
+												i.fa.fa-trash(aria-hidden='true')
+											
+										tr
+											td Feeding Program ni Mayora Mocha
+											td May 28,2018 , 12:00 PM
+											td May 28,2018, 2:00 PM
+											td: a(href="#" style="margin-left: 10px" data-toggle="modal" data-target="#sacramentsedit")
+												i.fa.fa-pencil-square-o(aria-hidden='true')
+											td: a(href="#" style="margin-left: 10px" data-toggle="modal" data-target="#sacraments")
+												i.fa.fa-trash(aria-hidden='true')
 						.card-body.table-full-width.table-responsive
 		.container.d-flex.flex-row.justify-content-end
-			button.btn.btn-primary.btn-fill.m-2(data-toggle="modal" data-target="#seminars") Add New Seminar
-			#seminars.modal.fade
+			button.btn.btn-primary.btn-fill.m-2(data-toggle="modal" data-target="#sacraments") Add New Event
+			#sacraments.modal.fade
 				.modal-dialog
 					.modal-content
 						.modal-header
@@ -49,5 +74,42 @@ block prepend main
 										label.text-muted Description
 										textarea.form-control(placeholder='Description about the sacrament' rows="3")
 								.container.d-flex.justify-content-end.m-3
-									button.m-1.btn.btn-primary.btn-fill Add Facility
+									button.m-1.btn.btn-primary.btn-fill Add Event
+									button.m-1.btn.btn-secondary.btn-fill(data-dismiss='modal') Close
+			#sacramentsedit.modal.fade
+				.modal-dialog
+					.modal-content
+						.modal-header
+							h5#loginModalLabel.modal-title.font-weight-bold New Service
+							button.close(data-dismiss='modal') ×
+						.modal-body
+							form
+								.row
+									.col-12
+										.form-group
+											label.text-muted Service Title
+											input.form-control(type='text',value="Baptism", placeholder='Service Title')
+								.row
+									.col-md-6
+										.form-group
+											label.text-muted When
+											.input-group
+												input.form-control(type='text', placeholder='Ex Saturdays - Sundays', value='',disabled)
+									.col-md-6
+										.form-group
+											label.text-muted Where
+											input.form-control(type='text', placeholder='Metro Manila', value='',disabled)
+								.row
+									.col-12
+										.form-group
+											label.text-muted Payment
+											.input-group
+												span.input-group-text ₱
+												input.form-control(type='number', placeholder='₱800', value='',disabled)
+								.row
+									.col-12
+										label.text-muted Description
+										textarea.form-control(placeholder='Description about the sacrament' rows="3")
+								.container.d-flex.justify-content-end.m-3
+									button.m-1.btn.btn-primary.btn-fill Edit Event
 									button.m-1.btn.btn-secondary.btn-fill(data-dismiss='modal') Close

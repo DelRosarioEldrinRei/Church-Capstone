@@ -10,6 +10,12 @@ adminRouter.use(authMiddleware.adminAuth)
 adminRouter.get('/', (req, res)=>{
     res.render('admin/views/index')
 });
+adminRouter.get('/events/sacraments', (req, res)=>{
+    res.render('admin/views/event/sacraments')
+});
+adminRouter.get('/events/seminars', (req, res)=>{
+    res.render('admin/views/event/seminars')
+});
 
 
 

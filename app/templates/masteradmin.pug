@@ -15,166 +15,144 @@ block body
 					li.nav-item
 							a.nav-link(href='/admin')
 								i.nc-icon.nc-app
-								p Dashboard
+								p Dashboard	
 					li
-						a.nav-link(data-toggle="collapse" href="#maintenance")
-							i.nc-icon.nc-single-copy-04
-							p Maintenance
+						a.nav-link(data-toggle="collapse" href="#events")
+							i.nc-icon.nc-notes
+							p Events
 								.float-right.dropdown-toggle.d-inline
-					.collapse#maintenance
-						li
-							a.nav-link(data-toggle="collapse" href="#events")
-								i.nc-icon.nc-notes
-								p Events
-									.float-right.dropdown-toggle.d-inline
-						.collapse#events
+					.collapse#events
+						ul
+							li.nav-item
+								a.nav-link(href='/admin/events/sacraments')
+									span.h5.mx-2 S
+									p Sacraments
+						ul
+							li.nav-item
+								a.nav-link(href='/admin/events/seminars')
+									span.h5.mx-2 S
+									p Seminars
+					li.nav-item
+						a.nav-link(data-toggle="collapse" href='#reservation')
+							i.nc-icon.nc-grid-45
+							p Reservation
+								.float-right.dropdown-toggle.d-inline
+					.collapse#reservation
 							ul
 								li.nav-item
-									a.nav-link(href='/admin/events/sacraments')
-										span.h5.mx-2 S
-										p Sacraments
+									a.nav-link(href='/admin/reservation/facilities')
+										span.h5.mx-2 F
+										p Facilities
 							ul
 								li.nav-item
-									a.nav-link(href='/admin/events/seminars')
-										span.h5.mx-2 S
-										p Seminars
-						li.nav-item
-							a.nav-link(data-toggle="collapse" href='#reservation')
-								i.nc-icon.nc-grid-45
-								p Reservation
-									.float-right.dropdown-toggle.d-inline
-						.collapse#reservation
-								ul
-									li.nav-item
-										a.nav-link(href='/admin/reservation/facilities')
-											span.h5.mx-2 F
-											p Facilities
-								ul
-									li.nav-item
-										a.nav-link(href='/admin/reservation/document')
-											span.h5.mx-2 D
-											p Document Request
-						li
-							a.nav-link(data-toggle="collapse" href="#events")
-								i.nc-icon.nc-notes
-								p Events
-									.float-right.dropdown-toggle.d-inline
-						.collapse#events
+									a.nav-link(href='/admin/reservation/document')
+										span.h5.mx-2 D
+										p Document Request
+					li.nav-item
+						xa.nav-link(data-toggle="collapse" href='#appoint')
+							i.nc-icon.nc-grid-45
+							p Appointment
+								.float-right.dropdown-toggle.d-inline
+					.collapse#appoint
 							ul
 								li.nav-item
-									a.nav-link(href='/admin/events/sacraments')
-										span.h5.mx-2 S
-										p Sacraments
-							ul
-								li.nav-item
-									a.nav-link(href='/admin/events/seminars')
-										span.h5.mx-2 S
-										p Seminars
-						li.nav-item
-							xa.nav-link(data-toggle="collapse" href='#appoint')
-								i.nc-icon.nc-grid-45
-								p Appointment
-									.float-right.dropdown-toggle.d-inline
-						.collapse#appoint
-								ul
-									li.nav-item
-										a.nav-link(href='/admin/appoint/coordinators')
-											span.h5.mx-2 C
-											p Appoint Coordinators
-								ul
-									li.nav-item
-										a.nav-link(href='/admin/appoint/priest')
-											span.h5.mx-2 P
-											p Appoint Priest
-								ul
-									li.nav-item
-										a.nav-link(href='/admin/appoint/pending')
-											span.h5.mx-2 A
-											p Pending Appointments
-								ul
-									li.nav-item
-										a.nav-link(href='/admin/appoint/members')
-											span.h5.mx-2 P
-											p Appoint Members
-						//- li.nav-item
-						//- 	a.nav-link(data-toggle="collapse" href='#appoint')
-						//- 	i.nc-icon.nc-grid-45
-						//- 	p Appointment
-						//- 		.float-right.dropdown-toggle.d-inline
-						//- .collapse#appoint
-						//- 	ul
-						//- 		li.nav-item
-						//- 			a.nav-link(href='/secretariat/appointment/coordinators')
-						//- 				span.h5.mx-2 A
-						//- 				p Appoint Coordinators
-						//- 	ul
-						//- 		li.nav-item
-						//- 			a.nav-link(href='#')
-						//- 				span.h5.mx-2 A
-						//- 				p Appoint Priest
-						li.nav-item
-							a.nav-link(href='#')
-								i.nc-icon.nc-grid-45
-								p Requirements
-						li.nav-item
-							a.nav-link(data-toggle="collapse" href='#documents')
-								i.nc-icon.nc-paper-2
-								p Documents
-									.float-right.dropdown-toggle.d-inline
-						.collapse#documents
-							ul
-								li.nav-item
-									a.nav-link(href='#')
-										span.h5.mx-2 W
-										p Wedding
-							ul
-								li.nav-item
-									a.nav-link(href='#')
+									a.nav-link(href='/admin/appoint/coordinators')
 										span.h5.mx-2 C
-										p Certificates
+										p Appoint Coordinators
 							ul
 								li.nav-item
-									a.nav-link(href='#')
-										span.h5.mx-2 A
-										p Application Form
-							ul
-								li.nav-item
-									a.nav-link(href='#')
-										i.nc-icon.nc-grid-45
-										p Permit
-							ul
-								li.nav-item
-									a.nav-link(href='#')
-										i.nc-icon.nc-grid-45
-										p OR
-						//- li.nav-item
-						//- 	a.nav-link(href='#')
-						//- 		i.nc-icon.nc-paper-2
-						//- 		p Proofs
-						li.nav-item
-							a.nav-link(href='#')
-								i.nc-icon.nc-paper-2
-								p Guests
-						li.nav-item
-							a.nav-link(data-toggle="collapse" href='#staff')
-								i.nc-icon.nc-circle-09
-								p Staff
-									.float-right.dropdown-toggle.d-inline
-						.collapse#staff
-							ul
-								li.nav-item
-									a.nav-link(href='#')
-										span.h5.mx-2 C
-										p Coordinators
-							ul
-								li.nav-item
-									a.nav-link(href='#')
+									a.nav-link(href='/admin/appoint/priest')
 										span.h5.mx-2 P
-										p Priests
+										p Appoint Priest
+							ul
+								li.nav-item
+									a.nav-link(href='/admin/appoint/pending')
+										span.h5.mx-2 A
+										p Pending Appointments
+							ul
+								li.nav-item
+									a.nav-link(href='/admin/appoint/members')
+										span.h5.mx-2 P
+										p Appoint Members
+					//- li.nav-item
+					//- 	a.nav-link(data-toggle="collapse" href='#appoint')
+					//- 	i.nc-icon.nc-grid-45
+					//- 	p Appointment
+					//- 		.float-right.dropdown-toggle.d-inline
+					//- .collapse#appoint
+					//- 	ul
+					//- 		li.nav-item
+					//- 			a.nav-link(href='/secretariat/appointment/coordinators')
+					//- 				span.h5.mx-2 A
+					//- 				p Appoint Coordinators
+					//- 	ul
+					//- 		li.nav-item
+					//- 			a.nav-link(href='#')
+					//- 				span.h5.mx-2 A
+					//- 				p Appoint Priest
 					li.nav-item
 						a.nav-link(href='#')
-							i.nc-icon.nc-settings-gear-64
-							p Utilities
+							i.nc-icon.nc-grid-45
+							p Requirements
+					li.nav-item
+						a.nav-link(data-toggle="collapse" href='#documents')
+							i.nc-icon.nc-paper-2
+							p Documents
+								.float-right.dropdown-toggle.d-inline
+					.collapse#documents
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									span.h5.mx-2 W
+									p Wedding
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									span.h5.mx-2 C
+									p Certificates
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									span.h5.mx-2 A
+									p Application Form
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									i.nc-icon.nc-grid-45
+									p Permit
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									i.nc-icon.nc-grid-45
+									p OR
+					//- li.nav-item
+					//- 	a.nav-link(href='#')
+					//- 		i.nc-icon.nc-paper-2
+					//- 		p Proofs
+					li.nav-item
+						a.nav-link(href='#')
+							i.nc-icon.nc-paper-2
+							p Guests
+					li.nav-item
+						a.nav-link(data-toggle="collapse" href='#staff')
+							i.nc-icon.nc-circle-09
+							p Staff
+								.float-right.dropdown-toggle.d-inline
+					.collapse#staff
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									span.h5.mx-2 C
+									p Coordinators
+						ul
+							li.nav-item
+								a.nav-link(href='#')
+									span.h5.mx-2 P
+									p Priests
+				li.nav-item
+					a.nav-link(href='#')
+						i.nc-icon.nc-settings-gear-64
+						p Utilities
 						//- li.nav-item
 						//- 	a.nav-link(href='transaction.html')
 						//- 		i.nc-icon.nc-chart-bar-32
