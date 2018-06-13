@@ -1,0 +1,41 @@
+doctype
+html.perfect-scrollbar-on(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="ie=edge")
+		meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport')
+		link(rel='stylesheet' href='/css/fullcalendar.min.css')
+		block addcss
+		//- link(rel="stylesheet" href="/css/light-bootstrap-dashboard.css?v=2.0.1")
+		link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+		link(rel="stylesheet" href="/css/font-awesome.min.css")
+		link(rel="stylesheet" href="/css/material-dashboard.css?v=2.1.0")
+		link(rel="stylesheet" href="/css/perfect-scrollbar.css")
+		link(rel="stylesheet" href="/css/style.css")
+		link(rel='stylesheet' href="/css/custom.css")
+		title Church
+	body
+		block body
+
+	script(src="/js/jquery.min.js")
+	script(src="/js/jquery-ui.min.js")
+	script(src="/js/popper.min.js")
+	script(src="/js/bootstrap-material-design-dashboard.min.js")
+	script(src="/js/perfect-scrollbar.jquery.min.js")
+	script(src="/js/chartist.min.js")
+	script(src="/js/arrive.min.js")
+	script(src="/js/moment.min.js")
+	script(src="/js/fullcalendar.min.js")
+	script(src="/js/bootstrap.min.js")
+	script(src="/js/bootstrap-switch.js")
+	script(src="/js/sweetalert2.all.min.js")
+	script(src="/js/bootstrap-notify.js")
+	script(src="/js/material-dashboard.js?v=2.1.0")
+	script(src="/js/demo1.js")
+	block addjs
+		script.
+			$(document).ready(function() {
+				// Javascript method's body can be found in assets/js/demos.js
+				md.initDashboardPageCharts();
+
+			});
