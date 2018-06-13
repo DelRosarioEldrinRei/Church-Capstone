@@ -32,48 +32,34 @@ block main
 										td=reservation.char_approvalstatus
 										td.td-actions
 											//- button.btn.btn-sm.btn-success(type='button', rel='tooltip')
-											a(href=`/guest/reservation/${reservation.int_eventinfoID}` style= 'margin-left: 3px') VIEW
+											//- a(href=`/guest/reservation/${reservation.int_eventinfoID}` style= 'margin-left: 3px') VIEW
+											a.btn-design(href="#" data-toggle="modal" data-target="#conditionModal") VIEW
 												//- i.fa.fa-pencil-square-o(aria-hidden='true' )
-											a(href=`/guest/reservation/${reservation.int_eventinfoID}/cancel` style= 'margin-left: 8px') CANCEL
+											//- a(href=`/guest/reservation/${reservation.int_eventinfoID}/cancel` style= 'margin-left: 8px') CANCEL
 												//- i.fa.fa-pencil-square-o(aria-hidden='true' )							
 
-												//-ELDRIN, paki ayos na lang, yung view fafa kame hahah tas cancel yung isa,
-												//- dapat may lumabas pa sa cancel na sweet alert kung idedelete sya or hindi
-												//-  Balak ko sana pag nagview lalabas yung details sa modal, pero di ko pa nagagawa hahaha.
-												//-  Ganto muna for now, para magawan ko lang ng back end
-
-		#appointment.modal.fade
-			.modal-dialog.modal-lg
-				.modal-content
+	#conditionModal.modal.animated.fadeIn(tabindex='-1', role='dialog')
+		.modal-dialog.modal-login.modal-lg(role='document')
+			.modal-content
+				.card.card-signup.card-plain
 					.modal-header
-						h5#loginModalLabel.modal-title.font-weight-bold.d-inline Available Coordinators and Priest
-						button.close(data-dismiss='modal') ×
+						//- .card-header.card-header-warning.text-center
+						//- 	button.close(type='button', data-dismiss='modal', aria-hidden='true')
+						//- 		i.material-icons clear
+						//- 	h3.main-header__modal.text-white SIGNUP
+							
 					.modal-body
+							//- <div class="card card-nav-tabs">
+							//- <div class="card-header card-header-warning">
+							//- 	Featured
+							//- </div>
+							<div class="card-body">
+								<h4 class="card-title">Special title treatment</h4>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								
+							</div>
+							</div>
+					.modal-footer.justify-content-center
 						.row
-							.col-3
-								label.text-muted COORDINATORS
-							.col-9
-								table.table.table-hover.table-striped
-									thead
-										th Full name
-										th Status
-										th 
-									tbody
-										tr
-											td Jonalyn Fe Ebrada
-											td
-												select.custom-select
-													option(selected='') Pending
-													option(value='1') One
-													option(value='2') Two
-													option(value='3') Three											
-											td
-												.form-check.pl-0.mr-4.text-right
-													label.form-check-label.p-0
-														| &nbsp;
-														input.form-check-input(type='checkbox' value='')
-														span.form-check-sign
-						
-						.container.d-flex.justify-content-end.m-3
-							button.m-1.btn.btn-primary.btn-fill Update
-							button.m-1.btn.btn-danger.btn-fill Cancel												
+							.col-md-12
+								a#anchorRegisterSubmit.btn-design(href="#") Submit

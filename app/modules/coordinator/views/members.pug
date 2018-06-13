@@ -164,47 +164,6 @@ block main
 									//- 		<button type="button" rel="tooltip" class="btn btn-fab btn-danger btn-round">
 									//- 			i.fa.fa-remove(aria-hidden='true' )
 		
-		#appointment.modal.fade
-			.modal-dialog.modal-lg
-				.modal-content
-					.modal-header.text-center
-						h5#loginModalLabel.modal-title.font-weight-bold.text-center New Member
-						button.close(data-dismiss='modal')
-					.modal-body
-						.row
-							.col-md-10.ml-auto.mr-auto.mt-12
-								.card.card-signup.mt-12
-									.card-body
-										.row.mb-4
-											.col-md-12.mr-12
-												form.form(action="/signup" method="post")
-													.form-group
-														label.label-control Name:										
-														.row
-															.col-md-4
-																.form-group.pt-0
-																	input.form-control(type='text' placeholder="Last Name" name='lastname')
-															.col-md-4
-																.form-group.pt-0
-																	input.form-control(type='text' placeholder="First Name" name='firstname')
-															.col-md-4
-																.form-group.pt-0
-																	input.form-control(type='text' placeholder="Middle Name" name='middlename')
-													
-													.form-group
-														label.label-control Email Address:
-														input.form-control(type='text' name='email')
-													.form-group
-														label.label-control Username:
-														input.form-control(type='text' name='username')
-													.form-group
-														label.label-control Password:
-														input.form-control(type='text' name='newmemberpassword')
-													
-													.row
-														.col-md-12.text-center.my-3
-															button.btn.btn-primary(type='submit') Add
-		
 
 		#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
 			.modal-dialog.modal-notify.modal-success(role='document')

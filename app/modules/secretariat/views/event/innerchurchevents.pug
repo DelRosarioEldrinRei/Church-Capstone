@@ -8,25 +8,30 @@ block prepend main
 					.card.strpied-tabled-with-hover
 						.card-header
 							h4.card-title
+								//- .row
+								//- 	.col-md-1
+								//- 		label.text-muted Event Type
+								//- 	.col-md-5
+								//- 		p.guidelines--desc
+								//- 		|Baptism
+								//- 	.col-md-1.text-right
+								//- 		label.text-muted Transaction ID
+								//- 	.col-md-5.text-right
+								//- 		p.guidelines--desc
+								//- 		| SB1801
 								.row
 									.col-md-6
-										.form-group
-											label.text-muted 
-											.input-group
-												label.form-check-label.p-0
-												| Baptism 
-									.col-md-6
-										.form-group
-											label.text-muted 
-											.input-group
-												label.form-check-label.p-0(style="margin-left: 120px")
-												| 2018-1MN-0
+										p.guidelines--desc
+										|Baptism
+									.col-md-6.text-right
+										p.guidelines--desc
+										| SB1801
 								.row
 									.col-6
 										.form-group
 											label.text-muted Participant
 											.input-group
-												label.form-check-label.p-0
+												span.form-check-label.p-0
 												| Joshua Rae Macaya
 								.row
 									.col-md-6
@@ -110,7 +115,7 @@ block prepend main
 													h5#loginModalLabel.modal-title.font-weight-bold.text-center Birth Certificate
 														.row
 															.form-group
-																img(src='/img/certificate1.jpg', width='400', height='300',style="margin-left:40px")
+																img(src='/img/certificate1.jpg', width='400', height='600',style="margin-left:40px")
 														.container.d-flex.justify-content-end.m-3
 															button.m-1.btn.btn-primary.btn-fill(data-dismiss='modal') Approve
 															button.m-1.btn.btn-danger.btn-fill(data-dismiss='modal' style="backgroud-color: red") Return

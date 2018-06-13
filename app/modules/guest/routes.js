@@ -32,9 +32,21 @@ guestRouter.get('/weddingorg', (req, res)=>{
     res.render('guest/views/forms/weddingorg')
 });
 
+guestRouter.get('/weddingorg/items', (req, res)=>{
+    res.render('guest/views/forms/weddingorg1')
+});
+
+guestRouter.get('/voucher', (req, res)=>{
+    res.render('guest/views/voucher/facility')
+});
 //===============================================================================================//
 // R E S E R V A T I O N //
 //===============================================================================================//
+guestRouter.get('/reservation/SB1801', (req, res)=>{
+    res.render('guest/views/reservations/techno');
+
+});//delete this part, for techno only
+
 guestRouter.get('/reservation', (req, res)=>{
     var queryString1 =`SELECT * FROM tbl_eventinfo 
     JOIN tbl_eventapplication ON tbl_eventinfo.int_eventinfoID = tbl_eventapplication.int_eventinfoID 
