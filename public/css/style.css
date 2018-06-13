@@ -120,13 +120,13 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
   
 }
 
-.card p {
+/* .card p {
   font-family: 'PT Sans', serif;
   letter-spacing: 4px;
   font-size: 14px;
-}
+} */
 
-.card p:last-child {
+/* .card p:last-child {
   outline: 1px solid #fff;
   display: inline;
   outline-offset: 5px;
@@ -136,7 +136,7 @@ p.text-uppercase.card-desc {
   font-family: 'PT Sans', serif;
   letter-spacing: 4px;
 
-}
+} */
 
 hr {
   border: 0;
