@@ -20,6 +20,10 @@
   #home-heading i.fa.fa-check {
     color: #38f138; }
 
+.color-black {
+  color:black;
+}
+
 #raised-section img {
   margin-top: -50px; }
 
@@ -284,6 +288,15 @@ strong {
   font-family: 'EB Garamond', serif;
   letter-spacing: 10px;
   padding-left: 2.8rem;
+}
+
+#loginModal > div {
+  max-width: 400px !important;
+}
+
+#signupModal > div {
+  transform: translate(0, -30px) !important;
+  max-width: 900px !important;
 }
 
 .hvrbox * {
