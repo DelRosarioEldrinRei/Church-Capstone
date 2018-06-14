@@ -9,10 +9,6 @@ block prepend main
 	.content
 		.container-fluid
 			.row
-				.col-md-12
-					#form-facility
-						#calendar
-			.row
 				.col-lg-4.col-md-6.col-sm-6
 					.card.card-stats
 						.card-header.card-header-info.card-header-icon
@@ -47,6 +43,10 @@ block prepend main
 							.stats
 								i.material-icons update
 								|  Just Updated
+			.row
+				.col-md-12
+					#form-facility
+						#calendar(style="padding: 20px;")
 				//- .col-lg-3.col-md-6.col-sm-6
 				//- 	.card.card-stats
 				//- 		.card-header.card-header-danger.card-header-icon

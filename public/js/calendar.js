@@ -129,40 +129,46 @@ $(document).ready(function() {
         events: [
             {
                 title: 'All Day Event',
-                start: new Date(y, m, 1)
+                start: new Date(y, m, 1),
+                url: 'http://google.com/',
             },
             {
                 id: 999,
                 title: 'Repeating Event',
                 start: new Date(y, m, d-3, 16, 0),
                 allDay: false,
-                className: 'info'
+                className: 'info',
+                url: 'http://google.com/',
             },
             {
                 id: 999,
                 title: 'Repeating Event',
                 start: new Date(y, m, d+4, 16, 0),
                 allDay: false,
-                className: 'info'
+                className: 'info',
+                url: 'http://google.com/',
             },
             {
                 title: 'Meeting',
                 start: new Date(y, m, d, 10, 30),
                 allDay: false,
-                className: 'important'
+                className: 'important',
+                url: 'http://google.com/',
             },
             {
                 title: 'Lunch',
                 start: new Date(y, m, d, 12, 0),
                 end: new Date(y, m, d, 14, 0),
                 allDay: false,
-                className: 'important'
+                className: 'important',
+                url: 'http://google.com/',
             },
             {
                 title: 'Birthday Party',
                 start: new Date(y, m, d+1, 19, 0),
                 end: new Date(y, m, d+1, 22, 30),
                 allDay: false,
+                url: 'http://google.com/',
             },
             {
                 title: 'Click for Google',

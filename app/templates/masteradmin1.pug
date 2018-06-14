@@ -10,8 +10,8 @@ block body
 				Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 				Tip 2: you can also add an image using data-image tag
 			.logo
-				a.simple-text.logo-normal(href='http://www.creative-tim.com')
-					| Church to Go
+				a.simple-text.logo-normal(href='#')
+					| INLPP
 			.sidebar-wrapper
 				ul.nav
 					li.nav-item.active
@@ -26,25 +26,25 @@ block body
 					.collapse#maintenance
 						li.nav-item.ml-2
 							a.nav-link(data-toggle="collapse" href="#events")
-								i.material-icons event
+								i.material-icons layers
 								p Events
 									b.caret
 						.collapse#events
 							li.nav-item.ml-3
 								a.nav-link(href='/admin/facilities')
-									i.material-icons local_library
+									i.material-icons event
 									p Baptism
 							li.nav-item.ml-3
 								a.nav-link(href='/admin/facilities')
-									i.material-icons local_library
+									i.material-icons event
 									p Confirmation
 							li.nav-item.ml-3
 								a.nav-link(href='/admin/facilities')
-									i.material-icons list_alt
+									i.material-icons event
 									p Blessings
 							li.nav-item.ml-3
 								a.nav-link(href='/admin/documents')
-									i.material-icons list_alt
+									i.material-icons event
 									p Marriage
 						li.nav-item.ml-2
 							a.nav-link(href='/admin/facilities')
@@ -94,7 +94,7 @@ block body
 			nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
 				.container-fluid
 					.navbar-wrapper
-						a.navbar-brand(href='#pablo') Dashboard
+						//- a.navbar-brand(href='#pablo') Dashboard
 					button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navigation', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation')
 						span.sr-only Toggle navigation
 						span.navbar-toggler-icon.icon-bar
