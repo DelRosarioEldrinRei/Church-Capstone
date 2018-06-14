@@ -5,18 +5,22 @@ block addcss
 
 block prepend main
 	#wrap
-	#calendar
 	div(style='clear:both')
-	.content
+	.content.p-1
 		.container-fluid
-			//- <div class="alert alert-warning" role="alert">
-			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
-			//- </div>
-			
-			.row
-				.col-lg-12.col-md-12
-				<img src='/img/wedding organizing/package2/bridalbouquet4.jpg' class="hvrbox-layer_bottom" alt="..." style= 'width:9rem; height:150;margin-top: 2px;margin-left: 5px'>
-			
+			.card
+				.card-body
+					.row
+						.col-md-6
+							img.img.img-fluid.rounded.shadow(src='/img/wedding organizing/package2/bridalbouquet4.jpg' alt="...")
+						.col-md-6
+							.row
+								.col-md-12
+									h3.main--header.font-italic.text-center.m-0 Birth Certificate
+							p.mt-2 Lorem ipsum dolor sit amet, albucius oportere sea ad, ex inani molestie usu, atomorum electram ex |ius. No etiam legendos reprehendunt per. Id nihil melius delenit eum, ne sed tantas suscipiantur, vis utamur praesent democritum ne. Ad pri constituto cotidieque, ut modus impedit omittantur his. Vis no habeo timeam periculis, eu per facer timeam legendos.
+								| Cum modo atqui persequeris in, duo sumo eirmod ad, ut debet tibique quo. Consul sapientem maiestatis ut cum. Ad mei veniam appareat invidunt, duo saepe concludaturque vituperatoribus ne. Assum reprimique duo te. In per vitae affert quaestio, stet iusto conclusionemque vix in.
+							strong I like fishy
+
 block addjs
-	script(src='js/forIndex.js')
+	//- script(src='js/forIndex.js')
 	//- script(src='js/loader.js')

@@ -5,7 +5,7 @@ block body
 		.loader-section.section-left
 		.loader-section.section-right
 	.wrapper
-		.sidebar(data-color='purple', data-background-color='white', data-image='/img/sidebar-1.jpg')
+		.sidebar(data-color='brown', data-background-color='white', data-image='/img/sidebar-1.jpg')
 			//
 				Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 				Tip 2: you can also add an image using data-image tag
@@ -20,58 +20,59 @@ block body
 							p Dashboard
 					li.nav-item
 						a.nav-link(data-toggle="collapse" href="#maintenance")
-							.float-right.dropdown-toggle.d-inline
 							i.material-icons developer_board
 							p Maintenace
+								b.caret
 					.collapse#maintenance
-						li.nav-item.ml-3
+						li.nav-item.ml-2
 							a.nav-link(data-toggle="collapse" href="#events")
 								i.material-icons event
 								p Events
-						li.nav-item.ml-3
+									b.caret
+						.collapse#events
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/facilities')
+									i.material-icons local_library
+									p Baptism
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/facilities')
+									i.material-icons local_library
+									p Confirmation
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/facilities')
+									i.material-icons list_alt
+									p Blessings
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/documents')
+									i.material-icons list_alt
+									p Marriage
+						li.nav-item.ml-2
 							a.nav-link(href='/admin/facilities')
 								i.material-icons store_mall_directory
 								p Facilities
-						li.nav-item.ml-3
+						li.nav-item.ml-2
 							a.nav-link(href='/admin/documents')
 								i.material-icons list_alt
 								p Documents
-					//- .collapse#events
-					//- 	li.nav-item.ml-2
-					//- 		a.nav-link(href='/admin/facilities')
-					//- 			i.material-icons local_library
-					//- 			p Baptism
-					//- 	li.nav-item.ml-2
-					//- 		a.nav-link(href='/admin/facilities')
-					//- 			i.material-icons local_library
-					//- 			p Confirmation
-					//- 	li.nav-item.ml-2
-					//- 		a.nav-link(href='/admin/facilities')
-					//- 			i.material-icons list_alt
-					//- 			p Blessings
-					//- 	li.nav-item.ml-2
-					//- 		a.nav-link(href='/admin/documents')
-					//- 			i.material-icons list_alt
-					//- 			p Marriage
 					li.nav-item
 						a.nav-link(data-toggle="collapse" href='#transaction')
-							.float-right.dropdown-toggle.d-inline
 							i.material-icons content_paste
 							p Transactions
+								b.caret
 					#reservation.collapse
-						li.nav-item.ml-3
+						li.nav-item.ml-2
 							a.nav-link(href='#')
 								i.material-icons location_city
 								p Event Applications
-						li.nav-item.ml-3
+						li.nav-item.ml-2
 							a.nav-link(href='#')
 								i.material-icons location_city
 								p Event Proposals
-						li.nav-item.ml-3
+						li.nav-item.ml-2
 							a.nav-link(href='#')
 								i.material-icons location_city
 								p Facilit Reservations
-						li.nav-item.ml-3
+						li.nav-item.ml-2
 							a.nav-link(href='#')
 								i.material-icons assignment
 								p Document Requests
@@ -93,7 +94,7 @@ block body
 			nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
 				.container-fluid
 					.navbar-wrapper
-						a.navbar-brand(href='#pablo')
+						a.navbar-brand(href='#pablo') Dashboard
 					button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navigation', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation')
 						span.sr-only Toggle navigation
 						span.navbar-toggler-icon.icon-bar
