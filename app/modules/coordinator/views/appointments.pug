@@ -29,10 +29,7 @@ block main
 										<li class="list-group-item">Vestibulum at eros</li>
 										<li class="list-group-item">Cras justo odio</li>
 										<li class="list-group-item">Dapibus ac facilisis in</li>
-										<li class="list-group-item">Vestibulum at eros</li>
-										<li class="list-group-item">Cras justo odio</li>
-										<li class="list-group-item">Dapibus ac facilisis in</li>
-										<li class="list-group-item">Vestibulum at eros</li>
+									
 									</ul>
 								</div>
 					
@@ -40,17 +37,61 @@ block main
 							<div class="card border-light mb-3" style="max-width: 50rem;">
 								//- <div class="card-header" style="width: 18rem; margin: auto">Header</div>
 								<div class="card-body">
-									<h5 class="card-title">Light card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-									<p class="card-text">Some quick example text to build on the card title and make up the</p>
-								</div>
-								//- <div class="card-footer bg-transparent border-success">Footer</div>
-								</div>
+									.row
+										.col-md-12.text-center
+											h3.card-title APPOINTMENTS
+									.row
+										.col-md-3
+											<h4 class="card-title">Event Date: </h4>
+										.col-md-8
+											<h5 class="card-text"> June 23, 2018</h5>
+									.row
+										.col-md-3
+											<h4 class="card-title">Time: </h4>
+										.col-md-8
+											<h5 class="card-text"> 11:00am-12:00pm</h5>
+									.row
+										.col-md-3
+											<h4 class="card-title">Event Type: </h4>
+										.col-md-8
+											<h5 class="card-text"> Wedding Ceremony</h5>
+									
+
+		#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+			.modal-dialog.modal-notify.modal-success(role='document')
+				// Content
+				.modal-content
+					// Header
+					.modal-header
+						p.heading.lead New Member
+						button.close(type='button' data-dismiss='modal' aria-label='Close')
+							span.white-text(aria-hidden='true') &times;
+					// Body
+					.modal-body
+						form.form(action="/signup" method="post")
+							.form-group
+								label.label-control Name:										
+								.row
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Last Name" name='lastname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="First Name" name='firstname')
+									.col-md-4
+										.form-group.pt-0
+											input.form-control(type='text' placeholder="Middle Name" name='middlename')
 							
+							.form-group
+								label.label-control Email Address:
+								input.form-control(type='text' name='email')
+							.form-group
+								label.label-control Username:
+								input.form-control(type='text' name='username')
+							.form-group
+								label.label-control Password:
+								input.form-control(type='text' name='newmemberpassword')
+							
+							.row
+								.col-md-12.text-center.my-3
+									button.btn.btn-primary(type='submit') Add

@@ -49,12 +49,19 @@ block main
 										.col-md-6
 											.form-group
 												label.label-control Desired Date
-												input.datepickerFBlessingDesiredDate.form-control(type='date' name='desireddate1')
+												input.datepicker.form-control(type='date' name='desireddate1')
 										.col-md-6
 											.form-group
 												label.label-control Event Venue
-												input.form-control(type='text' name='desireddate1')
-									
+												input.form-control(type='text' name='')
+									.row
+										.col-md-12.my-3.text-center
+											.form-group
+												label.label-control 
+													select.selectpicker.form-control(type="text" name='relation')
+														option OPEN FOR ALL
+														option Exclusive only
+														
 									.row
 										.col-md-4.ml-auto.mr-auto.text-center.mt-3
 											a.btn-design(href="#") Propose

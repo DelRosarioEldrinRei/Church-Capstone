@@ -7,43 +7,51 @@ block main
 				.row
 					.col-md-9.main-header__textbox
 						//- h1.font-italic Music Ministry 
-						//- a(href="#")
-						//- 	p.text-uppercase.card-desc
-						//- 		| Schedule
+						//- 
 		#raised-section.main.main-raised
 			.container
 				.row
 					.col-md-12
 						hr.mt-5.mx-5
 				.row
-					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Schedule
+					.col-md-12.my-3.text-center
+						a(href="#" data-toggle="modal" data-target="#conditionModal" style="font: 30px")
+							<h3> SCHEDULE</h3>
+						
 				.row
 					.col-md-12
 						#form-facility
 							#calendar
-					//- .col-md-5.my-3.text-center
+		
 
-					//- 		.form-group
-					//- 			label.label-control Event
-					//- 			input.form-control(type='text' name= 'event')
-					//- 		.form-group
-					//- 			label.label-control Desired Date
-					//- 			input.datepicker2.form-control(type='date' name='desireddate')
-					//- 		.form-group
-					//- 			label.label-control Start Time
-					//- 			input.timepicker.form-control(type='text' name='starttime')
-					//- 		.form-group
-					//- 			label.label-control End Time
-					//- 			input.timepicker.form-control(type='text' name='endtime')
-					//- 		.form-group.form-file-upload.form-file-multiple.p-0
-					//- 			input.inputFileHidden(type='file', multiple='')
-					//- 			.input-group
-					//- 				input.form-control.inputFileVisible(type='text', placeholder='Valid ID')
-					//- 				span.input-group-btn
-					//- 					button.btn.btn-fab.btn-round.btn-primary(type='button')
-					//- 						i.fa.fa-file(aria-hidden='true')
-					//- 		.row
-					//- 			.col-md-12.text-center.mb-5
-					//- 				//- button.btn.btn-primary.btn-valid Submit
-					//- 				button.btn.btn-primary(type='submit') Submit
+		#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+			.modal-dialog.modal-notify.modal-success(role='document')
+				// Content
+				.modal-content
+					// Header
+					.modal-header
+						p.heading.lead Appointment
+						button.close(type='button' data-dismiss='modal' aria-label='Close')
+							span.white-text(aria-hidden='true') &times;
+					// Body
+					.modal-body
+						.row
+							.col-md-4
+								<h4 class="card-title">Event Date: </h4>
+							.col-md-8
+								<h5 class="card-text"> June 16, 2018</h5>
+						.row
+							.col-md-4
+								<h4 class="card-title">Time: </h4>
+							.col-md-8
+								<h5 class="card-text"> 11:00am-12:00pm</h5>
+						.row
+							.col-md-4
+								<h4 class="card-title">Event Type: </h4>
+							.col-md-8
+								<h5 class="card-text"> Wedding Ceremony</h5>
+				
+						.row
+							.col-md-12.text-center.my-3
+								a.btn-design(href="#" ) View Details
+					
