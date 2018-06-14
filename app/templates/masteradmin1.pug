@@ -5,13 +5,13 @@ block body
 		.loader-section.section-left
 		.loader-section.section-right
 	.wrapper
-		.sidebar(data-color='brown', data-background-color='white', data-image='/img/sidebar-1.jpg')
+		.sidebar(data-color='purple', data-background-color='white', data-image='/img/sidebar-1.jpg')
 			//
 				Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 				Tip 2: you can also add an image using data-image tag
 			.logo
 				a.simple-text.logo-normal(href='http://www.creative-tim.com')
-					| Creative Tim
+					| Church to Go
 			.sidebar-wrapper
 				ul.nav
 					li.nav-item.active
@@ -19,107 +19,71 @@ block body
 							i.material-icons dashboard
 							p Dashboard
 					li.nav-item
-						a.nav-link(data-toggle="collapse" href="#events")
+						a.nav-link(data-toggle="collapse" href="#maintenance")
 							.float-right.dropdown-toggle.d-inline
-							i.material-icons person
-							p Events
-					.collapse#events
+							i.material-icons developer_board
+							p Maintenace
+					.collapse#maintenance
 						li.nav-item.ml-3
-							a.nav-link(href='/admin/events/sacraments')
-								i.material-icons local_library
-								p Sacraments
+							a.nav-link(data-toggle="collapse" href="#events")
+								i.material-icons event
+								p Events
 						li.nav-item.ml-3
-							a.nav-link(href='/admin/events/seminars')
-								i.material-icons list_alt
-								p Seminars
-					li.nav-item
-						a.nav-link(data-toggle="collapse" href='#reservation')
-							.float-right.dropdown-toggle.d-inline
-							i.material-icons content_paste
-							p Reservation
-					#reservation.collapse
-						li.nav-item.ml-3
-							a.nav-link(href='/admin/reservation/facilities')
-								i.material-icons location_city
+							a.nav-link(href='/admin/facilities')
+								i.material-icons store_mall_directory
 								p Facilities
 						li.nav-item.ml-3
-							a.nav-link(href='/admin/reservation/document')
+							a.nav-link(href='/admin/documents')
+								i.material-icons list_alt
+								p Documents
+					//- .collapse#events
+					//- 	li.nav-item.ml-2
+					//- 		a.nav-link(href='/admin/facilities')
+					//- 			i.material-icons local_library
+					//- 			p Baptism
+					//- 	li.nav-item.ml-2
+					//- 		a.nav-link(href='/admin/facilities')
+					//- 			i.material-icons local_library
+					//- 			p Confirmation
+					//- 	li.nav-item.ml-2
+					//- 		a.nav-link(href='/admin/facilities')
+					//- 			i.material-icons list_alt
+					//- 			p Blessings
+					//- 	li.nav-item.ml-2
+					//- 		a.nav-link(href='/admin/documents')
+					//- 			i.material-icons list_alt
+					//- 			p Marriage
+					li.nav-item
+						a.nav-link(data-toggle="collapse" href='#transaction')
+							.float-right.dropdown-toggle.d-inline
+							i.material-icons content_paste
+							p Transactions
+					#reservation.collapse
+						li.nav-item.ml-3
+							a.nav-link(href='#')
+								i.material-icons location_city
+								p Event Applications
+						li.nav-item.ml-3
+							a.nav-link(href='#')
+								i.material-icons location_city
+								p Event Proposals
+						li.nav-item.ml-3
+							a.nav-link(href='#')
+								i.material-icons location_city
+								p Facilit Reservations
+						li.nav-item.ml-3
+							a.nav-link(href='#')
 								i.material-icons assignment
-								p Document Request
+								p Document Requests
 					li.nav-item
-						a.nav-link(data-toggle="collapse" href='#appoint')
-							.float-right.dropdown-toggle.d-inline
+						a.nav-link(href='#')
 							i.material-icons library_books
-							p Appointment
-					#appoint.collapse
-								li.nav-item.ml-3
-									a.nav-link(href='/admin/appoint/coordinators')
-										i.material-icons library_books
-										p Appoint Coordinators
-								li.nav-item.ml-3
-									a.nav-link(href='/admin/appoint/priest')
-										i.material-icons library_books
-										p Appoint Priest
-								li.nav-item.ml-3
-									a.nav-link(href='/admin/appoint/pending')
-										i.material-icons library_books
-										p Pending Appointments
-								li.nav-item.ml-3
-									a.nav-link(href='/admin/appoint/members')
-										i.material-icons library_books
-										p Appoint Members
+							p Queries
+					
 					li.nav-item
 						a.nav-link(href='#')
-							i.material-icons bubble_chart
-							p Requirements
-					li.nav-item
-						a.nav-link(data-toggle="collapse" href='#documents')
-							.float-right.dropdown-toggle.d-inline
-							i.material-icons location_ons
-							p Document
-					#documents.collapse
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons location_ons
-									p Wedding
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons location_ons
-									p Certificates
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons location_ons
-									p Application Form
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons location_ons
-									p Permit
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons location_ons
-									p OR
-					//- li.nav-item
-					//- 	a.nav-link(href='#')
-									i.material-icons location_ons
-					//- 		p Proofs
-					li.nav-item
-						a.nav-link(href='#')
-							i.material-icons people
-							p Guests
-					li.nav-item
-						a.nav-link(data-toggle="collapse" href='#staff')
-							.float-right.dropdown-toggle.d-inline
-							i.material-icons person_pin
-							p Staff
-					#staff.collapse
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons person_pin
-									p Coordinators
-							li.nav-item.ml-3
-								a.nav-link(href='#')
-									i.material-icons person_pin
-									p Priests
+							i.material-icons report
+							p Reports
 					li.nav-item
 						a.nav-link(href='#')
 							i.material-icons settings
@@ -129,7 +93,7 @@ block body
 			nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
 				.container-fluid
 					.navbar-wrapper
-						a.navbar-brand(href='#pablo') Material Dashboard
+						a.navbar-brand(href='#pablo')
 					button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navigation', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation')
 						span.sr-only Toggle navigation
 						span.navbar-toggler-icon.icon-bar
@@ -188,6 +152,4 @@ block body
 						| &copy;
 						script.
 							document.write(new Date().getFullYear())
-						| , made with love by
-						a(href='https://www.creative-tim.com', target='_blank') Creative Tim
-						|  for a better web.
+						| , Ina ng Lupang Pangako Parish

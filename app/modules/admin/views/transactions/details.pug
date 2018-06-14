@@ -1,0 +1,22 @@
+extends ../../../../templates/masteradmin1
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	#calendar
+	div(style='clear:both')
+	.content
+		.container-fluid
+			//- <div class="alert alert-warning" role="alert">
+			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
+			//- </div>
+			
+			.row
+				.col-lg-12.col-md-12
+				<img src='/img/wedding organizing/package2/bridalbouquet4.jpg' class="hvrbox-layer_bottom" alt="..." style= 'width:9rem; height:150;margin-top: 2px;margin-left: 5px'>
+			
+block addjs
+	script(src='js/forIndex.js')
+	//- script(src='js/loader.js')
