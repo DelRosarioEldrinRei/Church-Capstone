@@ -122,36 +122,45 @@ block main
 										button.btn.btn-fab.btn-round.btn-info(type='button')
 											i.material-icons layers
 
-							
-					.row
-						.col-md-6.my-3
-							.form-group
+					.row#principalSponsor
+						.col-md-6.mt-3
+							button#addPrincipalSponsor.btn.btn-success.btn-fab.btn-fab-mini.btn-round.ml-2(type="button")
+								i.material-icons add
+							.form-group.m-0
 								label.label-control Principal Sponsor
 								input.form-control(type='text' name='sponsorname')
 						.col-md-6.my-3
 							.form-group
-								input.form-control(type='text' name='sponsorname')
-					.row
-						.col-md-6.my-3
-							.form-group
+								input.form-control.balance(type='text' name='sponsorname')
+						//- .col-md-6.mb-4.pb-3
+						//- 	.input-group
+						//- 		input.form-control(type='text', name='sponsorname')
+						//- 		.input-group-prepend
+						//- 			span.btnDelete.input-group-text.rounded
+						//- 				i.material-icons.text-danger delete
+
+					.row#additionalSponsor
+						.col-md-6.mt-3
+							button#addAdditionalSponsor.btn.btn-success.btn-fab.btn-fab-mini.btn-round.ml-2(type="button")
+								i.material-icons add
+							.form-group.m-0
 								label.label-control Additional
 								input.form-control(type='text' name='sponsorname')
+						.col-md-6.my-3
 							.form-group
-								input.form-control(type='text' name='sponsorname')
-							.form-group
-								input.form-control(type='text' name='sponsorname')
-						.col-md-6.my-2
-							.form-group
-								input.form-control(type='text' name='sponsorname')
-							.form-group
-								input.form-control(type='text' name='sponsorname')
-							.form-group
-								input.form-control(type='text' name='sponsorname')
+								input.form-control.balance(type='text' name='sponsorname')
+						//- .col-md-6.mb-4.pb-3
+						//- 	.input-group
+						//- 		input.form-control(type='text', name='sponsorname')
+						//- 		.input-group-prepend
+						//- 			span.btnDelete.input-group-text.rounded
+						//- 				i.material-icons delete
 
 					.row
 						.col-md-12.my-5.text-center
 							//- a.btn-design.mx-2(href="#") Submit
 							button.btn.btn-primary(type='submit') Submit
+
 
 block addjs
 	script.
@@ -185,4 +194,30 @@ block addjs
 		$('#radio2').click(function() {
 			$('#special').slideDown();
 			$('#regular').slideUp();
+		});
+
+		//add and delete side
+
+		$("#addPrincipalSponsor").click(function(event){
+				var principal = "<div class='col-md-6 mb-4 pb-3'><div class='input-group'><input type='text' name='sponsorname' class='form-control'/><div class='input-group-prepend'><span class='btnDelete p-1 input-group-text rounded'><i class='material-icons'>delete</i></span></div></div></div>"
+				$(principal).hide().appendTo("#principalSponsor").fadeIn(500);
+		});
+
+		$("#principalSponsor").on("click", ".btnDelete", function(event){
+			$(this).parent().parent().parent().fadeOut(500, function(){
+				$(this).remove();
+			});
+			event.stopPropagation();
+		});
+
+		$("#addAdditionalSponsor").click(function(event){
+				var item2 = "<div class='col-md-6 mb-4 pb-3'><div class='input-group'><input type='text' name='sponsorname' class='form-control'/><div class='input-group-prepend'><span class='btnDelete p-1 input-group-text rounded'><i class='material-icons'>delete</i></span></div></div></div>"
+				$(item2).hide().appendTo("#additionalSponsor").fadeIn(500);
+		});
+
+		$("#additionalSponsor").on("click", ".btnDelete", function(event){
+			$(this).parent().parent().parent().fadeOut(500, function(){
+				$(this).remove();
+			});
+			event.stopPropagation();
 		});

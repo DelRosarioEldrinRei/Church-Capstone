@@ -359,3 +359,19 @@ strong {
 .hvrbox.active .hvrbox-text_mobile {
 	display: block;
 }
+
+.balance {
+  margin-top: 2.5rem;
+}
+
+.btnDelete {
+  cursor: pointer;
+  color: red;
+  transition: 0.2s linear;
+}
+
+.btnDelete:hover {
+  background-color: red;
+  color: white;
+  transition: 0.2s linear;
+}
