@@ -39,11 +39,11 @@ block prepend main
 																td=specialevent.time_eventend
 																td=specialevent.var_eventvenue
 																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-facilities`)
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-events`)
 																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-facilities`  data-toggle="modal" data-target="#editFacility")
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-events`)
 																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-facilities/${specialevent.int_facilityID}/delete`)
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-events/delete?${specialevent.int_eventID}`)
 																				<i class="material-icons">close</i>
 																</td>								
 								.card-footer.text-right
@@ -62,7 +62,7 @@ block prepend main
 											</ul>
 										</nav>
 									.col-md-3.text-right
-										a(href="#" data-toggle="modal" data-target="#conditionModal") Add Facility
+										a(href="#" data-toggle="modal" data-target="#conditionModal") Add Event
 			
 	
 	#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
@@ -71,18 +71,36 @@ block prepend main
 			.modal-content
 				// Header
 				.modal-header
-					p.heading.lead Add Facility
+					p.heading.lead Add Event
 					button.close(type='button' data-dismiss='modal' aria-label='Close')
 						span.white-text(aria-hidden='true') &times;
 				// Body
 				.modal-body
-					form.form(action="/admin/addfacility" method="post")
+					form.form(action="/admin/maintenance-events/add" method="post")
 						.form-group
-							label.label-control Facility Name
-							input.form-control(type='text' name='facilityname')
+							label.label-control Event Name
+							input.form-control(type='text' name='spceventname')
 						.form-group
-							label.label-control Fee
-							input.form-control(type='number' name='fee')
+							label.label-control Event Description
+							textarea.form-control( rows="2" name='eventdesc')
+						.row
+							.col-md-6
+								.form-group
+										label.label-control Start
+										input.datepickerBirthday.form-control(type='date' name='start')
+							.col-md-6
+								.form-group.mt-1
+										label.label-control End
+										input.timepicker.form-control(type='text' name='end')
+						.form-group
+							label.label-control Venue
+							input.form-control(type='text' name='venue')
+						.form-group
+								label.label-control Event Type
+									select.selectpicker.form-control(type="text" name='eventtype')
+										option Open for everyone
+										option Exclusive
+										
 						.row
 							.col-md-12.text-center.my-3
 								button.btn.btn-primary(type='submit') Add	
