@@ -1,0 +1,355 @@
+extends ../../../templates/mastercatechist
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	div(style='clear:both')
+	.content
+		.container-fluid
+			.row
+				.card
+					.card-header.card-header-tabs.card-header-primary
+						.nav-tabs-navigation
+							.nav-tabs-wrapper
+								span.nav-tabs-title Tasks:
+								ul.nav.nav-tabs(data-tabs='tabs')
+									li.nav-item
+										a.nav-link.active(href='#profile', data-toggle='tab')
+											i.material-icons bug_report
+											|  Bugs
+											.ripple-container
+									li.nav-item
+										a.nav-link(href='#messages', data-toggle='tab')
+											i.material-icons code
+											|  Website
+											.ripple-container
+									li.nav-item
+										a.nav-link(href='#settings', data-toggle='tab')
+											i.material-icons cloud
+											|  Server
+											.ripple-container
+					.card-body
+						.tab-content
+							#profile.tab-pane.active
+								table.table
+									tbody
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+															span.check
+											td Sign contract for "What are conference organizers afraid of?"
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='')
+														span.form-check-sign
+															span.check
+											td Lines From Great Russian Literature? Or E-mails From My Boss?
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='')
+														span.form-check-sign
+															span.check
+											td
+												| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+															span.check
+											td Create 4 Invisible User Experiences you Never Knew About
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+							#messages.tab-pane
+								table.table
+									tbody
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+															span.check
+											td
+												| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='')
+														span.form-check-sign
+															span.check
+											td Sign contract for "What are conference organizers afraid of?"
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+							#settings.tab-pane
+								table.table
+									tbody
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='')
+														span.form-check-sign
+															span.check
+											td Lines From Great Russian Literature? Or E-mails From My Boss?
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+															span.check
+											td
+												| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+															span.check
+											td Sign contract for "What are conference organizers afraid of?"
+											td.td-actions.text-right
+												button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+													i.material-icons edit
+												button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+													i.material-icons close
+
+			//- .row
+			//- 	.col-lg-6.col-md-12
+			//- 		.card
+			//- 			.card-header.card-header-tabs.card-header-primary
+			//- 				.nav-tabs-navigation
+			//- 					.nav-tabs-wrapper
+			//- 						span.nav-tabs-title Tasks:
+			//- 						ul.nav.nav-tabs(data-tabs='tabs')
+			//- 							li.nav-item
+			//- 								a.nav-link.active(href='#profile', data-toggle='tab')
+			//- 									i.material-icons bug_report
+			//- 									|  Bugs
+			//- 									.ripple-container
+			//- 							li.nav-item
+			//- 								a.nav-link(href='#messages', data-toggle='tab')
+			//- 									i.material-icons code
+			//- 									|  Website
+			//- 									.ripple-container
+			//- 							li.nav-item
+			//- 								a.nav-link(href='#settings', data-toggle='tab')
+			//- 									i.material-icons cloud
+			//- 									|  Server
+			//- 									.ripple-container
+			//- 			.card-body
+			//- 				.tab-content
+			//- 					#profile.tab-pane.active
+			//- 						table.table
+			//- 							tbody
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='', checked='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td Sign contract for "What are conference organizers afraid of?"
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td Lines From Great Russian Literature? Or E-mails From My Boss?
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td
+			//- 										| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='', checked='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td Create 4 Invisible User Experiences you Never Knew About
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 					#messages.tab-pane
+			//- 						table.table
+			//- 							tbody
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='', checked='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td
+			//- 										| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td Sign contract for "What are conference organizers afraid of?"
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 					#settings.tab-pane
+			//- 						table.table
+			//- 							tbody
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td Lines From Great Russian Literature? Or E-mails From My Boss?
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='', checked='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td
+			//- 										| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 								tr
+			//- 									td
+			//- 										.form-check
+			//- 											label.form-check-label
+			//- 												input.form-check-input(type='checkbox', value='', checked='')
+			//- 												span.form-check-sign
+			//- 													span.check
+			//- 									td Sign contract for "What are conference organizers afraid of?"
+			//- 									td.td-actions.text-right
+			//- 										button.btn.btn-primary.btn-link.btn-sm(type='button', rel='tooltip', title='Edit Task')
+			//- 											i.material-icons edit
+			//- 										button.btn.btn-danger.btn-link.btn-sm(type='button', rel='tooltip', title='Remove')
+			//- 											i.material-icons close
+			//- 	.col-lg-6.col-md-12
+			//- 		.card
+			//- 			.card-header.card-header-warning
+			//- 				h4.card-title Employees Stats
+			//- 				p.card-category New employees on 15th September, 2016
+			//- 			.card-body.table-responsive
+			//- 				table.table.table-hover
+			//- 					thead.text-warning
+			//- 						th ID
+			//- 						th Name
+			//- 						th Salary
+			//- 						th Country
+			//- 					tbody
+			//- 						tr
+			//- 							td 1
+			//- 							td Dakota Rice
+			//- 							td $36,738
+			//- 							td Niger
+			//- 						tr
+			//- 							td 2
+			//- 							td Minerva Hooper
+			//- 							td $23,789
+			//- 							td Curaçao
+			//- 						tr
+			//- 							td 3
+			//- 							td Sage Rodriguez
+			//- 							td $56,142
+			//- 							td Netherlands
+			//- 						tr
+			//- 							td 4
+			//- 							td Philip Chaney
+			//- 							td $38,735
+			//- 							td Korea, South
+
+block addjs
+	script(src='js/forIndex.js')
+	//- script(src='js/loader.js')
