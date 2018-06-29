@@ -2,6 +2,43 @@
   font-family: "Poppins", sans-serif;
  }
 
+ @font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+    url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+    url(/fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 .row.d-flex.justify-content-center.text-center .fa {
   font-size: 55px; }
 
@@ -48,6 +85,23 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
   margin: 0 auto;
   margin-top: -80px;
   text-align: center;
+}
+
+.main-header__top {
+  margin: 0 auto;
+  margin-top: -45px;
+  text-align: right;
+}
+
+#heading-page > div > div > div > button:nth-child(1):hover {
+  background-color: #35e25e;
+  color: black;
+}
+
+#heading-page > div > div > div > button:nth-child(2):hover {
+  background-color: #007bff;
+  color: black;
+  transition: .3s
 }
 
 .main-header__textbox h1 {

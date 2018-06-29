@@ -1,161 +1,108 @@
 extends ./basecatechist
 block body
-	#loader-wrapper
-		#loader
-		.loader-section.section-left
-		.loader-section.section-right
-	.wrapper
-		.sidebar(data-color='brown', data-background-color='white', data-image='/img/sidebar-1.jpg')
-			//
-				Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-				Tip 2: you can also add an image using data-image tag
-			.logo
-				a.simple-text.logo-normal(href='#')
-					| CATECHIST
-			.sidebar-wrapper
-				ul.nav
-					li.nav-item.active
-						a.nav-link(href='/admin')
-							i.material-icons dashboard
-							p Dashboard
-					li.nav-item
-						a.nav-link(data-toggle="collapse" href="#maintenance")
-							i.material-icons developer_board
-							p Maintenace
-								b.caret
-					.collapse#maintenance
-						li.nav-item.ml-2
-							a.nav-link(data-toggle="collapse" href="#events")
-								i.material-icons layers
-								p Events
-									b.caret
-						.collapse#events
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/facilities')
-									i.material-icons event
-									p Baptism
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/facilities')
-									i.material-icons event
-									p Confirmation
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/facilities')
-									i.material-icons event
-									p Blessings
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/documents')
-									i.material-icons event
-									p Marriage
-						li.nav-item.ml-2
-							a.nav-link(href='/admin/facilities')
-								i.material-icons store_mall_directory
-								p Facilities
-						li.nav-item.ml-2
-							a.nav-link(href='/admin/documents')
-								i.material-icons list_alt
-								p Documents
-					li.nav-item
-						a.nav-link(data-toggle="collapse" href='#transaction')
-							i.material-icons content_paste
-							p Transactions
-								b.caret
-					#reservation.collapse
-						li.nav-item.ml-2
-							a.nav-link(href='#')
-								i.material-icons location_city
-								p Event Applications
-						li.nav-item.ml-2
-							a.nav-link(href='#')
-								i.material-icons location_city
-								p Event Proposals
-						li.nav-item.ml-2
-							a.nav-link(href='#')
-								i.material-icons location_city
-								p Facilit Reservations
-						li.nav-item.ml-2
-							a.nav-link(href='#')
-								i.material-icons assignment
-								p Document Requests
-					li.nav-item
-						a.nav-link(href='#')
-							i.material-icons library_books
-							p Queries
-					
-					li.nav-item
-						a.nav-link(href='#')
-							i.material-icons report
-							p Reports
-					li.nav-item
-						a.nav-link(href='#')
-							i.material-icons settings
-							p Utilities
-		.main-panel
-			// Navbar
-			nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
-				.container-fluid
-					.navbar-wrapper
-						a.navbar-brand(href='#pablo') Dashboard
-					button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navigation', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation')
-						span.sr-only Toggle navigation
-						span.navbar-toggler-icon.icon-bar
-						span.navbar-toggler-icon.icon-bar
-						span.navbar-toggler-icon.icon-bar
-					#navigation.collapse.navbar-collapse.justify-content-end
-						form.navbar-form
-							.input-group.no-border
-								input.form-control(type='text', value='', placeholder='Search...')
-								button.btn.btn-white.btn-round.btn-just-icon(type='submit')
-									i.material-icons search
-									.ripple-container
-						ul.navbar-nav
-							li.nav-item
-								a.nav-link(href='#pablo')
-									i.material-icons dashboard
-									p
-										span.d-lg-none.d-md-block Stats
-							li.nav-item.dropdown
-								a#navbarDropdownMenuLink.nav-link(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-									i.material-icons notifications
-									span.notification 5
-									p weewoowoo
-										span.d-lg-none.d-md-block Some Actions
-								.dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
-									a.dropdown-item(href='#') Mike John responded to your email
-									a.dropdown-item(href='#') You have 5 new tasks
-									a.dropdown-item(href='#') You&apos;re now friend with Andrew
-									a.dropdown-item(href='#') Another Notification
-									a.dropdown-item(href='#') Another One
-							li.nav-item
-								a.nav-link(href='#pablo')
-									i.material-icons person
-									p
-										span.d-lg-none.d-md-block Account
-							li.nav-item
-								a.nav-link(href='#pablo')
-									i.material-icons person
-									p Account
-										//- span.d-lg-none.d-md-block Account
-			
-			block main
+	header
+		nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark(color-on-scroll="100" id="sectionsNav")
+			.container
+				.navbar-translate
+					a.navbar-brand(href="/guest")
+						| &nbsp; Church
+					button.navbar-toggler(type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation")
+						span.navbar-toggler-icon
+						span.navbar-toggler-icon
+						span.navbar-toggler-icon
+				.collapse.navbar-collapse
+					ul.navbar-nav.ml-auto
+						//- li.nav-item: a.nav-link(href="/guest/reservation")
+						//- 	| Reservations
+						//- li.nav-item: a.nav-link(href="/guest/schedule" rel="tooltip" title="")
+						//- 	| Schedule
+						//- li.nav-item: a.nav-link(href="/services" rel="tooltip" title="" data-original-title="See our services here")
+						//- 	| Services
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Read our articles")
+						//- 	i.fa.fa-comments(aria-hidden="true") 
+						//- 	| Blog
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Email Us Now!")
+						//- 	i.fa.fa-envelope-o(aria-hidden="true") 
+						//- 	| Contact
+						//- li.dropdown.nav-item
+						//- 	a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Sacrament
+						//- 	.dropdown-menu.dropdown-with-icons
+						//- 		a.dropdown-item(href="/guest/baptism")
+						//- 			i.fa.fa-twitter(aria-hidden="true")
+						//- 			| &nbsp; Baptism
+						//- 		a.dropdown-item(href="/guest/confirmation")
+						//- 			i.fa.fa-facebook-square(aria-hidden="true")
+						//- 			| &nbsp; Confirmation
+						//- 		a.dropdown-item(href="#")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Eucharist
+						//- 		a.dropdown-item(href="/guest/marriage")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Marriage
+						//- 		a.dropdown-item(href="/guest/anointing")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Anointing
+						//- 		a.dropdown-item(href="/guest/funeral")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Funeral Blessing
+						//- 		a.dropdown-item(href="#")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Confession
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="")
+							| Events
+						li.nav-item.active: a.nav-link(href="/catechist")
+							| Home
+						li.nav-item: a.nav-link(href="#")
+							| Profile
+						li.nav-item: a.nav-link(href="#")
+							| Schedule
+						li.nav-item: a.nav-link(href="#")
+							| Sections	
+						li.nav-item: a.nav-link(href="#")
+							| Notification	
+						li.dropdown.nav-item
+							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+								| My Account
+							.dropdown-menu.dropdown-with-icons
+								a.dropdown-item(href="#")
+									| &nbsp; My Profile
+								a.dropdown-item(href="#")
+									| &nbsp; Messages
+								a.dropdown-item(href="#")
+									| &nbsp; Notification
+								a.dropdown-item(href="/guest/reservation")
+									| &nbsp; Reservations
+								.container
+									hr
+								a.dropdown-item(href="/logout")
+									| &nbsp; Sign-out
+						//- li.dropdown.nav-item
+						//- 	a.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Notifications	
+						//- li.nav-item
+						//- 	a.nav-link(href='/logout')
+						//- 		span.no-icon Log out
+						//- li.nav-item: a.nav-link(href="/login" rel="tooltip" title="" data-original-title="Login Now")
+						//- 	| Login
+						//- li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="" data-original-title="Signup Now")
+						//- 	| Sign Up
 
-			footer.footer
-				.container-fluid
-					nav.pull-left
-						ul
-							li
-								a(href='https://www.creative-tim.com')
-									| Creative Tim
-							li
-								a(href='http://presentation.creative-tim.com')
-									| About Us
-							li
-								a(href='http://blog.creative-tim.com')
-									| Blog
-							li
-								a(href='https://www.creative-tim.com/license')
-									| Licenses
-					.copyright.pull-right
-						| &copy;
-						script.
-							document.write(new Date().getFullYear())
-						| , Ina ng Lupang Pangako Parish
+	block main
+	
+	footer.footer
+		.container
+			nav.pull-left
+				ul
+					li: a(href="#") Church
+					li: a(href="#") About Us
+					li: a(href="#") Blog
+					li: a(href="#") Services
+			.copyright.pull-right © 
+				script.
+					document.write(new Date().getFullYear())
+				| , made with 
+				i.fa.fa-heart
+				|  by 
+				a(href="#") SAD Team
+				| ,	Ina ng Lupang Pangako Parish
