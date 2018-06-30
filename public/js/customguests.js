@@ -430,11 +430,11 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
 });
 
 //slick slider
-$(".slider").slick({
-    infinite:true,
-    slideToShow: 1,
-    slideToScroll: 1
-});
+// $(".slider").slick({
+//     infinite:true,
+//     slideToShow: 1,
+//     slideToScroll: 1
+// });
 
 // for Birthday
 let birthdayDate = moment();

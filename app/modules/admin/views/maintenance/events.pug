@@ -87,17 +87,17 @@ block prepend main
 							.col-md-6
 								.form-group
 										label.label-control Start
-										input.datepickerBirthday.form-control(type='date' name='start')
+										input.timepicker.form-control(type='date' name='start')
 							.col-md-6
 								.form-group.mt-1
 										label.label-control End
-										input.timepicker.form-control(type='text' name='end')
+										input.timepicker1.form-control(type='date' name='end')
 						.form-group
 							label.label-control Venue
 							input.form-control(type='text' name='venue')
 						.form-group
 								label.label-control Event Type
-									select.selectpicker.form-control(type="text" name='eventtype')
+									select.form-control(type="text" name='eventtype')
 										option Open for everyone
 										option Exclusive
 										
@@ -129,4 +129,32 @@ block prepend main
 	//- 								button.btn.btn-primary(type='submit') Add	
 block addjs
 	script(src='/js/forIndex.js')
-	
+	script.
+		$('.timepicker').datetimepicker({
+				format: 'LT',
+				icons: {
+					time: "fa fa-clock-o",
+					date: "fa fa-calendar",
+					up: "fa fa-chevron-up",
+					down: "fa fa-chevron-down",
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-screenshot',
+					clear: 'fa fa-trash',
+					close: 'fa fa-remove'
+			}
+		});
+		$('.timepicker1').datetimepicker({
+				format: 'LT',
+				icons: {
+					time: "fa fa-clock-o",
+					date: "fa fa-calendar",
+					up: "fa fa-chevron-up",
+					down: "fa fa-chevron-down",
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-screenshot',
+					clear: 'fa fa-trash',
+					close: 'fa fa-remove'
+			}
+		});
