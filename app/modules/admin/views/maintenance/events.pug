@@ -41,9 +41,9 @@ block prepend main
 																<td class="td-actions text-right">
 																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-events`)
 																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-events`)
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-events/edit/${specialevent.int_specialeventID}`)
 																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-events/delete?${specialevent.int_eventID}`)
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-events/delete/${specialevent.int_specialeventID}`)
 																				<i class="material-icons">close</i>
 																</td>								
 								.card-footer.text-right
@@ -87,11 +87,11 @@ block prepend main
 							.col-md-6
 								.form-group
 										label.label-control Start
-										input.datepickerBirthday.form-control(type='date' name='start')
+										input.form-control(type='text' name='start')
 							.col-md-6
 								.form-group.mt-1
 										label.label-control End
-										input.timepicker.form-control(type='text' name='end')
+										input.form-control(type='text' name='end')
 						.form-group
 							label.label-control Venue
 							input.form-control(type='text' name='venue')
