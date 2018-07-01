@@ -1,0 +1,50 @@
+extends ../../../../templates/masteradmin1
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	//- #calendar
+	div(style='clear:both')
+	.content
+		.container
+				.row
+					.col-md-12
+						hr.mt-5.mx-5
+				.row
+					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Edit
+						
+							form.form(action=`/admin/maintenance-events/edit/${events.int_specialeventID}` method="post")
+									.form-group
+											label.label-control Event Name
+											input.form-control(type='text' name='spceventname' value=`${events.var_spceventname}`)
+									.form-group
+											label.label-control Event Description
+											textarea.form-control( rows="2" name='eventdesc' value=`${events.var_eventdesc}`)
+									.row
+											.col-md-6
+													.form-group
+																	label.label-control Start
+																	input.form-control(type='text' name='start' value=`${events.time_eventstart}`)
+											.col-md-6
+													.form-group
+																	label.label-control End
+																	input.form-control(type='text' name='end' value=`${events.time_eventend}`)
+									.form-group
+											label.label-control Venue
+											input.form-control(type='text' name='venue' value=`${events.var_eventvenue}`)
+									.form-group
+													label.label-control Event Type
+															select.selectpicker.form-control(type="text" name='eventtype' value=`${events.char_eventtype}`)
+																	option Open for everyone
+																	option Exclusive
+																				
+									.row
+										.col-md-12.text-center.my-3
+											button.btn.btn-primary(type='submit') Update	
+	
+block addjs
+	script(src='/js/forIndex.js')
+	

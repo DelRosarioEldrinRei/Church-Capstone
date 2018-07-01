@@ -1,0 +1,298 @@
+extends ../../../../templates/masteradmin1
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	//- #calendar
+	div(style='clear:both')
+	.content
+		.container-fluid
+			//- <div class="alert alert-warning" role="alert">
+			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
+			//- </div>
+			.row
+					.col-md-12.text-right.my-3
+						a.btn-design(href="#" data-toggle="modal" data-target="#requirementModal") New Requirement
+					
+			.row
+				.col-lg-12.col-md-12
+						.card
+								.card-header.card-header-primary
+										h4.card-title Anointing of the sick
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each anointing in anointings
+															tr
+																td=anointing.int_reqtypeID
+																td=anointing.var_reqname
+																td=anointing.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${anointing.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${anointing.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>								
+																		
+						.card
+								.card-header.card-header-primary
+										h4.card-title Baptism
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each baptism in baptisms
+															tr
+																td=baptism.int_reqtypeID
+																td=baptism.var_reqname
+																td=baptism.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${baptism.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${baptism.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>			
+																	
+						.card
+								.card-header.card-header-primary
+										h4.card-title Confirmation
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each confirmation in confirmations
+															tr
+																td=confirmation.int_reqtypeID
+																td=confirmation.var_reqname
+																td=confirmation.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${confirmation.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${confirmation.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>
+															
+						.card
+								.card-header.card-header-primary
+										h4.card-title First Communion
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each eucharist in eucharists
+															tr
+																td=eucharist.int_reqtypeID
+																td=eucharist.var_reqname
+																td=eucharist.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${eucharist.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${eucharist.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>	
+								
+						.card
+								.card-header.card-header-primary
+										h4.card-title Funeral Blessing
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each funeral in funerals
+															tr
+																td=funeral.int_reqtypeID
+																td=funeral.var_reqname
+																td=funeral.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${funeral.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${funeral.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>		
+												
+													
+						.card
+								.card-header.card-header-primary
+										h4.card-title Marriage
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each marriage in marriages
+															tr
+																td=marriage.int_reqtypeID
+																td=marriage.var_reqname
+																td=marriage.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${marriage.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${marriage.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>			
+										
+						.card
+								.card-header.card-header-primary
+										h4.card-title Establishment Blessing
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each establishment in establishments
+															tr
+																td=establishment.int_reqtypeID
+																td=establishment.var_reqname
+																td=establishment.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${establishment.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${establishment.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>	
+																							
+						.card
+								.card-header.card-header-primary
+										h4.card-title Facility Reservation
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each reservation in reservations
+															tr
+																td=reservation.int_reqtypeID
+																td=reservation.var_reqname
+																td=reservation.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${reservation.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${reservation.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>			
+																
+						.card
+								.card-header.card-header-primary
+										h4.card-title Document Request
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each request in requests
+															tr
+																td=request.int_reqtypeID
+																td=request.var_reqname
+																td=request.var_reqdesc
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${request.int_reqtypeID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${request.int_reqtypeID}`)
+																				<i class="material-icons">close</i>
+																</td>		
+
+			
+	
+	#requirementModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+		.modal-dialog.modal-notify.modal-success(role='document')
+			// Content
+			.modal-content
+				// Header
+				.modal-header
+					p.heading.lead Add requirement
+					button.close(type='button' data-dismiss='modal' aria-label='Close')
+						span.white-text(aria-hidden='true') &times;
+				// Body
+				.modal-body
+					form.form(action="/admin/maintenance-requirements/add" method="post")
+						.form-group
+							label.label-control Requirement Name
+							input.form-control(type='text' name='reqname')
+						.form-group
+							label.label-control Requirement Description
+							textarea.form-control( rows="2" name='reqdesc')
+						.form-group
+								label.label-control Requirment for:
+									select.form-control(type="text" name='eventname' )
+										//- - for(var i=0; i<= services.length; i++){
+										//- 		option(value= `${services[i].var_eventname}`)
+										//- - }
+										//-ayusin to next time hahahaha
+										option Anointing of the sick
+										option Baptism
+										option Confirmation
+										option First Communion
+										option Funeral Blessing 
+										option Marriage
+										option Establishment Blessing
+										option Facility Reservation
+										option Document Request
+						.row
+							.col-md-12.text-center.my-3
+								button.btn.btn-primary(type='submit') Add	
+			
+block addjs
+	script(src='/js/forIndex.js')
+	

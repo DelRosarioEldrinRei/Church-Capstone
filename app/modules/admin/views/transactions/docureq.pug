@@ -1,0 +1,87 @@
+extends ../../../../templates/masteradmin1
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	//- #calendar
+	div(style='clear:both')
+	.content
+		.container-fluid
+			//- <div class="alert alert-warning" role="alert">
+			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
+			//- </div>
+			
+			.row
+				.col-lg-12.col-md-12
+						.card
+								.card-header.card-header-primary
+										h4.card-title Document Requests
+										
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ReqID
+														th Document of
+														th Document type
+														th Date Requested
+														th Status
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each request in requests
+															tr
+																td=request.int_requestID
+																td=request.var_doclastname + ", " + request.var_docfirstname
+																td=request.var_documenttype
+																td=request.date_docurequested
+																td=request.char_docustatus
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-documentrequest`)
+																				<i class="material-icons">person</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-documentrequest/edit/${request.int_requestID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-documentrequest/delete/${request.int_requestID}`)
+																				<i class="material-icons">close</i>
+																</td>	
+															
+								.card-footer.text-right
+									.col-md-7
+										<cite title="Source Title">Showing 6 of 25 entries</cite> 
+									.col-md-6.text-right
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item">
+													<a class="page-link" href="#" tabindex="-1">Previous</a>
+												</li>
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#">Next</a>
+												</li>
+											</ul>
+										</nav>
+			.row
+				.col-md-8
+					<div class="card card-nav-tabs">
+						<div class="card-body">
+							<blockquote class="blockquote mb-0">
+								//- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+								<footer class="blockquote-footer"><cite title="Source Title">Note:</cite> Deadline for sumbission of requirements will be on <u><cite><strong> June 20, 2018</u></cite></strong> </footer>
+							</blockquote>
+						</div>
+					</div>
+				.col-md-4
+					.card.card-chart
+						.card-header.card-header-warning
+							#websiteViewsChart.ct-chart
+						.card-body
+							h4.card-title Baptism Applications
+							p.card-category Month of June
+						.card-footer
+							.stats
+								i.material-icons access_time
+								|  As of today
+			
+block addjs
+	script(src='js/forIndex.js')
+	//- script(src='js/loader.js')
