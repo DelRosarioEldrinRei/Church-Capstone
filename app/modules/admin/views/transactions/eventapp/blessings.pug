@@ -1,0 +1,174 @@
+extends ../../../../../templates/masteradmin1
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	//- #calendar
+	div(style='clear:both')
+	.content
+		.container-fluid
+			//- <div class="alert alert-warning" role="alert">
+			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
+			//- </div>
+			
+			.row
+				.col-lg-12.col-md-12
+						.card
+								.card-header.card-header-primary
+										h4.card-title Anointing of the sick
+										
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Sick
+														th Details
+														th Desired schedule
+														th Approval Status
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each anointing in anointings
+															tr
+																td=anointing.int_eventinfoID
+																td=anointing.var_lname + ", " + anointing.var_fname
+																td=anointing.var_blessingdetails
+																td=anointing.date_desireddate1 + ' ' + anointing.time_desiredtime1
+																td=anointing.char_approvalstatus
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-baptism`)
+																				<i class="material-icons">open_in_new</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-baptism/edit/${anointing.int_eventinfoID}`)
+																				<i class="material-icons">edit</i>
+																		//- a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-baptism/delete/${request.int_requestID}`)
+																		//- 		<i class="material-icons">close</i>
+																</td>	
+															
+								.card-footer.text-right
+									
+									.col-md-12.text-right
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item">
+													<a class="page-link" href="#" tabindex="-1">Previous</a>
+												</li>
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#">Next</a>
+												</li>
+											</ul>
+										</nav>
+						.card
+								.card-header.card-header-primary
+										h4.card-title Funeral Blessing
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Deceased
+														th Details
+														th Desired schedule
+														th Approval Status
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each funeral in funerals
+															tr
+																td=funeral.int_eventinfoID
+																td=funeral.var_lname + ", " + funeral.var_fname
+																td=funeral.var_blessingdetails
+																td=funeral.date_desireddate1 + ' ' + funeral.time_desiredtime1
+																td=funeral.char_approvalstatus
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-baptism`)
+																				<i class="material-icons">open_in_new</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-baptism/edit/${funeral.int_eventinfoID}`)
+																				<i class="material-icons">edit</i>
+																		//- a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-baptism/delete/${request.int_requestID}`)
+																		//- 		<i class="material-icons">close</i>
+																</td>	
+															
+								.card-footer.text-right
+									
+									.col-md-12.text-right
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item">
+													<a class="page-link" href="#" tabindex="-1">Previous</a>
+												</li>
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#">Next</a>
+												</li>
+											</ul>
+										</nav>
+						.card
+							.card-header.card-header-primary
+									h4.card-title Establishment Blessing
+									
+							.card-body.table-responsive
+									table.table.table-hover
+										thead.text-primary
+													th ID
+													th Owner
+													th Location
+													th Desired schedule
+													th Approval Status
+													th.text-center(style=" width:120px") Actions
+										tbody
+												each establishment in establishments
+													tr
+														td=establishment.int_eventinfoID
+														td=establishment.var_owner
+														td=establishment.var_estloc
+														td=establishment.date_desireddate1 + ' ' + establishment.time_desiredtime1
+														td=establishment.char_approvalstatus
+														<td class="td-actions text-right">
+																a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-baptism`)
+																		<i class="material-icons">open_in_new</i>
+																a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-baptism/edit/${establishment.int_eventinfoID}`)
+																		<i class="material-icons">edit</i>
+																//- a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-baptism/delete/${request.int_requestID}`)
+																//- 		<i class="material-icons">close</i>
+														</td>	
+														
+							.card-footer.text-right
+								.col-md-7
+									<cite title="Source Title">Showing 6 of 25 entries</cite> 
+								.col-md-6.text-right
+									<nav aria-label="Page navigation example">
+										<ul class="pagination justify-content-center">
+											<li class="page-item">
+												<a class="page-link" href="#" tabindex="-1">Previous</a>
+											</li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item">
+												<a class="page-link" href="#">Next</a>
+											</li>
+										</ul>
+									</nav>
+			.row
+				.col-md-8
+					<div class="card card-nav-tabs">
+						<div class="card-body">
+							<blockquote class="blockquote mb-0">
+								//- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+								<footer class="blockquote-footer"><cite title="Source Title">Note:</cite> Deadline for sumbission of requirements will be on <u><cite><strong> June 20, 2018</u></cite></strong> </footer>
+							</blockquote>
+						</div>
+					</div>
+				.col-md-4
+					.card.card-chart
+						.card-header.card-header-warning
+							#websiteViewsChart.ct-chart
+						.card-body
+							h4.card-title Baptism Applications
+							p.card-category Month of June
+						.card-footer
+							.stats
+								i.material-icons access_time
+								|  As of today
+			
+block addjs
+	script(src='js/forIndex.js')
+	//- script(src='js/loader.js')

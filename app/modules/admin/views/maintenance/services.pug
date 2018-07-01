@@ -17,7 +17,7 @@ block prepend main
 				.col-lg-12.col-md-12
 						.card
 								.card-header.card-header-primary
-										h4.card-title Sacramental Events and Services
+										h4.card-title Sacramental Services
 										//- p.card-category Date: June 24, 2018
 								.card-body.table-responsive
 										table.table.table-hover
@@ -31,16 +31,56 @@ block prepend main
 															tr
 																td=sacrament.int_eventID
 																td=sacrament.var_eventname
-																
-																
 																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-facilities`)
-																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-facilities`  data-toggle="modal" data-target="#editFacility")
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-services`)
+																				<i class="material-icons">open_in_new</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-services/edit/${sacrament.int_eventID}`)
 																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-facilities/${sacrament.int_facilityID}/delete`)
+																		//- a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-services/delete/${sacrament.int_eventID}`)
+																		//- 		<i class="material-icons">close</i>
+																</td>
+						.card
+								.card-header.card-header-primary
+										h4.card-title Special Services
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Name
+														
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each service in services
+															tr
+																td=service.int_eventID
+																td=service.var_eventname
+																<td class="td-actions text-right">
+																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-services`)
+																				<i class="material-icons">open_in_new</i>
+																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-services/edit/${service.int_eventID}`)
+																				<i class="material-icons">edit</i>
+																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-services/delete/${service.int_eventID}`)
 																				<i class="material-icons">close</i>
 																</td>
+								.card-footer.text-right
+									.col-md-3
+										//- <cite title="Source Title">Showing 6 of 25 entries</cite> 
+									.col-md-6.text-right
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item">
+													<a class="page-link" href="#" tabindex="-1">Previous</a>
+												</li>
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#">Next</a>
+												</li>
+											</ul>
+										</nav>
+									.col-md-3.text-right
+										a(href="#" data-toggle="modal" data-target="#conditionModal") Add Service
+			
 	#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
 		.modal-dialog.modal-notify.modal-success(role='document')
 			// Content
@@ -52,13 +92,13 @@ block prepend main
 						span.white-text(aria-hidden='true') &times;
 				// Body
 				.modal-body
-					form.form(action="/admin/addfacility" method="post")
+					form.form(action="/admin/maintenance-services/add" method="post")
 						.form-group
-							label.label-control Facility Name
-							input.form-control(type='text' name='facilityname')
+							label.label-control Event Name
+							input.form-control(type='text' name='eventname')
 						.form-group
-							label.label-control Fee
-							input.form-control(type='number' name='fee')
+							label.label-control Event Description
+							input.form-control(type='text' name='eventdesc')
 						.row
 							.col-md-12.text-center.my-3
 								button.btn.btn-primary(type='submit') Add	
@@ -86,5 +126,5 @@ block prepend main
 	//- 							.col-md-12.text-center.my-3
 	//- 								button.btn.btn-primary(type='submit') Add	
 block addjs
-	script(src='js/forIndex.js')
+	script(src='/js/forIndex.js')
 	//- script(src='js/loader.js')
