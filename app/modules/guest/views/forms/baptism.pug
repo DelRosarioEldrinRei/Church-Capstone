@@ -18,7 +18,7 @@ block main
 				.row
 					.col-md-12.my-3
 						h3.text-center.text-uppercase.guidelines--text Application Form
-				form(action="/guest/baptism/form" method="post")
+				form(action="/guest/baptism/form" enctype="multipart/form-data" method="post")
 					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 					.row
 						.col-md-6.my-3
@@ -115,12 +115,20 @@ block main
 								label.label-control Contact number
 								input#datepicker.form-control(type='text' name='contactnumber')
 							.form-group.form-file-upload.form-file-multiple
-								input.inputFileHidden(type='file', multiple='')
-								.input-group
-									input.form-control.inputFileVisible(type='text', placeholder='Multiple Files', multiple='')
-									span.input-group-btn
-										button.btn.btn-fab.btn-round.btn-info(type='button')
-											i.material-icons layers
+								.fileinput.fileinput-new.text-center(data-provides='fileinput')
+									.fileinput-new.thumbnail.img-no-padding(style='max-width: 400px; max-height: 250px;')
+										img(src='/img/image_holder.png', alt='...')
+									.fileinput-preview.fileinput-exists.thumbnail.img-no-padding(style='max-width: 400px; max-height: 250px;')
+									div
+										span.btn.btn-default.btn-file.btn-round
+											span.fileinput-new 
+												i.fa.fa-cloud-upload
+											span.fileinput-exists Change
+											input(type='file', name='image' accept='image/*' required)
+										a.btn.btn-link.btn-danger.fileinput-exists.btn-round(href='javascript:void(0)', data-dismiss='fileinput')
+											i.fa.fa-times
+											|  Remove
+								
 
 					.row#principalSponsor
 						.col-md-6.mt-3
