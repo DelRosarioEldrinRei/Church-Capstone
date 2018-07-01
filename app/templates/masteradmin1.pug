@@ -24,69 +24,82 @@ block body
 							p Maintenace
 								b.caret
 					.collapse#maintenance
+						
 						li.nav-item.ml-2
-							a.nav-link(data-toggle="collapse" href="#events")
-								i.material-icons layers
+							a.nav-link(href='/admin/maintenance-ministries')
+								i.material-icons local_pharmacy
+								p Ministries
+						li.nav-item.ml-2
+							a.nav-link(href='/admin/maintenance-events')
+								i.material-icons event
 								p Events
-									b.caret
-						.collapse#events
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/facilities')
-									i.material-icons event
-									p Baptism
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/facilities')
-									i.material-icons event
-									p Confirmation
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/facilities')
-									i.material-icons event
-									p Blessings
-							li.nav-item.ml-3
-								a.nav-link(href='/admin/documents')
-									i.material-icons event
-									p Marriage
 						li.nav-item.ml-2
-							a.nav-link(href='/admin/facilities')
-								i.material-icons store_mall_directory
+							a.nav-link(href='/admin/maintenance-facilities')
+								i.material-icons location_city
 								p Facilities
 						li.nav-item.ml-2
-							a.nav-link(href='/admin/documents')
+							a.nav-link(href='/admin/maintenance-requirements')
 								i.material-icons list_alt
-								p Documents
+								p Requirements
+						li.nav-item.ml-2
+							a.nav-link(href='/admin/maintenance-services')
+								i.material-icons list_alt
+								p Services
 					li.nav-item
 						a.nav-link(data-toggle="collapse" href='#transaction')
 							i.material-icons content_paste
 							p Transactions
 								b.caret
-					#reservation.collapse
+					#transaction.collapse
 						li.nav-item.ml-2
-							a.nav-link(href='#')
-								i.material-icons location_city
-								p Event Applications
+							a.nav-link(data-toggle="collapse" href="#events")
+								i.material-icons layers
+								p Event Appilications
+									b.caret
+						.collapse#events
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/transaction-baptism')
+									i.material-icons insert_invitation
+									p Baptism
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/transaction-confirmation')
+									i.material-icons insert_invitation
+									p Confirmation
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/transaction-blessings')
+									i.material-icons insert_invitation
+									p Blessings
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/transaction-marriage')
+									i.material-icons insert_invitation
+									p Marriage
 						li.nav-item.ml-2
-							a.nav-link(href='#')
+							a.nav-link(href='/admin/transction-eventproposal')
 								i.material-icons location_city
 								p Event Proposals
 						li.nav-item.ml-2
-							a.nav-link(href='#')
+							a.nav-link(href='/admin/transction-facilityreservation')
 								i.material-icons location_city
-								p Facilit Reservations
+								p Facility Reservations
 						li.nav-item.ml-2
-							a.nav-link(href='#')
+							a.nav-link(href='/admin/transction-documentrequest')
 								i.material-icons assignment
 								p Document Requests
+						li.nav-item.ml-2
+							a.nav-link(href='/admin/transction-walkin')
+								i.material-icons location_city
+								p Walk-in
 					li.nav-item
-						a.nav-link(href='#')
+						a.nav-link(href='/queries')
 							i.material-icons library_books
 							p Queries
 					
 					li.nav-item
-						a.nav-link(href='#')
+						a.nav-link(href='/report')
 							i.material-icons report
 							p Reports
 					li.nav-item
-						a.nav-link(href='#')
+						a.nav-link(href='utilities')
 							i.material-icons settings
 							p Utilities
 		.main-panel

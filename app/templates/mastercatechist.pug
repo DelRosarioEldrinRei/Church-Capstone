@@ -1,0 +1,108 @@
+extends ./basecatechist
+block body
+	header
+		nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark(color-on-scroll="100" id="sectionsNav")
+			.container
+				.navbar-translate
+					a.navbar-brand(href="/guest")
+						| &nbsp; Church
+					button.navbar-toggler(type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation")
+						span.navbar-toggler-icon
+						span.navbar-toggler-icon
+						span.navbar-toggler-icon
+				.collapse.navbar-collapse
+					ul.navbar-nav.ml-auto
+						//- li.nav-item: a.nav-link(href="/guest/reservation")
+						//- 	| Reservations
+						//- li.nav-item: a.nav-link(href="/guest/schedule" rel="tooltip" title="")
+						//- 	| Schedule
+						//- li.nav-item: a.nav-link(href="/services" rel="tooltip" title="" data-original-title="See our services here")
+						//- 	| Services
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Read our articles")
+						//- 	i.fa.fa-comments(aria-hidden="true") 
+						//- 	| Blog
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="" data-original-title="Email Us Now!")
+						//- 	i.fa.fa-envelope-o(aria-hidden="true") 
+						//- 	| Contact
+						//- li.dropdown.nav-item
+						//- 	a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Sacrament
+						//- 	.dropdown-menu.dropdown-with-icons
+						//- 		a.dropdown-item(href="/guest/baptism")
+						//- 			i.fa.fa-twitter(aria-hidden="true")
+						//- 			| &nbsp; Baptism
+						//- 		a.dropdown-item(href="/guest/confirmation")
+						//- 			i.fa.fa-facebook-square(aria-hidden="true")
+						//- 			| &nbsp; Confirmation
+						//- 		a.dropdown-item(href="#")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Eucharist
+						//- 		a.dropdown-item(href="/guest/marriage")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Marriage
+						//- 		a.dropdown-item(href="/guest/anointing")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Anointing
+						//- 		a.dropdown-item(href="/guest/funeral")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Funeral Blessing
+						//- 		a.dropdown-item(href="#")
+						//- 			i.fa.fa-instagram(aria-hidden="true")
+						//- 			| &nbsp; Confession
+						//- li.nav-item: a.nav-link(href="#" rel="tooltip" title="")
+							| Events
+						li.nav-item.active: a.nav-link(href="/catechist")
+							| Home
+						li.nav-item: a.nav-link(href="#")
+							| Profile
+						li.nav-item: a.nav-link(href="#")
+							| Schedule
+						li.nav-item: a.nav-link(href="#")
+							| Sections	
+						li.nav-item: a.nav-link(href="#")
+							| Notification	
+						li.dropdown.nav-item
+							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+								| My Account
+							.dropdown-menu.dropdown-with-icons
+								a.dropdown-item(href="#")
+									| &nbsp; My Profile
+								a.dropdown-item(href="#")
+									| &nbsp; Messages
+								a.dropdown-item(href="#")
+									| &nbsp; Notification
+								a.dropdown-item(href="/guest/reservation")
+									| &nbsp; Reservations
+								.container
+									hr
+								a.dropdown-item(href="/logout")
+									| &nbsp; Sign-out
+						//- li.dropdown.nav-item
+						//- 	a.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Notifications	
+						//- li.nav-item
+						//- 	a.nav-link(href='/logout')
+						//- 		span.no-icon Log out
+						//- li.nav-item: a.nav-link(href="/login" rel="tooltip" title="" data-original-title="Login Now")
+						//- 	| Login
+						//- li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="" data-original-title="Signup Now")
+						//- 	| Sign Up
+
+	block main
+	
+	footer.footer
+		.container
+			nav.pull-left
+				ul
+					li: a(href="#") Church
+					li: a(href="#") About Us
+					li: a(href="#") Blog
+					li: a(href="#") Services
+			.copyright.pull-right © 
+				script.
+					document.write(new Date().getFullYear())
+				| , made with 
+				i.fa.fa-heart
+				|  by 
+				a(href="#") SAD Team
+				| ,	Ina ng Lupang Pangako Parish

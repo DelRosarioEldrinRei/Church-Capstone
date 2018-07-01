@@ -107,7 +107,7 @@ block body
 								.row
 									.col-md-6
 										.form-group.m-0
-											label.label-control * Name:	
+											label.label-control Name*:	
 											.row
 												.col-md-4.pr-1
 													.form-group.pt-0
@@ -119,7 +119,7 @@ block body
 													.form-group.pt-0
 														input.form-control(type='text' placeholder="Middle Name" name='middlename')
 										.form-group.m-0
-											label.label-control * Gender:
+											label.label-control Gender*:
 												.form-check.p-0.m-0
 													label.form-check-label
 														input.form-check-input(type="radio" name="gender" value="Male")
@@ -134,11 +134,11 @@ block body
 										.row
 											.col-md-6.pr-1
 												.form-group.m-0
-													label.label-control * Birthday
+													label.label-control Birthday*
 													input#datepicker.form-control(type='date' name='birthday' required)
 											.col-md-6.p-0
 												.form-group.m-0
-													label.label-control * Username:
+													label.label-control Username:*
 													input.form-control.mt-1(type='text' name='username' required)
 										.form-group
 											label.m-0(for='exampleFormControlTextarea1') Address:
@@ -148,21 +148,22 @@ block body
 											label.label-control Contact Number:
 											input.form-control(type='text' name='contactnumber')
 										.form-group.m-0
-											label.label-control * Email Address:
+											label.label-control Email Address*:
 											input.form-control(type='text' name='email' required)
-											.form-group.m-0
-												label.label-control * Password:
-												input.form-control(type='password' name='password' required)
-											.form-group.m-0
-												label.label-control * Confirm password:
-												input.form-control(type='password' name='confirmpassword' required)
-											.form-check.m-0.p-3.mx-auto.my-auto
-												label.form-check-label
-													input.form-check-input(type='checkbox', value='')
-													span.form-check-sign
-														span.check
-													| * I agree to the 
-													strong terms and conditions.
+										.form-group.m-0
+											label.label-control Password*:
+											input.form-control(type='password' name='password' required)
+										.form-group.m-0
+											label.label-control Confirm password*:
+											input.form-control(type='password' name='confirmpassword' required)
+										.form-check.m-0.p-3.mx-auto.my-auto
+											label.form-check-label
+												input.form-check-input(type='checkbox', value='')
+												span.form-check-sign
+													span.check
+												| I agree to the 
+												strong terms and conditions.
+												| *
 
 					.modal-footer.justify-content-center
 						.row

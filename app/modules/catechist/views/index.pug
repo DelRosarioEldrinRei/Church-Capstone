@@ -1,0 +1,101 @@
+extends ../../../templates/mastercatechist
+block main
+	.container
+		.row
+			.col-md-11.main-header__top
+				button.btn.btn-white.btn-sm(type='button')
+					i.material-icons person_add
+					|  Add Student
+				button.btn.btn-white.btn-sm.ml-1(type='button')
+					i.material-icons save
+					|  Save
+	#guide
+		.container
+			.row
+				.col-md-12
+					hr.mt-5.mx-5
+			.row
+				.col-md-8.my-3.mx-5
+					h3.text-uppercase.guidelines--text Students
+			.row
+				.col-md-12.mx-auto
+					.table-responsive
+						table.table.text-center
+							thead
+								tr
+									th #
+									th Name
+									th Section
+									th Batch
+									th Schedule
+									th Actions
+							tbody
+								tr.text-center
+									td 1
+									td Andrew Mike
+									td Develop
+									td 2013
+									td € 99,225
+									td.td-actions.pt-0
+										button.btn.btn-info.btn-fab.btn-fab-mini
+											i.material-icons person
+										button.btn.btn-success.btn-fab.btn-fab-mini
+											i.material-icons edit
+										button.btn.btn-danger.btn-fab.btn-fab-mini
+											i.material-icons close
+								tr
+									td.text-center 2
+									td John Doe
+									td Design
+									td 2012
+									td € 89,241
+									td.td-actions.pt-0
+										button.btn.btn-info.btn-fab.btn-fab-mini
+											i.material-icons person
+										button.btn.btn-success.btn-fab.btn-fab-mini
+											i.material-icons edit
+										button.btn.btn-danger.btn-fab.btn-fab-mini
+											i.material-icons close
+								tr
+									td.text-center 3
+									td Alex Mike
+									td Design
+									td 2010
+									td € 92,144
+									td.td-actions.pt-0
+										button.btn.btn-info.btn-fab.btn-fab-mini
+											i.material-icons person
+										button.btn.btn-success.btn-fab.btn-fab-mini
+											i.material-icons edit
+										button.btn.btn-danger.btn-fab.btn-fab-mini
+											i.material-icons close
+								tr
+									td.text-center 4
+									td Alex Mike
+									td Design
+									td 2010
+									td € 92,144
+									td.td-actions.pt-0
+										button.btn.btn-info.btn-fab.btn-fab-mini
+											i.material-icons person
+										button.btn.btn-success.btn-fab.btn-fab-mini
+											i.material-icons edit
+										button.btn.btn-danger.btn-fab.btn-fab-mini
+											i.material-icons close
+								tr
+									td.text-center 5
+									td Alex Mike
+									td Design
+									td 2010
+									td € 92,144
+									td.td-actions.pt-0
+										button.btn.btn-info.btn-fab.btn-fab-mini
+											i.material-icons person
+										button.btn.btn-success.btn-fab.btn-fab-mini
+											i.material-icons edit
+										button.btn.btn-danger.btn-fab.btn-fab-mini
+											i.material-icons close
+	.container
+		.row
+			.col-md-12
+				#calendar
