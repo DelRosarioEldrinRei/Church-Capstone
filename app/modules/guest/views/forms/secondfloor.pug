@@ -23,7 +23,7 @@ block main
 						#form-facility
 							#calendar
 					.col-md-5.my-3.text-center
-						form(action="/guest/facilities/secondfloor/form" method='post')
+						form(action="/guest/facilities/secondfloor/form" enctype="multipart/form-data" method='post')
 							input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 							.form-group
 								label.label-control Event
@@ -44,6 +44,20 @@ block main
 									span.input-group-btn
 										button.btn.btn-fab.btn-round.btn-primary(type='button')
 											i.fa.fa-file(aria-hidden='true')
+							.form-group.form-file-upload.form-file-multiple
+								.fileinput.fileinput-new.text-center(data-provides='fileinput')
+									.fileinput-new.thumbnail.img-no-padding(style='max-width: 400px; max-height: 250px;')
+										img(src='/img/image_holder.png', alt='...')
+									.fileinput-preview.fileinput-exists.thumbnail.img-no-padding(style='max-width: 400px; max-height: 250px;')
+									div
+										span.btn.btn-default.btn-file.btn-round
+											span.fileinput-new 
+												i.fa.fa-cloud-upload
+											span.fileinput-exists Change
+											input(type='file', name='image' accept='image/*' required)
+										a.btn.btn-link.btn-danger.fileinput-exists.btn-round(href='javascript:void(0)', data-dismiss='fileinput')
+											i.fa.fa-times
+											|  Remove
 							.row
 								.col-md-12.text-center.mb-5
 									//- button.btn.btn-primary.btn-valid Submit

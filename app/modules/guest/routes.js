@@ -4,30 +4,15 @@ var moment = require('moment');
 var authMiddleware = require('../auth/middlewares/auth');
 var db = require('../../lib/database')();
 var multer = require('multer');
-
-const multerConf = {
-    storage : multer.diskStorage({
-        destination : function(req,file,next){
-            next(null,'./public/img/req');
-        },
-        filename : function(req,file,next){
-            const ext = file.mimetype.split('/')[1];
-            next(null,file.fieldname + '-' + Date.now() + '.' + ext);
-        }
-    }),
-    fileFilter: function(req,file,next){
-        if(!file){
-            next();
-        }
-        const image = file.mimetype.startsWith('image/');
-        if(image){
-            next(null,true);
-        }
-        else{
-            next({message:'file type not supported'},false);
-        }
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/img/req')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now()+'.jpg')
     }
-};
+})
+var upload = multer({ storage: storage})
 //===============================================================================================//
 // I N D E X //
 //===============================================================================================//
@@ -374,8 +359,8 @@ guestRouter.get('/document/form', (req, res)=>{
     res.render('guest/views/forms/document')
 });
 
-guestRouter.post('/document/form', (req, res) => {
-   
+guestRouter.post('/document/form',upload.single('image'), (req, res) => {
+   console.log(req.file)
     var queryString= `select int_documentID from tbl_document where var_documenttype= ?`  
         db.query(queryString,[req.body.documenttype], (err, results, fields) => {
             if (err) throw err;
@@ -386,8 +371,14 @@ guestRouter.post('/document/form', (req, res) => {
             
         var queryString1 = `INSERT INTO tbl_documentrequest(int_userID, int_documentID, var_doclastname, var_docfirstname, text_purpose, date_docurequested) VALUES(?,?,?,?,?,?)`;
             db.query(queryString1, [req.session.user.int_userID, documentID.int_documentID, req.body.lastname, req.body.firstname, req.body.purpose,datenow], (err, results, fields) => {
+                var path = '/img/req/'+req.file.filename;
+                var nowDate = new Date(); 
+                var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+                var queryString7 = `INSERT INTO tbl_requirements(int_documentrequest_ID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                db.query(queryString7,[documentID.int_documentID,path,date,5],(err, results, fields)=>{     
                 if (err) throw err;
                 return res.redirect(`/guest`);
+                });
             });    
         });            
         
@@ -435,8 +426,9 @@ guestRouter.get('/marriage', (req, res)=>{
 guestRouter.get('/anointing/form', (req, res)=>{
     res.render('guest/views/forms/anointing',{user: req.session.user})
 });
-guestRouter.post('/anointing/form', (req, res) => {
-   
+guestRouter.post('/anointing/form', upload.single('image'),(req, res) => {
+
+
     var queryString= `select int_eventID from tbl_event where var_eventname="Anointing of the sick";`  
         db.query(queryString, (err, results, fields) => {
             if (err) throw err;
@@ -462,8 +454,14 @@ guestRouter.post('/anointing/form', (req, res) => {
                         if (err) throw err;
                         var queryString4 =`INSERT INTO tbl_blessing(int_eventinfoID, var_blessingvenue, var_blessingdetails, date_desireddate1, date_desireddate2, time_desiredtime1, time_desiredtime2) VALUES (?,?,?,?,?,?,?)`
                         db.query(queryString4, [eventinfoID.insertId, venue, req.body.details, req.body.desireddate1, req.body.desireddate2, desiredtime1, req.body.desiredtime2], (err, results, fields) => {
-                            if (err) throw err;
-                            return res.redirect(`/guest`);
+                            var path = '/img/req/'+req.file.filename;
+                            var nowDate = new Date(); 
+                            var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+                            var queryString7 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                            db.query(queryString7,[eventinfoID.insertId,path,date,1],(err, results, fields)=>{    
+                                if (err) throw err;
+                                return res.redirect(`/guest`);
+                            });
                         });
                     });
                 });
@@ -479,11 +477,9 @@ guestRouter.get('/baptism/form', (req, res)=>{
     res.render('guest/views/forms/baptism',{user: req.session.user})
 });
 
-guestRouter.post('/baptism/form',multer(multerConf).single('image'), (req, res) => {
-if(req.file){
-req.body.image =req.file.filename
-console.log(req.body.image)
-}
+guestRouter.post('/baptism/form',upload.single('image'), (req, res) => {
+console.log(req.file)
+console.log(req.body)
     var queryString= `select int_eventID from tbl_event where var_eventname="Baptism";`  
         db.query(queryString, (err, results, fields) => {
             if (err) throw err;
@@ -502,27 +498,32 @@ console.log(req.body.image)
                     var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation, var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
                     db.query(queryString3, [eventinfoID.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
                         if (err) throw err;
+                        var path = '/img/req/'+req.file.filename;
+                        var nowDate = new Date(); 
+                        var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
                         var queryString7 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
-                        db.query(queryString7,[eventinfoID.insertId,req.body.image,Date.now(),1],(err, results, fields)=>{
-                        if (req.body.baptismtype == 'Regular'){
-                            //merong hardcoded dito, ayusin sa capstone, utilities/events
-                            var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
-                            db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, "11:00:00", req.body.baptismtype], (err, results, fields) => {
-                                if (err) throw err;
-                                sponsors(eventinfoID.insertId);
-                                return res.redirect(`/guest`);
-                                
-                            });
-                        }
-                        if(req.body.baptismtype=='Special'){
-                            var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
-                            db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.spcdesireddate, req.body.desiredtime, req.body.baptismtype], (err, results, fields) => {
-                                if (err) throw err;
-                                sponsors(eventinfoID.insertId);
-                                return res.redirect(`/guest`);
-                                
-                            });
-                        }
+                        db.query(queryString7,[eventinfoID.insertId,path,date,1],(err, results, fields)=>{
+                            console.log(date);
+                            if (err) throw err;
+                            if (req.body.baptismtype == 'Regular'){
+                                //merong hardcoded dito, ayusin sa capstone, utilities/events
+                                var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
+                                db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, "11:00:00", req.body.baptismtype], (err, results, fields) => {
+                                    if (err) throw err;
+                                    sponsors(eventinfoID.insertId);
+                                    return res.redirect(`/guest`);
+                                    
+                                });
+                            }
+                            if(req.body.baptismtype=='Special'){
+                                var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
+                                db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.spcdesireddate, req.body.desiredtime, req.body.baptismtype], (err, results, fields) => {
+                                    if (err) throw err;
+                                    sponsors(eventinfoID.insertId);
+                                    return res.redirect(`/guest`);
+                                    
+                                });
+                            }
                         })
 
                         function sponsors(eventinfoID){
@@ -548,11 +549,10 @@ console.log(req.body.image)
 guestRouter.get('/confirmation/form', (req, res)=>{
     res.render('guest/views/forms/confirmation',{user: req.session.user})
 });
-
-guestRouter.post('/confirmation/form', (req, res) => {
-
-    
+var requirements = upload.fields([{name:'birthCertificate',maxCount:1},{name:'baptismalCertificate',maxCount:1}]);
+guestRouter.post('/confirmation/form',requirements ,(req, res) => {
     var queryString= `select int_eventID from tbl_event where var_eventname="Confirmation";`  
+    console.log(req.files)
         db.query(queryString, (err, results, fields) => {
             if (err) throw err;
             console.log(results);
@@ -569,37 +569,47 @@ guestRouter.post('/confirmation/form', (req, res) => {
                     var queryString3 = `INSERT INTO tbl_relation(int_eventinfoID, var_relation, var_lname, var_fname, var_mname, char_gender, var_address, date_birthday, var_birthplace) VALUES(?,?,?,?,?,?,?,?,?);`
                     db.query(queryString3, [eventinfoID.insertId, req.body.relation, req.body.lastname, req.body.firstname, req.body.middlename, req.body.gender, req.body.address, req.body.birthday, req.body.birthplace], (err, results, fields) => {
                         if (err) throw err;
-                        
-                        if (req.body.baptismtype == 'Regular'){
-                            var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?);`
-                            db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, req.body.baptismtype], (err, results, fields) => {
-                                if (err) throw err;
-                                sponsors(eventinfoID.insertId);
-                                return res.redirect(`/guest`);
+                        var pathBirthc = '/img/' + req.files.birthCertificate[0].filename;
+                        var nowDate = new Date(); 
+                        var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+                        var queryString7 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                        db.query(queryString7,[eventinfoID.insertId,pathBirthc,date,1],(err, results, fields)=>{
+                            var pathBaptc = '/img/'+req.files.baptismalCertificate[0].filename;
+                            var nowDate1 = new Date(); 
+                            var date1 = nowDate1.getFullYear()+'/'+(nowDate1.getMonth()+1)+'/'+nowDate1.getDate(); 
+                            var queryString8 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                            db.query(queryString8,[eventinfoID.insertId,pathBaptc,date1,2],(err, results, fields)=>{  
+                                if (req.body.baptismtype == 'Regular'){
+                                    var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?);`
+                                    db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, req.body.baptismtype], (err, results, fields) => {
+                                        if (err) throw err;
+                                        sponsors(eventinfoID.insertId);
+                                        return res.redirect(`/guest`);
+                                    });
+                                }
+                                if(req.body.baptismtype=='Special'){
+                                    var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
+                                    db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.spcdesireddate, req.body.desiredtime, req.body.baptismtype], (err, results, fields) => {
+                                        if (err) throw err;
+                                        sponsors(eventinfoID.insertId);
+                                        return res.redirect(`/guest`);
+                                        
+                                    });
+                                }
                                 
-                            });
-                        }
-                        if(req.body.baptismtype=='Special'){
-                            var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
-                            db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.spcdesireddate, req.body.desiredtime, req.body.baptismtype], (err, results, fields) => {
-                                if (err) throw err;
-                                sponsors(eventinfoID.insertId);
-                                return res.redirect(`/guest`);
-                                
-                            });
-                        }
-                        
-                        function sponsors(eventinfoID){
-                            var i;
-                            for(i=0; i < req.body.sponsorname.length; i++){
-                                var queryString5= `INSERT INTO tbl_sponsors(int_eventinfoID, var_sponsorname) VALUES (?,?);`
-                                db.query(queryString5, [eventinfoID, req.body.sponsorname[i]], (err, results, fields) => {
-                                    if(err) throw err;
-                                });
-                            }
+                                function sponsors(eventinfoID){
+                                    var i;
+                                    for(i=0; i < req.body.sponsorname.length; i++){
+                                        var queryString5= `INSERT INTO tbl_sponsors(int_eventinfoID, var_sponsorname) VALUES (?,?);`
+                                        db.query(queryString5, [eventinfoID, req.body.sponsorname[i]], (err, results, fields) => {
+                                            if(err) throw err;
+                                        });
+                                    }
 
-                        }
+                                }
+                            });
                     });
+                });
                 });
             });    
         });                   
@@ -620,7 +630,7 @@ guestRouter.get('/establishment/form', (req, res)=>{
 
 });
 
-guestRouter.post('/establishment/form', (req, res) => {
+guestRouter.post('/establishment/form',upload.single('image'), (req, res) => {
     
     var queryString= `select int_eventID from tbl_event where var_eventname="House Blessing";`  
         db.query(queryString, (err, results, fields) => {
@@ -637,6 +647,11 @@ guestRouter.post('/establishment/form', (req, res) => {
                 var queryString2 = `INSERT INTO tbl_eventapplication(int_eventinfoID, char_approvalstatus, char_feestatus, char_reqstatus) VALUES(?,?,?,?)`;        
                 db.query(queryString2,[eventinfoID.insertId, "Pending", "No payment", "No Requirements"], (err, results, fields) => {
                     if (err) throw err;
+                    var path = '/img/req/'+req.file.filename;
+                    var nowDate = new Date(); 
+                    var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+                    var queryString7 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                    db.query(queryString7,[eventinfoID.insertId,path,date,6],(err, results, fields)=>{
                     if(req.body.establishment=='ourhome'){
                         var queryString3 = `INSERT INTO tbl_houseblessing(int_eventinfoID, var_owner, var_estloc, var_ownercontactnum, var_owneremailadd, date_desireddate1, date_desireddate2, time_desiredtime1, time_desiredtime2) VALUES(?,?,?,?,?,?,?,?,?);`
                         db.query(queryString3, [eventinfoID.insertId, req.body.owner, req.body.location, req.body.contactnumber, req.body.email, req.body.desireddate1, req.body.desireddate2, req.body.desiredtime1, req.body.desiredtime2], (err, results, fields) => {
@@ -651,6 +666,7 @@ guestRouter.post('/establishment/form', (req, res) => {
                                 return res.redirect(`/guest`);                            
                         });
                     }
+
                 });
             });    
         });            
@@ -663,8 +679,8 @@ guestRouter.post('/establishment/form', (req, res) => {
 guestRouter.get('/funeral/form', (req, res)=>{
     res.render('guest/views/forms/funeral',{user: req.session.user})
 });
-
-guestRouter.post('/funeral/form', (req, res) => {
+var requirements = upload.fields([{name:'birthCertificate',maxCount:1},{name:'deathCertificate',maxCount:1}]);
+guestRouter.post('/funeral/form',requirements,(req, res) => {
     if (req.body.venue== 'sameaddress'){
         var venue = req.body.address;
         var queryString= `select int_eventID from tbl_event where var_eventname="Funeral Service";`  
@@ -695,7 +711,8 @@ guestRouter.post('/funeral/form', (req, res) => {
     }
 
     function queries(venue){
-        
+        req.body.image =req.file.filename
+        console.log(req.body.image)
         var queryString1 = `INSERT INTO tbl_eventinfo(int_userID, int_eventID) VALUES(?,?)`;
             db.query(queryString1, [req.body.userID, req.session.user.eventID.int_eventID], (err, results, fields) => {
                 if (err) throw err;
@@ -708,8 +725,20 @@ guestRouter.post('/funeral/form', (req, res) => {
                         if (err) throw err;
                         var queryString4 =`INSERT INTO tbl_blessing(int_eventinfoID, var_blessingvenue, var_blessingdetails, date_desireddate1, date_desireddate2, time_desiredtime1, time_desiredtime2) VALUES (?,?,?,?,?,?,?)`
                         db.query(queryString4, [eventinfoID.insertId, venue, req.body.details, req.body.desireddate1, req.body.desireddate2, req.body.desiredtime1, req.body.desiredtime2], (err, results, fields) => {
-                            if (err) throw err;
-                            return res.redirect(`/guest`);
+                            var pathBirthc = '/img/' + req.files.birthCertificate[0].filename;
+                            var nowDate = new Date(); 
+                            var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate();
+                            var queryString7 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                            db.query(queryString7,[eventinfoID.insertId,pathBirthc,date,1],(err, results, fields)=>{    
+                                var pathDeathc = '/img/'+req.files.deathCertificate[0].filename;
+                                var nowDate1 = new Date(); 
+                                var date1 = nowDate1.getFullYear()+'/'+(nowDate1.getMonth()+1)+'/'+nowDate1.getDate(); 
+                                var queryString8 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                                db.query(queryString8,[eventinfoID.insertId,pathDeathc,date,3],(err, results, fields)=>{   
+                                if (err) throw err;
+                                return res.redirect(`/guest`);
+                                });
+                            });
                         });
                     });
                 });
@@ -874,7 +903,7 @@ guestRouter.get('/facilities/secondfloor/form', (req, res)=>{
     res.render('guest/views/forms/secondfloor',{user: req.session.user})
 });
 
-guestRouter.post('/facilities/secondfloor/form', (req, res) => {
+guestRouter.post('/facilities/secondfloor/form',upload.single('image'), (req, res) => {
    
     var queryString= `select int_facilityID from tbl_facility where var_facilityname="Bro. Roqueto 2nd floor";`  
         db.query(queryString, (err, results, fields) => {
@@ -885,11 +914,17 @@ guestRouter.post('/facilities/secondfloor/form', (req, res) => {
             
         var queryString1 = `INSERT INTO tbl_facilityreservation(int_userID, int_facilityID, var_event, date_reservedate,time_reservestart, time_reserveend, char_reservestatus) VALUES(?,?,?,?,?,?,?)`;
             db.query(queryString1, [req.session.user.int_userID, req.session.user.facilityID.int_facilityID, req.body.event, req.body.desireddate, req.body.starttime, req.body.endtime, 'Pending'], (err, results, fields) => {
+                var path = '/img/req/'+req.file.filename;
+                var nowDate = new Date(); 
+                var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+                var queryString7 = `INSERT INTO tbl_requirements(int_facilityreservation_ID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+                db.query(queryString7,[req.session.user.facilityID.int_facilityID,path,date,4],(err, results, fields)=>{    
                 if (err) throw err;
                 return res.redirect(`/guest`);
+                });
             });    
         });            
-        
+    });
     });
 
 //===============================================================================================//
@@ -897,4 +932,4 @@ exports.guest = guestRouter;
 // exports.index = indexRouter;
 // exports.reservation = reservationRouter;
 // exports.events = eventsRouter;
-// exports.facilities = facilitiesRouter;
+// exports.facilities = facilitiesRouter

@@ -1,0 +1,11 @@
+,multer(multerConf).single('image')
+
+req.body.image =req.file.filename
+    console.log(req.body.image)
+
+    var nowDate = new Date(); 
+    var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+    var queryString7 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_requirementtype_ID) VALUES (?,?,?,?);`
+    db.query(queryString7,[eventinfoID.insertId,req.body.image,date,1],(err, results, fields)=>{
+
+        
