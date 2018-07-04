@@ -1,5 +1,5 @@
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
  }
 
  @font-face {
@@ -149,6 +149,20 @@ i.fa.fa-facebook-square, i.fa.fa-twitter, i.fa.fa-google-plus {
 .main--header {
   font-family: 'EB Garamond', serif;
   letter-spacing: 12px;
+  color: #836323;
+}
+
+.main--header_event {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 12px;
+  font-size: 2.1rem;
+  color: #836323;
+}
+
+.main--header_event1 {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 8px;
+  font-size: 1.5rem;
   color: #836323;
 }
 

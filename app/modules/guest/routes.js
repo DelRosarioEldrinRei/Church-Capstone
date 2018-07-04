@@ -30,8 +30,12 @@ guestRouter.get('/parishevents', (req, res)=>{
     res.render('guest/views/parishevents1')
 });
 
-guestRouter.get('/parishservices', (req, res)=>{
-    res.render('guest/views/parishservices')
+guestRouter.get('/parishevents', (req, res)=>{
+    res.render('guest/views/parishevents1')
+});
+
+guestRouter.get('/parishevents/details', (req, res)=>{
+    res.render('guest/views/parishdetails')
 });
 
 

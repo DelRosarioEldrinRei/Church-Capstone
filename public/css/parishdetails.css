@@ -1,0 +1,70 @@
+#raised-section {
+  margin: -170px 30px 0px !important;
+}
+
+#calendar {
+  /* width: 450px; */
+  margin: 0 auto;
+  font-size: 10px;
+}
+.fc-toolbar {
+  font-size: .9em;
+}
+.fc-toolbar h2 {
+  font-size: 12px;
+  white-space: normal !important;
+}
+/* click +2 more for popup */
+.fc-more-cell a {
+  display: block;
+  width: 85%;
+  margin: 1px auto 0 auto;
+  border-radius: 3px;
+  background: grey;
+  color: transparent;
+  overflow: hidden;
+  height: 4px;
+}
+.fc-more-popover {
+  width: 100px;
+}
+.fc-view-month .fc-event, .fc-view-agendaWeek .fc-event, .fc-content {
+  font-size: 0;
+  overflow: hidden;
+  height: 2px;
+}
+.fc-view-agendaWeek .fc-event-vert {
+  font-size: 0;
+  overflow: hidden;
+  width: 2px !important;
+}
+
+#details > div > div:nth-child(2) > div.col-md-7 > div > img {
+  width: 25rem;
+}
+
+#cardUnder {
+  background-image: url("/img/oldbg.jpg");
+  padding-top: 15rem;
+  margin-top: -15rem;
+  z-index: -1;
+  box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+}
+
+#cardUnder1 {
+  background-image: url("/img/oldbg.jpg");
+  padding-top: 4rem;
+  margin-top: -4rem;
+  z-index: -1;
+  /* box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6); */
+}
+
+.mr-bugfix {
+  margin-left: -3rem;
+}

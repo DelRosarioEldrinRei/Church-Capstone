@@ -1,0 +1,53 @@
+extends ../../../templates/masterguests
+block addcss
+	link(rel="stylesheet" href="/css/parishdetails.css")
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/background-events.jpg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Marriage Seminar
+						p.text-uppercase.card-desc
+							| Event Details
+		#raised-section.main.main-raised
+			#details
+				.container
+					.row
+						.col-md-12
+							hr.mt-5.mx-5
+							//- h1.main--header.font-italic.text-center Mass Schedule
+					.row
+						.col-md-5
+							#calendar
+							.card.shadow2(style="width: 80%;") 
+								.main--header_event1.font-italic.text-center.m-3 Marriage Seminar
+							.container.m-3
+								.card#cardUnder1
+									.card-body
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										.card.shadow2.ml-5
+											.main--header_event1.font-italic.text-center.m-3 Marriage Seminar
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										.card.shadow2.mr-bugfix
+											.main--header_event1.font-italic.text-center.m-3 Marriage Seminar
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+						.col-md-6.mx-auto
+							.card.mt-5.shadow2(style="width: 83%;")
+								img.card-img-top.img-fluid(src='/img/events/marriage-slide.jpg', alt='Card image cap' style="height: 15rem;")
+							.container.m-3
+								.card#cardUnder
+									.card-body
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+										p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ab repudiandae quibusdam ad tempora similique ducimus, explicabo laboriosam deserunt at exercitationem dicta velit consectetur dolor. Consequuntur debitis cumque rem quaerat!
+
+										
+
+block addjs
+	script(src="/js/parishdetails.js")
