@@ -41,11 +41,11 @@ adminRouter.use(authMiddleware.adminAuth)
 
         });
 
-    adminRouter.get('/maintenance-events/delete/:int_specialeventID', (req, res) => {
-        const queryString = `DELETE FROM tbl_specialevent
-        WHERE int_specialeventID= ${req.params.int_specialeventID}`;
-        db.query(queryString, (err, results, fields) => {        
+    adminRouter.post('/maintenance-events/delete', (req, res) => {
+        const queryString = `DELETE FROM tbl_specialevent WHERE int_specialeventID= ?`;
+        db.query(queryString,[req.body.id1], (err, results, fields) => {        
             if (err) throw err;
+            console.log(req.body.id1)
             return res.redirect('/admin/maintenance-events');
         });
     });

@@ -111,41 +111,7 @@
 				// UNCOMMENT THIS IF YOU ARE GOING TO CAPTURE FACILITY RESERVATION, FOR NOW, LEMME USE IT FOR COORDINATORS
 				// F  A  C  I  L  T  Y    
 				
-				// {
-				// 	title: 'Rehearsal',
-				// 	start: new Date(y, m, 2, 18),
-				// 	url: 'http://google.com/',
-				// color: '#378006',
-				// },
-				// {
-				// 	title: 'Reserved',
-				// 	start: new Date(y, m, d, 10, 30),
-				// 	allDay: false,
-				// 	className: 'important',
-				// 	url: 'http://google.com/',
-				// },
-				// {
-				// 	title: 'Pending',
-				// 	start: new Date(y, m, d, 12, 0),
-				// 	end: new Date(y, m, d, 14, 0),
-				// 	allDay: false,
-				// 	className: 'important',
-				// 	url: 'http://google.com/',
-				// },
-				// {
-				// 	title: 'Reserved',
-				// 	start: new Date(y, m, d+1, 19, 0),
-				// 	end: new Date(y, m, d+1, 22, 30),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Pending',
-				// 	start: new Date(y, m, 28),
-				// 	end: new Date(y, m, 29),
-				// 	url: 'http://google.com/',
-				// 	className: 'success'
-				// },
+				
 
 				//==========================================================
 				// C  O  O  R  D  I  N  A  T  O  R
@@ -311,97 +277,6 @@
 				},
 				 
 
-
-				// ==========================================
-				// {
-				// 	title: 'Baptism',
-				// 	start: new Date(y, m, 17, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 5, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 12, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 19, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 26, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 1, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 8, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 15, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 22, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-				// {
-				// 	title: 'Novena',
-				// 	start: new Date(y, m, 29, 11),
-				// 	url: 'http://google.com/',
-				// 	allDay: false,
-				// },
-
-				// {
-				// 	start: '2018-06-03',
-				// 	overlap: false,
-				// 	rendering: 'background',
-				// 	color: '#2c2d2d'
-				// },
-				
-				// {
-				// 	start: '2018-06-09',
-				// 	overlap: false,
-				// 	rendering: 'background',
-				// 	color: '#2c2d2d'
-				// },
-				
-				// {
-				// 	start: '2018-06-23',
-				// 	overlap: false,
-				// 	rendering: 'background',
-				// 	color: '#2c2d2d'
-				// },
-				
-				// {
-				// 	start: '2018-06-12',
-				// 	overlap: false,
-				// 	rendering: 'background',
-				// 	color: '#2c2d2d'
-				// },
 			],		
 				
 		});

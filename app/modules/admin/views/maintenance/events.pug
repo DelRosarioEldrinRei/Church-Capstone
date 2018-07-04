@@ -38,14 +38,16 @@ block prepend main
 																td=specialevent.time_eventstart
 																td=specialevent.time_eventend
 																td=specialevent.var_eventvenue
-																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-events`)
-																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-events/edit/${specialevent.int_specialeventID}`)
-																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-events/delete/${specialevent.int_specialeventID}`)
-																				<i class="material-icons">close</i>
-																</td>								
+																td
+																	button.btn.fa.fa-trash.deleteButton(type="button", value=`${specialevent.int_specialeventID}`)
+																//- <td class="td-actions text-right">
+																//- 		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-events`)
+																//- 				<i class="material-icons">person</i>
+																//- 		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-events/edit/${specialevent.int_specialeventID}`)
+																//- 				<i class="material-icons">edit</i>
+																//- 		button.btn.fa.fa-trash.deleteButton(rel="tooltip" class="btn btn-danger" value=`${specialevent.int_specialeventID}`)
+																//- 				//- <i class="material-icons">close</i>
+																//- </td>								
 								.card-footer.text-right
 									.col-md-3
 										//- <cite title="Source Title">Showing 6 of 25 entries</cite> 
@@ -106,31 +108,44 @@ block prepend main
 							.col-md-12.text-center.my-3
 								button.btn.btn-primary(type='submit') Add	
 		
-	//- #editFacility.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
-	//- 	.modal-dialog.modal-notify.modal-success(role='document')
-	//- 		// Content
-	//- 		.modal-content
-	//- 			// Header
-	//- 			.modal-header
-	//- 				p.heading.lead Add Facility
-	//- 				button.close(type='button' data-dismiss='modal' aria-label='Close')
-	//- 					span.white-text(aria-hidden='true') &times;
-	//- 			// Body
-	//- 			.modal-body
-	//- 				each detail in details
-	//- 					form.form(action=`/editfacility/${detail.int_facilityID}` method="post")
-	//- 						.form-group
-	//- 							label.label-control Facility Name
-	//- 							input.form-control(type='text' name='facilityname' value=`${detail.var_facilityname}`)
-	//- 						.form-group
-	//- 							label.label-control Fee
-	//- 							input.form-control(type='number' name='fee' value=`${detail.flt_rentfee}`)
-	//- 						.row
-	//- 							.col-md-12.text-center.my-3
-	//- 								button.btn.btn-primary(type='submit') Add	
+	//-  #editFacility.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+	//-  	.modal-dialog.modal-notify.modal-success(role='document')
+	//-  		// Content
+	//-  		.modal-content
+	//-  			// Header
+	//-  			.modal-header
+	//-  				p.heading.lead Add Facility
+	//-  				button.close(type='button' data-dismiss='modal' aria-label='Close')
+	//-  					span.white-text(aria-hidden='true') &times;
+	//-  			// Body
+	//-  			.modal-body
+	//-  				each detail in details
+	//-  					form.form(action=`/editfacility/${detail.int_facilityID}` method="post")
+	//-  						.form-group
+	//-  							label.label-control Facility Name
+	//-  							input.form-control(type='text' name='facilityname' value=`${detail.var_facilityname}`)
+	//-  						.form-group
+	//-  							label.label-control Fee
+	//-  							input.form-control(type='number' name='fee' value=`${detail.flt_rentfee}`)
+	//-  						.row
+	//-  							.col-md-12.text-center.my-3
+	//-  								button.btn.btn-primary(type='submit') Add
+	#modal-warning1.modal.modal-warning.fade
+		.modal-dialog
+		.modal-content
+			.modal-header
+			button.close(type='button', data-dismiss='modal', aria-label='Close')
+				span(aria-hidden='true') ×
+			h4.modal-title Warning
+			.modal-body
+			p Are you sure you?
+			.modal-footer
+				button.btn.btn-outline.pull-left#cancelButton1(type='button', data-dismiss='modal') No
+				button.btn.btn-outline.pull-right#deleteSubmit1 Yes	
 block addjs
 	script(src='/js/forIndex.js')
 	script.
+		
 		$('.timepicker').datetimepicker({
 				format: 'LT',
 				icons: {
@@ -158,4 +173,34 @@ block addjs
 					clear: 'fa fa-trash',
 					close: 'fa fa-remove'
 			}
+		})
+	script.
+		$(document).ready(function(){
+		$('.deleteButton').click(function(){
+			var idNow = $(this).val();
+			console.log(idNow)
+			$('#modal-warning1').modal('show');
+			$('#deleteSubmit1').css('display', 'block');
+			$('#cancelButton1').css('display', 'block');
+				$('#deleteSubmit1').click(function(){
+					$.post('/admin/maintenance-events/delete',{id1:idNow})
+						.done(data =>{
+						if(data){
+							swal({
+							title:'Success', 
+							text:'service deleted', 
+							icon:'success'
+							}).then(function(){
+								location.reload();
+							})
+							
+							
+							$('#modal-warning1').modal('hide');
+						}
+
+				});                        
+			});
 		});
+	});
+                
+           
