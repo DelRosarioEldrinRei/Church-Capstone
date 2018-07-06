@@ -1,0 +1,13 @@
+#raised-section {
+  margin: -170px 30px 0px !important;
+}
+
+#cardUnder {
+  width: 31.6rem;
+  height: 35rem;
+  background-image: url("/img/weddingborder.jpg");
+  box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+}
