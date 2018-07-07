@@ -61,42 +61,42 @@ block prepend main
 									.col-md-3.text-right
 										a(href="#" data-toggle="modal" data-target="#conditionModal") Add Facility
 	
-		//- .container
-		//- 	.row
-		//- 		.col-md-12
-		//- 			table#example.table.table-striped.table-bordered.nowrap(style='width:100%')
-		//- 				thead
-		//- 					tr
-		//- 						th First name
-		//- 						th Last name
-		//- 						th Position
-		//- 						th Office
-		//- 						th Age
-		//- 						th Start date
-		//- 						th Salary
-		//- 						th Extn.
-		//- 						th E-mail
-		//- 				tbody
-		//- 					tr
-		//- 						td Tiger
-		//- 						td Nixon
-		//- 						td System Architect
-		//- 						td Edinburgh
-		//- 						td 61
-		//- 						td 2011/04/25
-		//- 						td $320,800
-		//- 						td 5421
-		//- 						td t.nixon@datatables.net
-		//- 					tr
-		//- 						td Garrett
-		//- 						td Winters
-		//- 						td Accountant
-		//- 						td Tokyo
-		//- 						td 63
-		//- 						td 2011/07/25
-		//- 						td $170,750
-		//- 						td 8422
-		//- 						td g.winters@datatables.net
+		.container
+			.row
+				.col-md-12
+					table#example.table.table-striped.table-bordered.nowrap(style='width:100%')
+						thead
+							tr
+								th First name
+								th Last name
+								th Position
+								th Office
+								th Age
+								th Start date
+								th Salary
+								th Extn.
+								th E-mail
+						tbody
+							tr
+								td Tiger
+								td Nixon
+								td System Architect
+								td Edinburgh
+								td 61
+								td 2011/04/25
+								td $320,800
+								td 5421
+								td t.nixon@datatables.net
+							tr
+								td Garrett
+								td Winters
+								td Accountant
+								td Tokyo
+								td 63
+								td 2011/07/25
+								td $170,750
+								td 8422
+								td g.winters@datatables.net
 							
 
 
@@ -151,21 +151,21 @@ block prepend main
 block addjs
 	script(src='/js/forIndex.js')
 	//- script(src='js/loader.js')
-	//- script.
-	//- 	$(document).ready(function() {
-	//- 			$('#example').DataTable( {
-	//- 					responsive: {
-	//- 							details: {
-	//- 									display: $.fn.dataTable.Responsive.display.modal( {
-	//- 											header: function ( row ) {
-	//- 													var data = row.data();
-	//- 													return 'Details for '+data[0]+' '+data[1];
-	//- 											}
-	//- 									} ),
-	//- 									renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-	//- 											tableClass: 'table'
-	//- 									} )
-	//- 							}
-	//- 					}
-	//- 			} );
-	//- 	} );
+	script.
+		$(document).ready(function() {
+				$('#example').DataTable( {
+						responsive: {
+								details: {
+										display: $.fn.dataTable.Responsive.display.modal( {
+												header: function ( row ) {
+														var data = row.data();
+														return 'Details for '+data[0]+' '+data[1];
+												}
+										} ),
+										renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+												tableClass: 'table'
+										} )
+								}
+						}
+				} );
+		} );
