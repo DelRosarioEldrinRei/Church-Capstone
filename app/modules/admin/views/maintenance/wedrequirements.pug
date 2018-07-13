@@ -1,0 +1,261 @@
+extends ../../../../templates/masteradmin1
+block addcss
+	//- link(rel='stylesheet' href='css/fullcalendar.css')
+	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
+
+block prepend main
+	#wrap
+	//- #calendar
+	div(style='clear:both')
+	.content
+		.container-fluid
+			//- <div class="alert alert-warning" role="alert">
+			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
+			//- </div>
+			.row
+					.col-md-12.text-right.my-3
+						a.btn-design(href="#" data-toggle="modal" data-target="#requirementModal") New Requirement	
+			.row
+				.col-lg-12.col-md-12
+						.card
+								.card-header.card-header-primary
+										h4.card-title Church Requirements
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th Case
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each church in churches
+															tr
+																td=church.int_reqtypeID
+																td=church.var_reqname
+																td=church.var_reqdesc
+																td=church.var_case
+																<td class="td-actions text-right">
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${church.int_reqtypeID}`)
+																		i.material-icons close
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${church.int_reqtypeID}`)
+																		i.material-icons edit
+																</td>			
+						.card
+								.card-header.card-header-primary
+										h4.card-title Civil Requirements
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th Case
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each civil in civils
+															tr
+																td=civil.int_reqtypeID
+																td=civil.var_reqname
+																td=civil.var_reqdesc
+																td=civil.var_case
+																<td class="td-actions text-right">
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${civil.int_reqtypeID}`)
+																		i.material-icons close
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${civil.int_reqtypeID}`)
+																		i.material-icons edit
+																</td>			
+						.card
+								.card-header.card-header-primary
+										h4.card-title Chancery Requirements
+										//- p.card-category Date: June 24, 2018
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Requirement Name
+														th Description
+														th Case
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each chancery in chanceries
+															tr
+																td=chancery.int_reqtypeID
+																td=chancery.var_reqname
+																td=chancery.var_reqdesc
+																td=chancery.var_case
+																<td class="td-actions text-right">
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${chancery.int_reqtypeID}`)
+																		i.material-icons close
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${chancery.int_reqtypeID}`)
+																		i.material-icons edit
+																</td>			
+							
+	#requirementModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+		.modal-dialog.modal-notify.modal-success(role='document')
+			// Content
+			.modal-content
+				// Header
+				.modal-header
+					p.heading.lead Add requirement
+					button.close(type='button' data-dismiss='modal' aria-label='Close')
+						span.white-text(aria-hidden='true') &times;
+				// Body
+				.modal-body
+					form.form(action="/admin/maintenance-wedrequirements/add" method="post")
+						.form-group
+							label.label-control Requirement Name
+							input.form-control(type='text' name='reqname')
+						.form-group
+							label.label-control Requirement Description
+							textarea.form-control( rows="2" name='reqdesc')
+						//- .form-group
+						//- 		label.label-control Requirment for:
+						//- 			select.form-control(type="text" name='eventname' )
+						//- 				//- - for(var i=0; i<= services.length; i++){
+						//- 				//- 		option(value= `${services[i].var_eventname}`)
+						//- 				//- - }
+						//- 				//-ayusin to next time hahahaha
+						//- 				option Anointing of the sick
+						//- 				option Baptism
+						//- 				option Confirmation
+						//- 				option First Communion
+						//- 				option Funeral Blessing 
+						//- 				option Marriage
+						//- 				option Establishment Blessing
+						//- 				option Facility Reservation
+						//- 				option Document Request
+						.form-group
+								label.label-control Requirement Mode:
+									select.form-control(type="text" name='reqmode' )
+										option Copy
+										option Original
+										option Copy and Original
+						.form-group
+								label.label-control Requirement Case:
+									select.form-control(type="text" name='case' )
+										option Ordinary
+										option No Religion
+										option Divorced
+										option Minor
+										option Pregnant
+										option Military
+										option Widow/Widower
+						.form-group
+								label.label-control Requirement Type:
+									select.form-control(type="text" name='reqtype' )
+										option Church
+										option Civil
+										option Chancery
+						
+						.row
+							.col-md-12.text-center.my-3
+								button.btn.btn-primary(type='submit') Add	
+			
+block addjs
+	script(src='/js/forIndex.js')
+	script.
+		$(document).ready(function(){
+		$('.deleteButton').click(function(){
+			var idNow = $(this).val();
+			console.log(idNow)
+			$('#modal-warning1').modal('show');
+			$('#deleteSubmit1').css('display', 'block');
+			$('#cancelButton1').css('display', 'block');
+				$('#deleteSubmit1').click(function(){
+					$.post('/admin/maintenance-wedrequirements/delete',{id1:idNow})
+						.done(data =>{
+						if(data){
+							swal({
+							title:'Success', 
+							text:'Requirement deleted', 
+							icon:'success'
+							}).then(function(){
+								location.reload();
+							})     
+							$('#modal-warning1').modal('hide');
+						}
+
+				});
+				});
+				});                        
+			});
+		$('.updateButton').click(function(){
+			var idNow1 = $(this).val();
+			console.log(idNow1)
+				$.post('/admin/maintenance-wedrequirements/query',{id2:idNow1})
+			.done(data=>{
+				
+				$('#updateAppend').append(`
+				<div class="form-group">
+					<label class="label-control">Requirement Name</label>
+					<input type="text" id="reqname" value="${data.var_reqname}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label class="label-control">Requirement Description</label>
+					<input type="textarea" rows="2" id="reqdesc" value="${data.var_reqdesc}" class="form-control"></input>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="label-control">Start</label>
+							<input type="datetime" id="case" id="timepicker1" value="${data.var_case}" class="timepicker1
+							 form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group mt-1">
+						<label class="label-control">End</label>
+						<input type="datetime" id="reqtype" value="${data.char_reqtype}" class="timepicker1 form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="label-control">Event Type
+						<select type="text" id="reqmode" value="${data.char_reqmode}" class="form-control">
+						<option>Copy</option>
+						<option>Original</option>
+						<option>Copy or Original</option>
+						</select>
+					</label>
+				</div>`)
+				$('#updateModal').modal('show')
+				$('#cancelButton').click(function(){
+					$('#updateAppend').empty();
+				})
+				$(document).keyup(function(e) {
+				if (e.keyCode === 27) 
+					{
+					$('#updateModal').modal('hide');
+					$('#updateAppend').empty();
+					};
+				});
+				$('#updateSubmitButton').click(function(){
+					$.post('/admin/maintenance-wedrequirements/edit',{
+					reqname:$('#reqname').val(),
+					reqdesc:$('#reqdesc').val(),
+					case:$('#reqcase').val(),
+					reqmode:$('#reqmode').val(),
+				
+					reqtype:$('#reqtype').val(),
+					id1:idNow1
+					})
+					.done(data=>{
+						if(data){
+							swal({
+							title:'Success', 
+							text:'Requiment updated', 
+							icon:'success'
+							}).then(function(){
+								location.reload();
+							})
+							$('#updateModal').modal('hide');
+							$('#updateAppend').empty();
+						}
+					})
+				})
+			})
+
+		})

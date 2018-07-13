@@ -148,34 +148,6 @@ block prepend main
 																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${funeral.int_reqtypeID}`)
 																				<i class="material-icons">close</i>
 																</td>		
-												
-													
-						.card
-								.card-header.card-header-primary
-										h4.card-title Marriage
-										//- p.card-category Date: June 24, 2018
-								.card-body.table-responsive
-										table.table.table-hover
-												thead.text-primary
-														th ID
-														th Requirement Name
-														th Description
-														th.text-center(style=" width:120px") Actions
-												tbody
-														each marriage in marriages
-															tr
-																td=marriage.int_reqtypeID
-																td=marriage.var_reqname
-																td=marriage.var_reqdesc
-																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-requirements`)
-																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-requirements/edit/${marriage.int_reqtypeID}`)
-																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-requirements/delete/${marriage.int_reqtypeID}`)
-																				<i class="material-icons">close</i>
-																</td>			
-										
 						.card
 								.card-header.card-header-primary
 										h4.card-title Establishment Blessing
