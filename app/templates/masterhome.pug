@@ -77,10 +77,13 @@ block body
 										span.input-group-addon
 											i.material-icons lock_outline
 										input.form-control(type='password', name='user_password' placeholder='Password...' required)
-					.modal-footer.justify-content-center
-						.row
-							.col-md-12
-								a#anchorLoginSubmit.btn-design(href="#") Submit
+							.card-footer.justify-content-center
+								button.btn.btn-primary(type="submit") LOGIN
+
+					//- .modal-footer.justify-content-center
+					//- 	.row
+					//- 		.col-md-12
+					//- 			a#anchorLoginSubmit.btn-design(href="#") Submit
 
 	//- Signup Modal
 	#signupModal.modal.animated.fadeIn(tabindex='-1', role='dialog')
@@ -190,10 +193,10 @@ block body
 				| ,	Church Events & Facilities Management System
 	block addjs
 		script.
-			document.getElementById("anchorLoginSubmit").onclick = function() {
-			document.getElementById("formLoginSubmit").submit();
-			}
+			//- document.getElementById("anchorLoginSubmit").onclick = function() {
+			//- document.getElementById("formLoginSubmit").submit();
+			//- }
 
-			document.getElementById("anchorRegisterSubmit").onclick = function() {
-			document.getElementById("formRegisterSubmit").submit();
-			}
+			//- document.getElementById("anchorRegisterSubmit").onclick = function() {
+			//- document.getElementById("formRegisterSubmit").submit();
+			//- }

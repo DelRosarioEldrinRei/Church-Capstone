@@ -4,10 +4,44 @@
 
 #cardUnder {
   width: 31.6rem;
-  height: 35rem;
+  /* height: 35rem; */
+  min-height: 8rem;
   background-image: url("/img/weddingborder.jpg");
   box-shadow:  0 0 10px  rgba(0,0,0,0.6);
   -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
   -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
   -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+}
+
+/* select button */
+#additionalSponsor > div > div > div > div > button {
+  background-color: #fff;
+  color: #000;
+  margin-top: -7%;
+  min-width: 21.5rem;
+}
+
+#additionalSponsor > div > div > div > div > div.dropdown-menu.open.show {
+  min-width: 21.5rem;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.175rem;
+  text-transform: uppercase;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.275rem;
+  text-transform: uppercase;
+}
+
+.leftCol, .rightCol {
+  cursor: pointer;
 }

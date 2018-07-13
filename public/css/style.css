@@ -61,8 +61,8 @@
   color:black;
 }
 
-#raised-section img {
-  margin-top: -50px; }
+/* #raised-section img {
+  margin-top: -50px; } */
 
 #icon-boxes .fa {
   font-size: 55px; }
@@ -434,12 +434,12 @@ strong {
 
 .btnDelete {
   cursor: pointer;
-  color: red;
+  color: grey;
+  opacity: 0.8;
   transition: 0.2s linear;
 }
 
 .btnDelete:hover {
-  background-color: red;
-  color: white;
-  transition: 0.2s linear;
+  opacity: 1;
+  color: red;
 }
