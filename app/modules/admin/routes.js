@@ -50,6 +50,7 @@ adminRouter.use(authMiddleware.adminAuth)
         });
     });
 
+
     adminRouter.post('/maintenance-events/cancel/:int_specialeventID', (req, res) => {
         const queryString = `UPDATE tbl_specialevent SET var_approvalstatus = "Cancelled"
         WHERE int_specialeventID= ${req.params.int_specialeventID}`; 
@@ -60,34 +61,24 @@ adminRouter.use(authMiddleware.adminAuth)
             
         });
     });
-
-    adminRouter.get('/maintenance-events/edit/:int_specialeventID', (req, res) => {
-        
-        var queryString = `SELECT * FROM tbl_specialevent 
-        WHERE int_specialeventID = ${req.params.int_specialeventID}`;
-        db.query(queryString, (err, results, fields) => {        
-            var events = results[0];
-            var start= moment(events.time_eventstart, "YYYY-MM-DD HH:mm:ss").format('MM/DD/YYYY h:mm a');
-            var end = moment(events.time_eventend, 'YYYY-MM-DD HH:mm:ss').format('MM/DD/YYYY h:mm a');
-            events.time_eventstart = start;
-            events.time_eventend =end;
-            if (err) throw err;
-            console.log(results);
-            return res.render('admin/views/maintenance/eventsedit', {events:events});
+    adminRouter.post('/maintenance-events/query', (req, res) => {
+        const queryString = `select * from tbl_specialevent WHERE int_specialeventID = ?`;
+        db.query(queryString,[req.body.id2], (err, results, fields) => {        
+        if (err) throw err;
+        res.send(results[0])
+        console.log(results[0])
         });
     });
-
-    adminRouter.post('/maintenance-events/edit/:int_specialeventID', (req, res) => {
-        var start= moment(req.body.start, 'YYYY-MM-DD h:mm a').format('YYYY-MM-DD HH:mm:ss');
-        var end= moment(req.body.end, 'YYYY-MM-DD h:mm a').format('YYYY-MM-DD HH:mm:ss');
-        const queryString = `UPDATE tbl_specialevent SET  var_spceventname=?, text_eventdesc=?, time_eventstart=?, time_eventend=?, var_eventvenue=?, char_eventtype=?, var_approvalstatus =? WHERE int_specialeventID= ${req.params.int_specialeventID}`;
-        
-        db.query(queryString,[req.body.spceventname, req.body.eventdesc, start, end, req.body.venue, req.body.eventtype, "Approved"], (err, results, fields) => {        
+    adminRouter.post('/maintenance-events/edit', (req, res) => {
+        console.log(req.body)
+        var start= moment(req.body.starttime, 'YYYY-MM-DD h:mm a').format('YYYY-MM-DD HH:mm:ss');
+        var end= moment(req.body.endtime, 'YYYY-MM-DD h:mm a').format('YYYY-MM-DD HH:mm:ss');
+        const queryString = `UPDATE tbl_specialevent SET  var_spceventname=?, text_eventdesc=?, time_eventstart=?, time_eventend=?, var_eventvenue=?, char_eventtype=? WHERE int_specialeventID=?`;
+        db.query(queryString,[req.body.eventname,req.body.eventdesc,start,end,req.body.venue,req.body.eventtype,req.body.id1], (err, results, fields) => {        
             if (err) throw err;
-            return res.redirect('/admin/maintenance-events');
-            
-        });
-    });
+            return res.redirect('/admin/maintenance-events');   
+        })
+    })
 //=======================================================
 //SERVICES
 //=======================================================
@@ -96,8 +87,8 @@ adminRouter.use(authMiddleware.adminAuth)
         db.query(queryString1, (err, results, fields) => {
             if (err) console.log(err);
             var sacraments = results;  
-            var queryString1 =`SELECT * FROM tbl_event where var_type = "Special Service"`
-            db.query(queryString1, (err, results, fields) => {
+            var queryString2 =`SELECT * FROM tbl_event where var_type = "Special Service"`
+            db.query(queryString2, (err, results, fields) => {
                 if (err) console.log(err);
                 var services = results;        
             return res.render('admin/views/maintenance/services',{ sacraments : sacraments, services:services });    
@@ -108,61 +99,38 @@ adminRouter.use(authMiddleware.adminAuth)
         var queryString= `INSERT INTO tbl_event(
             var_eventname,
             var_eventdesc, 
-            var_eventtype
+            var_type
             ) VALUES(?,?,?);`  
-            db.query(queryString,  [req.body.eventname, req.body.eventdesc, "Special Service"], (err, results, fields) => {
+            db.query(queryString, [req.body.eventname,req.body.eventdesc,req.body.event_type], (err, results, fields) => {
                 if (err) throw err;
                     return res.redirect('/admin/maintenance-services');
             });            
         });
 
         
-    adminRouter.get('/maintenance-services/delete/:int_eventID', (req, res) => {
-        const queryString = `DELETE FROM tbl_event
-        WHERE int_eventID= ${req.params.int_eventID}`;
-        db.query(queryString, (err, results, fields) => {        
+    adminRouter.post('/maintenance-services/delete', (req, res) => {
+        const queryString = `DELETE FROM tbl_event WHERE int_eventID=?`;
+        db.query(queryString,[req.body.id1], (err, results, fields) => {        
             if (err) throw err;
             return res.redirect('/admin/maintenance-services');
         });
     });
 
 
-    adminRouter.get('/maintenance-services/edit/:int_eventID', (req, res) => {
+    adminRouter.post('/maintenance-services/edit', (req, res) => {
+        const queryString = `UPDATE tbl_event SET var_eventname = ?,var_eventdesc = ?, var_type = ? WHERE int_eventID= ?`; 
+        db.query(queryString,[req.body.eventname,req.body.eventdesc,req.body.eventtype,req.body.id1], (err, results, fields) => {        
+            if (err) throw err;
+            return res.redirect('/admin/maintenance-services');
+        });
+    });
+    adminRouter.post('/maintenance-services/query', (req, res) => {
         var queryString = `SELECT * FROM tbl_event 
-        WHERE int_eventID = ${req.params.int_eventID}`;
-        db.query(queryString, (err, results, fields) => {        
+        WHERE int_eventID = ?`;
+        db.query(queryString,[req.body.id1], (err, results, fields) => {        
             if (err) throw err;
-            var services = results[0];
-            return res.render('admin/views/maintenance/serviceedit', {services:services });
-        });
-    });
-
-    adminRouter.post('/maintenance-services/edit/:int_eventID', (req, res) => {
-        const queryString = `UPDATE tbl_event SET 
-        var_eventname = ?,
-        var_eventdesc=?
-        WHERE int_eventID= ${req.params.int_eventID}`;
-        
-        db.query(queryString,[req.body.eventname, req.body.eventdesc], (err, results, fields) => {        
-            if (err) throw err;
-            return res.redirect('/admin/maintenance-services');
-            
-        });
-    });
-
-
-    adminRouter.post('/maintenance-services/edit/int_eventID', (req, res) => {
-    
-        const queryString = `UPDATE tbl_event SET 
-            var_eventname=?,
-            var_eventdesc=?
-            
-        WHERE int_eventID= ${req.params.int_eventID}`;
-        
-        db.query(queryString,[req.body.eventname, req.body.eventdesc], (err, results, fields) => {        
-            if (err) throw err;
-            return res.redirect('/admin/maintenance-cervices');
-            
+            res.send(results[0])
+            console.log(results[0])   
         });
     });
 //=======================================================
@@ -185,35 +153,28 @@ adminRouter.use(authMiddleware.adminAuth)
                     return res.redirect('/admin/maintenance-facilities');
             });            
         });
-    adminRouter.get('/maintenance-facilities/delete/:int_facilityID', (req, res) => {
-        const queryString = `DELETE FROM tbl_facility
-        WHERE int_facilityID= ${req.params.int_facilityID}`;
-        
-        db.query(queryString, (err, results, fields) => {        
+    adminRouter.post('/maintenance-facilities/delete', (req, res) => {
+        const queryString = `DELETE FROM tbl_facility WHERE int_facilityID= ?`;
+        db.query(queryString,[req.body.id1], (err, results, fields) => {        
             if (err) throw err;
             return res.redirect('/admin/maintenance-facilities');
             
         });
     });
 
-    adminRouter.get('/maintenance-facilities/edit/:int_facilityID', (req, res) => {
-        
-        var queryString = `SELECT * FROM tbl_facility 
-        WHERE int_facilityID = ${req.params.int_facilityID}`;
-        db.query(queryString, (err, results, fields) => {        
-            
+    adminRouter.post('/maintenance-facilities/query', (req, res) => {
+        const queryString = `SELECT * FROM tbl_facility WHERE int_facilityID = ?`;
+        db.query(queryString,[req.body.id2], (err, results, fields) => {        
             if (err) throw err;
-            console.log(results);
-            var facilities = results[0];
-            return res.render('admin/views/maintenance/facilitiesedit', {facilities:facilities});
+            res.send(results[0])
+            console.log(results[0])
         });
     });
 
-    adminRouter.post('/maintenance-facilities/edit/:int_facilityID', (req, res) => {
+    adminRouter.post('/maintenance-facilities/edit', (req, res) => {
         const queryString = `UPDATE tbl_facility SET var_facilityname =?, flt_rentfee= ?
-        WHERE int_facilityID= ${req.params.int_facilityID}`;
-        
-        db.query(queryString,[req.body.facilityname, req.body.fee], (err, results, fields) => {        
+        WHERE int_facilityID= ?`;
+        db.query(queryString,[req.body.facilityname, req.body.flt_rentfee,req.body.id1], (err, results, fields) => {        
             if (err) throw err;
             return res.redirect('/admin/maintenance-facilities');
             
@@ -223,7 +184,7 @@ adminRouter.use(authMiddleware.adminAuth)
 //MINISTRIES/ORG
 //=======================================================
     adminRouter.get('/maintenance-ministries', (req, res)=>{
-        var queryString1 =`SELECT * FROM tbl_facility`
+        var queryString1 =`SELECT * FROM tbl_ministry`
         db.query(queryString1, (err, results, fields) => {
             if (err) console.log(err);       
             return res.render('admin/views/maintenance/ministries',{ ministries : results });
@@ -233,41 +194,39 @@ adminRouter.use(authMiddleware.adminAuth)
 
     adminRouter.post('/maintenance-ministries/addministry', (req, res) => {
     
-        var queryString= `INSERT INTO tbl_ministry(var_ministryname) VALUES(?);`  
-            db.query(queryString,  [req.body.ministryname], (err, results, fields) => {
+        var queryString= `INSERT INTO tbl_ministry(var_ministry_name,var_ministry_desc) VALUES(?,?);`  
+            db.query(queryString,  [req.body.ministryname,req.body.ministrydesc], (err, results, fields) => {
                 if (err) throw err;
                     return res.redirect('/admin/maintenance-ministries');
             });            
         });
-    adminRouter.get('/maintenance-ministries/delete/:int_ministryID', (req, res) => {
+    adminRouter.post('/maintenance-ministries/delete', (req, res) => {
         const queryString = `DELETE FROM tbl_ministry
-        WHERE int_ministryID= ${req.params.int_ministryID}`;
+        WHERE int_ministry_ID= ?`;
         
-        db.query(queryString, (err, results, fields) => {        
+        db.query(queryString,[req.body.id1], (err, results, fields) => {        
             if (err) throw err;
             return res.redirect('/admin/maintenance-ministries');
             
         });
     });
 
-    adminRouter.get('/maintenance-ministries/edit/:int_ministryID', (req, res) => {
+    adminRouter.post('/maintenance-ministries/query', (req, res) => {
         
         var queryString = `SELECT * FROM tbl_ministry 
-        WHERE int_ministryID = ${req.params.int_ministryID}`;
-        db.query(queryString, (err, results, fields) => {        
-            
+        WHERE int_ministry_ID = ?`;
+        db.query(queryString,[req.body.id2], (err, results, fields) => {        
             if (err) throw err;
-            console.log(results);
-            var ministries = results[0];
-            return res.render('admin/views/maintenance/ministriesedit', {ministries:ministries});
+            res.send(results[0])
+            console.log(results[0])
         });
     });
 
-    adminRouter.post('/maintenance-ministries/edit/:int_ministryID', (req, res) => {
-        const queryString = `UPDATE tbl_ministry SET var_ministryname =?
-        WHERE int_ministryID= ${req.params.int_ministryID}`;
+    adminRouter.post('/maintenance-ministries/edit', (req, res) => {
+        const queryString = `UPDATE tbl_ministry SET var_ministry_name =?,var_ministry_desc=?
+        WHERE int_ministry_ID= ?`;
         
-        db.query(queryString,[req.body.ministryname], (err, results, fields) => {        
+        db.query(queryString,[req.body.ministryname,req.body.ministrydesc,req.body.id1], (err, results, fields) => {        
             if (err) throw err;
             return res.redirect('/admin/maintenance-ministries');
             

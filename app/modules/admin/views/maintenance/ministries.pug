@@ -1,54 +1,37 @@
 extends ../../../../templates/masteradmin1
 block addcss
-	//- link(rel='stylesheet' href='css/fullcalendar.css')
-	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
-
 block prepend main
 	#wrap
-	//- #calendar
 	div(style='clear:both')
 	.content
 		.container-fluid
-			//- <div class="alert alert-warning" role="alert">
-			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
-			//- </div>
-			
+
 			.row
 				.col-lg-12.col-md-12
 						
 						.card
 								.card-header.card-header-primary
 										h4.card-title Special Events
-										//- p.card-category Date: June 24, 2018
 								.card-body.table-responsive
 										table.table.table-hover
 												thead.text-primary
 														th ID
-														th Event Name
-														//- th.text-left(style=" width:120px") Fee
-														th Start
-														th End
-														th Venue
+														th Ministry Name
+														th Ministry Description
 														th.text-center(style=" width:120px") Actions
 												tbody
-														each specialevent in specialevents
+														each ministry in ministries
 															tr
-																td=specialevent.int_specialeventID
-																td=specialevent.var_spceventname
-																td=specialevent.time_eventstart
-																td=specialevent.time_eventend
-																td=specialevent.var_eventvenue
-																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-events`)
-																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/maintenance-events/edit/${specialevent.int_specialeventID}`)
-																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/maintenance-events/delete/${specialevent.int_specialeventID}`)
-																				<i class="material-icons">close</i>
-																</td>								
+																td=ministry.int_ministry_ID
+																td=ministry.var_ministry_name
+																td=ministry.var_ministry_desc
+																td.td-actions.text-center
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${ministry.int_ministry_ID}`)
+																		i.material-icons close	
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${ministry.int_ministry_ID}`)
+																		i.material-icons edit
 								.card-footer.text-right
 									.col-md-3
-										//- <cite title="Source Title">Showing 6 of 25 entries</cite> 
 									.col-md-6.text-right
 										<nav aria-label="Page navigation example">
 											<ul class="pagination justify-content-center">
@@ -67,44 +50,119 @@ block prepend main
 	
 	#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
 		.modal-dialog.modal-notify.modal-success(role='document')
-			// Content
 			.modal-content
-				// Header
 				.modal-header
 					p.heading.lead Add Event
 					button.close(type='button' data-dismiss='modal' aria-label='Close')
 						span.white-text(aria-hidden='true') &times;
-				// Body
 				.modal-body
-					form.form(action="/admin/maintenance-events/add" method="post")
+					form.form(action="/admin/maintenance-ministries/addministry" method="post")
 						.form-group
-							label.label-control Event Name
-							input.form-control(type='text' name='spceventname')
+							label.label-control Ministry Name
+							input.form-control(type='text' name='ministryname')
 						.form-group
-							label.label-control Event Description
-							textarea.form-control( rows="2" name='eventdesc')
-						.row
-							.col-md-6
-								.form-group
-										label.label-control Start
-										input.form-control(type='text' name='start')
-							.col-md-6
-								.form-group.mt-1
-										label.label-control End
-										input.form-control(type='text' name='end')
-						.form-group
-							label.label-control Venue
-							input.form-control(type='text' name='venue')
-						.form-group
-								label.label-control Event Type
-									select.selectpicker.form-control(type="text" name='eventtype')
-										option Open for everyone
-										option Exclusive
-										
+							label.label-control Ministry Description
+							textarea.form-control( rows="2" name='ministrydesc')
 						.row
 							.col-md-12.text-center.my-3
-								button.btn.btn-primary(type='submit') Add	
-		
+								button.btn.btn-primary(type='submit') Add
+	#updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+		.modal-dialog.modal-notify.modal-success(role='document')
+			.modal-content
+				.modal-header
+					p.heading.lead Edit Facility
+					button.close#cancelButton(type='button' data-dismiss='modal' aria-label='Close')
+						span.white-text(aria-hidden='true') &times;
+				.modal-body#updateAppend                
+					.col-md-12.text-center.my-3
+				.modal-footer
+					button.btn.btn-primary#updateSubmitButton(type="button") Update
+	#modal-warning1.modal.modal-warning.fade
+			.modal-dialog
+			.modal-content
+				.modal-header
+				button.close(type='button', data-dismiss='modal', aria-label='Close')
+					span(aria-hidden='true') ×
+				h4.modal-title Warning
+				.modal-body
+				p Are you sure you?
+				.modal-footer
+					button.btn.btn-outline.pull-left#cancelButton1(type='button', data-dismiss='modal') No
+					button.btn.btn-outline.pull-right#deleteSubmit1 Yes
 block addjs
 	script(src='/js/forIndex.js')
+	script.
+		$(document).ready(function() {
+		$('.deleteButton').click(function(){
+			var idNow = $(this).val();
+			console.log(idNow)
+			$('#modal-warning1').modal('show');
+			$('#deleteSubmit1').css('display', 'block');
+			$('#cancelButton1').css('display', 'block');
+				$('#deleteSubmit1').click(function(){
+					$.post('/admin/maintenance-ministries/delete',{id1:idNow})
+						.done(data =>{
+						if(data){
+							swal({
+							title:'Success', 
+							text:'service deleted', 
+							icon:'success'
+							}).then(function(){
+								location.reload();
+							})     
+							$('#modal-warning1').modal('hide');
+						}
+
+					});                        
+				});
+		});
+		$('.updateButton').click(function(){
+			var idNow1 = $(this).val();
+			console.log(idNow1)
+				$.post('/admin/maintenance-ministries/query',{id2:idNow1})
+			.done(data=>{
+				$('#updateAppend').append(`
+				<div class="form-group">
+					<label class="label-control">Ministry Name</label>
+					<input type="text" id="ministryname" value="${data.var_ministry_name}" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<label class="label-control">Ministry Desctription</label>
+					<input type="text" id="ministrydesc" value="${data.var_ministry_desc}" class="form-control"/>
+				</div>
+				`)
+				$('#updateModal').modal('show')
+				$('#cancelButton').click(function(){
+					$('#updateAppend').empty();
+				})
+				$(document).keyup(function(e) {
+				if (e.keyCode === 27) 
+					{
+					$('#updateModal').modal('hide');
+					$('#updateAppend').empty();
+					};
+				});
+				$('#updateSubmitButton').click(function(){
+					$.post('/admin/maintenance-ministries/edit',{
+					ministryname:$('#ministryname').val(),
+					ministrydesc:$('#ministrydesc').val(),
+					id1:idNow1
+					})
+					.done(data=>{
+						if(data){
+							swal({
+							title:'Success', 
+							text:'service updated', 
+							icon:'success'
+							}).then(function(){
+								location.reload();
+							})
+							$('#updateModal').modal('hide');
+							$('#updateAppend').empty();
+						}
+					})
+				})
+			});
+		});
+		});
 	
