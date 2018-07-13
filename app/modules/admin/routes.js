@@ -394,6 +394,9 @@ adminRouter.use(authMiddleware.adminAuth)
     adminRouter.get('/transaction-walkin', (req, res)=>{
         res.render('admin/views/transactions/walkin')
     });
+    adminRouter.get('/transaction-requirements', (req, res)=>{
+       return res.render('admin/views/transactions/eventapp/requirements')
+    });
     adminRouter.get('/transaction-baptism', (req, res)=>{
         var queryString1 =`SELECT * FROM tbl_eventinfo 
         JOIN tbl_user on tbl_eventinfo.int_userID =tbl_user.int_userID
@@ -439,6 +442,22 @@ adminRouter.use(authMiddleware.adminAuth)
         }); 
         }); 
     }); 
+    adminRouter.post('/transaction-bapstism/query',(req,res)=>{
+        queryString = `SELECT * FROM tbl_eventinfo
+        JOIN tbl_user on tbl_eventinfo.int_userID =tbl_user.int_userID
+        JOIN tbl_eventapplication ON tbl_eventinfo.int_eventinfoID = tbl_eventapplication.int_eventinfoID 
+        JOIN tbl_relation on tbl_eventinfo.int_eventinfoID =tbl_relation.int_eventinfoID
+        JOIN tbl_baptism on tbl_eventinfo.int_eventinfoID = tbl_baptism.int_eventinfoID
+        JOIN tbl_requirements on tbl_eventinfo.int_eventinfoID = tbl_requirements.int_eventinfoID
+        JOIN tbl_event on tbl_event.int_eventID = tbl_eventinfo.int_eventID
+        WHERE tbl_eventinfo.int_eventInfoID =?
+        `
+        db.query(queryString,[req.body.id2], (err, results, fields) => {        
+            if (err) throw err;
+            res.send(results[0])
+            console.log(results[0])
+        });
+    })
     adminRouter.get('/transaction-blessings', (req, res)=>{
         var queryString1 =`SELECT * FROM tbl_eventinfo 
         JOIN tbl_user on tbl_eventinfo.int_userID =tbl_user.int_userID

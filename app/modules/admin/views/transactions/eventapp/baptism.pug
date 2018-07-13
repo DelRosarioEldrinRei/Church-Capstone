@@ -1,18 +1,10 @@
 extends ../../../../../templates/masteradmin1
 block addcss
-	//- link(rel='stylesheet' href='css/fullcalendar.css')
-	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
-
 block prepend main
 	#wrap
-	//- #calendar
 	div(style='clear:both')
 	.content
 		.container-fluid
-			//- <div class="alert alert-warning" role="alert">
-			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
-			//- </div>
-			
 			.row
 				.col-lg-12.col-md-12
 						.card
@@ -38,14 +30,11 @@ block prepend main
 																td=regular.char_reqstatus
 																td=regular.char_feestatus
 																td=regular.char_approvalstatus
-																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-baptism`)
-																				<i class="material-icons">open_in_new</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-baptism/edit/${regular.int_eventinfoID}`)
-																				<i class="material-icons">edit</i>
-																		//- a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-baptism/delete/${request.int_requestID}`)
-																		//- 		<i class="material-icons">close</i>
-																</td>	
+																td.td-actions.text-center
+																	button.btn.btn-info.viewButton(type='button',rel='tooltip',value=`${regular.int_eventinfoID}`)
+																		i.material-icons open_in_new
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${regular.int_eventinfoID}`)
+																		i.material-icons edit
 															
 								.card-footer.text-right
 									.col-md-7
@@ -87,14 +76,11 @@ block prepend main
 																td=special.char_reqstatus
 																td=special.char_feestatus
 																td=special.char_approvalstatus
-																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-baptism`)
-																				<i class="material-icons">open_in_new</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-baptism/edit/${special.int_eventinfoID}`)
-																				<i class="material-icons">edit</i>
-																		//- a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-baptism/delete/${request.int_requestID}`)
-																		//- 		<i class="material-icons">close</i>
-																</td>	
+																td.td-actions.text-center
+																	button.btn.btn-info.deleteButton(type='button',rel='tooltip',value=`${specialevent.int_specialeventID}`)
+																		i.material-icons open_in_new
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${specialevent.int_specialeventID}`)
+																		i.material-icons edit
 															
 								.card-footer.text-right
 									.col-md-7
@@ -132,7 +118,70 @@ block prepend main
 							.stats
 								i.material-icons access_time
 								|  As of today
+	#viewModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+		.modal-dialog.modal-notify.modal-success(role='document')
+			.modal-content
+				.modal-header
+					p.heading.lead Edit Event
+					button.close#cancelButton(type='button' data-dismiss='modal' aria-label='Close')
+						span.white-text(aria-hidden='true') &times;
+				.modal-body#viewAppend                
+					.col-md-12.text-center.my-3
+				.modal-footer
+					button.btn.btn-primary#updateSubmitButton(type="button") View More Details
 			
 block addjs
 	script(src='js/forIndex.js')
-	//- script(src='js/loader.js')
+	script.
+		$(document).ready(function(){
+		$('.viewButton').click(function(){
+			var idNow1 = $(this).val();
+			console.log(idNow1)
+				$.post('/admin/transaction-bapstism/query',{id2:idNow1})
+			.done(data=>{
+				var bday = moment(data.date_birthday, 'YYYY-MM-DD').format('YYYY-MM-DD');
+				var ddate = moment(data.date_desireddate, 'YYYY-MM-DD').format('YYYY-MM-DD');
+				var dtime = moment(data.time_desiredtime, 'h:mm a').format('HH:mm:ss');
+				$('#viewAppend').append(`
+				<div class="form-group">
+					<label class="label-control">Event Name: ${data.var_eventname}</label>
+				</div>
+				<div class="form-group">
+					<label class="label-control">Name of Child: ${data.var_fname + " " + data.var_lname}</label>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="label-control">Birth Date: ${bday}</label>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group mt-1">
+						<label class="label-control">Desired Date: ${ddate}</label>
+						<label class="label-control">Desired Time: ${dtime}</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="label-control">Requirement Status ${data.char_reqstatus}</label>
+				</div>
+				<div class="form-group">
+					<label class="label-control">Application Status: ${data.char_approvalstatus}</label>
+				</div>`)
+				$('#viewModal').modal('show')
+				$('#cancelButton').click(function(){
+					$('#viewAppend').empty();
+				})
+				$('#cancelButton1').click(function(){
+					$('#viewAppend').empty();
+				})
+				$(document).keyup(function(e) {
+				if (e.keyCode === 27) 
+					{
+					$('#viewModal').modal('hide');
+					$('#viewAppend').empty();
+					};
+				});
+				})
+			})
+		})

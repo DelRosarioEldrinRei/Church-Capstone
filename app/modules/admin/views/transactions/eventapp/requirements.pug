@@ -1,0 +1,60 @@
+extends ../../../../../templates/masteradmin1
+block addcss
+block prepend main
+    #wrap
+    div(style='clear:both')
+    .content
+        .container-fluid
+            .row
+                .col-md-3
+                        .card
+                                .card-header.card-header-primary
+                                        h4.card-title Requirements
+                                .card-body
+                                    #carousel-example-1z.carousel.slide.carousel-fade(data-ride="carousel")
+                                        ol.carousel-indicators
+                                            li.active(data-target="#carousel-example-1z" data-slide-to="0")
+                                            li(data-target="#carousel-example-1z" data-slide-to="1")
+                                            li(data-target="#carousel-example-1z" data-slide-to="2")
+                                        .carousel-inner(role="listbox")
+                                            .carousel-item.active
+                                                a#pop(href="#")
+                                                    img.d-block.w-100#img1(src="/img/bg1.png" alt="First slide")
+                                            .carousel-item
+                                                a#pop(href="#")
+                                                    img.d-block.w-100#img2(src="/img/bg2.png" alt="Second slide")
+                                            .carousel-item
+                                                a#pop(href="#")
+                                                    img.d-block.w-100#img3(src="/img/bg11.png" alt="Third slide")
+                                        a.carousel-control-prev(href="#carousel-example-1z" role="button" data-slide="prev")
+                                            span.carousel-control-prev-icon(aria-hidden="true")
+                                            span.sr-only Previous
+                                        a.carousel-control-next(href="#carousel-example-1z" role="button" data-slide="next")
+                                            span.carousel-control-next-icon(aria-hidden="true")
+                                            span.sr-only Next
+                .col-md-9
+                    .card
+                            .card-header.card-header-primary
+                                    h4.card-title Baptism Form
+                            .card-body
+    #imagemodal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+      .modal-dialog
+        .modal-content
+          .modal-header
+          h4#myModalLabel.modal-title.text-center Image preview
+            button.close(type="button" data-dismiss="modal")
+              span(aria-hidden="true") ×
+              span.sr-only Close
+          .modal-body
+            img#imagepreview(src="" style="width: 400px; height: 264px;")
+          .modal-footer
+            button.btn.btn-default(type="button" data-dismiss="modal") Close
+
+                                    
+block addjs
+    script(src='js/forIndex.js')
+    script.
+        $("#pop").on("click", function() {
+            $('#imagepreview').attr('src', $('#img1').attr('src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
