@@ -1,31 +1,21 @@
 extends ../../../../templates/masteradmin1
 block addcss
-	//- link(rel='stylesheet' href='css/fullcalendar.css')
-	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
-
 block prepend main
 	#wrap
-	//- #calendar
 	div(style='clear:both')
 	.content
 		.container-fluid
-			//- <div class="alert alert-warning" role="alert">
-			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
-			//- </div>
-			
 			.row
 				.col-lg-12.col-md-12
 						
 						.card
 								.card-header.card-header-primary
 										h4.card-title Special Events
-										//- p.card-category Date: June 24, 2018
 								.card-body.table-responsive
 										table.table.table-hover
 												thead.text-primary
 														th ID
 														th Event Name
-														//- th.text-left(style=" width:120px") Fee
 														th Start
 														th End
 														th Venue
@@ -38,8 +28,11 @@ block prepend main
 																td=specialevent.time_eventstart
 																td=specialevent.time_eventend
 																td=specialevent.var_eventvenue
-																td
-																	button.btn.fa.fa-trash.deleteButton(type="button", value=`${specialevent.int_specialeventID}`)
+																td.td-actions.text-center
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${specialevent.int_specialeventID}`)
+																		i.material-icons close
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${specialevent.int_specialeventID}`)
+																		i.material-icons edit
 																//- <td class="td-actions text-right">
 																//- 		a.button(rel="tooltip" class="btn btn-info" href=`/admin/maintenance-events`)
 																//- 				<i class="material-icons">person</i>
@@ -89,11 +82,19 @@ block prepend main
 							.col-md-6
 								.form-group
 										label.label-control Start
+<<<<<<< HEAD
+										input.timepicker1.form-control(type='datetime' name='start')
+							.col-md-6
+								.form-group.mt-1
+										label.label-control End
+										input.timepicker.form-control(type='datetime' name='end')
+=======
 										
 							.col-md-6
 								.form-group.mt-1
 										label.label-control End
 										
+>>>>>>> 71b9b71fd8c8088d2824ea4e1dbbf3f0ebe89034
 
 						.form-group
 							label.label-control Venue
@@ -106,30 +107,18 @@ block prepend main
 										
 						.row
 							.col-md-12.text-center.my-3
-								button.btn.btn-primary(type='submit') Add	
-		
-	//-  #editFacility.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
-	//-  	.modal-dialog.modal-notify.modal-success(role='document')
-	//-  		// Content
-	//-  		.modal-content
-	//-  			// Header
-	//-  			.modal-header
-	//-  				p.heading.lead Add Facility
-	//-  				button.close(type='button' data-dismiss='modal' aria-label='Close')
-	//-  					span.white-text(aria-hidden='true') &times;
-	//-  			// Body
-	//-  			.modal-body
-	//-  				each detail in details
-	//-  					form.form(action=`/editfacility/${detail.int_facilityID}` method="post")
-	//-  						.form-group
-	//-  							label.label-control Facility Name
-	//-  							input.form-control(type='text' name='facilityname' value=`${detail.var_facilityname}`)
-	//-  						.form-group
-	//-  							label.label-control Fee
-	//-  							input.form-control(type='number' name='fee' value=`${detail.flt_rentfee}`)
-	//-  						.row
-	//-  							.col-md-12.text-center.my-3
-	//-  								button.btn.btn-primary(type='submit') Add
+								button.btn.btn-primary(type='submit') Add
+	#updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+		.modal-dialog.modal-notify.modal-success(role='document')
+			.modal-content
+				.modal-header
+					p.heading.lead Edit Event
+					button.close#cancelButton(type='button' data-dismiss='modal' aria-label='Close')
+						span.white-text(aria-hidden='true') &times;
+				.modal-body#updateAppend                
+					.col-md-12.text-center.my-3
+				.modal-footer
+					button.btn.btn-primary#updateSubmitButton(type="button") Update
 	#modal-warning1.modal.modal-warning.fade
 		.modal-dialog
 		.modal-content
@@ -145,6 +134,8 @@ block prepend main
 block addjs
 	script(src='/js/forIndex.js')
 	script.
+<<<<<<< HEAD
+=======
 		
 		$('.datetimepicker').datetimepicker({
 				icons: {
@@ -174,32 +165,31 @@ block addjs
 			}
 		});
 		
+>>>>>>> 71b9b71fd8c8088d2824ea4e1dbbf3f0ebe89034
 		$('.timepicker').datetimepicker({
-				format: 'LT',
-				icons: {
-					time: "fa fa-clock-o",
-					date: "fa fa-calendar",
-					up: "fa fa-chevron-up",
-					down: "fa fa-chevron-down",
-					previous: 'fa fa-chevron-left',
-					next: 'fa fa-chevron-right',
-					today: 'fa fa-screenshot',
-					clear: 'fa fa-trash',
-					close: 'fa fa-remove'
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-chevron-up",
+				down: "fa fa-chevron-down",
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-screenshot',
+				clear: 'fa fa-trash',
+				close: 'fa fa-remove'
 			}
 		});
 		$('.timepicker1').datetimepicker({
-				format: 'LT',
-				icons: {
-					time: "fa fa-clock-o",
-					date: "fa fa-calendar",
-					up: "fa fa-chevron-up",
-					down: "fa fa-chevron-down",
-					previous: 'fa fa-chevron-left',
-					next: 'fa fa-chevron-right',
-					today: 'fa fa-screenshot',
-					clear: 'fa fa-trash',
-					close: 'fa fa-remove'
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-chevron-up",
+				down: "fa fa-chevron-down",
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-screenshot',
+				clear: 'fa fa-trash',
+				close: 'fa fa-remove'
 			}
 		})
 	script.
@@ -220,9 +210,7 @@ block addjs
 							icon:'success'
 							}).then(function(){
 								location.reload();
-							})
-							
-							
+							})     
 							$('#modal-warning1').modal('hide');
 						}
 
@@ -232,6 +220,95 @@ block addjs
 		});
 =======
 		});
+<<<<<<< HEAD
+		$('.updateButton').click(function(){
+			var idNow1 = $(this).val();
+			console.log(idNow1)
+				$.post('/admin/maintenance-events/query',{id2:idNow1})
+			.done(data=>{
+				var start = moment(data.time_eventstart, 'YYYY-MM-DD h:mm a').format('YYYY-MM-DD HH:mm:ss');
+				var end = moment(data.time_eventend, 'YYYY-MM-DD h:mm a').format('YYYY-MM-DD HH:mm:ss');
+				$('#updateAppend').append(`
+				<div class="form-group">
+					<label class="label-control">Event Name</label>
+					<input type="text" id="eventname" value="${data.var_spceventname}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label class="label-control">Event Description</label>
+					<input type="textarea" rows="2" id="eventdesc" value="${data.text_eventdesc}" class="form-control"></input>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="label-control">Start</label>
+							<input type="datetime" id="starttime" id="timepicker1" value="${start}" class="timepicker1
+							 form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group mt-1">
+						<label class="label-control">End</label>
+						<input type="datetime" id="endtime" value="${end}" class="timepicker1 form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="label-control">Venue</label>
+					<input type="text" id="venue" value="${data.var_eventvenue}"class="form-control">
+				</div>
+				<div class="form-group">
+					<label class="label-control">Event Type
+						<select type="text" id="eventtype" value="${data.char_eventtype}" class="form-control">
+						<option>Open for everyone</option>
+						<option>Exclusive</option>
+						</select>
+					</label>
+				</div>`)
+				$('#updateModal').modal('show')
+				$('#cancelButton').click(function(){
+					$('#updateAppend').empty();
+				})
+				$(document).keyup(function(e) {
+				if (e.keyCode === 27) 
+					{
+					$('#updateModal').modal('hide');
+					$('#updateAppend').empty();
+					};
+				});
+				$('#updateSubmitButton').click(function(){
+					$.post('/admin/maintenance-events/edit',{
+					eventname:$('#eventname').val(),
+					eventdesc:$('#eventdesc').val(),
+					starttime:$('#starttime').val(),
+					endtime:$('#endtime').val(),
+					venue:$('#venue').val(),
+					eventtype:$('#eventtype').val(),
+					id1:idNow1
+					})
+					.done(data=>{
+						if(data){
+							swal({
+							title:'Success', 
+							text:'service updated', 
+							icon:'success'
+							}).then(function(){
+								location.reload();
+							})
+							$('#updateModal').modal('hide');
+							$('#updateAppend').empty();
+						}
+					})
+				})
+			})
+
+		})
+		});
+	
+	
+				
+		   
+=======
                 
            
 >>>>>>> 917915c7f5335df915ddf8137360d1a4c114f560
+>>>>>>> 71b9b71fd8c8088d2824ea4e1dbbf3f0ebe89034
