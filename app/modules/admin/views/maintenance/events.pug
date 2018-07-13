@@ -82,11 +82,19 @@ block prepend main
 							.col-md-6
 								.form-group
 										label.label-control Start
+<<<<<<< HEAD
 										input.timepicker1.form-control(type='datetime' name='start')
 							.col-md-6
 								.form-group.mt-1
 										label.label-control End
 										input.timepicker.form-control(type='datetime' name='end')
+=======
+										
+							.col-md-6
+								.form-group.mt-1
+										label.label-control End
+										
+>>>>>>> 71b9b71fd8c8088d2824ea4e1dbbf3f0ebe89034
 
 						.form-group
 							label.label-control Venue
@@ -126,6 +134,38 @@ block prepend main
 block addjs
 	script(src='/js/forIndex.js')
 	script.
+<<<<<<< HEAD
+=======
+		
+		$('.datetimepicker').datetimepicker({
+				icons: {
+					time: "fa fa-clock-o",
+					date: "fa fa-calendar",
+					up: "fa fa-chevron-up",
+					down: "fa fa-chevron-down",
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-screenshot',
+					clear: 'fa fa-trash',
+					close: 'fa fa-remove'
+			}
+		});
+
+		$('.datetimepicker1').datetimepicker({
+				icons: {
+					time: "fa fa-clock-o",
+					date: "fa fa-calendar",
+					up: "fa fa-chevron-up",
+					down: "fa fa-chevron-down",
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-screenshot',
+					clear: 'fa fa-trash',
+					close: 'fa fa-remove'
+			}
+		});
+		
+>>>>>>> 71b9b71fd8c8088d2824ea4e1dbbf3f0ebe89034
 		$('.timepicker').datetimepicker({
 			icons: {
 				time: "fa fa-clock-o",
@@ -176,7 +216,11 @@ block addjs
 
 				});                        
 			});
+<<<<<<< HEAD
 		});
+=======
+		});
+<<<<<<< HEAD
 		$('.updateButton').click(function(){
 			var idNow1 = $(this).val();
 			console.log(idNow1)
@@ -263,3 +307,8 @@ block addjs
 	
 				
 		   
+=======
+                
+           
+>>>>>>> 917915c7f5335df915ddf8137360d1a4c114f560
+>>>>>>> 71b9b71fd8c8088d2824ea4e1dbbf3f0ebe89034

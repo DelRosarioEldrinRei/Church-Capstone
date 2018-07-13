@@ -11,6 +11,9 @@ adminRouter.use(authMiddleware.adminAuth)
     adminRouter.get('/', (req, res)=>{
         res.render('admin/views/index')
     });
+    adminRouter.get('/details', (req, res)=>{
+        res.render('admin/views/ref/details')
+    });
 //===============================================================================================//
 // M A I N T E N A N C E //
 //===============================================================================================//
