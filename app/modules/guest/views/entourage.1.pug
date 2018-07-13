@@ -1,0 +1,70 @@
+extends ../../../templates/masterguests
+block addcss
+	link(rel="stylesheet" href="/css/entourage.css")
+block main
+	.profile-page
+		//- Heading Page
+		#heading-page.page-header.header-filter(data-parallax="true" style="background-image: url('/img/entourage.jpg');")
+			.container
+				.row
+					.col-md-9.main-header__textbox
+						h1.font-italic Marriage Seminar
+						p.text-uppercase.card-desc
+							| Event Details
+		#raised-section.main.main-raised
+			#details
+				.row
+					.col-md-12
+						.container
+							hr.mt-5.mx-5
+						//- h1.main--header.font-italic.text-center Mass Schedule
+				.row
+					.col-md-7.pr-0
+						.container
+							button#addAdditionalSponsor.btn.btn-success.btn-fab.btn-fab-mini.btn-round.ml-5(type="button")
+								i.material-icons add
+							.row
+								.col-md-6
+									h2.main--header.font-italic.text-center.m-0 Role
+								.col-md-6
+									h2.main--header.font-italic.text-center.m-0 Name
+							.row#additionalSponsor
+								.col-md-12.p-0
+					.col-md-5.pl-0
+						.container
+							.card#cardUnder
+								.card-body
+									.row.text-center
+										.col-md-6
+											.row
+												.col-md-10.p-0.my-auto
+													span.heading-primary-main Eldrin Rei Del Rosario
+													hr.m-1
+													span.heading-primary-sub Groom
+												.col-md-2.p-0
+													img#person.img.img-fluid(src="/img/man.png", alt="")
+										.col-md-6
+											.row
+												.col-md-2.p-0
+													img#person.img.img-fluid(src="/img/man.png", alt="")
+												.col-md-10.p-0.my-auto	
+													span.heading-primary-main Eldrin Rei Del Rosario
+													hr.m-1
+													span.heading-primary-sub Groom
+
+										
+
+block addjs
+	script(src="/js/parishdetails.js")
+	script.
+		$("#addAdditionalSponsor").click(function(event){
+			var item2 = "<div class='row m-0'><div class='col-md-6'><div class='form-group p-0'><input class='form-control' type='text' name='sponsorname'/></div></div><div class='col-md-6 p-0'><div class='input-group'><input class='form-control' type='text' name='sponsorname'/><div class='input-group-prepend'><span class='btnDelete p-1 input-group-text rounded'><i class='material-icons'>delete</i></span></div></div></div></div>"
+			$(item2).hide().appendTo("#additionalSponsor .col-md-12.p-0").fadeIn(300);
+		});
+
+		$("#additionalSponsor").on("click", ".btnDelete", function(event){
+			$(this).parent().parent().parent().parent().fadeOut(300, function(){
+				$(this).remove();
+			});
+			event.stopPropagation();
+		});

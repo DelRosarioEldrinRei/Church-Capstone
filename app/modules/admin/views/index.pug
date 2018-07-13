@@ -15,7 +15,8 @@ block prepend main
 							.card-icon
 								i.material-icons event
 							p.card-category Event Applications
-							h3.card-title +120
+							h3.card-title
+								value=application.applicationcount
 						.card-footer
 							.stats
 								i.material-icons update
@@ -26,7 +27,8 @@ block prepend main
 							.card-icon
 								i.material-icons store_mall_directory
 							p.card-category Facility Reservations
-							h3.card-title +10
+							h3.card-title
+								value=reservation.reservationcount
 						.card-footer
 							.stats
 								i.material-icons update
@@ -38,7 +40,7 @@ block prepend main
 								i.material-icons content_copy
 							p.card-category Document Requests
 							h3.card-title
-								| 20
+								value=request.requestcount
 						.card-footer
 							.stats
 								i.material-icons update

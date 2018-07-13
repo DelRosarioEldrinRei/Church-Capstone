@@ -9,7 +9,22 @@ adminRouter.use(authMiddleware.adminAuth)
 // I N D E X //
 //===============================================================================================//
     adminRouter.get('/', (req, res)=>{
-        res.render('admin/views/index')
+        var queryString1 =`SELECT count(int_eventinfoID) as applicationcount from tbl_eventinfo`
+        var queryString2 =`SELECT count(int_reservationID) as reservationcount from tbl_facilityreservation`
+        var queryString3 =`SELECT count(int_requestID) as requestcount from tbl_documentrequest`
+        db.query(queryString1, (err, results, fields) => {
+            if (err) console.log(err);
+            var application = results[0];
+            db.query(queryString2, (err, results, fields) => {
+                if (err) console.log(err);
+                var reservation = results[0];
+                db.query(queryString3, (err, results, fields) => {
+                    if (err) console.log(err);
+                    var request = results[0];
+                
+            return res.render('admin/views/index',{ application : application, reservation : reservation, request : request});
+        }); }); });
+
     });
     adminRouter.get('/details', (req, res)=>{
         res.render('admin/views/ref/details')

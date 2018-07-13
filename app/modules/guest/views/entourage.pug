@@ -34,20 +34,11 @@ block main
 						.container
 							.card#cardUnder
 								.card-body
+									#entouragePic.row.text-center
+										.leftCol.col-md-6
+										.rightCol.col-md-6
+	id(src='/img/man.png', alt='')
 
-										
 
 block addjs
-	script(src="/js/parishdetails.js")
-	script.
-		$("#addAdditionalSponsor").click(function(event){
-			var item2 = "<div class='row m-0'><div class='col-md-6'><div class='form-group p-0'><input class='form-control' type='text' name='sponsorname'/></div></div><div class='col-md-6'><div class='input-group'><input class='form-control' type='text' name='sponsorname'/><div class='input-group-prepend'><span class='btnDelete p-1 input-group-text rounded'><i class='material-icons'>delete</i></span></div></div></div></div>"
-			$(item2).hide().appendTo("#additionalSponsor .col-md-12.p-0").fadeIn(300);
-		});
-
-		$("#additionalSponsor").on("click", ".btnDelete", function(event){
-			$(this).parent().parent().parent().parent().fadeOut(300, function(){
-				$(this).remove();
-			});
-			event.stopPropagation();
-		});
+	script(src="/js/entourage.js")

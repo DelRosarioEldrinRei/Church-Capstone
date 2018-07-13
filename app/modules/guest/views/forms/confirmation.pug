@@ -6,9 +6,10 @@ block main
 			.container
 				.row
 					.col-md-9.main-header__textbox
-						h1.font-italic Baptism
-						p.text-uppercase.card-desc
-							| Guidelines | Requirements
+						h1.font-italic Confirmation
+						a(href="/guest/confirmation")
+							p.text-uppercase.card-desc
+								| Guidelines | Requirements
 		#raised-section.main.main-raised
 			.container
 				.row
@@ -16,9 +17,7 @@ block main
 						hr.mt-5.mx-5
 				.row
 					.col-md-12.my-3
-						h3.text-center.text-uppercase.guidelines--text Event Application Form
-				.row
-					.col-md-12.my-3
+						h3.text-center.text-uppercase.guidelines--text Application Form
 				form(action="/guest/confirmation/form" enctype="multipart/form-data" method="post")
 					input.form-control(type='hidden' name='userID' value=`${user.int_userID}`)
 					.row
@@ -29,7 +28,7 @@ block main
 									.col-md-4
 										.form-group.pt-0
 											input.form-control(type='text' placeholder="Last Name" name='lastname')
-									.col-md-4
+									.col-md-4.p-0
 										.form-group.pt-0
 											input.form-control(type='text' placeholder="First Name" name='firstname')
 									.col-md-4
@@ -50,7 +49,7 @@ block main
 												span.check
 							.form-group
 								label.label-control Birthday
-								input#datepicker.form-control(type='date' name='birthday')
+								input.datepickerBirthday.form-control(type='date' name='birthday')
 							.form-group
 								label.label-control Birthplace:
 								input.form-control(type='text' name='birthplace')
@@ -59,8 +58,7 @@ block main
 								textarea#exampleFormControlTextarea1.form-control(rows='2' name='address')
 							.form-group
 								label.label-control Relationship with the child
-								.dropdown
-									select(aria-labelledby='dropdownMenuLink' name='relation')
+									select.selectpicker.form-control(type="text" name='relation')
 										option Parent
 										option Grandparent
 										option Aunt/Uncle
@@ -97,7 +95,6 @@ block main
 														option 11:00AM
 														option 1:00PM
 														option 2:00PM
-							
 						.col-md-6.my-3
 							.form-group
 								label.label-control Mother's full name:
@@ -145,40 +142,55 @@ block main
 										a.btn.btn-link.btn-danger.fileinput-exists.btn-round(href='javascript:void(0)', data-dismiss='fileinput')
 											i.fa.fa-times
 											|  Remove
-							
-					.row
+								
+
+					.row#principalSponsor
+						.col-md-6.mt-3
+							//- button#addPrincipalSponsor.btn.btn-success.btn-fab.btn-fab-mini.btn-round.ml-2(type="button")
+							//- 	i.material-icons add
+							.form-group.m-0
+								label.label-control Principal Sponsors
+								input.form-control(type='text' name='sponsorname')
 						.col-md-6.my-3
 							.form-group
-								label.label-control Principal Sponsor
-								input.form-control(type='text')
+								input.form-control.balance(type='text' name='sponsorname')
+						//- .col-md-6.mb-4.pb-3
+						//- 	.input-group
+						//- 		input.form-control(type='text', name='sponsorname')
+						//- 		.input-group-prepend
+						//- 			span.btnDelete.input-group-text.rounded
+						//- 				i.material-icons.text-danger delete
+
+					.row#additionalSponsor
+						.col-md-6.mt-3
+							button#addAdditionalSponsor.btn.btn-success.btn-fab.btn-fab-mini.btn-round.ml-2(type="button")
+								i.material-icons add
+							.form-group.m-0
+								label.label-control Additional Sponsors
+								input.form-control(type='text' name='sponsorname')
 						.col-md-6.my-3
 							.form-group
-								input.form-control(type='text')
-					.row
-						.col-md-6.my-3
-							.form-group
-								label.label-control Additional
-								input.form-control(type='text')
-							.form-group
-								input.form-control(type='text')
-							.form-group
-								input.form-control(type='text')
-						.col-md-6.my-3
-							.form-group
-								input.form-control(type='text')
-							.form-group
-								input.form-control(type='text')
-							.form-group
-								input.form-control(type='text')
+								input.form-control.balance(type='text' name='sponsorname')
+						//- .col-md-6.mb-4.pb-3
+						//- 	.input-group
+						//- 		input.form-control(type='text', name='sponsorname')
+						//- 		.input-group-prepend
+						//- 			span.btnDelete.input-group-text.rounded
+						//- 				i.material-icons delete
 
 					.row
 						.col-md-12.my-5.text-center
 							//- a.btn-design.mx-2(href="#") Submit
 							button.btn.btn-primary(type='submit') Submit
-							a.btn-design.btn-valid(href="/guest/events") Cancel
+
 
 block addjs
 	script.
+		$('.selectpicker').selectpicker({
+			style: 'btn-primary',
+			size: 4
+		});
+	
 		$('#textarea1').hide();
 		$('#textarea2').hide();
 		$('#radioup').click(function() {
@@ -193,4 +205,41 @@ block addjs
 			$('#textarea1').slideUp();
 			$('#textarea2').slideDown();
 		});
-							
+		
+		$('#regular').hide();
+		$('#special').hide();
+
+		$('#radio1').click(function() {
+			$('#regular').slideDown();
+			$('#special').slideUp();
+		});
+		$('#radio2').click(function() {
+			$('#special').slideDown();
+			$('#regular').slideUp();
+		});
+
+		//add and delete side
+
+		$("#addPrincipalSponsor").click(function(event){
+				var principal = "<div class='col-md-6 mb-4 pb-3'><div class='input-group'><input type='text' name='sponsorname' class='form-control'/><div class='input-group-prepend'><span class='btnDelete p-1 input-group-text rounded'><i class='material-icons'>delete</i></span></div></div></div>"
+				$(principal).hide().appendTo("#principalSponsor").fadeIn(500);
+		});
+
+		$("#principalSponsor").on("click", ".btnDelete", function(event){
+			$(this).parent().parent().parent().fadeOut(500, function(){
+				$(this).remove();
+			});
+			event.stopPropagation();
+		});
+
+		$("#addAdditionalSponsor").click(function(event){
+				var item2 = "<div class='col-md-6 mb-4 pb-3'><div class='input-group'><input type='text' name='sponsorname' class='form-control'/><div class='input-group-prepend'><span class='btnDelete p-1 input-group-text rounded'><i class='material-icons'>delete</i></span></div></div></div>"
+				$(item2).hide().appendTo("#additionalSponsor").fadeIn(500);
+		});
+
+		$("#additionalSponsor").on("click", ".btnDelete", function(event){
+			$(this).parent().parent().parent().fadeOut(500, function(){
+				$(this).remove();
+			});
+			event.stopPropagation();
+		});

@@ -91,9 +91,9 @@ var upload = multer({ storage: storage})
                     if (err) console.log(err);
                     var moredetails = results[0];
                     console.log(details, moredetails)
-                    var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
-                    var desireddate1= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
-                    var desireddate2= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                    var bday = moment(moredetails.date_birthday).format('MM-DD-YYYY');
+                    var desireddate1= moment(moredetails.date_desireddate1).format('MM-DD-YYYY');
+                    var desireddate2= moment(moredetails.date_desireddate2).format('MM-DD-YYYY');
                     var desiredtime1= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
                     var desiredtime2= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
                     moredetails.date_birthday=bday;
@@ -111,8 +111,8 @@ var upload = multer({ storage: storage})
                     if (err) console.log(err);
                     var moredetails = results[0];
                     console.log(details, moredetails)
-                    var desireddate3= moment(moredetails.date_desireddate1).format('YYYY-MM-DD');
-                    var desireddate4= moment(moredetails.date_desireddate2).format('YYYY-MM-DD');
+                    var desireddate3= moment(moredetails.date_desireddate1).format('MM-DD-YYYY');
+                    var desireddate4= moment(moredetails.date_desireddate2).format('MM-DD-YYYY');
                     var desiredtime3= moment(moredetails.time_desiredtime1, 'HH:mm:ss').format('hh:mm A');
                     var desiredtime4= moment.utc(moredetails.time_desiredtime2, 'HH:mm:ss').format('hh:mm A');
                     moredetails.date_desireddate1=desireddate3;
@@ -132,8 +132,8 @@ var upload = multer({ storage: storage})
                 db.query(queryString3, (err, results, fields) => {
                     if (err) console.log(err);
                     var moredetails = results[0];                
-                    var bday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
-                    var desireddate= moment(moredetails.date_desireddate).format('YYYY-MM-DD');   
+                    var bday = moment(moredetails.date_birthday).format('MM-DD-YYYY');
+                    var desireddate= moment(moredetails.date_desireddate).format('MM-DD-YYYY');   
                     var desiredtime= moment(moredetails.time_desiredtime, 'HH:mm:ss').format('hh:mm A');
                     moredetails.date_birthday=bday;
                     moredetails.date_desireddate=desireddate;
@@ -154,13 +154,13 @@ var upload = multer({ storage: storage})
                 db.query(queryString3, (err, results, fields) => {
                     if (err) console.log(err);
                     var moredetails = results[0];                
-                    var groombday = moment(moredetails.date_birthday).format('YYYY-MM-DD');
-                    var bridebday = moment(moredetails.date_bbirthday).format('YYYY-MM-DD');
-                    var groombapdate = moment(moredetails.date_gbapdate).format('YYYY-MM-DD');
-                    var groomcondate = moment(moredetails.date_gcondate).format('YYYY-MM-DD');
-                    var bridebapdate = moment(moredetails.date_bbapdate).format('YYYY-MM-DD');
-                    var bridecondate = moment(moredetails.date_bcondate).format('YYYY-MM-DD');
-                    var desireddate= moment(moredetails.date_desireddate).format('YYYY-MM-DD');   
+                    var groombday = moment(moredetails.date_birthday).format('MM-DD-YYYY');
+                    var bridebday = moment(moredetails.date_bbirthday).format('MM-DD-YYYY');
+                    var groombapdate = moment(moredetails.date_gbapdate).format('MM-DD-YYYY');
+                    var groomcondate = moment(moredetails.date_gcondate).format('MM-DD-YYYY');
+                    var bridebapdate = moment(moredetails.date_bbapdate).format('MM-DD-YYYY');
+                    var bridecondate = moment(moredetails.date_bcondate).format('MM-DD-YYYY');
+                    var desireddate= moment(moredetails.date_desireddate).format('MM-DD-YYYY');   
                     var desiredtime= moment(moredetails.time_desiredtime, 'HH:mm:ss').format('hh:mm A');
                     moredetails.date_birthday=groombday;
                     moredetails.date_bbirthday=bridebday;
@@ -529,14 +529,38 @@ var upload = multer({ storage: storage})
 
     var requirements = upload.fields([{name:'birthCertificate',maxCount:1},{name:'baptismalCertificate',maxCount:1}]);
     guestRouter.post('/confirmation/form',requirements ,(req, res) => {
-        var queryString= `select int_eventID from tbl_event where var_eventname="Confirmation";`  
-        console.log(req.files)
-            db.query(queryString, (err, results, fields) => {
-                if (err) throw err;
-                console.log(results);
-                req.session.user.eventID =results[0];
-                console.log(req.session.user);
+   
+        var birthday= moment(req.body.birthday, 'MM/DD/YYYY').format('YYYY-MM-DD');
+        if (req.body.baptismtype == 'Regular'){
+            var desireddate= moment(req.body.regdesireddate, 'MM/DD/YYYY').format('YYYY-MM-DD');
+            var desiredtime="11:00:00"
+            // var desiredtime= moment(req.body.desiredtime).format('HH:mm:ss');
+            //KUKUNIN SA UTILITIES YUNG ORAS
+            var queryString= `select int_eventID from tbl_event where var_eventname="Confirmation";`  
+                db.query(queryString, (err, results, fields) => {
+                    if (err) throw err;
+                    console.log(results);
+                    req.session.user.eventID =results[0];
+                    console.log(req.session.user);
+                    queries();
+                });
+            }            
+            if (req.body.baptismtype == 'Special'){
+                var desireddate= moment(req.body.spcdesireddate, 'MM/DD/YYYY').format('YYYY-MM-DD');
+                var desiredtime= moment(req.body.desiredtime).format('HH:mm:ss');
                 
+                var queryString= `select int_eventID from tbl_event where var_eventname="Special Confirmation";`  
+                    db.query(queryString, (err, results, fields) => {
+                        if (err) throw err;
+                        console.log(results);
+                        req.session.user.eventID =results[0];
+                        console.log(req.session.user);
+                        queries();
+                    });
+                }            
+               
+
+        function queries(){
             var queryString1 = `INSERT INTO tbl_eventinfo(int_userID, int_eventID) VALUES(?,?)`;
                 db.query(queryString1, [req.body.userID, req.session.user.eventID.int_eventID], (err, results, fields) => {
                     if (err) throw err;
@@ -557,23 +581,14 @@ var upload = multer({ storage: storage})
                                 var date1 = nowDate1.getFullYear()+'/'+(nowDate1.getMonth()+1)+'/'+nowDate1.getDate(); 
                                 var queryString8 = `INSERT INTO tbl_requirements(int_eventinfoID,var_reqpath,date_reqreceived,int_reqtypeID) VALUES (?,?,?,?);`
                                 db.query(queryString8,[eventinfoID.insertId,pathBaptc,date1,2],(err, results, fields)=>{  
-                                    if (req.body.baptismtype == 'Regular'){
-                                        var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?);`
-                                        db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.regdesireddate, req.body.baptismtype], (err, results, fields) => {
-                                            if (err) throw err;
-                                            sponsors(eventinfoID.insertId);
-                                            return res.redirect(`/guest`);
-                                        });
-                                    }
-                                    if(req.body.baptismtype=='Special'){
-                                        var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime, char_baptismtype) VALUES(?,?,?, ?,?,? ,?,?,?,?);`
-                                        db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, req.body.spcdesireddate, req.body.desiredtime, req.body.baptismtype], (err, results, fields) => {
-                                            if (err) throw err;
-                                            sponsors(eventinfoID.insertId);
-                                            return res.redirect(`/guest`);
-                                            
-                                        });
-                                    }
+                                    
+                                    //merong hardcoded dito, ayusin sa capstone, utilities/events
+                                    var queryString4 = `INSERT INTO tbl_baptism(int_eventinfoID, var_parentmarriageadd, var_fatherbplace, var_motherbplace, var_fathername, var_mothername, var_contactnum, date_desireddate, time_desiredtime) VALUES(?,?,?, ?,?,? ,?,?,?);`
+                                    db.query(queryString4 , [eventinfoID.insertId, req.body.marriageaddress, req.body.fatherbirthplace, req.body.motherbirthplace, req.body.fathername, req.body.mothername, req.body.contactnumber, desireddate, desiredtime], (err, results, fields) => {
+                                        if (err) throw err;
+                                        sponsors(eventinfoID.insertId);
+                                        return res.redirect(`/guest`);
+                                    });
                                     
                                     function sponsors(eventinfoID){
                                         var i;
@@ -583,16 +598,16 @@ var upload = multer({ storage: storage})
                                                 if(err) throw err;
                                             });
                                         }
-
+                                        
                                     }
                                 });
+                            });
                         });
-                    });
-                    });
-                });    
-            });                   
-    });
-
+                    });    
+                    
+                }) }
+            });
+        
 //==============================================================
 //E S T A B L I S H M E N T  B L E S S I N G
 //==============================================================
