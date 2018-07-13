@@ -38,9 +38,20 @@ block body
 								i.material-icons local_pharmacy
 								p Ministries
 						li.nav-item.ml-2
-							a.nav-link(href='/admin/maintenance-requirements')
-								i.material-icons list_alt
+							a.nav-link(data-toggle="collapse" href="#requirements")
+								i.material-icons layers
 								p Requirements
+									b.caret
+						.collapse#requirements
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/maintenance-wedrequirements')
+									i.material-icons insert_invitation
+									p Wedding
+							li.nav-item.ml-3
+								a.nav-link(href='/admin/maintenance-nonwedrequirements')
+									i.material-icons insert_invitation
+									p Non-wedding
+						
 						li.nav-item.ml-2
 							a.nav-link(href='/admin/maintenance-services')
 								i.material-icons list_alt

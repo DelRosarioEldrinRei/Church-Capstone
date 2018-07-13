@@ -75,11 +75,11 @@ block prepend main
 								.form-group
 										label.label-control Start
 										input.timepicker1.form-control(type='datetime' name='start')
-							.col-md-6
-								.form-group.mt-1
-										label.label-control End
-										input.timepicker.form-control(type='datetime' name='end')
-										input.timepicker1.form-control(type='text' name='start')
+							//- .col-md-6
+							//- 	.form-group.mt-1
+							//- 			label.label-control End
+							//- 			input.timepicker.form-control(type='datetime' name='end')
+							//- 			input.timepicker1.form-control(type='text' name='start')
 							.col-md-6
 								.form-group.mt-1
 										label.label-control End
@@ -192,7 +192,7 @@ block addjs
 						if(data){
 							swal({
 							title:'Success', 
-							text:'service deleted', 
+							text:'Special event deleted', 
 							icon:'success'
 							}).then(function(){
 								location.reload();
@@ -200,11 +200,9 @@ block addjs
 							$('#modal-warning1').modal('hide');
 						}
 
-				});                        
-			});
-		});
-		});
-
+				});
+				});
+				});
 		$('.updateButton').click(function(){
 			var idNow1 = $(this).val();
 			console.log(idNow1)
@@ -219,7 +217,7 @@ block addjs
 				</div>
 				<div class="form-group">
 					<label class="label-control">Event Description</label>
-					<input type="textarea" rows="2" id="eventdesc" value="${data.text_eventdesc}" class="form-control"></input>
+					<textarea rows="2" id="eventdesc" value="${data.text_eventdesc}" class="form-control"></textarea>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
@@ -285,6 +283,7 @@ block addjs
 				})
 			})
 
+		})
 		})
 	
 	

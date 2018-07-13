@@ -47,7 +47,7 @@ adminRouter.use(authMiddleware.adminAuth)
         });     
     });
 
-    adminRouter.post('/maintenance-events/add', (req, res) => {
+        adminRouter.post('/maintenance-events/add', (req, res) => {
         var start= moment(req.body.start, 'MM/DD/YYYY h:mm a').format('YYYY-MM-DD HH:mm:ss');
         var end= moment(req.body.end, 'MM/DD/YYYY h:mm a').format('YYYY-MM-DD HH:mm:ss');
         
@@ -253,109 +253,167 @@ adminRouter.use(authMiddleware.adminAuth)
 //=======================================================
 //REQUIREMENTS 
 //=======================================================
-    adminRouter.get('/maintenance-requirements', (req, res)=>{
-        var queryString1 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Anointing of the sick")`
-        var queryString2 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Baptism")`
-        var queryString3 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Confirmation")`
-        var queryString4 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Funeral Mass=" or var_eventname= "Funeral Service" )`
-        var queryString5 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Marriage")`
-        var queryString6 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Establishment Blessing")`
-        var queryString8 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="First Communion")`
-        var queryString9 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Facility Reservation")`
-        var queryString10 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Document Request")`
-        var queryString11 =`SELECT var_eventname FROM tbl_event ORDER BY var_eventname`
-        db.query(queryString1, (err, results, fields) => {
-            if (err) console.log(err); 
-            var anointings = results;
-            db.query(queryString2, (err, results, fields) => {
+    
+    //non-wedding requirements
+        adminRouter.get('/maintenance-nonwedrequirements', (req, res)=>{
+            var queryString1 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Anointing of the sick")`
+            var queryString2 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Baptism")`
+            var queryString3 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Confirmation")`
+            var queryString4 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Funeral Mass=" or var_eventname= "Funeral Service" )`
+            // var queryString5 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Marriage")`
+            var queryString6 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Establishment Blessing")`
+            var queryString8 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="First Communion")`
+            var queryString9 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Facility Reservation")`
+            var queryString10 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Document Request")`
+            var queryString11 =`SELECT var_eventname FROM tbl_event ORDER BY var_eventname`
+            db.query(queryString1, (err, results, fields) => {
                 if (err) console.log(err); 
-                var baptisms = results;
-                db.query(queryString3, (err, results, fields) => {
+                var anointings = results;
+                db.query(queryString2, (err, results, fields) => {
                     if (err) console.log(err); 
-                    var confirmations = results;
-                    db.query(queryString4, (err, results, fields) => {
+                    var baptisms = results;
+                    db.query(queryString3, (err, results, fields) => {
                         if (err) console.log(err); 
-                        var funerals = results;
-                        db.query(queryString5, (err, results, fields) => {
+                        var confirmations = results;
+                        db.query(queryString4, (err, results, fields) => {
                             if (err) console.log(err); 
-                            var marriages = results;
-                            db.query(queryString6, (err, results, fields) => {
-                                if (err) console.log(err);
-                                var establishments = results; 
-                                    db.query(queryString8, (err, results, fields) => {
-                                        if (err) console.log(err);
-                                        var eucharists = results;       
-                                        db.query(queryString9, (err, results, fields) => {
+                            var funerals = results;
+                            // db.query(queryString5, (err, results, fields) => {
+                            //     if (err) console.log(err); 
+                            //     var marriages = results;
+                                db.query(queryString6, (err, results, fields) => {
+                                    if (err) console.log(err);
+                                    var establishments = results; 
+                                        db.query(queryString8, (err, results, fields) => {
                                             if (err) console.log(err);
-                                            var reservations = results;       
-                                            db.query(queryString10, (err, results, fields) => {
+                                            var eucharists = results;       
+                                            db.query(queryString9, (err, results, fields) => {
                                                 if (err) console.log(err);
-                                                var requests = results; 
-                                                db.query(queryString11, (err, results, fields) => {
+                                                var reservations = results;       
+                                                db.query(queryString10, (err, results, fields) => {
                                                     if (err) console.log(err);
-                                                    var services = results;       
-                                                    console.log(services)
-            return res.render('admin/views/maintenance/requirements',{ anointings : anointings,baptisms : baptisms,confirmations : confirmations,funerals : funerals, marriages : marriages,establishments : establishments,eucharists : eucharists,reservations : reservations,requests: requests, services:services});
-        }); }); }); }); }); }); }); }); }); 
-        });     
-    });
-
-
-
-    adminRouter.post('/maintenance-requirements/add', (req, res) => {
-        var queryString= `select int_eventID from tbl_event where var_eventname = ?`
-        db.query(queryString, [req.body.eventname], (err, results, fields) => {
-            if (err) throw err;
-                var eventid = results[0];
-                console.log(eventid)
-                var queryString1= `INSERT INTO tbl_requirementtype(int_eventID, var_reqname, var_reqdesc) VALUES(?,?,?);`  
-                db.query(queryString1,  [eventid.int_eventID, req.body.reqname, req.body.reqdesc], (err, results, fields) => {
-                    if (err) throw err;
-                    return res.redirect('/admin/maintenance-requirements');
-                });
-            });            
+                                                    var requests = results; 
+                                                    db.query(queryString11, (err, results, fields) => {
+                                                        if (err) console.log(err);
+                                                        var services = results;       
+                                                        console.log(services)
+                return res.render('admin/views/maintenance/nonwedrequirements',{ anointings : anointings,baptisms : baptisms,confirmations : confirmations,funerals : funerals, establishments : establishments,eucharists : eucharists,reservations : reservations,requests: requests, services:services});
+            }); }); }); }); }); }); }); }); }); 
+            // });     
         });
-
-    adminRouter.get('/maintenance-requirements/delete/:int_reqtypeID', (req, res) => {
-        const queryString = `DELETE FROM tbl_requirementtype
-        WHERE int_reqtypeID= ${req.params.int_reqtypeID}`;
         
-        db.query(queryString, (err, results, fields) => {        
-            if (err) throw err;
-            return res.redirect('/admin/maintenance-requirements');
-            
-        });
-    });
+        adminRouter.post('/maintenance-nonwedrequirements/add', (req, res) => {
+            var queryString= `select int_eventID from tbl_event where var_eventname = ?`
+            db.query(queryString, [req.body.eventname], (err, results, fields) => {
+                if (err) throw err;
+                    var eventid = results[0];
+                    console.log(eventid)
+                    var queryString1= `INSERT INTO tbl_requirementtype(int_eventID, var_reqname, var_reqdesc) VALUES(?,?,?);`  
+                    db.query(queryString1,  [eventid.int_eventID, req.body.reqname, req.body.reqdesc], (err, results, fields) => {
+                        if (err) throw err;
+                        return res.redirect('/admin/maintenance-nonwedrequirements');
+                    });
+                });            
+            });
 
-    
-    adminRouter.get('/maintenance-requirements/edit/:int_reqtypeID', (req, res) => {
-        
-        var queryString = `SELECT * FROM tbl_requirementtype 
-        WHERE int_reqtypeID = ${req.params.int_reqtypeID}`;
-        db.query(queryString, (err, results, fields) => {        
-            
-            if (err) throw err;
-            console.log(results);
-            var requirements = results[0];
-            return res.render('admin/views/maintenance/requirementsedit', {requirements:requirements});
-        });
-    });
-    
-    adminRouter.post('/maintenance-requirements/edit/:int_reqtypeID', (req, res) => {
-        var queryString= `select int_eventID from tbl_event where var_eventname = ?`
-        db.query(queryString,  [req.body.eventname], (err, results, fields) => {
-            if (err) throw err;
-                var eventid = results[0];
-                console.log(eventid);
-                const queryString1 = `UPDATE tbl_requirementtype SET int_eventID=?, var_reqname =?, var_reqdesc= ?
+            adminRouter.post('/maintenance-nonwedrequirements/delete', (req, res) => {
+                const queryString = `DELETE FROM tbl_requirementtype
                 WHERE int_reqtypeID= ${req.params.int_reqtypeID}`;
-            
-                db.query(queryString1,[eventid.int_eventID, req.body.reqname, req.body.reqdesc], (err, results, fields) => {        
+                
+                db.query(queryString, (err, results, fields) => {        
                     if (err) throw err;
                     return res.redirect('/admin/maintenance-requirements');
-                });    
+                    
+                });
+            });
+
+            adminRouter.post('/maintenance-nonwedrequirements/edit', (req, res) => {
+                var queryString= `select int_eventID from tbl_event where var_eventname = ?`
+                db.query(queryString,  [req.body.eventname], (err, results, fields) => {
+                    if (err) throw err;
+                        var eventid = results[0];
+                        console.log(eventid);
+                        const queryString1 = `UPDATE tbl_requirementtype SET int_eventID=?, var_reqname =?, var_reqdesc= ?
+                        WHERE int_reqtypeID= ${req.params.int_reqtypeID}`;
+                    
+                        db.query(queryString1,[eventid.int_eventID, req.body.reqname, req.body.reqdesc], (err, results, fields) => {        
+                            if (err) throw err;
+                            return res.redirect('/admin/maintenance-requirements');
+                        });    
+                });
+            });
+            
+        
+    //wedding requirements
+        adminRouter.get('/maintenance-wedrequirements', (req, res)=>{
+            var queryString5 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Marriage") AND char_reqtype = "Civil"`
+                db.query(queryString5, (err, results, fields) => {
+                    if (err) console.log(err); 
+                    var civils = results;
+                    var queryString6 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Marriage") AND char_reqtype = "Church"`
+                        db.query(queryString6, (err, results, fields) => {
+                            if (err) console.log(err); 
+                            var churches = results;
+                            var queryString7 =`SELECT * FROM tbl_requirementtype where int_eventID = (select int_eventID from tbl_event where var_eventname ="Marriage") AND char_reqtype = "Chancery"`
+                            db.query(queryString7, (err, results, fields) => {
+                                if (err) console.log(err); 
+                                var chanceries = results;
+                return res.render('admin/views/maintenance/wedrequirements',{ civils : civils, churches: churches, chanceries: chanceries});
+            }); 
+            });     
+        });     
         });
-    });
+
+        adminRouter.post('/maintenance-wedrequirements/add', (req, res) => {
+            var queryString= `select int_eventID from tbl_event where var_eventname = ?`
+            db.query(queryString, ["Marriage"], (err, results, fields) => {
+                if (err) throw err;
+                    var eventid = results[0];
+                    console.log(eventid)
+                    var queryString1= `INSERT INTO tbl_requirementtype(int_eventID, var_reqname, var_reqdesc, char_reqmode, var_case, char_reqtype) VALUES(?,?,?,?,?,?);`  
+                    db.query(queryString1,  [eventid.int_eventID, req.body.reqname, req.body.reqdesc, req.body.reqmode, req.body.case,  req.body.reqtype ], (err, results, fields) => {
+                        if (err) throw err;
+                        return res.redirect('/admin/maintenance-wedrequirements');
+                    });
+                });            
+        });
+
+        adminRouter.post('/maintenance-wedrequirements/delete', (req, res) => {
+            const queryString = `DELETE FROM tbl_requirementtype
+            WHERE int_reqtypeID= ?`;
+            
+            db.query(queryString,[req.body.id1], (err, results, fields) => {        
+                if (err) throw err;
+                return res.redirect('/admin/maintenance-wedrequirements');
+                
+            });
+        });
+        
+        adminRouter.post('/maintenance-wedrequirements/query', (req, res) => {
+
+            const queryString = `select * from tbl_requirementtype WHERE int_reqtypeID = ?`;
+            db.query(queryString,[req.body.id2], (err, results, fields) => {        
+            if (err) throw err;
+            res.send(results[0])
+            console.log(results[0])
+            });
+        });
+        
+        adminRouter.post('/maintenance-wedrequirements/edit', (req, res) => {
+            var queryString= `select int_eventID from tbl_event where var_eventname = ?`
+            db.query(queryString,  [req.body.eventname], (err, results, fields) => {
+                if (err) throw err;
+                    var eventid = results[0];
+                    console.log(eventid);
+                    const queryString1 = `UPDATE tbl_requirementtype SET int_eventID=?, var_reqname =?, var_reqdesc= ?
+                    WHERE int_reqtypeID=?`;
+                
+                    db.query(queryString1,[eventid.int_eventID, req.body.reqname, req.body.reqdesc,req.body.id1], (err, results, fields) => {        
+                        if (err) throw err;
+                        return res.redirect('/admin/maintenance-wedrequirements');
+                    });    
+            });
+        });
 
 //===============================================================================================//
 // T R A N S A C T I O N S //
