@@ -1,0 +1,99 @@
+extends ../../../templates/mastercatechist
+//- block addcss
+block prepend main
+	#wrap
+	div(style='clear:both')
+	.content
+		.container-fluid
+			.row
+				.col-lg-12.col-md-12
+						
+						.card
+								.card-header.card-header-primary
+										h4.card-title Special Events
+								.card-body.table-responsive
+										table.table.table-hover
+												thead.text-primary
+														th ID
+														th Event Name
+														th Start
+														th End
+														th Venue
+														th.text-center(style=" width:120px") Actions
+												tbody
+														each specialevent in specialevents
+															tr
+																td=specialevent.int_specialeventID
+																td=specialevent.var_spceventname
+																td=specialevent.time_eventstart
+																td=specialevent.time_eventend
+																td=specialevent.var_eventvenue
+																td.td-actions.text-center
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${specialevent.int_specialeventID}`)
+																		i.material-icons close
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${specialevent.int_specialeventID}`)
+																		i.material-icons edit
+								.card-footer.text-right
+									.col-md-3
+										//- <cite title="Source Title">Showing 6 of 25 entries</cite> 
+									.col-md-6.text-right
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item">
+													<a class="page-link" href="#" tabindex="-1">Previous</a>
+												</li>
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#">Next</a>
+												</li>
+											</ul>
+										</nav>
+									.col-md-3.text-right
+										a(href="#" data-toggle="modal" data-target="#conditionModal") Add Event
+			
+	
+	#conditionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+		.modal-dialog.modal-notify.modal-success(role='document')
+			// Content
+			.modal-content
+				// Header
+				.modal-header
+					p.heading.lead Add Event
+					button.close(type='button' data-dismiss='modal' aria-label='Close')
+						span.white-text(aria-hidden='true') &times;
+				// Body
+				.modal-body
+					form.form(action="/catechist/sections/add" method="post")
+						.form-group
+							label.label-control Event Name
+							input.form-control(type='text' name='spceventname')
+						.form-group
+							label.label-control Event Description
+							textarea.form-control( rows="2" name='eventdesc')
+						.row
+							.col-md-6
+								.form-group
+										label.label-control Start
+										input.timepicker1.form-control(type='datetime' name='start')
+							//- .col-md-6
+							//- 	.form-group.mt-1
+							//- 			label.label-control End
+							//- 			input.timepicker.form-control(type='datetime' name='end')
+							//- 			input.timepicker1.form-control(type='text' name='start')
+							.col-md-6
+								.form-group.mt-1
+										label.label-control End
+										input.timepicker.form-control(type='text' name='end')
+
+						.form-group
+							label.label-control Venue
+							input.form-control(type='text' name='venue')
+						.form-group
+								label.label-control Event Type
+									select.form-control(type="text" name='eventtype')
+										option Open for everyone
+										option Exclusive
+										
+						.row
+							.col-md-12.text-center.my-3
+								button.btn.btn-primary(type='submit') Add

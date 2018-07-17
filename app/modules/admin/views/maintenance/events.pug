@@ -217,7 +217,7 @@ block addjs
 				</div>
 				<div class="form-group">
 					<label class="label-control">Event Description</label>
-					<textarea rows="2" id="eventdesc" value="${data.text_eventdesc}" class="form-control"></textarea>
+					<input rows="2" id="eventdesc" value="${data.text_eventdesc}" class="form-control"></input>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
@@ -240,13 +240,16 @@ block addjs
 				</div>
 				<div class="form-group">
 					<label class="label-control">Event Type
-						<select type="text" id="eventtype" value="${data.char_eventtype}" class="form-control">
-						<option>Open for everyone</option>
-						<option>Exclusive</option>
+						<select type="text" id="eventtype" default="${data.char_eventtype}" class="form-control">
+						<option name="Open for Everyone">Open for everyone</option>
+						<option name="Exlusive">Exclusive</option>
 						</select>
 					</label>
 				</div>`)
 				$('#updateModal').modal('show')
+				$('#updateModal').on('hidden.bs.modal',function(){
+					$('#updateAppend').empty()
+				})
 				$('#cancelButton').click(function(){
 					$('#updateAppend').empty();
 				})

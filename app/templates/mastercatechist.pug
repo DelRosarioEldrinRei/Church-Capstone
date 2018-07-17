@@ -4,7 +4,7 @@ block body
 		nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark(color-on-scroll="100" id="sectionsNav")
 			.container
 				.navbar-translate
-					a.navbar-brand(href="/guest")
+					a.navbar-brand(href="/catechist")
 						| &nbsp; Church
 					button.navbar-toggler(type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation")
 						span.navbar-toggler-icon
@@ -53,11 +53,11 @@ block body
 							| Events
 						li.nav-item.active: a.nav-link(href="/catechist")
 							| Home
-						li.nav-item: a.nav-link(href="#")
-							| Profile
-						li.nav-item: a.nav-link(href="#")
+						//- li.nav-item: a.nav-link(href="#")
+						//- 	| Profile
+						li.nav-item: a.nav-link(href="/catechist/schedule")
 							| Schedule
-						li.nav-item: a.nav-link(href="#")
+						li.nav-item: a.nav-link(href="/catechist/sections")
 							| Sections	
 						li.nav-item: a.nav-link(href="#")
 							| Notification	
@@ -65,14 +65,14 @@ block body
 							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
 								| My Account
 							.dropdown-menu.dropdown-with-icons
-								a.dropdown-item(href="#")
+								a.dropdown-item(href="/catechist/profile")
 									| &nbsp; My Profile
 								a.dropdown-item(href="#")
 									| &nbsp; Messages
 								a.dropdown-item(href="#")
 									| &nbsp; Notification
-								a.dropdown-item(href="/guest/reservation")
-									| &nbsp; Reservations
+								//- a.dropdown-item(href="/guest/reservation")
+								//- 	| &nbsp; Reservations
 								.container
 									hr
 								a.dropdown-item(href="/logout")

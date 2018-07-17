@@ -22,13 +22,13 @@ block prepend main
 												tbody
 														each ministry in ministries
 															tr
-																td=ministry.int_ministry_ID
-																td=ministry.var_ministry_name
-																td=ministry.var_ministry_desc
+																td=ministry.int_ministryID
+																td=ministry.var_ministryname
+																td=ministry.var_ministrydesc
 																td.td-actions.text-center
-																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${ministry.int_ministry_ID}`)
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${ministry.int_ministryID}`)
 																		i.material-icons close	
-																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${ministry.int_ministry_ID}`)
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${ministry.int_ministryID}`)
 																		i.material-icons edit
 								.card-footer.text-right
 									.col-md-3
@@ -124,14 +124,17 @@ block addjs
 				$('#updateAppend').append(`
 				<div class="form-group">
 					<label class="label-control">Ministry Name</label>
-					<input type="text" id="ministryname" value="${data.var_ministry_name}" class="form-control"/>
+					<input type="text" id="ministryname" value="${data.var_ministryname}" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label class="label-control">Ministry Desctription</label>
-					<input type="text" id="ministrydesc" value="${data.var_ministry_desc}" class="form-control"/>
+					<input type="text" id="ministrydesc" value="${data.var_ministrydesc}" class="form-control"/>
 				</div>
 				`)
 				$('#updateModal').modal('show')
+				$('#updateModal').on('hidden.bs.modal',function(){
+					$('#updateAppend').empty()
+				})
 				$('#cancelButton').click(function(){
 					$('#updateAppend').empty();
 				})

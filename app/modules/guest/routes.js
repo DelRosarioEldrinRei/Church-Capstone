@@ -17,41 +17,23 @@ var upload = multer({ storage: storage})
 // I N D E X //
 //===============================================================================================//
     guestRouter.use(authMiddleware.guestAuth)
-    guestRouter.get('/', (req, res)=>{
-        res.render('guest/views/index')
-    });
+    guestRouter.get('/', (req, res)=> {res.render('guest/views/index')});
 
-    guestRouter.get('/schedule', (req, res)=>{
-        res.render('guest/views/schedule2')
-    });
+    guestRouter.get('/schedule', (req, res)=> {res.render('guest/views/schedule2')});
 
-    guestRouter.get('/entourage', (req, res)=>{
-        res.render('guest/views/entourage')
-    });
+    guestRouter.get('/entourage', (req, res)=> {res.render('guest/views/entourage')});
 
-    guestRouter.get('/parishevents', (req, res)=>{
-        res.render('guest/views/parishevents1')
-    });
+    guestRouter.get('/parishevents', (req, res)=> {res.render('guest/views/parishevents1')});
 
-    guestRouter.get('/parishevents/details', (req, res)=>{
-        res.render('guest/views/parishdetails')
-    });
+    guestRouter.get('/parishevents/details', (req, res)=> {res.render('guest/views/parishdetails')});
 
-    guestRouter.get('/parishservices', (req, res)=>{
-        res.render('guest/views/parishservices')
-    });
+    guestRouter.get('/parishservices', (req, res)=> {res.render('guest/views/parishservices')});
 
-    guestRouter.get('/weddingorg', (req, res)=>{
-        res.render('guest/views/forms/weddingorg')
-    });
+    guestRouter.get('/weddingorg', (req, res)=> {res.render('guest/views/forms/weddingorg')});
 
-    guestRouter.get('/weddingorg/items', (req, res)=>{
-        res.render('guest/views/forms/weddingorg1')
-    });
+    guestRouter.get('/weddingorg/items', (req, res)=> {res.render('guest/views/forms/weddingorg1')});
 
-    guestRouter.get('/voucher', (req, res)=>{
-        res.render('guest/views/voucher/facility')
-    });
+    guestRouter.get('/voucher', (req, res)=> {res.render('guest/views/voucher/facility')});
 //===============================================================================================//
 // R E S E R V A T I O N //
 //===============================================================================================//
@@ -462,7 +444,7 @@ var upload = multer({ storage: storage})
             });
         }            
         if (req.body.baptismtype == 'Special'){
-            var desireddate= moment(req.body.spcdesireddate, 'MM/DD/YYYY').format('YYYY-MM-DD');
+            var desireddate= moment(req.body.spcdesireddate,'MM/DD/YYYY').format('YYYY-MM-DD');
             var desiredtime= moment(req.body.desiredtime).format('HH:mm:ss');
             
             var queryString= `select int_eventID from tbl_event where var_eventname="Special Baptism";`  
@@ -745,7 +727,7 @@ var upload = multer({ storage: storage})
 // M A R R I A G E
 //============================================================== 
     guestRouter.get('/marriage/form', (req, res)=>{
-        res.render('guest/views/forms/marriage',{user: req.session.user})
+        return res.render('guest/views/forms/marriage',{user: req.session.user})
     });
     guestRouter.post('/marriage/form', (req, res) => {
 

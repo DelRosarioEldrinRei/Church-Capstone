@@ -19,7 +19,7 @@ block prepend main
 				.col-lg-12.col-md-12
 						.card
 								.card-header.card-header-primary
-										h4.card-title Church Requirements
+										h4.card-title Ordinary (Church Requirements)
 										//- p.card-category Date: June 24, 2018
 								.card-body.table-responsive
 										table.table.table-hover
@@ -27,21 +27,46 @@ block prepend main
 														th ID
 														th Requirement Name
 														th Description
-														th Case
+														//- th Case
 														th.text-center(style=" width:120px") Actions
 												tbody
-														each church in churches
+														each ordinary in ordinaries
 															tr
-																td=church.int_reqtypeID
-																td=church.var_reqname
-																td=church.var_reqdesc
-																td=church.var_case
+																td=ordinary.int_reqtypeID
+																td=ordinary.var_reqname
+																td=ordinary.var_reqdesc
+																//- td=ordinary.var_case
 																<td class="td-actions text-right">
-																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${church.int_reqtypeID}`)
+																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${ordinary.int_reqtypeID}`)
 																		i.material-icons close
-																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${church.int_reqtypeID}`)
+																	button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${ordinary.int_reqtypeID}`)
 																		i.material-icons edit
 																</td>			
+						//- .card
+								//- .card-header.card-header-primary
+								//- 		h4.card-title Church Requirements
+								//- 		//- p.card-category Date: June 24, 2018
+								//- .card-body.table-responsive
+								//- 		table.table.table-hover
+								//- 				thead.text-primary
+								//- 						th ID
+								//- 						th Requirement Name
+								//- 						th Description
+								//- 						th Case
+								//- 						th.text-center(style=" width:120px") Actions
+								//- 				tbody
+								//- 						each church in churches
+								//- 							tr
+								//- 								td=church.int_reqtypeID
+								//- 								td=church.var_reqname
+								//- 								td=church.var_reqdesc
+								//- 								td=church.var_case
+								//- 								<td class="td-actions text-right">
+								//- 									button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${church.int_reqtypeID}`)
+								//- 										i.material-icons close
+								//- 									button.btn.btn-success.updateButton(type='button',rel='tooltip', value=`${church.int_reqtypeID}`)
+								//- 										i.material-icons edit
+								//- 								</td>			
 						.card
 								.card-header.card-header-primary
 										h4.card-title Civil Requirements

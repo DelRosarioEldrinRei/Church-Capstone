@@ -9,10 +9,6 @@ block prepend main
 	div(style='clear:both')
 	.content
 		.container-fluid
-			//- <div class="alert alert-warning" role="alert">
-			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
-			//- </div>
-			
 			.row
 				.col-lg-12.col-md-12
 						.card
@@ -31,7 +27,7 @@ block prepend main
 															tr
 																td=facility.int_facilityID
 																td=facility.var_facilityname
-																td=facility.flt_rentfee
+																td="P" + " " + facility.flt_rentfee
 																td.td-actions.text-center
 																	button.btn.btn-danger.deleteButton(type='button',rel='tooltip',value=`${facility.int_facilityID}`)
 																		i.material-icons close
@@ -143,10 +139,13 @@ block addjs
 				</div>
 				<div class="form-group">
 					<label class="label-control">Fee</label>
-					<input type="number" name="fee" id="flt_rentfee" value="${data.flt_rentfee}" class="form-control"/>
+					<input type="number" name="fee" id="flt_rentfee" value=${data.flt_rentfee} class="form-control"/>
 				</div>
 				`)
 				$('#updateModal').modal('show')
+				$('#updateModal').on('hidden.bs.modal',function(){
+					$('#updateAppend').empty()
+				})
 				$('#cancelButton').click(function(){
 					$('#updateAppend').empty();
 				})

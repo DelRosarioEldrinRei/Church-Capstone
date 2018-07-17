@@ -1,11 +1,10 @@
-extends ./basecoordinators
+extends ./basecatechist
 block body
 	header
-		nav.navbar.navbar-color-on-scroll.navbar-transparent.fixed-top.navbar-expand-lg(color-on-scroll="100" id="sectionsNav")
+		nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark(color-on-scroll="100" id="sectionsNav")
 			.container
 				.navbar-translate
 					a.navbar-brand(href="/coordinator")
-						i.fa.fa-institution(aria-hidden="true") 
 						| &nbsp; Church
 					button.navbar-toggler(type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation")
 						span.navbar-toggler-icon
@@ -13,27 +12,39 @@ block body
 						span.navbar-toggler-icon
 				.collapse.navbar-collapse
 					ul.navbar-nav.ml-auto
-						li.nav-item.active: a.nav-link(href="/coordinator" rel="tooltip" title="" data-original-title="Back to Home")
+						
+						li.nav-item.active: a.nav-link(href="/coordinator")
 							| Home
+						//- li.nav-item: a.nav-link(href="#")
+						//- 	| Profile
 						li.nav-item: a.nav-link(href="/coordinator/schedule")
 							| Schedule
 						li.nav-item: a.nav-link(href="/coordinator/appointments")
-							| Appointments
+							| Appointments	
+						li.nav-item: a.nav-link(href="#")
+							| Notification	
 						li.dropdown.nav-item
-							a.nav-link(href="#" data-toggle="dropdown")
-								| Notifications &nbsp;	
-								span.badge.badge-info 1
-							.dropdown-menu
-								a.dropdown-item(href="/coordinator/voucher")
-									.row
-										p
-											| Your reservation has been approved! Click here 
-										p
-											| to generate voucher.
-											i.fa.fa-smile-o(aria-hidden='true')
-						li.nav-item
-							a.nav-link(href='/logout')
-								span.no-icon Log out
+							a.dropdown-toggle.nav-link(href="#" data-toggle="dropdown")
+								| My Account
+							.dropdown-menu.dropdown-with-icons
+								a.dropdown-item(href="/coordinator/profile")
+									| &nbsp; My Profile
+								a.dropdown-item(href="#")
+									| &nbsp; Messages
+								a.dropdown-item(href="#")
+									| &nbsp; Notification
+								//- a.dropdown-item(href="/guest/reservation")
+								//- 	| &nbsp; Reservations
+								.container
+									hr
+								a.dropdown-item(href="/logout")
+									| &nbsp; Sign-out
+						//- li.dropdown.nav-item
+						//- 	a.nav-link(href="#" data-toggle="dropdown")
+						//- 		| Notifications	
+						//- li.nav-item
+						//- 	a.nav-link(href='/logout')
+						//- 		span.no-icon Log out
 						//- li.nav-item: a.nav-link(href="/login" rel="tooltip" title="" data-original-title="Login Now")
 						//- 	| Login
 						//- li.nav-item: a.nav-link(href="/signup" rel="tooltip" title="" data-original-title="Signup Now")
