@@ -852,16 +852,18 @@ var upload = multer({ storage: storage})
                 if (err) throw err;
                 console.log(results);
                 var documentID =results[0];
-                var datenow= Date.now();
+                var nowDate = new Date(); 
+                var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate();  
                 console.log(req.session.user);
                 
-            var queryString1 = `INSERT INTO tbl_documentrequest(int_userID, int_documentID, var_doclastname, var_docfirstname, text_purpose, date_docurequested) VALUES(?,?,?,?,?,?)`;
-                db.query(queryString1, [req.session.user.int_userID, documentID.int_documentID, req.body.lastname, req.body.firstname, req.body.purpose,datenow], (err, results, fields) => {
+            var queryString1 = `INSERT INTO tbl_documentrequest(int_userID, int_documentID, var_doclastname, var_docfirstname, text_purpose, date_docurequested,char_docustatus) VALUES(?,?,?,?,?,?,?)`;
+                db.query(queryString1, [req.session.user.int_userID, documentID.int_documentID, req.body.lastname, req.body.firstname, req.body.purpose,date,"Requested"], (err, results, fields) => {
+                    var request = results;
                     var path = '/img/req/'+req.file.filename;
                     var nowDate = new Date(); 
                     var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
                     var queryString7 = `INSERT INTO tbl_requirements(int_requestID,var_reqpath,date_reqreceived,int_reqtypeID) VALUES (?,?,?,?);`
-                    db.query(queryString7,[documentID.int_documentID,path,date,5],(err, results, fields)=>{     
+                    db.query(queryString7,[request.insertId,path,date,5],(err, results, fields)=>{     
                     if (err) throw err;
                     return res.redirect(`/guest`);
                     });

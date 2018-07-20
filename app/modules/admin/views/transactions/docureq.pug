@@ -1,18 +1,10 @@
 extends ../../../../templates/masteradmin1
 block addcss
-	//- link(rel='stylesheet' href='css/fullcalendar.css')
-	//- link(rel='stylesheet' href='css/fullcalendar.print.css'  media='print')
-
 block prepend main
 	#wrap
-	//- #calendar
 	div(style='clear:both')
 	.content
 		.container-fluid
-			//- <div class="alert alert-warning" role="alert">
-			//- 	| <cite>Note:</cite> Deadline for sumbission of requirements will be on <u><cite> June 20, 2018</u></cite>
-			//- </div>
-			
 			.row
 				.col-lg-12.col-md-12
 						.card
@@ -36,14 +28,9 @@ block prepend main
 																td=request.var_documenttype
 																td=request.date_docurequested
 																td=request.char_docustatus
-																<td class="td-actions text-right">
-																		a.button(rel="tooltip" class="btn btn-info" href=`/admin/transaction-documentrequest`)
-																				<i class="material-icons">person</i>
-																		a.button(rel="tooltip" class="btn btn-success" href=`/admin/transaction-documentrequest/edit/${request.int_requestID}`)
-																				<i class="material-icons">edit</i>
-																		a.button(rel="tooltip" class="btn btn-danger" href=`/admin/transaction-documentrequest/delete/${request.int_requestID}`)
-																				<i class="material-icons">close</i>
-																</td>	
+																td.td-actions.text-center
+																	button.btn.btn-info.viewButton(type='button',rel='tooltip',value=`${request.int_requestID}`)
+																		i.material-icons person
 															
 								.card-footer.text-right
 									.col-md-7
