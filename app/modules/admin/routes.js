@@ -412,6 +412,18 @@ adminRouter.use(authMiddleware.adminAuth)
         }); 
         
     });
+    adminRouter.post('/transaction-documentrequest/query', (req, res)=>{
+        var queryString1 =`SELECT * FROM tbl_documentrequest 
+        join tbl_document on tbl_documentrequest.int_documentID = tbl_document.int_documentID
+        where int_requestID = ?`
+        db.query(queryString1,[req.body.id], (err, results, fields) => {
+            if (err) console.log(err);
+            res.send(results[0])
+            console.log(results[0])
+        }); 
+        
+    });
+    
     adminRouter.get('/transaction-walkin', (req, res)=>{
         res.render('admin/views/transactions/walkin')
     });
